@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="Workspace" id="{4e6d9c88-7109-494f-9d73-080a95db8619}">
+		<relationship name="masterEventFolder">
+			<destination>{1173df54-d739-4088-8f54-4325f19e332f}</destination>
+		</relationship>
+		<relationship name="masterTagFolder">
+			<destination>{f3da1526-b458-4a41-9f73-22e97015fa04}</destination>
+		</relationship>
+		<relationship name="masterEffectPresetFolder">
+			<destination>{0823495b-9cd9-482f-9e70-7f55f8321ba0}</destination>
+		</relationship>
+		<relationship name="masterParameterPresetFolder">
+			<destination>{55d44b00-ec32-48db-95e5-5641d61e4b50}</destination>
+		</relationship>
+		<relationship name="masterBankFolder">
+			<destination>{35aa509b-48ac-41f7-a6ba-8827712a13f3}</destination>
+		</relationship>
+		<relationship name="masterSandboxFolder">
+			<destination>{1b3a734c-a7ec-4fef-b68e-9a52053424db}</destination>
+		</relationship>
+		<relationship name="masterAssetFolder">
+			<destination>{0cae2677-60cd-47d6-9130-93a2b82f59bd}</destination>
+		</relationship>
+		<relationship name="mixer">
+			<destination>{221c6c82-457e-4317-b1f9-184f8b5fb2df}</destination>
+		</relationship>
+		<relationship name="profilerSessionFolder">
+			<destination>{d39b3495-be74-4157-ac1b-514553c7c1ac}</destination>
+		</relationship>
+		<relationship name="platforms">
+			<destination>{f6601e9a-067a-48b0-ba1b-120a720904e5}</destination>
+		</relationship>
+	</object>
+</objects>
