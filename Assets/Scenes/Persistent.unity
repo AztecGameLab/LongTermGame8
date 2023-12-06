@@ -255,7 +255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1761840987}
-  - component: {fileID: 1761840986}
+  - component: {fileID: 1761840989}
   - component: {fileID: 1761840988}
   m_Layer: 0
   m_Name: LTG8 Initializer
@@ -264,34 +264,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1761840986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761840985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58f1051fb06d46c8bcdda7973f0bff06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: 9823fdc2daa4d9040b94afee2b9e8af5, type: 2}
-  serializerBinding:
-    mode: 0
-    unityReference: {fileID: 1761840988}
-    rawReference:
-      rid: -2
-  musicPlayerBinding:
-    mode: 0
-    unityReference: {fileID: 0}
-    rawReference:
-      rid: -2
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
 --- !u!4 &1761840987
 Transform:
   m_ObjectHideFlags: 0
@@ -329,3 +301,34 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+--- !u!114 &1761840989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761840985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f1051fb06d46c8bcdda7973f0bff06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 9823fdc2daa4d9040b94afee2b9e8af5, type: 2}
+  serializerBinding:
+    mode: 0
+    unityReference: {fileID: 1761840988}
+    rawReference:
+      rid: -2
+  musicPlayerBinding:
+    mode: 1
+    unityReference: {fileID: 0}
+    rawReference:
+      rid: 7630809863317094475
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 7630809863317094475
+      type: {class: NullMusicPlayer, ns: Audio, asm: Assembly-CSharp}
+      data: 

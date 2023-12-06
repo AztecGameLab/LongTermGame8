@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Serialization
 {
+    [HideMonoScript]
     public class DebugSerializer : MonoBehaviour, ISerializer
     {
         [SerializeField] 
@@ -13,8 +14,10 @@ namespace Serialization
         {
             Debug.LogWarning("SERIALIZER: No serializer is set, so only logging will take place.");
         }
-    
-        [Button]
+        
+        [Title("Play-mode Controls")]
+
+        [Button, EnableInPlayMode]
         public void SetFlag(string id)
         {
             Debug.Log($"SERIALIZER: Setting flag {id}");
@@ -25,7 +28,7 @@ namespace Serialization
             else LogMissingSerializerWarning();
         }
     
-        [Button]
+        [Button, EnableInPlayMode]
         public void ResetFlag(string id)
         {
             Debug.Log($"SERIALIZER: Resetting flag {id}");
@@ -36,7 +39,7 @@ namespace Serialization
             else LogMissingSerializerWarning();
         }
     
-        [Button]
+        [Button, EnableInPlayMode]
         public bool GetFlag(string id)
         {
             Debug.Log($"SERIALIZER: Getting flag {id}");
@@ -48,7 +51,7 @@ namespace Serialization
             return false;
         }
     
-        [Button]
+        [Button, EnableInPlayMode]
         public void SetVar(string id, int value)
         {
             Debug.Log($"SERIALIZER: Setting var {id} to {value}");
@@ -59,7 +62,7 @@ namespace Serialization
             else LogMissingSerializerWarning();
         }
     
-        [Button]
+        [Button, EnableInPlayMode]
         public int GetVar(string id)
         {
             Debug.Log($"SERIALIZER: Getting var {id}");
