@@ -1,0 +1,32 @@
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+/// <summary>
+/// Ensures that the persistent scene is always loaded
+/// first when the game starts. 
+/// </summary>
+public static class PersistentSceneLoader
+{
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static async void Initialize()
+    {
+        string initialSceneName = SceneManager.GetActiveScene().name;
+
+        if (initialSceneName != "Persistent")
+        {
+            SceneManager.LoadScene("Persistent");
+        }
+
+        // Wait one frame so entrypoint can initialize itself
+        await UniTask.Yield();
+
+        // If we had another scene open initially, now we load it.
+        if (initialSceneName != "Persistent")
+        {
+            // note: we may need a more complicated loading system if levels require more setup
+            await SceneManager.LoadSceneAsync(initialSceneName, LoadSceneMode.Additive);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByPath(initialSceneName));
+        }
+    }
+}
