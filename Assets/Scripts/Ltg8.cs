@@ -1,4 +1,7 @@
-﻿public static class Ltg8
+﻿using Audio;
+using Serialization;
+
+public static class Ltg8
 {
     public static Ltg8Settings Settings;
     
