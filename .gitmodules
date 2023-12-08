@@ -1,0 +1,3 @@
+[submodule "Assets/Plugins/pt-runtime-console"]
+	path = Assets/Plugins/pt-runtime-console
+	url = git@github.com:poetahto/pt-runtime-console.git

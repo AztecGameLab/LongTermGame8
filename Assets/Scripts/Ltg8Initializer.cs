@@ -1,7 +1,4 @@
-﻿using Audio;
-using Serialization;
-using TNRD;
-using TriInspector;
+﻿using TriInspector;
 using UnityEngine;
 
 // Binds the dependencies of the global services to some implementations
@@ -13,13 +10,16 @@ public class Ltg8Initializer : MonoBehaviour
     
     [Title("Bindings")]
     
-    public SerializableInterface<ISerializer> serializerBinding = new SerializableInterface<ISerializer>(NullSerializer.Instance);
-    public SerializableInterface<IMusicPlayer> musicPlayerBinding = new SerializableInterface<IMusicPlayer>(NullMusicPlayer.Instance);
+    [Required]
+    public Ltg8SaveSystem saveSystem;
+    
+    [Required]
+    public Ltg8AudioSystem audioSystem;
 
     private void Awake()
     {
         Ltg8.Settings = settings;
-        Ltg8.Serializer = serializerBinding.Value;
-        Ltg8.MusicPlayer = musicPlayerBinding.Value;
+        Ltg8.Save = saveSystem;
+        Ltg8.Audio = audioSystem;
     }
 }
