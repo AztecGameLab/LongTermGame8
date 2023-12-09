@@ -138,7 +138,7 @@ PrefabInstance:
     - target: {fileID: 3102020810486618538, guid: 13deff28d133b3b4fae5f056ff312f33,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3102020810486618538, guid: 13deff28d133b3b4fae5f056ff312f33,
         type: 3}
@@ -195,28 +195,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3586182108621101794, guid: 13deff28d133b3b4fae5f056ff312f33,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568782354881521639, guid: 13deff28d133b3b4fae5f056ff312f33,
-        type: 3}
-      propertyPath: autoRegisterCommands.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568782354881521639, guid: 13deff28d133b3b4fae5f056ff312f33,
-        type: 3}
-      propertyPath: autoRegisterCommands.Array.data[6]
-      value: 
-      objectReference: {fileID: 11400000, guid: af57ae832ebe9da438489faa0affa5f3,
-        type: 2}
-    - target: {fileID: 5568782354881521639, guid: 13deff28d133b3b4fae5f056ff312f33,
-        type: 3}
-      propertyPath: autoRegisterCommands.Array.data[7]
-      value: 
-      objectReference: {fileID: 11400000, guid: 8fda47242c5dbc54b845c36789dcfe79,
-        type: 2}
     - target: {fileID: 5843233190083128593, guid: 13deff28d133b3b4fae5f056ff312f33,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -314,7 +292,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &603024059
 MonoBehaviour:
@@ -358,7 +336,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &719399811
 MonoBehaviour:
@@ -382,8 +360,9 @@ GameObject:
   m_Component:
   - component: {fileID: 763830670}
   - component: {fileID: 763830671}
+  - component: {fileID: 763830672}
   m_Layer: 0
-  m_Name: Input Console Controller
+  m_Name: Runtime Console Utils
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -402,7 +381,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &763830671
 MonoBehaviour:
@@ -420,6 +399,18 @@ MonoBehaviour:
   cycleAutoCompleteKey: 9
   historyBackwardKey: 273
   historyForwardKey: 274
+--- !u!114 &763830672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763830669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbeff4d3874743a8bacd17d26450b159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &918297797
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,7 +546,7 @@ GameObject:
   - component: {fileID: 1177348618}
   - component: {fileID: 1177348617}
   m_Layer: 0
-  m_Name: EventSystem
+  m_Name: UI Event System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
