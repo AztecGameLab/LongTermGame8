@@ -13,16 +13,16 @@ public static class PersistentSceneLoader
     {
         string initialSceneName = SceneManager.GetActiveScene().name;
 
-        if (initialSceneName != "Persistent")
+        if (initialSceneName != "persistent")
         {
-            SceneManager.LoadScene("Persistent");
+            SceneManager.LoadScene("persistent");
         }
 
         // Wait one frame so entrypoint can initialize itself
         await UniTask.Yield();
 
         // If we had another scene open initially, now we load it.
-        if (initialSceneName != "Persistent")
+        if (initialSceneName != "persistent")
         {
             // note: we may need a more complicated loading system if levels require more setup
             await SceneManager.LoadSceneAsync(initialSceneName, LoadSceneMode.Additive);
