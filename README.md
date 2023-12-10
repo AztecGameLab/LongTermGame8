@@ -7,4 +7,4 @@ _Aztec Game Labs, Spring 2024_
 - See `CREDITS.md` for attributions to 3rd party assets we use.
 
 ## Notes
-- Daniel: feel free to experiment with the shaders created so far, but be aware they are both likely to be changed and most likely deleted in the future.
+- Daniel: feel free to experiment with the shaders created so far, but be aware they are both likely to be changed and most likely deleted in the future. Curved world info [here](https://www.sunnyvalleystudio.com/blog/curved-world-shader-graph-unity), toon info [here](https://github.com/Unity-Technologies/com.unity.toonshader)
