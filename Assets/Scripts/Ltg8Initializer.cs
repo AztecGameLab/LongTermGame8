@@ -1,5 +1,6 @@
 ﻿using TriInspector;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 // Binds the dependencies of the global services to some implementations
 [HideMonoScript]

@@ -100,12 +100,13 @@ public class Ltg8AudioSystem : MonoBehaviour, IConsoleDebugInfo
     
 #region DEBUG
     
-    public string DebugName => name;
     private string _debugEventPath;
     private string _debugId;
     private string _debugDuration;
     private string _debugVolume;
     private readonly List<string> _debugRemovalQueue = new List<string>();
+    
+    public string DebugName => name;
     
     public void DrawDebugInfo()
     {

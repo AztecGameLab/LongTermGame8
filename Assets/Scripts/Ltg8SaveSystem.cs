@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using poetools.Console.Commands;
 using UnityEngine;
 
-public class Ltg8SaveSystem : MonoBehaviour
+public class Ltg8SaveSystem : MonoBehaviour, IConsoleDebugInfo
 {
-    private Dictionary<string, bool> _flags = new Dictionary<string, bool>();
-    private Dictionary<string, int> _vars = new Dictionary<string, int>();
+    private readonly Dictionary<string, bool> _flags = new Dictionary<string, bool>();
+    private readonly Dictionary<string, int> _vars = new Dictionary<string, int>();
     
     public void SetFlag(string id)
     {
@@ -30,4 +31,40 @@ public class Ltg8SaveSystem : MonoBehaviour
     {
         return _vars.TryGetValue(id, out int value) ? value : 0;
     }
+
+    public void SaveToDisk(string saveId)
+    {
+        // todo: impl
+    }
+
+    public void LoadFromDisk(string saveId)
+    {
+        // todo: impl
+    }
+
+#region DEBUG
+
+    private string _debugFlagId;
+    private string _debugVarId;
+    private string _debugVarValue;
+    private string _debugSaveId;
+    
+    public string DebugName => name;
+    
+    public void DrawDebugInfo()
+    {
+        if (GUILayout.Button("Save To Disk"))
+            SaveToDisk(_debugSaveId);
+        
+        if (GUILayout.Button("Load From Disk"))
+            LoadFromDisk(_debugSaveId);
+
+        if (GUILayout.Button("Open Save Folder"))
+        {
+            // todo: impl
+        }
+    }
+    
+#endregion
+    
 }
