@@ -26,7 +26,7 @@ public static class PersistentSceneLoader
         {
             // note: we may need a more complicated loading system if levels require more setup
             await SceneManager.LoadSceneAsync(initialSceneName, LoadSceneMode.Additive);
-            SceneManager.SetActiveScene(SceneManager.GetSceneByPath(initialSceneName));
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(initialSceneName));
         }
     }
 }
