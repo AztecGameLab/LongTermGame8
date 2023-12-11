@@ -28,5 +28,10 @@ public static class PersistentSceneLoader
             await SceneManager.LoadSceneAsync(initialSceneName, LoadSceneMode.Additive);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName(initialSceneName));
         }
+        else
+        {
+            await SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
+        }
     }
 }

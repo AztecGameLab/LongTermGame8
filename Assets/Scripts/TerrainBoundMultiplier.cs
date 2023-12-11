@@ -11,11 +11,5 @@ namespace DefaultNamespace
             _terrain = GetComponent<Terrain>();
             _terrain.patchBoundsMultiplier = new Vector3(amount, amount, amount);
         }
-
-        private void OnDrawGizmos()
-        {
-            _terrain = GetComponent<Terrain>();
-            _terrain.patchBoundsMultiplier = new Vector3(amount, amount, amount);
-        }
     }
 }

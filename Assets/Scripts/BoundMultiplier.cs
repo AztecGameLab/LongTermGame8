@@ -14,14 +14,5 @@ namespace DefaultNamespace
             bounds.Expand(amount);
             _renderer.bounds = bounds;
         }
-
-        private void OnDrawGizmos()
-        {
-            _renderer = GetComponent<Renderer>();
-            Bounds bounds = _renderer.bounds;
-            bounds.Expand(amount);
-            _renderer.bounds = bounds;
-            Gizmos.DrawCube(bounds.center, bounds.size);
-        }
     }
 }
