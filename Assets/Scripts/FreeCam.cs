@@ -19,7 +19,7 @@ namespace DefaultNamespace
             // Update position
             Vector3 inputDir = new Vector3(
                 GetInputAxis(KeyCode.D, KeyCode.A),
-                GetInputAxis(KeyCode.E, KeyCode.Q),
+                GetInputAxis(KeyCode.Space, KeyCode.LeftShift),
                 GetInputAxis(KeyCode.W, KeyCode.S)
             ).normalized;
 
