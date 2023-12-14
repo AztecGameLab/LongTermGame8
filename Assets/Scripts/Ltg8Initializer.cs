@@ -1,6 +1,7 @@
 ﻿using TriInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 // Binds the dependencies of the global services to some implementations
 [HideMonoScript]
@@ -12,15 +13,16 @@ public class Ltg8Initializer : MonoBehaviour
     [Title("Bindings")]
     
     [Required]
-    public Ltg8SaveSystem saveSystem;
+    public Ltg8SaveSerializer saveSerializer;
     
     [Required]
     public Ltg8AudioSystem audioSystem;
-
+    
     private void Awake()
     {
         Ltg8.Settings = settings;
-        Ltg8.Save = saveSystem;
+        Ltg8.Serializer = saveSerializer;
         Ltg8.Audio = audioSystem;
+        Ltg8.Save = new Ltg8SaveData();
     }
 }
