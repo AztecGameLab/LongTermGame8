@@ -1,0 +1,26 @@
+.button-orange {
+    border-left-color: rgb(215, 197, 158);
+    border-right-color: rgb(215, 197, 158);
+    border-top-color: rgb(215, 197, 158);
+    border-bottom-color: rgb(215, 197, 158);
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    background-color: rgb(175, 139, 60);
+    font-size: 24px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    -unity-font-style: bold;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    color: rgba(255, 255, 255, 255);
+}
