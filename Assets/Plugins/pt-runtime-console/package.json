@@ -1,0 +1,10 @@
+{
+  "name": "com.poetools.runtime-console",
+  "version": "0.0.1",
+  "displayName": "Poetools Runtime Console",
+  "description": "An extendable console that can be interacted with while a game is running.",
+  "author": {
+    "name": "poetahto",
+    "email": "epic.potat@gmail.com"
+  }
+}
