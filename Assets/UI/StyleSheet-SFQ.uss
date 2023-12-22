@@ -23,4 +23,63 @@
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
     color: rgba(255, 255, 255, 255);
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out-elastic;
+    transition-property: scale;
+}
+
+.button-orange:hover {
+    scale: 1.1 1.1;
+}
+
+.button-orange:active {
+    background-color: rgb(215, 197, 158);
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+}
+
+.button-orange:disabled {
+    background-color: rgba(175, 139, 60, 0.5);
+    border-left-color: rgba(215, 197, 158, 0.5);
+    border-right-color: rgba(215, 197, 158, 0.5);
+    border-top-color: rgba(215, 197, 158, 0.5);
+    border-bottom-color: rgba(215, 197, 158, 0.5);
+    scale: 0.9 0.9;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.DisplayHeader {
+    color: rgb(255, 255, 255);
+    font-size: 80px;
+}
+
+.button-menuOption {
+    font-size: 24px;
+    background-color: rgba(44, 40, 54, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.button-menuOption:hover {
+    scale: 1.1 1;
 }
