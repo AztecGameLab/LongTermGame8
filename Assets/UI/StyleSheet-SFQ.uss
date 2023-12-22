@@ -3,10 +3,10 @@
     border-right-color: rgb(215, 197, 158);
     border-top-color: rgb(215, 197, 158);
     border-bottom-color: rgb(215, 197, 158);
-    border-top-width: 3px;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
-    border-left-width: 3px;
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
     background-color: rgb(175, 139, 60);
     font-size: 24px;
     padding-top: 10px;
@@ -22,10 +22,11 @@
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
-    color: rgba(255, 255, 255, 255);
+    color: rgb(255, 255, 255);
     transition-duration: 0.5s;
     transition-timing-function: ease-out-elastic;
     transition-property: scale;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .button-orange:hover {
@@ -53,10 +54,14 @@
 .DisplayHeader {
     color: rgb(255, 255, 255);
     font-size: 80px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/Gluten/Gluten-SemiBold%20SDF%201.asset?fileID=11400000&guid=851a26cea26ec0f4c8ab2b0cbcd0302d&type=2#Gluten-SemiBold SDF 1');
+    -unity-paragraph-spacing: 36px;
+    -unity-text-align: upper-center;
 }
 
 .button-menuOption {
-    font-size: 24px;
+    font-size: 30px;
     background-color: rgba(44, 40, 54, 0);
     border-left-color: rgba(0, 0, 0, 0);
     border-right-color: rgba(0, 0, 0, 0);
@@ -81,5 +86,13 @@
 }
 
 .button-menuOption:hover {
-    scale: 1.1 1;
+    scale: 1.1 1.1;
+}
+
+.button-menuOption:active {
+    scale: 1.2 1.2;
+}
+
+.button-menuOption:disabled {
+    color: rgba(255, 255, 255, 0.5);
 }
