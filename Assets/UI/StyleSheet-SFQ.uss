@@ -51,7 +51,7 @@
     color: rgba(255, 255, 255, 0.5);
 }
 
-.DisplayHeader {
+.textDisplayHeader {
     color: rgb(255, 255, 255);
     font-size: 80px;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -95,4 +95,22 @@
 
 .button-menuOption:disabled {
     color: rgba(255, 255, 255, 0.5);
+}
+
+.containerOrange {
+    background-color: rgba(175, 139, 60, 0.5);
+    border-left-color: rgb(215, 197, 158);
+    border-right-color: rgb(215, 197, 158);
+    border-top-color: rgb(215, 197, 158);
+    border-bottom-color: rgb(215, 197, 158);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    justify-content: center;
+    align-items: center;
 }
