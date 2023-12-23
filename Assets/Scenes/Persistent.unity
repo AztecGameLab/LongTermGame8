@@ -123,6 +123,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &389771553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 389771555}
+  - component: {fileID: 389771554}
+  m_Layer: 0
+  m_Name: Persistent Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &389771554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389771553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c32d7837384d22a0dd022c95866cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &389771555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389771553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &425971543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -198,6 +242,11 @@ PrefabInstance:
     - target: {fileID: 3586182108621101794, guid: 13deff28d133b3b4fae5f056ff312f33,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586182108621101794, guid: 13deff28d133b3b4fae5f056ff312f33,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5843233190083128593, guid: 13deff28d133b3b4fae5f056ff312f33,
@@ -278,7 +327,7 @@ GameObject:
   - component: {fileID: 603024058}
   - component: {fileID: 603024059}
   m_Layer: 0
-  m_Name: Save System
+  m_Name: Save Serializer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -322,7 +371,7 @@ GameObject:
   - component: {fileID: 719399810}
   - component: {fileID: 719399811}
   m_Layer: 0
-  m_Name: Audio System
+  m_Name: FMOD Value Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -640,7 +689,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1761840985
 GameObject:
@@ -687,5 +736,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 9823fdc2daa4d9040b94afee2b9e8af5, type: 2}
-  saveSerializer: {fileID: 0}
-  audioSystem: {fileID: 719399811}
+  saveSerializer: {fileID: 603024059}
+  fmodValueAnimator: {fileID: 719399811}
+  persistentAudio: {fileID: 389771554}

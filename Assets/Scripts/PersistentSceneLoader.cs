@@ -2,36 +2,39 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// Ensures that the persistent scene is always loaded
-/// first when the game starts. 
-/// </summary>
-public static class PersistentSceneLoader
+namespace Ltg8
 {
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    private static async void Initialize()
+    /// <summary>
+    /// Ensures that the persistent scene is always loaded
+    /// first when the game starts. 
+    /// </summary>
+    public static class PersistentSceneLoader
     {
-        string initialSceneName = SceneManager.GetActiveScene().name;
-
-        if (initialSceneName != "persistent")
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static async void Initialize()
         {
-            SceneManager.LoadScene("persistent");
-        }
+            string initialSceneName = SceneManager.GetActiveScene().name;
 
-        // Wait one frame so entrypoint can initialize itself
-        await UniTask.Yield();
+            if (initialSceneName != "persistent")
+            {
+                SceneManager.LoadScene("persistent");
+            }
 
-        // If we had another scene open initially, now we load it.
-        if (initialSceneName != "persistent")
-        {
-            // note: we may need a more complicated loading system if levels require more setup
-            await SceneManager.LoadSceneAsync(initialSceneName, LoadSceneMode.Additive);
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName(initialSceneName));
-        }
-        else
-        {
-            await SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
-            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
+            // Wait one frame so entrypoint can initialize itself
+            await UniTask.Yield();
+
+            // If we had another scene open initially, now we load it.
+            if (initialSceneName != "persistent")
+            {
+                // note: we may need a more complicated loading system if levels require more setup
+                await SceneManager.LoadSceneAsync(initialSceneName, LoadSceneMode.Additive);
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName(initialSceneName));
+            }
+            else
+            {
+                await SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+                SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
+            }
         }
     }
 }

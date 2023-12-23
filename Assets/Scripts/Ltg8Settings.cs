@@ -1,10 +1,13 @@
 ﻿using TriInspector;
 using UnityEngine;
 
-[HideMonoScript]
-[CreateAssetMenu(menuName = "LTG8/Settings")]
-public class Ltg8Settings : ScriptableObject
+namespace Ltg8
 {
-    [Scene]
-    public string persistentScenePath;
+    [HideMonoScript]
+    [CreateAssetMenu(menuName = "LTG8/Settings")]
+    public class Ltg8Settings : ScriptableObject
+    {
+        [Scene]
+        public string persistentScenePath;
+    }
 }
