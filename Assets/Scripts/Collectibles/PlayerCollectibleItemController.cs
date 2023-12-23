@@ -7,11 +7,12 @@ namespace Collectibles
     {
         public Transform playerLookTransform;
         public List<InventoryCollectibleItem> collectedItems;
-        
+        public float collectionRange = Mathf.Infinity;
+
         private bool IsLookingAtCollectible(out PlacedCollectibleItem item)
         {
             if (Physics.Raycast(playerLookTransform.position, playerLookTransform.TransformDirection(Vector3.forward),
-                    out RaycastHit hit, Mathf.Infinity))
+                    out RaycastHit hit, collectionRange))
             {
                 if (hit.collider.gameObject.TryGetComponent<PlacedCollectibleItem>(
                         out PlacedCollectibleItem placedCollectibleItem))
@@ -24,22 +25,15 @@ namespace Collectibles
             item = null;
             return false;
         }
-        
+
         public void CollectItem()
         {
             if (!IsLookingAtCollectible(out PlacedCollectibleItem item) ||
                 collectedItems.Contains(item.collectibleItem)) return;
-            
-            InventoryCollectibleItem collectibleItem = item.collectibleItem;
-            Debug.Log(collectibleItem.itemName + ": " + collectibleItem.itemDescription);
+
+            InventoryCollectibleItem collectibleItem = item.Collect();
             collectedItems.Add(collectibleItem);
-            Destroy(item.gameObject);
         }
         
-        // Update is called once per frame
-        void Update()
-        {
-            
-        }
     }
 }

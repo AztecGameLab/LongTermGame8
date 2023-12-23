@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Collectible Item Registry
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 11400000, guid: 5b104f1b48762f5479cbaac14b0d6f00, type: 2}
-  - {fileID: 11400000, guid: 4661213031c24ef4f8066a0ba5d639e8, type: 2}
+  - {fileID: 11400000, guid: eb0acde5a502b674eb094b2138786201, type: 2}
+  - {fileID: 11400000, guid: 26f8daee65d5de04ba71d59dc74f5f39, type: 2}
+  - {fileID: 11400000, guid: ef08ee66fb906ac48b05d735fc09ac55, type: 2}

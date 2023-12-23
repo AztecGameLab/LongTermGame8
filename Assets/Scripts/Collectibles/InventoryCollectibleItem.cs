@@ -10,6 +10,6 @@ namespace Collectibles
         public Sprite thumbnail;
         public string itemName;
         public string itemDescription;
-
+        
     }
 }
