@@ -146,7 +146,7 @@
     translate: -655px 0;
     transition-timing-function: ease-in-out;
     transition-duration: 3s;
-    transition-delay: 1s;
+    transition-delay: 0.5s;
 }
 
 .NormalScreenSpace {
@@ -163,4 +163,5 @@
     background-color: rgb(2, 2, 2);
     transition-duration: 2s;
     transition-timing-function: linear;
+    transition-delay: 2.6s;
 }
