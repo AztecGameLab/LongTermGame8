@@ -36,23 +36,24 @@ namespace Ltg8
         }
 
         public string DebugName => name;
-        private string _debugSaveId = "dev_test.json";
+        public const string DebugSaveId = "dev_test.json";
+        private string _currentDebugSaveId = DebugSaveId;
     
         public void DrawDebugInfo()
         {
             GUILayout.Label("Target Save ID");
-            _debugSaveId = GUILayout.TextField(_debugSaveId);
+            _currentDebugSaveId = GUILayout.TextField(_currentDebugSaveId);
             GUI.enabled = !Busy;
 
             if (GUILayout.Button("Save To Disk"))
             {
                 Ltg8.Save.SetFlag(Flag.DevTest);
                 Ltg8.Save.SetVar(Var.DevTest, 5);
-                WriteToDisk(_debugSaveId).Forget();
+                WriteToDisk(_currentDebugSaveId).Forget();
             }
         
             if (GUILayout.Button("Load From Disk"))
-                ReadFromDisk(_debugSaveId).Forget();
+                ReadFromDisk(_currentDebugSaveId).Forget();
 
             GUI.enabled = true;
 

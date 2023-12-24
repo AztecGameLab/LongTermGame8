@@ -20,6 +20,9 @@ namespace Ltg8
 
         [Required]
         public PersistentAudio persistentAudio;
+
+        [Required]
+        public GameStateMachine gameStateMachine;
     
         private void Awake()
         {
@@ -27,6 +30,7 @@ namespace Ltg8
             Ltg8.Serializer = saveSerializer;
             Ltg8.FmodValueAnimator = fmodValueAnimator;
             Ltg8.PersistentAudio = persistentAudio;
+            Ltg8.StateMachine = gameStateMachine;
             Ltg8.Save = new SaveData();
         }
     }

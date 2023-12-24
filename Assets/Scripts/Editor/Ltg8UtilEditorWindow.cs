@@ -3,6 +3,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
+
 namespace Ltg8.Editor
 {
     public class Ltg8UtilEditorWindow : EditorWindow
@@ -18,17 +19,18 @@ namespace Ltg8.Editor
             window.Show();
         }
 
-        private void Awake()
+        private void OnEnable()
         {
             _settings = Addressables.LoadAssetAsync<Ltg8Settings>("Ltg8Settings").WaitForCompletion();
         }
-
+        
         private void OnGUI()
         {
             // Draw the 'Curvature' slider
             GUILayout.Label("Curvature");
-            float newCurvature = GUILayout.HorizontalSlider(Shader.GetGlobalFloat(Ltg8Curvature), 0, 0.05f);
+            float newCurvature = GUILayout.HorizontalSlider(Shader.GetGlobalFloat(Ltg8Curvature), 0, 0.03f);
             Shader.SetGlobalFloat(Ltg8Curvature, newCurvature);
+            GetWindow<SceneView>().Repaint();
             GUILayout.Space(25);
 
             // Draw the 'Load Persistent' button
@@ -38,6 +40,10 @@ namespace Ltg8.Editor
                 EditorSceneManager.OpenScene(_settings.persistentScenePath, OpenSceneMode.Additive);
 
             GUI.enabled = true;
+
+            // Draw the 'Settings' button
+            if (GUILayout.Button("Settings"))
+                Selection.activeObject = _settings;
         }
     }
 }

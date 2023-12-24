@@ -1,5 +1,7 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 
 namespace Ltg8
@@ -13,28 +15,39 @@ namespace Ltg8
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static async void Initialize()
         {
-            string initialSceneName = SceneManager.GetActiveScene().name;
+            Ltg8Settings settings = await Addressables.LoadAssetAsync<Ltg8Settings>("Ltg8Settings").Task;
+            string currentScenePath = SceneManager.GetActiveScene().path;
 
-            if (initialSceneName != "persistent")
-            {
-                SceneManager.LoadScene("persistent");
-            }
+            if (currentScenePath != settings.persistentScenePath)
+                SceneManager.LoadScene(settings.persistentScenePath);
 
             // Wait one frame so entrypoint can initialize itself
             await UniTask.Yield();
+            
+#if UNITY_EDITOR
+            switch (Ltg8.Settings.editorPlayStrategy)
+            {
+                case EditorPlayStrategy.FromStartOfGame:
+                {
+                    // If have a more complex start-up, we would make a new state for that here.
+                    await Ltg8.StateMachine.TransitionTo(new MainMenuGameState());
+                    break;
+                }
+                case EditorPlayStrategy.FromCurrentScene:
+                {
+                    // If we are trying to run only the persistent scene, no more steps need to be taken. We've already loaded it.
+                    if (currentScenePath == settings.persistentScenePath)
+                        break;
 
-            // If we had another scene open initially, now we load it.
-            if (initialSceneName != "persistent")
-            {
-                // note: we may need a more complicated loading system if levels require more setup
-                await SceneManager.LoadSceneAsync(initialSceneName, LoadSceneMode.Additive);
-                SceneManager.SetActiveScene(SceneManager.GetSceneByName(initialSceneName));
+                    await Ltg8.StateMachine.TransitionTo(new OverworldGameState(currentScenePath));
+                    break;
+                }
+                default: throw new ArgumentOutOfRangeException();
             }
-            else
-            {
-                await SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
-                SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
-            }
+#else
+            await Ltg8.StateMachine.TransitionTo(new MainMenuGameState());
+#endif
         }
     }
+
 }
