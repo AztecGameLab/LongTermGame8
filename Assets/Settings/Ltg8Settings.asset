@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   persistentScenePath: Assets/Scenes/persistent.unity
   mainMenuScenePath: Assets/Scenes/Main Menu/main_menu.unity
-  editorPlayStrategy: 1
+  editorPlayStrategy: 0
