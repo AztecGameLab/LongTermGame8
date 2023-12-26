@@ -165,3 +165,53 @@
     transition-timing-function: linear;
     transition-delay: 2.6s;
 }
+
+.PageIndicatorAtTop {
+    position: absolute;
+    left: 5%;
+    width: 246px;
+    height: 74px;
+    top: 19px;
+    border-left-color: rgb(215, 197, 158);
+    border-right-color: rgb(215, 197, 158);
+    border-top-color: rgb(215, 197, 158);
+    border-bottom-color: rgb(215, 197, 158);
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background-color: rgb(175, 139, 60);
+    transition-property: translate;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-elastic;
+    translate: -8px -86px;
+    display: flex;
+}
+
+.PageIndicatorAtContacts {
+    translate: -8px -5px;
+}
+
+.PageIndicatorAtCollection {
+    translate: -8px 99px;
+}
+
+.PageIndicatorAtLog {
+    translate: -8px 203px;
+}
+
+.PageIndicatorAtSettings {
+    translate: -8px 306px;
+}
+
+.PageIndicatorAtSave {
+    translate: -8px 406px;
+}
+
+.PageIndicatorAtExit {
+    translate: -8px 509px;
+}
