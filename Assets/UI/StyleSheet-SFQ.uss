@@ -215,3 +215,30 @@
 .PageIndicatorAtExit {
     translate: -8px 509px;
 }
+
+.PauseMenuDown {
+    width: 1762px;
+    height: 894px;
+    background-color: rgba(175, 139, 60, 0.8);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-left-color: rgb(175, 139, 60);
+    border-right-color: rgb(175, 139, 60);
+    border-top-color: rgb(175, 139, 60);
+    border-bottom-color: rgb(175, 139, 60);
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    font-size: 24px;
+    transform-origin: center 815%;
+    translate: 0 1080px;
+}
+
+.PauseMenuOnScreen {
+    translate: 0 0;
+    transition-timing-function: ease-out-bounce;
+    transition-duration: 1s;
+}

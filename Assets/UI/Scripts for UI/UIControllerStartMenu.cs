@@ -35,7 +35,7 @@ public class UIControllerStartMenu : MonoBehaviour
         _ScreenSpace.AddToClassList("ScreenSpaceGoesDark");
         
         // switch scenes (This line could be better...). The line
-        // bottom to these comments calls the method after seconds
+        // bottom to these comments calls the method after 4 seconds
         //Invoke("SwitchScenesAfterStartIsPressed", 4f);
     }
 
