@@ -61,7 +61,7 @@
 }
 
 .button-menuOption {
-    font-size: 30px;
+    font-size: 36px;
     background-color: rgba(44, 40, 54, 0);
     border-left-color: rgba(0, 0, 0, 0);
     border-right-color: rgba(0, 0, 0, 0);
@@ -118,7 +118,7 @@
 .SideMenuOnScreen {
     width: 40%;
     height: 95%;
-    background-color: rgba(175, 139, 60, 0.28);
+    background-color: rgba(175, 139, 60, 0.5);
     border-left-color: rgb(175, 139, 60);
     border-right-color: rgb(175, 139, 60);
     border-top-color: rgb(175, 139, 60);
@@ -138,15 +138,14 @@
     margin-bottom: 30px;
     margin-left: 30px;
     transition-property: translate;
-    transition-duration: 1s;
+    transition-duration: 3s;
     translate: 0 0;
+    transition-timing-function: ease-in;
+    transition-delay: 1s;
 }
 
 .SideMenuSlidingOut {
-    translate: -655px 0;
-    transition-timing-function: ease-in-out;
-    transition-duration: 3s;
-    transition-delay: 0.5s;
+    translate: -125% 0;
 }
 
 .NormalScreenSpace {
@@ -168,10 +167,8 @@
 
 .PageIndicatorAtTop {
     position: absolute;
-    left: 5%;
     width: 246px;
     height: 74px;
-    top: 19px;
     border-left-color: rgb(215, 197, 158);
     border-right-color: rgb(215, 197, 158);
     border-top-color: rgb(215, 197, 158);
@@ -185,35 +182,31 @@
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
     background-color: rgb(175, 139, 60);
-    transition-property: translate;
-    transition-duration: 1s;
-    transition-timing-function: ease-in-elastic;
-    translate: -8px -86px;
     display: flex;
 }
 
 .PageIndicatorAtContacts {
-    translate: -8px -5px;
+    translate: 0 5px;
 }
 
 .PageIndicatorAtCollection {
-    translate: -8px 99px;
+    translate: 0 136px;
 }
 
 .PageIndicatorAtLog {
-    translate: -8px 203px;
+    translate: 0 264px;
 }
 
 .PageIndicatorAtSettings {
-    translate: -8px 306px;
+    translate: 0 390px;
 }
 
 .PageIndicatorAtSave {
-    translate: -8px 406px;
+    translate: 0 518px;
 }
 
 .PageIndicatorAtExit {
-    translate: -8px 509px;
+    translate: 0 644px;
 }
 
 .PauseMenuDown {
@@ -239,6 +232,7 @@
 
 .PauseMenuOnScreen {
     translate: 0 0;
-    transition-timing-function: ease-out-bounce;
-    transition-duration: 1s;
+}
+
+.DisplayHeader {
 }
