@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float walkMoveSpeed;
     [SerializeField] private float sprintMoveSpeed;
     [SerializeField] private float jumpHeight;
+    [SerializeField] private float playerHeight;
+    [SerializeField] private LayerMask groundLayer;
 
     private void Start()
     {
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        _isGrounded = isGrounded();
         Move(_moveInput);
     }
     
@@ -40,8 +43,8 @@ public class PlayerController : MonoBehaviour
     // Until Raycast is implemented to check if the player is grounded
     // use these variables
     
-    private void OnCollisionEnter() { _isGrounded = true; }
-    private void OnCollisionExit() { _isGrounded = false; }
+    // private void OnCollisionEnter() { _isGrounded = true; }
+    // private void OnCollisionExit() { _isGrounded = false; }
 
     public void OnMove(InputAction.CallbackContext context) 
     {
@@ -62,12 +65,13 @@ public class PlayerController : MonoBehaviour
     {
         if (context.started) _jumpPressed = true;
         
-        // Note: Left off here. Implement logic for Raycasts
-        // To Do: Change scene terrain to have the tag Ground
-        // implement raycast and logic for jumping
-        // I think we should make separate isGrounded bool method
-        // then an if statement saying "If the Player isGrounded, call Jump()"
-        Physics.SphereCast(playerRb.position, 5f, Vector3.down, out RaycastHit _, 5f);
         if(_jumpPressed && _isGrounded) Jump(); // if jumping & grounded, jumps
+    }
+
+    private bool isGrounded(){
+        //creates a raycast down from the player transform offset by half the player height.
+        Vector3 castPoint = transform.position;
+        castPoint.y = transform.position.y + playerHeight * .5f;
+        return Physics.Raycast(castPoint, Vector3.down, playerHeight * .5f , groundLayer);
     }
 }
