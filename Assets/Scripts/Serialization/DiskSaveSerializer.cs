@@ -2,21 +2,20 @@
 using Cysharp.Threading.Tasks;
 using poetools.Console.Commands;
 using UnityEngine;
-
 namespace Ltg8
 {
-    public class SaveSerializer : MonoBehaviour, IConsoleDebugInfo
+    public class DiskSaveSerializer : MonoBehaviour, IConsoleDebugInfo, ISaveSerializer
     {
         public static string SavePath => $"{Application.persistentDataPath}/saves";
         public bool Busy { get; private set; }
     
-        public async UniTaskVoid WriteToDisk(string saveId)
+        public async UniTask WriteToDisk(string saveId, SaveData data)
         {
             if (Busy) return;
         
             Busy = true;
-            string json = JsonUtility.ToJson(Ltg8.Save, true);
-            string path = $"{SavePath}/{saveId}";
+            string json = JsonUtility.ToJson(data, true);
+            string path = $"{SavePath}/{saveId}.json";
         
             if (!Directory.Exists(Path.GetDirectoryName(path)))
                 Directory.CreateDirectory(path);
@@ -25,18 +24,19 @@ namespace Ltg8
             Busy = false;
         }
 
-        public async UniTaskVoid ReadFromDisk(string saveId)
+        public async UniTask<SaveData> ReadFromDisk(string saveId)
         {
-            if (Busy) return;
+            if (Busy) return null;
         
             Busy = true;
-            string json = await File.ReadAllTextAsync($"{SavePath}/{saveId}");
-            Ltg8.Save = JsonUtility.FromJson<SaveData>(json);
+            string json = await File.ReadAllTextAsync($"{SavePath}/{saveId}.json");
+            SaveData data = JsonUtility.FromJson<SaveData>(json);
             Busy = false;
+            return data;
         }
 
         public string DebugName => name;
-        public const string DebugSaveId = "dev_test.json";
+        public const string DebugSaveId = "dev_test";
         private string _currentDebugSaveId = DebugSaveId;
     
         public void DrawDebugInfo()
@@ -49,11 +49,11 @@ namespace Ltg8
             {
                 Ltg8.Save.SetFlag(Flag.DevTest);
                 Ltg8.Save.SetVar(Var.DevTest, 5);
-                WriteToDisk(_currentDebugSaveId).Forget();
+                WriteToDisk(_currentDebugSaveId, Ltg8.Save).Forget();
             }
         
             if (GUILayout.Button("Load From Disk"))
-                ReadFromDisk(_currentDebugSaveId).Forget();
+                Ltg8.Save = ReadFromDisk(_currentDebugSaveId).GetAwaiter().GetResult();
 
             GUI.enabled = true;
 

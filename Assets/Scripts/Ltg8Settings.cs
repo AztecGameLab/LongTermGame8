@@ -13,11 +13,19 @@ namespace Ltg8
         [Title("Editor")]
 
         public EditorPlayStrategy editorPlayStrategy = EditorPlayStrategy.FromCurrentScene;
+        public EditorSaveStrategy editorSaveStrategy = EditorSaveStrategy.FromDisk;
+        public string editorSaveId = DiskSaveSerializer.DebugSaveId;
     }
     
     public enum EditorPlayStrategy
     {
         FromCurrentScene,
         FromStartOfGame,
+    }
+
+    public enum EditorSaveStrategy
+    {
+        NonPersistent,
+        FromDisk,
     }
 }
