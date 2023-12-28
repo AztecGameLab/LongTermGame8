@@ -1,27 +1,44 @@
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private InputAction moveAction;
+    private InputAction jumpAction;
+    private PlayerInput playerIn;
     private Vector2 _moveInput;
-    private bool _jumpPressed;
-    private bool _isGrounded;
+    private bool _jumpPressed = false;
+    private bool _isGrounded = true;
+    private bool _isIdle = true;
+    private bool _isWalking = false;
     [SerializeField] private Rigidbody playerRb;
     [SerializeField] private float walkMoveSpeed;
     [SerializeField] private float sprintMoveSpeed;
     [SerializeField] private float jumpHeight;
     [SerializeField] private float playerHeight;
+    [SerializeField] private EventReference walkingSounds;
     [SerializeField] private LayerMask groundLayer;
 
     private void Start()
     {
+        playerIn = GetComponent<PlayerInput>();
         playerRb = GetComponent<Rigidbody>();
+
+        moveAction = playerIn.actions["Move"];
+        jumpAction = playerIn.actions["Jump"];
+
+        moveAction.performed += context => OnMove(context);
+        jumpAction.performed += context => OnJump(context);
+
+        moveAction.canceled += _ => onMoveCanceled();
     }
 
     private void FixedUpdate()
     {
         _isGrounded = isGrounded();
-        Move(_moveInput);
+        if(_isWalking)
+            Move(_moveInput);
     }
     
     // FreeMovement Logic
@@ -48,7 +65,14 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context) 
     {
+        _isIdle = false;
+        _isWalking = true;
         _moveInput = context.ReadValue<Vector2>();
+    }
+
+    private void onMoveCanceled(){
+        _isIdle = true;
+        _isWalking = false;
     }
 
     public void OnLookX(InputAction.CallbackContext context)
@@ -63,13 +87,17 @@ public class PlayerController : MonoBehaviour
     
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.started) _jumpPressed = true;
+        _jumpPressed = true;
         
-        if(_jumpPressed && _isGrounded) Jump(); // if jumping & grounded, jumps
+        Debug.Log(_jumpPressed);
+        Debug.Log(_isGrounded);
+
+        if(_jumpPressed && _isGrounded) 
+            Jump(); // if jumping & grounded, jumps
     }
 
     private bool isGrounded(){
-        //creates a raycast down from the player transform offset by half the player height.
+        //creates a raycast down from half the player height.
         Vector3 castPoint = transform.position;
         castPoint.y = transform.position.y + playerHeight * .5f;
         return Physics.Raycast(castPoint, Vector3.down, playerHeight * .5f , groundLayer);
