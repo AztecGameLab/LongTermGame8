@@ -1,18 +1,15 @@
-using System;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Collectibles
 {
-    public class PlacedCollectibleItem : MonoBehaviour
+    public class PlacedCollectibleItem : MonoBehaviour, IPlayerInteractable
     {
         public InventoryCollectibleItem collectibleItem;
         
-        public InventoryCollectibleItem Collect()
+        public void Interact(PlayerInteractController playerInteractController)
         {
+            playerInteractController.Inventory.collectedItems.Add(collectibleItem);
             gameObject.SetActive(false);
-            return collectibleItem;
         }
 
     }
