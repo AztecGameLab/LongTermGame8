@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Cube Item", menuName = "Inventory Cube Item", order = 1)]
 public class CubeItem : InventoryCollectibleItem
 {
-    public bool isBox;
+    [SerializeField] private bool isBox; // Temp placeholder field unique to class
     
     public override InventoryCollectibleItem GetItem() { return this; }
     public override CubeItem GetCube() { return this; }

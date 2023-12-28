@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdc54ac7ae68c74bac955d39cd0bb7e, type: 3}
   m_Name: Sphere
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: sphere
   thumbnail: {fileID: 0}
-  itemName: 
-  itemDescription: 
-  isBox: 0
+  itemName: Sphere
+  itemDescription: This is a sphere.
+  radius: 0

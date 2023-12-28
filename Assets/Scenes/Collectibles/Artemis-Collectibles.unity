@@ -247,8 +247,9 @@ GameObject:
   - component: {fileID: 1112100710}
   - component: {fileID: 1112100714}
   - component: {fileID: 1112100713}
-  - component: {fileID: 1112100715}
+  - component: {fileID: 1112100718}
   - component: {fileID: 1112100716}
+  - component: {fileID: 1112100717}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -368,21 +369,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &1112100715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112100709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34326910fac02e54895e9da7296eacd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerLookTransform: {fileID: 1112100712}
-  collectedItems: []
-  collectionRange: 20
 --- !u!114 &1112100716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,10 +405,6 @@ MonoBehaviour:
     m_ActionName: PlayerFreeMovement/MoveX[/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 72b57672-6e1b-4798-8ce0-bbd7cec388dd
-    m_ActionName: PlayerFreeMovement/MoveY[/Keyboard/s,/Keyboard/w]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 4cb9bb6a-7eb9-4227-a95c-3d60e00be11d
     m_ActionName: PlayerFreeMovement/LookX[/Mouse/delta/x]
   - m_PersistentCalls:
@@ -439,7 +421,7 @@ MonoBehaviour:
     m_ActionName: PlayerFreeMovement/Sprint[/Keyboard/shift]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1112100715}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Collectibles.PlayerCollectibleItemController, Assembly-CSharp
         m_MethodName: CollectItem
         m_Mode: 1
@@ -482,6 +464,32 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerFreeMovement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 1112100711}
+--- !u!114 &1112100717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112100709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8190911b04de4a4b88c30eefae15dda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectedItems: []
+--- !u!114 &1112100718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112100709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f15ba0b56a463db2e66adf3aa82a05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactRange: 20
 --- !u!1 &1720552733
 GameObject:
   m_ObjectHideFlags: 0

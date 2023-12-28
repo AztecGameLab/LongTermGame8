@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e22c8672746635144b811efe2ab66bed, type: 3}
   m_Name: Table
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: table
   thumbnail: {fileID: 0}
-  itemName: 
-  itemDescription: 
+  itemName: Table
+  itemDescription: This is a table.
   hasLegs: 0

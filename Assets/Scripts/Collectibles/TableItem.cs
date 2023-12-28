@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Table Item", menuName = "Inventory Table Item", order = 1)]
 public class TableItem : InventoryCollectibleItem
 {
-    public bool hasLegs;
+    [SerializeField] private bool hasLegs; // Temp placeholder field unique to class
     
     public override InventoryCollectibleItem GetItem() { return this; }
     public override TableItem GetTable() { return this; }

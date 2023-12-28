@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Gift Item", menuName = "Inventory Gift Item", order = 1)]
 public class GiftItem : InventoryCollectibleItem
 {
-    public float giftValue; // Idea for a gift var, though this can change
+    [SerializeField] private float giftValue; // Temp placeholder field unique to class
     
     public override InventoryCollectibleItem GetItem() { return this; }
     public override GiftItem GetGift() { return this; }

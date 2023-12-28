@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495cf465758558941badbf7d4eb7dd41, type: 3}
   m_Name: Cube
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: cube
   thumbnail: {fileID: 0}
-  itemName: 
-  itemDescription: 
+  itemName: Cube
+  itemDescription: This is a cube.
   isBox: 0

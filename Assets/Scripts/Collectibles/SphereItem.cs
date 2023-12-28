@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Sphere Item", menuName = "Inventory Sphere Item", order = 1)]
 public class SphereItem : InventoryCollectibleItem
 {
-    public bool isBox;
+    [SerializeField] private float radius; // Temp placeholder field unique to class
     
     public override InventoryCollectibleItem GetItem() { return this; }
     public override SphereItem GetSphere() { return this; }
