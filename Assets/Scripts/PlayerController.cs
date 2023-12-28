@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     private void Move(Vector2 playerLocation)
     {
         Vector3 playerDirection = new Vector3(playerLocation.x * (walkMoveSpeed * Time.fixedDeltaTime), 0f, playerLocation.y * (walkMoveSpeed * Time.fixedDeltaTime));
-        
+            
         playerRb.position += playerDirection;
     }
 
