@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: table
   thumbnail: {fileID: 0}
-  itemName: Table
+  itemName: Table Item
   itemDescription: This is a table.
   hasLegs: 0

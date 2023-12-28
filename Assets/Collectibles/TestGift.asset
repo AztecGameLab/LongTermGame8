@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: testGiftID
   thumbnail: {fileID: 0}
-  itemName: Test Gift
+  itemName: Test Gift Item
   itemDescription: This is a gift placeholder asset.
   giftValue: 3
