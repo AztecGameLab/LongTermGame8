@@ -1,31 +1,51 @@
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private InputAction moveAction;
+    private InputAction jumpAction;
+    private PlayerInput playerIn;
     private Vector2 _moveInput;
-    private bool _jumpPressed;
-    private bool _isGrounded;
+    private bool _jumpPressed = false;
+    private bool _isGrounded = true;
+    private bool _isIdle = true;
+    private bool _isWalking = false;
     [SerializeField] private Rigidbody playerRb;
     [SerializeField] private float walkMoveSpeed;
     [SerializeField] private float sprintMoveSpeed;
     [SerializeField] private float jumpHeight;
+    [SerializeField] private float playerHeight;
+    [SerializeField] private EventReference walkingSounds;
+    [SerializeField] private LayerMask groundLayer;
 
     private void Start()
     {
+        playerIn = GetComponent<PlayerInput>();
         playerRb = GetComponent<Rigidbody>();
+
+        moveAction = playerIn.actions["Move"];
+        jumpAction = playerIn.actions["Jump"];
+
+        moveAction.performed += context => OnMove(context);
+        jumpAction.performed += context => OnJump(context);
+
+        moveAction.canceled += _ => onMoveCanceled();
     }
 
     private void FixedUpdate()
     {
-        Move(_moveInput);
+        _isGrounded = isGrounded();
+        if(_isWalking)
+            Move(_moveInput);
     }
     
     // FreeMovement Logic
     private void Move(Vector2 playerLocation)
     {
         Vector3 playerDirection = new Vector3(playerLocation.x * (walkMoveSpeed * Time.fixedDeltaTime), 0f, playerLocation.y * (walkMoveSpeed * Time.fixedDeltaTime));
-        
+            
         playerRb.position += playerDirection;
     }
 
@@ -40,12 +60,19 @@ public class PlayerController : MonoBehaviour
     // Until Raycast is implemented to check if the player is grounded
     // use these variables
     
-    private void OnCollisionEnter() { _isGrounded = true; }
-    private void OnCollisionExit() { _isGrounded = false; }
+    // private void OnCollisionEnter() { _isGrounded = true; }
+    // private void OnCollisionExit() { _isGrounded = false; }
 
     public void OnMove(InputAction.CallbackContext context) 
     {
+        _isIdle = false;
+        _isWalking = true;
         _moveInput = context.ReadValue<Vector2>();
+    }
+
+    private void onMoveCanceled(){
+        _isIdle = true;
+        _isWalking = false;
     }
 
     public void OnLookX(InputAction.CallbackContext context)
@@ -60,14 +87,19 @@ public class PlayerController : MonoBehaviour
     
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.started) _jumpPressed = true;
+        _jumpPressed = true;
         
-        // Note: Left off here. Implement logic for Raycasts
-        // To Do: Change scene terrain to have the tag Ground
-        // implement raycast and logic for jumping
-        // I think we should make separate isGrounded bool method
-        // then an if statement saying "If the Player isGrounded, call Jump()"
-        Physics.SphereCast(playerRb.position, 5f, Vector3.down, out RaycastHit _, 5f);
-        if(_jumpPressed && _isGrounded) Jump(); // if jumping & grounded, jumps
+        Debug.Log(_jumpPressed);
+        Debug.Log(_isGrounded);
+
+        if(_jumpPressed && _isGrounded) 
+            Jump(); // if jumping & grounded, jumps
+    }
+
+    private bool isGrounded(){
+        //creates a raycast down from half the player height.
+        Vector3 castPoint = transform.position;
+        castPoint.y = transform.position.y + playerHeight * .5f;
+        return Physics.Raycast(castPoint, Vector3.down, playerHeight * .5f , groundLayer);
     }
 }
