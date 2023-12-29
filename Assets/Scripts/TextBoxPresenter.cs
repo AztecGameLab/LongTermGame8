@@ -5,11 +5,9 @@ using FMODUnity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
-using UnityEngine.Serialization;
 
 namespace Ltg8
 {
-
     [Serializable]
     public class TextBoxPresenter : MonoBehaviour
     {
@@ -28,6 +26,12 @@ namespace Ltg8
         [SerializeField] 
         private CanvasGroup optionBoxGraphics;
 
+        [SerializeField] 
+        private CanvasGroup nameBoxGraphics;
+        
+        [SerializeField] 
+        private TMP_Text nameBoxText;
+        
         [SerializeField] 
         private float optionOpenDuration;
         
@@ -65,39 +69,60 @@ namespace Ltg8
                 instance.gameObject.SetActive(false);
                 return instance;
             });
+            continueHint.SetActive(false);
+            nameBoxGraphics.gameObject.SetActive(false);
             optionBoxGraphics.gameObject.SetActive(false);
             textBoxText.text = string.Empty;
             textBoxText.maxVisibleCharacters = 0;
         }
 
-        public async UniTask Open()
+        private async UniTask FadeCanvasGroup(CanvasGroup canvasGroup, float from, float to, float duration)
         {
-            // Simple fade-in animation
             float elapsed = 0;
             
-            while (elapsed <= openDuration)
+            while (elapsed <= duration)
             {
                 elapsed += Time.deltaTime;
-                textBoxGraphics.alpha = Mathf.Lerp(0, 1, elapsed / openDuration);
+                canvasGroup.alpha = Mathf.Lerp(from, to, elapsed / duration);
                 await UniTask.Yield();
             }
 
-            textBoxGraphics.alpha = 1;
+            canvasGroup.alpha = to;
+        }
+        
+        public async UniTask Open()
+        {
+            await FadeCanvasGroup(textBoxGraphics, 0, 1, openDuration);
+        }
+
+        public async UniTask Open(string displayName)
+        {
+            nameBoxText.text = displayName;
+            nameBoxGraphics.gameObject.SetActive(true);
+            await Open();
         }
         
         public async UniTask Close()
         {
-            // Simple fade-out animation
-            float elapsed = 0;
-            
-            while (elapsed <= closeDuration)
-            {
-                elapsed += Time.deltaTime;
-                textBoxGraphics.alpha = Mathf.Lerp(1, 0, elapsed / closeDuration);
-                await UniTask.Yield();
-            }
+            await FadeCanvasGroup(textBoxGraphics, 1, 0, closeDuration);
+        }
 
-            textBoxGraphics.alpha = 0;
+        public async UniTask ShowName()
+        {
+            nameBoxGraphics.gameObject.SetActive(true);
+            await FadeCanvasGroup(nameBoxGraphics, 0, 1, openDuration);
+        }
+
+        public async UniTask HideName()
+        {
+            await FadeCanvasGroup(nameBoxGraphics, 1, 0, closeDuration);
+            nameBoxGraphics.gameObject.SetActive(false);
+        }
+
+        public UniTask SetName(string value)
+        {
+            nameBoxText.text = value;
+            return UniTask.CompletedTask;
         }
 
         public async UniTask WaitForContinue()
@@ -176,22 +201,7 @@ namespace Ltg8
             public async UniTask<int> Present()
             {
                 _presenter.optionBoxGraphics.gameObject.SetActive(true);
-                
-                // Enable all of the options
-                foreach (OptionView view in _views)
-                    view.gameObject.SetActive(true);
-                
-                // Simple fade in
-                {
-                    float elapsed = 0;
-                
-                    while (elapsed < _presenter.optionOpenDuration)
-                    {
-                        elapsed += Time.deltaTime;
-                        _presenter.optionBoxGraphics.alpha = Mathf.Lerp(0, 1, elapsed / _presenter.optionOpenDuration);
-                        await UniTask.Yield();
-                    }
-                }
+                await _presenter.FadeCanvasGroup(_presenter.optionBoxGraphics, 0, 1, _presenter.optionOpenDuration);
 
                 // Wait until an option is selected.
                 while (_selectedOption == -1)
@@ -199,17 +209,7 @@ namespace Ltg8
                 
                 RuntimeManager.PlayOneShot(_presenter.optionSelectChirp);
 
-                // Simple fade out
-                {
-                    float elapsed = 0;
-                
-                    while (elapsed < _presenter.optionCloseDuration)
-                    {
-                        elapsed += Time.deltaTime;
-                        _presenter.optionBoxGraphics.alpha = Mathf.Lerp(1, 0, elapsed / _presenter.optionCloseDuration);
-                        await UniTask.Yield();
-                    }
-                }
+                await _presenter.FadeCanvasGroup(_presenter.optionBoxGraphics, 1, 0, _presenter.optionCloseDuration);
                 _presenter.optionBoxGraphics.gameObject.SetActive(false);
                 
                 // Release all the borrowed options
@@ -229,6 +229,7 @@ namespace Ltg8
             {
                 int index = _views.Count;
                 OptionView view = _presenter._optionPool.Get();
+                view.gameObject.SetActive(true);
                 view.textDisplay.text = text;
                 view.button.onClick.AddListener(() => _selectedOption = index);
                 _views.Add(view);

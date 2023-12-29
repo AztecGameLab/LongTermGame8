@@ -14,7 +14,7 @@ namespace Ltg8
         {
             TextBoxPresenter p = Ltg8.TextBoxPresenter;
 
-            await p.Open();
+            await p.Open("Narrator");
             
             await p.WriteText("Hello, world!");
             await p.WaitForContinue();
