@@ -1,5 +1,6 @@
 ﻿using FMOD.Studio;
-namespace DefaultNamespace
+
+namespace Ltg8
 {
     public static class FmodExtensions
     {

@@ -1,37 +1,53 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// Ensures that the persistent scene is always loaded
-/// first when the game starts. 
-/// </summary>
-public static class PersistentSceneLoader
+namespace Ltg8
 {
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    private static async void Initialize()
+    /// <summary>
+    /// Ensures that the persistent scene is always loaded
+    /// first when the game starts. 
+    /// </summary>
+    public static class PersistentSceneLoader
     {
-        string initialSceneName = SceneManager.GetActiveScene().name;
-
-        if (initialSceneName != "persistent")
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static async void Initialize()
         {
-            SceneManager.LoadScene("persistent");
-        }
+            Ltg8Settings settings = await Addressables.LoadAssetAsync<Ltg8Settings>("Ltg8Settings").Task;
+            string currentScenePath = SceneManager.GetActiveScene().path;
 
-        // Wait one frame so entrypoint can initialize itself
-        await UniTask.Yield();
+            if (currentScenePath != settings.persistentScenePath)
+                SceneManager.LoadScene(settings.persistentScenePath);
 
-        // If we had another scene open initially, now we load it.
-        if (initialSceneName != "persistent")
-        {
-            // note: we may need a more complicated loading system if levels require more setup
-            await SceneManager.LoadSceneAsync(initialSceneName, LoadSceneMode.Additive);
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName(initialSceneName));
-        }
-        else
-        {
-            await SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
-            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
+            // Wait one frame so entrypoint can initialize itself
+            await UniTask.Yield();
+            
+#if UNITY_EDITOR
+            switch (Ltg8.Settings.editorPlayStrategy)
+            {
+                case EditorPlayStrategy.FromStartOfGame:
+                {
+                    // If have a more complex start-up, we would make a new state for that here.
+                    await Ltg8.StateMachine.TransitionTo(new MainMenuGameState());
+                    break;
+                }
+                case EditorPlayStrategy.FromCurrentScene:
+                {
+                    // If we are trying to run only the persistent scene, no more steps need to be taken. We've already loaded it.
+                    if (currentScenePath == settings.persistentScenePath)
+                        break;
+
+                    await Ltg8.Serializer.ReadFromDisk(settings.editorSaveId);
+                    await Ltg8.StateMachine.TransitionTo(new OverworldGameState(currentScenePath));
+                    break;
+                }
+                default: throw new ArgumentOutOfRangeException();
+            }
+#else
+            await Ltg8.StateMachine.TransitionTo(new MainMenuGameState());
+#endif
         }
     }
 }

@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: Ltg8Settings
   m_EditorClassIdentifier: 
   persistentScenePath: Assets/Scenes/Persistent.unity
+  mainMenuScenePath: Assets/Scenes/Main Menu/main_menu.unity
+  editorPlayStrategy: 0
+  editorSaveStrategy: 1
+  editorSaveId: dev_test
