@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
         Vector3 playerDirection = new Vector3(playerLocation.x * (walkMoveSpeed * Time.fixedDeltaTime), 0f, playerLocation.y * (walkMoveSpeed * Time.fixedDeltaTime));
             
         playerRb.position += playerDirection;
+
+        RuntimeManager.PlayOneShot(walkingSounds);
     }
 
     //TO DO: Add logic that jumps at different gravity values for planets
