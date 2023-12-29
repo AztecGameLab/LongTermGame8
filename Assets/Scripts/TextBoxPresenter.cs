@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using FMODUnity;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Pool;
+using UnityEngine.Serialization;
 
 namespace Ltg8
 {
+
     [Serializable]
     public class TextBoxPresenter : MonoBehaviour
     {
@@ -17,6 +21,18 @@ namespace Ltg8
         
         [SerializeField] 
         private GameObject continueHint;
+
+        [SerializeField]
+        private OptionView optionPrefab;
+
+        [SerializeField] 
+        private CanvasGroup optionBoxGraphics;
+
+        [SerializeField] 
+        private float optionOpenDuration;
+        
+        [SerializeField] 
+        private float optionCloseDuration;
         
         [SerializeField] 
         private float openDuration;
@@ -35,11 +51,21 @@ namespace Ltg8
         
         [SerializeField] 
         private EventReference confirmChirp;
+
+        [SerializeField] 
+        private EventReference optionSelectChirp;
         
         private bool _continueRequested;
+        private ObjectPool<OptionView> _optionPool;
 
         private void Start()
         {
+            _optionPool = new ObjectPool<OptionView>(() => {
+                OptionView instance = Instantiate(optionPrefab, optionBoxGraphics.transform);
+                instance.gameObject.SetActive(false);
+                return instance;
+            });
+            optionBoxGraphics.gameObject.SetActive(false);
             textBoxText.text = string.Empty;
             textBoxText.maxVisibleCharacters = 0;
         }
@@ -127,6 +153,86 @@ namespace Ltg8
                 processedCharacters++;
                 textBoxText.maxVisibleCharacters++;
                 await UniTask.Delay(revealIntervalMs);
+            }
+        }
+
+        public OptionBuilder PrepareOptions()
+        {
+            return new OptionBuilder(this);
+        }
+
+        public class OptionBuilder
+        {
+            private readonly TextBoxPresenter _presenter;
+            private readonly List<OptionView> _views = new List<OptionView>();
+
+            private int _selectedOption = -1;
+            
+            public OptionBuilder(TextBoxPresenter presenter)
+            {
+                _presenter = presenter;
+            }
+            
+            public async UniTask<int> Present()
+            {
+                _presenter.optionBoxGraphics.gameObject.SetActive(true);
+                
+                // Enable all of the options
+                foreach (OptionView view in _views)
+                    view.gameObject.SetActive(true);
+                
+                // Simple fade in
+                {
+                    float elapsed = 0;
+                
+                    while (elapsed < _presenter.optionOpenDuration)
+                    {
+                        elapsed += Time.deltaTime;
+                        _presenter.optionBoxGraphics.alpha = Mathf.Lerp(0, 1, elapsed / _presenter.optionOpenDuration);
+                        await UniTask.Yield();
+                    }
+                }
+
+                // Wait until an option is selected.
+                while (_selectedOption == -1)
+                    await UniTask.Yield();
+                
+                RuntimeManager.PlayOneShot(_presenter.optionSelectChirp);
+
+                // Simple fade out
+                {
+                    float elapsed = 0;
+                
+                    while (elapsed < _presenter.optionCloseDuration)
+                    {
+                        elapsed += Time.deltaTime;
+                        _presenter.optionBoxGraphics.alpha = Mathf.Lerp(1, 0, elapsed / _presenter.optionCloseDuration);
+                        await UniTask.Yield();
+                    }
+                }
+                _presenter.optionBoxGraphics.gameObject.SetActive(false);
+                
+                // Release all the borrowed options
+                foreach (OptionView view in _views)
+                {
+                    view.gameObject.SetActive(false);
+                    view.button.onClick.RemoveAllListeners();
+                    _presenter._optionPool.Release(view);
+                }
+                
+                // We always want a clean slate after making a decision
+                await _presenter.ClearText();
+                return _selectedOption;
+            }
+
+            public OptionBuilder With(string text)
+            {
+                int index = _views.Count;
+                OptionView view = _presenter._optionPool.Get();
+                view.textDisplay.text = text;
+                view.button.onClick.AddListener(() => _selectedOption = index);
+                _views.Add(view);
+                return this;
             }
         }
     }
