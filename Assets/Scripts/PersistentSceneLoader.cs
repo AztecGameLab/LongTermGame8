@@ -39,6 +39,7 @@ namespace Ltg8
                     if (currentScenePath == settings.persistentScenePath)
                         break;
 
+                    await Ltg8.Serializer.ReadFromDisk(settings.editorSaveId);
                     await Ltg8.StateMachine.TransitionTo(new OverworldGameState(currentScenePath));
                     break;
                 }

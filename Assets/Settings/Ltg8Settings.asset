@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b882cdb00124e009b727a375845db3f, type: 3}
   m_Name: Ltg8Settings
   m_EditorClassIdentifier: 
-  persistentScenePath: Assets/Scenes/persistent.unity
+  persistentScenePath: Assets/Scenes/Persistent.unity
   mainMenuScenePath: Assets/Scenes/Main Menu/main_menu.unity
   editorPlayStrategy: 0
   editorSaveStrategy: 1
