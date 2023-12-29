@@ -8,5 +8,6 @@
         public static FmodValueAnimator FmodValueAnimator;
         public static PersistentAudio PersistentAudio;
         public static GameStateMachine StateMachine;
+        public static TextBoxPresenter TextBoxPresenter;
     }
 }

@@ -17,6 +17,7 @@ namespace Ltg8
         [Required] public FmodValueAnimator fmodValueAnimator;
         [Required] public PersistentAudio persistentAudio;
         [Required] public GameStateMachine gameStateMachine;
+        [Required] public TextBoxPresenter textBoxPresenter;
     
         private void Awake()
         {
@@ -24,6 +25,7 @@ namespace Ltg8
             Ltg8.FmodValueAnimator = fmodValueAnimator;
             Ltg8.PersistentAudio = persistentAudio;
             Ltg8.StateMachine = gameStateMachine;
+            Ltg8.TextBoxPresenter = textBoxPresenter;
             Ltg8.Save = new SaveData();
 #if UNITY_EDITOR
             switch (Ltg8.Settings.editorSaveStrategy)

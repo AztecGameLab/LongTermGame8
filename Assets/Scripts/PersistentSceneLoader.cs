@@ -15,7 +15,7 @@ namespace Ltg8
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static async void Initialize()
         {
-            Ltg8Settings settings = await Addressables.LoadAssetAsync<Ltg8Settings>("Ltg8Settings").Task;
+            Ltg8Settings settings = Addressables.LoadAssetAsync<Ltg8Settings>("Ltg8Settings").WaitForCompletion();
             string currentScenePath = SceneManager.GetActiveScene().path;
 
             if (currentScenePath != settings.persistentScenePath)
