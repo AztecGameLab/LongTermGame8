@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Pool;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 // todo: cleanup
@@ -15,11 +16,14 @@ namespace Ltg8
     [Serializable]
     public class TextBoxPresenter : MonoBehaviour
     {
-        [SerializeField] private Image normalFrame;
-        [SerializeField] private Image optionsFrame;
+        [SerializeField]
+        private Image normalFrame;
+        
+        [SerializeField]
+        private Image optionsFrame;
         
         [SerializeField] 
-        private ImageFlipBookView textImage;
+        private RawImageFlipBookView textRawImage;
         
         [SerializeField] 
         private CanvasGroup textBoxGraphics;
@@ -83,7 +87,7 @@ namespace Ltg8
 
             normalFrame.gameObject.SetActive(true);
             optionsFrame.gameObject.SetActive(false);
-            textImage.gameObject.SetActive(false);
+            textRawImage.gameObject.SetActive(false);
             continueHint.SetActive(false);
             nameBoxGraphics.gameObject.SetActive(false);
             optionBoxGraphics.gameObject.SetActive(false);
@@ -95,21 +99,21 @@ namespace Ltg8
         private void Update()
         {
             if (_animation != null)
-                _animation.UpdateOn(textImage, Time.deltaTime);
+                _animation.UpdateOn(textRawImage, Time.deltaTime);
         }
 
         public UniTask ShowAnimation(IFlipBookAnimation anim)
         {
-            textImage.gameObject.SetActive(true);
+            textRawImage.gameObject.SetActive(true);
             _animation = anim;
-            _animation.UpdateOn(textImage, Time.deltaTime);
+            _animation.UpdateOn(textRawImage, Time.deltaTime);
             return UniTask.CompletedTask;
         }
 
         public UniTask HideAnimation()
         {
             _animation = null;
-            textImage.gameObject.SetActive(false);
+            textRawImage.gameObject.SetActive(false);
             return UniTask.CompletedTask;
         }
 

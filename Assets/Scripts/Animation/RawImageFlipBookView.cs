@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+
 namespace Ltg8
 {
-    public class ImageFlipBookView : FlipBookView
+    public class RawImageFlipBookView : FlipBookView
     {
         [SerializeField] 
-        private Image image;
+        private RawImage image;
         
         public override void DisplayImage(Texture2D texture)
         {
-            image.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
+            image.texture = texture; 
         }
     }
 }
