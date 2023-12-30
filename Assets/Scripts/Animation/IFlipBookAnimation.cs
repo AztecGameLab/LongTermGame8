@@ -2,6 +2,7 @@
 {
     public interface IFlipBookAnimation
     {
-        void UpdateOn(FlipBookView view, float deltaTime);
+        void ApplyTo(FlipBookView view);
+        void Update(float deltaTime);
     }
 }

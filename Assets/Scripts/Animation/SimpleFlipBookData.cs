@@ -18,12 +18,16 @@ namespace Ltg8
 
         private int _index;
         private float _elapsed = float.PositiveInfinity;
+
+        public void ApplyTo(FlipBookView view)
+        {
+            view.DisplayImage(data.textures[_index]);
+        }
         
-        public void UpdateOn(FlipBookView view, float deltaTime)
+        public void Update(float deltaTime)
         {
             if (_elapsed > data.updateRateSeconds)
             {
-                view.DisplayImage(data.textures[_index]);
                 _index = (_index + 1) % data.textures.Length;
                 _elapsed = 0;
             }

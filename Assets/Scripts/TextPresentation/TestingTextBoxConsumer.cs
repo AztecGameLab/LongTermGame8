@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Ltg8
 {
-    public class TextBoxConsumer : MonoBehaviour
+    public class TestingTextBoxConsumer : MonoBehaviour
     {
         public SimpleFlipBookAnimation animSmile;
         public SimpleFlipBookAnimation animFrown;
