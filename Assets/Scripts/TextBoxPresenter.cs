@@ -6,14 +6,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Pool;
+using UnityEngine.UI;
 
-// todo: frame customization
+// todo: cleanup
 
 namespace Ltg8
 {
     [Serializable]
     public class TextBoxPresenter : MonoBehaviour
     {
+        [SerializeField] private Image normalFrame;
+        [SerializeField] private Image optionsFrame;
+        
         [SerializeField] 
         private ImageFlipBookView textImage;
         
@@ -40,12 +44,6 @@ namespace Ltg8
         
         [SerializeField] 
         private TMP_Text nameBoxText;
-        
-        [SerializeField] 
-        private float optionOpenDuration;
-        
-        [SerializeField] 
-        private float optionCloseDuration;
         
         [SerializeField] 
         private float openDuration;
@@ -82,7 +80,9 @@ namespace Ltg8
                 instance.gameObject.SetActive(false);
                 return instance;
             });
-            
+
+            normalFrame.gameObject.SetActive(true);
+            optionsFrame.gameObject.SetActive(false);
             textImage.gameObject.SetActive(false);
             continueHint.SetActive(false);
             nameBoxGraphics.gameObject.SetActive(false);
@@ -252,8 +252,6 @@ namespace Ltg8
             
             public async UniTask<int> Present()
             {
-                await UniTask.Delay(TimeSpan.FromSeconds(1));
-
                 foreach (OptionView view in _views)
                     view.textDisplay.autoSizeTextContainer = true;
                 
@@ -265,9 +263,10 @@ namespace Ltg8
                     TMP_Text s = _views[_hoveredOption].textDisplay;
                     _presenter.selectedOptionIcon.transform.position = new Vector3(s.transform.position.x + ((RectTransform) s.transform).rect.xMax, s.transform.position.y, s.transform.position.z);
                 }
-                
-                await _presenter.FadeCanvasGroup(_presenter.optionBoxGraphics, 0, 1, _presenter.optionOpenDuration);
 
+                _presenter.normalFrame.gameObject.SetActive(false);
+                _presenter.optionsFrame.gameObject.SetActive(true);
+                
                 // Wait until an option is selected.
                 while (_selectedOption == -1)
                 {
@@ -280,7 +279,8 @@ namespace Ltg8
                     view.enabled = false;
                 
                 RuntimeManager.PlayOneShot(_presenter.optionSelectChirp);
-                await _presenter.FadeCanvasGroup(_presenter.optionBoxGraphics, 1, 0, _presenter.optionCloseDuration);
+                _presenter.normalFrame.gameObject.SetActive(true);
+                _presenter.optionsFrame.gameObject.SetActive(false);
                 _presenter.optionBoxGraphics.gameObject.SetActive(false);
                 _presenter.selectedOptionIcon.gameObject.SetActive(false);
                 

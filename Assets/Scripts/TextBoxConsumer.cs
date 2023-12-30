@@ -24,7 +24,7 @@ namespace Ltg8
             
             await p.ClearText();
             await p.WriteText("Here is another line of text ...");
-            await p.Delay(1000);
+            await p.Delay(1);
             await p.WriteText(" and we're done!");
             await p.WaitForContinue();
 
