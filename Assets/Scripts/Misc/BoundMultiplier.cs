@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace
+namespace Ltg8.Misc
 {
     public class BoundMultiplier : MonoBehaviour
     {
