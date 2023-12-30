@@ -3,24 +3,43 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using FMODUnity;
 using TMPro;
+using TriInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Pool;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 // todo: cleanup
+// todo: create a 'view' object for the text box, to replace the 'style' images (more flexible)
+// todo: selection arrow need a bit more work too
+// todo: more randomization on the chirps (ref celeste, talk w/ luke)
 
 namespace Ltg8
 {
     [Serializable]
     public class TextBoxPresenter : MonoBehaviour
     {
+        [Title("Styles")]
+        
+        [SerializeField]
+        private TextBoxStyle defaultTextBoxStyle;
+        
+        [SerializeField] 
+        private RevealStyle defaultRevealStyle;
+        
+        [Title("References")]
+        
         [SerializeField]
         private Image normalFrame;
         
         [SerializeField]
         private Image optionsFrame;
+        
+        [SerializeField]
+        private Image selectedOptionIcon;
+        
+        [SerializeField] 
+        private Image continueHint;
         
         [SerializeField] 
         private RawImageFlipBookView textRawImage;
@@ -29,40 +48,21 @@ namespace Ltg8
         private CanvasGroup textBoxGraphics;
         
         [SerializeField] 
-        private TMP_Text textBoxText;
-        
-        [SerializeField] 
-        private GameObject continueHint;
-
-        [SerializeField]
-        private GameObject selectedOptionIcon;
-
-        [SerializeField]
-        private OptionView optionPrefab;
-
-        [SerializeField] 
         private CanvasGroup optionBoxGraphics;
 
         [SerializeField] 
         private CanvasGroup nameBoxGraphics;
         
         [SerializeField] 
+        private TMP_Text textBoxText;
+        
+        [SerializeField] 
         private TMP_Text nameBoxText;
         
-        [SerializeField] 
-        private float openDuration;
-        
-        [SerializeField] 
-        private float closeDuration;
-
         [SerializeField]
-        private float clearDuration;
+        private OptionView optionPrefab;
         
-        [SerializeField] 
-        private int revealIntervalMs;
-        
-        [SerializeField] 
-        private EventReference revealChirp;
+        [Title("Audio")]
         
         [SerializeField] 
         private EventReference confirmChirp;
@@ -72,10 +72,56 @@ namespace Ltg8
         
         [SerializeField] 
         private EventReference optionHoverChirp;
+        
+        [Title("Settings")]
 
+        [SerializeField] 
+        private float openDuration;
+        
+        [SerializeField] 
+        private float closeDuration;
+
+        [SerializeField]
+        private float clearDuration;
+        
         private IFlipBookAnimation _animation;
         private bool _continueRequested;
         private ObjectPool<OptionView> _optionPool;
+        private Stack<RevealStyle> _revealStyleStack;
+        private Stack<TextBoxStyle> _textBoxStyleStack;
+
+        private RevealStyle RevealStyle => _revealStyleStack.Peek();
+
+        public void PushRevealStyle(RevealStyle style)
+        {
+            _revealStyleStack.Push(style);
+        }
+
+        public void PopRevealStyle()
+        {
+            _revealStyleStack.Pop();
+        }
+
+        public void PushTextBoxStyle(TextBoxStyle style)
+        {
+            _textBoxStyleStack.Push(style);
+            ApplyCurrentTextBoxStyle();
+        }
+
+        public void PopTextBoxStyle()
+        {
+            _textBoxStyleStack.Pop();
+            ApplyCurrentTextBoxStyle();
+        }
+
+        private void ApplyCurrentTextBoxStyle()
+        {
+            TextBoxStyle s = _textBoxStyleStack.Peek();
+            normalFrame.sprite = s.normalFrame;
+            optionsFrame.sprite = s.optionsFrame;
+            selectedOptionIcon.sprite = s.selectedOptionIcon;
+            continueHint.sprite = s.continueHint;
+        }
         
         private void Start()
         {
@@ -85,13 +131,19 @@ namespace Ltg8
                 return instance;
             });
 
+            _revealStyleStack = new Stack<RevealStyle>();
+            _revealStyleStack.Push(defaultRevealStyle);
+            _textBoxStyleStack = new Stack<TextBoxStyle>();
+            _textBoxStyleStack.Push(defaultTextBoxStyle);
+            
             normalFrame.gameObject.SetActive(true);
             optionsFrame.gameObject.SetActive(false);
             textRawImage.gameObject.SetActive(false);
-            continueHint.SetActive(false);
+            continueHint.gameObject.SetActive(false);
             nameBoxGraphics.gameObject.SetActive(false);
             optionBoxGraphics.gameObject.SetActive(false);
             selectedOptionIcon.gameObject.SetActive(false);
+            
             textBoxText.text = string.Empty;
             textBoxText.maxVisibleCharacters = 0;
         }
@@ -169,14 +221,14 @@ namespace Ltg8
         public async UniTask WaitForContinue()
         {
             _continueRequested = false;
-            continueHint.SetActive(true);
+            continueHint.gameObject.SetActive(true);
             
             // Will not finish until `HandleContinue` is called.
             while (!_continueRequested)
                 await UniTask.Yield();
             
             RuntimeManager.PlayOneShot(confirmChirp);
-            continueHint.SetActive(false);
+            continueHint.gameObject.SetActive(false);
             _continueRequested = false;
         }
         
@@ -222,21 +274,21 @@ namespace Ltg8
                 if (_continueRequested)
                 {
                     textBoxText.maxVisibleCharacters += totalCharacters - processedCharacters;
-                    RuntimeManager.PlayOneShot(revealChirp);
+                    RuntimeManager.PlayOneShot(RevealStyle.audioPerCharacter);
                     break;
                 }
                         
                 // We only want to chirp on visible characters, e.g. anything BUT a space
                 if (text[processedCharacters] != ' ')
-                    RuntimeManager.PlayOneShot(revealChirp);
+                    RuntimeManager.PlayOneShot(RevealStyle.audioPerCharacter);
                         
                 processedCharacters++;
                 textBoxText.maxVisibleCharacters++;
-                await UniTask.Delay(revealIntervalMs);
+                await UniTask.Delay(RevealStyle.revealIntervalMs);
             }
         }
 
-        public OptionBuilder PrepareOptions()
+        public OptionBuilder PrepareDecision()
         {
             return new OptionBuilder(this);
         }
@@ -259,7 +311,7 @@ namespace Ltg8
                 foreach (OptionView view in _views)
                     view.textDisplay.autoSizeTextContainer = true;
                 
-                _presenter.selectedOptionIcon.SetActive(true);
+                _presenter.selectedOptionIcon.gameObject.SetActive(true);
                 _presenter.optionBoxGraphics.gameObject.SetActive(true);
                 
                 // set initial pos of selection hint
@@ -302,7 +354,7 @@ namespace Ltg8
                 return _selectedOption;
             }
 
-            public OptionBuilder With(string text)
+            public OptionBuilder WithOption(string text)
             {
                 int index = _views.Count;
                 OptionView view = _presenter._optionPool.Get();

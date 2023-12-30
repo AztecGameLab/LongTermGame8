@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee594bb48d404b9bba8240f0ec0f5f2f, type: 3}
+  m_Name: textboxstyle_default
+  m_EditorClassIdentifier: 
+  normalFrame: {fileID: 21300000, guid: fbd22789acd156e4eac655b9db2a5f5a, type: 3}
+  optionsFrame: {fileID: 21300000, guid: 84fecd3340effc84a95039eec73cd054, type: 3}
+  continueHint: {fileID: 21300000, guid: 83d22a23035796f49af4a5ff8338e810, type: 3}
+  selectedOptionIcon: {fileID: 21300000, guid: 83d22a23035796f49af4a5ff8338e810, type: 3}

@@ -1759,29 +1759,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9044389ecf4c11904bf41ae3009a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultTextBoxStyle: {fileID: 11400000, guid: f71b46e71e2b69e4596725159de0e277,
+    type: 2}
+  defaultRevealStyle: {fileID: 11400000, guid: ac1ba0348e1f0bf48b11db3f17add763, type: 2}
   normalFrame: {fileID: 1304060945}
   optionsFrame: {fileID: 607026245}
+  selectedOptionIcon: {fileID: 1435608446}
+  continueHint: {fileID: 571422983}
   textRawImage: {fileID: 1184600008}
   textBoxGraphics: {fileID: 759410842}
-  textBoxText: {fileID: 162583122}
-  continueHint: {fileID: 571422981}
-  selectedOptionIcon: {fileID: 1435608444}
-  optionPrefab: {fileID: 6996611794744755249, guid: 50649a5eb5800c54ca1590c83e71d181,
-    type: 3}
   optionBoxGraphics: {fileID: 1158910359}
   nameBoxGraphics: {fileID: 1248874744}
+  textBoxText: {fileID: 162583122}
   nameBoxText: {fileID: 1369964148}
-  openDuration: 0.5
-  closeDuration: 0.5
-  clearDuration: 0.5
-  revealIntervalMs: 50
-  revealChirp:
-    Guid:
-      Data1: -1472437354
-      Data2: 1286148919
-      Data3: -110930556
-      Data4: 1760972035
-    Path: event:/dev_chirp
+  optionPrefab: {fileID: 6996611794744755249, guid: 50649a5eb5800c54ca1590c83e71d181,
+    type: 3}
   confirmChirp:
     Guid:
       Data1: -1287126499
@@ -1803,6 +1795,9 @@ MonoBehaviour:
       Data3: -110930556
       Data4: 1760972035
     Path: event:/dev_chirp
+  openDuration: 0.5
+  closeDuration: 0.5
+  clearDuration: 0.5
 --- !u!114 &1438414972
 MonoBehaviour:
   m_ObjectHideFlags: 0
