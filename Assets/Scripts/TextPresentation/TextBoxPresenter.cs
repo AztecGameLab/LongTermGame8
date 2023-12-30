@@ -5,13 +5,13 @@ using FMODUnity;
 using TMPro;
 using TriInspector;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Pool;
 using UnityEngine.UI;
 
 // todo: cleanup
 // todo: create a 'view' object for the text box, to replace the 'style' images (more flexible)
-// todo: selection arrow need a bit more work too
 // todo: more randomization on the chirps (ref celeste, talk w/ luke)
 
 namespace Ltg8
@@ -22,7 +22,7 @@ namespace Ltg8
         [Title("Styles")]
         
         [SerializeField]
-        private TextBoxStyle defaultTextBoxStyle;
+        private TextBoxView defaultTextBoxView;
         
         [SerializeField] 
         private RevealStyle defaultRevealStyle;
@@ -87,42 +87,14 @@ namespace Ltg8
         private IFlipBookAnimation _animation;
         private bool _continueRequested;
         private ObjectPool<OptionView> _optionPool;
-        private Stack<RevealStyle> _revealStyleStack;
-        private Stack<TextBoxStyle> _textBoxStyleStack;
 
-        private RevealStyle RevealStyle => _revealStyleStack.Peek();
+        public RevealStyle RevealStyle { get; set; }
 
-        public void PushRevealStyle(RevealStyle style)
+        public void SetRevealStyle(RevealStyle style)
         {
-            _revealStyleStack.Push(style);
+            
         }
 
-        public void PopRevealStyle()
-        {
-            _revealStyleStack.Pop();
-        }
-
-        public void PushTextBoxStyle(TextBoxStyle style)
-        {
-            _textBoxStyleStack.Push(style);
-            ApplyCurrentTextBoxStyle();
-        }
-
-        public void PopTextBoxStyle()
-        {
-            _textBoxStyleStack.Pop();
-            ApplyCurrentTextBoxStyle();
-        }
-
-        private void ApplyCurrentTextBoxStyle()
-        {
-            TextBoxStyle s = _textBoxStyleStack.Peek();
-            normalFrame.sprite = s.normalFrame;
-            optionsFrame.sprite = s.optionsFrame;
-            selectedOptionIcon.sprite = s.selectedOptionIcon;
-            continueHint.sprite = s.continueHint;
-        }
-        
         private void Start()
         {
             _optionPool = new ObjectPool<OptionView>(() => {
@@ -131,11 +103,6 @@ namespace Ltg8
                 return instance;
             });
 
-            _revealStyleStack = new Stack<RevealStyle>();
-            _revealStyleStack.Push(defaultRevealStyle);
-            _textBoxStyleStack = new Stack<TextBoxStyle>();
-            _textBoxStyleStack.Push(defaultTextBoxStyle);
-            
             normalFrame.gameObject.SetActive(true);
             optionsFrame.gameObject.SetActive(false);
             textRawImage.gameObject.SetActive(false);
@@ -264,6 +231,9 @@ namespace Ltg8
         {
             textBoxText.text += text;
 
+            RevealStyle style = RevealStyle;
+            if (style == null) style = defaultRevealStyle;
+            
             int processedCharacters = 0;
             int totalCharacters = text.Length;
             
@@ -274,17 +244,21 @@ namespace Ltg8
                 if (_continueRequested)
                 {
                     textBoxText.maxVisibleCharacters += totalCharacters - processedCharacters;
-                    RuntimeManager.PlayOneShot(RevealStyle.audioPerCharacter);
+                    RuntimeManager.PlayOneShot(style.audioPerCharacter);
                     break;
                 }
-                        
+
+                // Skip past all of the style tags - e.g. <color=red>
+                if (text[processedCharacters] == '<')
+                    processedCharacters = text.IndexOf('>', processedCharacters) + 1;
+                
                 // We only want to chirp on visible characters, e.g. anything BUT a space
                 if (text[processedCharacters] != ' ')
-                    RuntimeManager.PlayOneShot(RevealStyle.audioPerCharacter);
-                        
+                    RuntimeManager.PlayOneShot(style.audioPerCharacter);
+                
                 processedCharacters++;
                 textBoxText.maxVisibleCharacters++;
-                await UniTask.Delay(RevealStyle.revealIntervalMs);
+                await UniTask.Delay(style.revealIntervalMs);
             }
         }
 
@@ -299,7 +273,6 @@ namespace Ltg8
             private readonly List<OptionView> _views = new List<OptionView>();
 
             private int _selectedOption = -1;
-            private int _hoveredOption;
             
             public OptionBuilder(TextBoxPresenter presenter)
             {
@@ -308,26 +281,25 @@ namespace Ltg8
             
             public async UniTask<int> Present()
             {
+                EventSystem e = EventSystem.current;
+                
                 foreach (OptionView view in _views)
                     view.textDisplay.autoSizeTextContainer = true;
                 
                 _presenter.selectedOptionIcon.gameObject.SetActive(true);
                 _presenter.optionBoxGraphics.gameObject.SetActive(true);
+                e.SetSelectedGameObject(_views[0].button.gameObject);
                 
-                // set initial pos of selection hint
-                {
-                    TMP_Text s = _views[_hoveredOption].textDisplay;
-                    _presenter.selectedOptionIcon.transform.position = new Vector3(s.transform.position.x + ((RectTransform) s.transform).rect.xMax, s.transform.position.y, s.transform.position.z);
-                }
-
                 _presenter.normalFrame.gameObject.SetActive(false);
                 _presenter.optionsFrame.gameObject.SetActive(true);
                 
                 // Wait until an option is selected.
                 while (_selectedOption == -1)
                 {
-                    TMP_Text s = _views[_hoveredOption].textDisplay;
-                    _presenter.selectedOptionIcon.transform.position = new Vector3(s.transform.position.x + ((RectTransform) s.transform).rect.xMax, s.transform.position.y, s.transform.position.z);
+                    Transform s = e.currentSelectedGameObject.transform;
+                    Vector3 pos = s.position;
+                    pos.x += ((RectTransform)s).rect.xMax; // align with the right edge of text
+                    _presenter.selectedOptionIcon.transform.position = pos;
                     await UniTask.Yield();
                 }
 
@@ -361,10 +333,7 @@ namespace Ltg8
                 view.gameObject.SetActive(true);
                 view.textDisplay.SetText(text);
                 view.onSelect.AddListener(() => _selectedOption = index);
-                view.onHover.AddListener(() => {
-                    RuntimeManager.PlayOneShot(_presenter.optionHoverChirp);
-                    _hoveredOption = index;
-                });
+                view.onHover.AddListener(() => RuntimeManager.PlayOneShot(_presenter.optionHoverChirp));
                 _views.Add(view);
                 return this;
             }
