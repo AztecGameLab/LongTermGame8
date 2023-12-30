@@ -9099,6 +9099,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f4dc6257d5450bbf7050b759a8525e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animSmile:
+    textures:
+    - {fileID: 2800000, guid: 992ef9ed94a763145b680d241d2b8f8f, type: 3}
+    - {fileID: 2800000, guid: 224160aba12a1d540be1e453f5d98d8c, type: 3}
+    updateRateSeconds: 0.15
+  animFrown:
+    textures:
+    - {fileID: 2800000, guid: 2827c273f68b8874fb0f68c6cc6e61ff, type: 3}
+    - {fileID: 2800000, guid: e467854115a0ba84094d112f68ed180f, type: 3}
+    updateRateSeconds: 0.15
 --- !u!4 &1861801371
 Transform:
   m_ObjectHideFlags: 0
