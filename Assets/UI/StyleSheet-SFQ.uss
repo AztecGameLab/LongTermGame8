@@ -34,11 +34,12 @@
 }
 
 .button-orange:active {
-    background-color: rgb(215, 197, 158);
-    border-left-color: rgb(255, 255, 255);
-    border-right-color: rgb(255, 255, 255);
-    border-top-color: rgb(255, 255, 255);
-    border-bottom-color: rgb(255, 255, 255);
+    scale: 1.2 1.2;
+    background-color: rgb(181, 151, 84);
+    border-left-color: rgb(233, 225, 206);
+    border-right-color: rgb(233, 225, 206);
+    border-top-color: rgb(233, 225, 206);
+    border-bottom-color: rgb(233, 225, 206);
 }
 
 .button-orange:disabled {
@@ -49,15 +50,6 @@
     border-bottom-color: rgba(215, 197, 158, 0.5);
     scale: 0.9 0.9;
     color: rgba(255, 255, 255, 0.5);
-}
-
-.textDisplayHeader {
-    color: rgb(255, 255, 255);
-    font-size: 80px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    -unity-font-definition: url('project://database/Assets/UI/Fonts/Gluten/Gluten-SemiBold%20SDF%201.asset?fileID=11400000&guid=851a26cea26ec0f4c8ab2b0cbcd0302d&type=2#Gluten-SemiBold SDF 1');
-    -unity-paragraph-spacing: 36px;
-    -unity-text-align: upper-center;
 }
 
 .button-menuOption {
@@ -97,6 +89,15 @@
     color: rgba(255, 255, 255, 0.5);
 }
 
+.textDisplayHeader {
+    color: rgb(255, 255, 255);
+    font-size: 80px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/Gluten/Gluten-SemiBold%20SDF%201.asset?fileID=11400000&guid=851a26cea26ec0f4c8ab2b0cbcd0302d&type=2#Gluten-SemiBold SDF 1');
+    -unity-paragraph-spacing: 36px;
+    -unity-text-align: upper-center;
+}
+
 .containerOrange {
     background-color: rgba(175, 139, 60, 0.5);
     border-left-color: rgb(215, 197, 158);
@@ -113,6 +114,42 @@
     border-left-width: 10px;
     justify-content: center;
     align-items: center;
+}
+
+.container-submenu {
+    width: 31%;
+    height: 100%;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    justify-content: flex-start;
+    flex-direction: row;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-left-color: rgb(175, 139, 60);
+    border-right-color: rgb(175, 139, 60);
+    border-top-color: rgb(175, 139, 60);
+    border-bottom-color: rgb(175, 139, 60);
+    background-color: rgba(175, 139, 60, 0.5);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.container-item {
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(175, 139, 60, 0.5);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 .SideMenuOnScreen {
@@ -138,10 +175,10 @@
     margin-bottom: 30px;
     margin-left: 30px;
     transition-property: translate;
-    transition-duration: 3s;
+    transition-duration: 1s;
     translate: 0 0;
     transition-timing-function: ease-in;
-    transition-delay: 1s;
+    transition-delay: 0s;
 }
 
 .SideMenuSlidingOut {
@@ -161,8 +198,8 @@
 .ScreenSpaceGoesDark {
     background-color: rgb(2, 2, 2);
     transition-duration: 2s;
-    transition-timing-function: linear;
-    transition-delay: 2.6s;
+    transition-timing-function: ease-in;
+    transition-delay: 0.5s;
 }
 
 .PageIndicatorAtTop {
@@ -186,27 +223,35 @@
 }
 
 .PageIndicatorAtContacts {
-    translate: 0 5px;
+    translate: 0 0;
+}
+
+.PageIndicatorAtMap {
+    translate: 0 99px;
 }
 
 .PageIndicatorAtCollection {
-    translate: 0 136px;
+    translate: 0 193px;
 }
 
 .PageIndicatorAtLog {
-    translate: 0 264px;
+    translate: 0 290px;
 }
 
 .PageIndicatorAtSettings {
-    translate: 0 390px;
+    translate: 0 384px;
+}
+
+.PageIndicatorAtControls {
+    translate: 0 476px;
 }
 
 .PageIndicatorAtSave {
-    translate: 0 518px;
+    translate: 0 572px;
 }
 
 .PageIndicatorAtExit {
-    translate: 0 644px;
+    translate: 0 667px;
 }
 
 .PauseMenuDown {
@@ -234,17 +279,95 @@
     translate: 0 0;
 }
 
-.DisplayHeader {
+#SFQSlider Label {
+    display: none;
 }
 
-.itemBox {
-    width: 100px;
-    height: 100px;
+#SFQSlider #unity-drag-container {
+    height: 60px;
+}
+
+#SFQSlider #unity-dragger {
+    width: 40px;
+    height: 40px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    top: 10px;
+    background-color: rgb(215, 197, 158);
+    border-left-color: rgb(175, 139, 60);
+    border-right-color: rgb(175, 139, 60);
+    border-top-color: rgb(175, 139, 60);
+    border-bottom-color: rgb(175, 139, 60);
+}
+
+#SFQSlider #unity-tracker {
     align-items: center;
     justify-content: center;
-    background-color: rgba(175, 139, 60, 0.5);
+    height: 20px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    top: 20px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+    background-color: rgb(175, 139, 60);
+}
+
+#SFQToggle Label {
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-right;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+#SFQToggle #unity-checkmark {
+    background-color: rgb(175, 139, 60);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    height: 30px;
+    width: 30px;
+}
+
+.selectable {
+    transition-property: scale;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out-elastic;
+}
+
+.selectable :hover {
+    scale: 1.1 1.1;
+}
+
+.selectable :active {
+    scale: 1.2 1.2;
 }
