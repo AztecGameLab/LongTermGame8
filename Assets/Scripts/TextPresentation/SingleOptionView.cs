@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Ltg8
 {
-    public class OptionView : MonoBehaviour
+    public class SingleOptionView : MonoBehaviour
     {
         public TMP_Text textDisplay;
         public Button button;

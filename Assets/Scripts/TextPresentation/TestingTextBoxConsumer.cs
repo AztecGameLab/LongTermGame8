@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Ltg8
@@ -11,6 +12,12 @@ namespace Ltg8
         private void Start()
         {
             TestTextBoxes().Forget();
+        }
+
+        private void Update()
+        {
+            animSmile.Update(Time.deltaTime);
+            animFrown.Update(Time.deltaTime);
         }
 
         private async UniTaskVoid TestTextBoxes()
@@ -32,25 +39,22 @@ namespace Ltg8
 
             // decision + animation test
             await p.ClearText();
-            await p.ShowAnimation(animSmile);
+            await p.ShowMainAnimation(animSmile);
             await p.WriteText("Wanna make a <color=green>choice</color>?");
             await p.WaitForContinue();
+
+            UniTask.Delay(1000).ContinueWith(() => p.ShowOptionAnimation(animSmile)).Forget();
             
-            int result = await p.PrepareDecision()
-                    .WithOption("Nah, not really.")
-                    .WithOption("Sure!")
-                    .WithOption("...")
-                    .Present();
-            switch (result) {
+            switch (await p.PickOption("Nah, not really.", "Sure!", "[Ignore the narrator]")) {
                 case 0: 
-                    await p.ShowAnimation(animFrown);
+                    await p.ShowMainAnimation(animFrown);
                     await p.WriteText("Wow, you are <color=red>lazy</color>."); 
                     break;
                 case 1: 
                     await p.WriteText("I like your attitude!"); 
                     break;
                 case 2: 
-                    await p.ShowAnimation(animFrown);
+                    await p.ShowMainAnimation(animFrown);
                     await p.WriteText("You ignoring me?"); 
                     break;
             }

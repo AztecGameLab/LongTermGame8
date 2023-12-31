@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using FMODUnity;
 using TriInspector;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.Pool;
 
 // todo: cleanup
 // todo: more randomization on the chirps (ref celeste, talk w/ luke)
@@ -22,6 +19,9 @@ namespace Ltg8
         [SerializeField]
         private TextBoxView defaultTextBoxView;
         
+        [SerializeField]
+        private OptionBoxView defaultOptionBoxView;
+        
         [SerializeField] 
         private RevealStyle defaultRevealStyle;
         
@@ -30,82 +30,80 @@ namespace Ltg8
         [SerializeField] 
         private EventReference confirmChirp;
 
-        [SerializeField] 
-        private EventReference optionSelectChirp;
-        
-        [SerializeField] 
-        private EventReference optionHoverChirp;
-        
         [Title("Settings")]
 
         [SerializeField]
         private float clearDuration;
         
-        private IFlipBookAnimation _animation;
+        private IFlipBookAnimation _mainAnimation;
+        private IFlipBookAnimation _optionAnimation;
         private bool _continueRequested;
-        private ObjectPool<OptionView> _optionPool;
         private RevealStyle _revealStyle;
         private TextBoxView _textBoxView;
+        private OptionBoxView _optionBoxView;
 
         public void SetRevealStyle(RevealStyle style)
         {
             _revealStyle = style;
         }
-
-        public void SetTextBoxView(TextBoxView view)
-        {
-            _textBoxView.gameObject.SetActive(false);
-            _textBoxView = view;
-            _textBoxView.Initialize();
-            _textBoxView.gameObject.SetActive(true);
-        }
-
-        public void DefaultTextBoxView()
-        {
-            SetTextBoxView(defaultTextBoxView);
-        }
-
+        
         public void DefaultRevealStyle()
         {
-           SetRevealStyle(defaultRevealStyle);
+            SetRevealStyle(defaultRevealStyle);
         }
 
         private void Start()
         {
-            _optionPool = new ObjectPool<OptionView>(() => {
-                OptionView instance = Instantiate(_textBoxView.optionPrefab, _textBoxView.optionParent.transform);
-                instance.gameObject.SetActive(false);
-                return instance;
-            });
-            
-            DefaultRevealStyle();
-            
             _textBoxView = defaultTextBoxView;
+            _optionBoxView = defaultOptionBoxView;
+            _revealStyle = defaultRevealStyle;
+            
             _textBoxView.Initialize();
-            _textBoxView.gameObject.SetActive(true);
+            _optionBoxView.Initialize();
         }
 
         private void Update()
         {
-            if (_animation != null)
+            if (_mainAnimation != null)
             {
-                _animation.Update(Time.deltaTime);
-                _animation.ApplyTo(_textBoxView.normalAnimationImage);
+                _mainAnimation.ApplyTo(_textBoxView.mainAnimationImage);
+                _mainAnimation.ApplyTo(_optionBoxView.mainAnimationImage);
             }
+
+            if (_optionAnimation != null)
+                _optionAnimation.ApplyTo(_optionBoxView.optionAnimationImage);
         }
 
-        public UniTask ShowAnimation(IFlipBookAnimation anim)
+        public UniTask ShowMainAnimation(IFlipBookAnimation anim)
         {
-            _textBoxView.normalAnimationImage.gameObject.SetActive(true);
-            _animation = anim;
-            _animation.ApplyTo(_textBoxView.normalAnimationImage);
+            _mainAnimation = anim;
+            _textBoxView.mainAnimationObject.SetActive(true);
+            _optionBoxView.mainAnimationObject.SetActive(true);
+            _mainAnimation.ApplyTo(_textBoxView.mainAnimationImage);
+            _mainAnimation.ApplyTo(_optionBoxView.mainAnimationImage);
             return UniTask.CompletedTask;
         }
 
-        public UniTask HideAnimation()
+        public UniTask HideMainAnimation()
         {
-            _animation = null;
-            _textBoxView.normalAnimationImage.gameObject.SetActive(false);
+            _mainAnimation = null;
+            _textBoxView.mainAnimationObject.SetActive(false);
+            _optionBoxView.mainAnimationObject.SetActive(false);
+            return UniTask.CompletedTask;
+        }
+
+        public UniTask ShowOptionAnimation(IFlipBookAnimation anim)
+        {
+            _optionAnimation = anim;
+            _optionBoxView.optionAnimationObject.SetActive(true);
+            _optionAnimation.ApplyTo(_optionBoxView.optionAnimationImage);
+            return UniTask.CompletedTask;
+        }
+
+        public UniTask HideOptionAnimation()
+        {
+            _optionAnimation = null;
+            _optionBoxView.optionAnimationObject.SetActive(false);
             return UniTask.CompletedTask;
         }
 
@@ -114,28 +112,28 @@ namespace Ltg8
             _textBoxView.gameObject.SetActive(true);
             return UniTask.CompletedTask;
         }
-
-        public async UniTask Open(string displayName)
-        {
-            SetName(displayName);
-            ShowName();
-            await Open();
-        }
         
         public UniTask Close()
         {
             _textBoxView.gameObject.SetActive(false);
             return UniTask.CompletedTask;
         }
+        
+        public async UniTask Open(string displayName)
+        {
+            SetName(displayName);
+            ShowName();
+            await Open();
+        }
 
         public void ShowName()
         {
-            _textBoxView.nameBoxFrame.SetActive(true);
+            _textBoxView.nameObject.SetActive(true);
         }
 
         public void HideName()
         {
-            _textBoxView.nameBoxFrame.SetActive(true);
+            _textBoxView.nameObject.SetActive(true);
         }
 
         public void SetName(string value)
@@ -169,8 +167,9 @@ namespace Ltg8
 
         public async UniTask ClearText()
         {
-            _textBoxView.normalText.SetText(string.Empty);
-            _textBoxView.normalText.maxVisibleCharacters = 0;
+            _optionBoxView.mainText.SetText(string.Empty);
+            _textBoxView.mainText.SetText(string.Empty);
+            _textBoxView.mainText.maxVisibleCharacters = 0;
             await UniTask.Delay(TimeSpan.FromSeconds(clearDuration));
         }
 
@@ -187,7 +186,8 @@ namespace Ltg8
         
         public async UniTask WriteText(string text)
         {
-            _textBoxView.normalText.text += text;
+            _textBoxView.mainText.text += text;
+            _optionBoxView.mainText.text += text;
 
             int processedCharacters = 0;
             int totalCharacters = text.Length;
@@ -198,7 +198,8 @@ namespace Ltg8
                 // the text (the fast-reader button).
                 if (_continueRequested)
                 {
-                    _textBoxView.normalText.maxVisibleCharacters += totalCharacters - processedCharacters;
+                    _textBoxView.mainText.maxVisibleCharacters += totalCharacters - processedCharacters;
+                    _optionBoxView.mainText.maxVisibleCharacters += totalCharacters - processedCharacters;
                     RuntimeManager.PlayOneShot(_revealStyle.audioPerCharacter);
                     break;
                 }
@@ -212,83 +213,49 @@ namespace Ltg8
                     RuntimeManager.PlayOneShot(_revealStyle.audioPerCharacter);
                 
                 processedCharacters++;
-                _textBoxView.normalText.maxVisibleCharacters++;
+                _textBoxView.mainText.maxVisibleCharacters++;
+                _optionBoxView.mainText.maxVisibleCharacters++;
                 await UniTask.Delay(_revealStyle.revealIntervalMs);
             }
         }
-
-        public OptionBuilder PrepareDecision()
+        
+        public async UniTask<int> PickOption(string first, string second)
         {
-            return new OptionBuilder(this);
+            _textBoxView.gameObject.SetActive(false);
+            _optionBoxView.gameObject.SetActive(true);
+            
+            int result = await _optionBoxView.OptionPickTwo(first, second);
+            
+            _textBoxView.gameObject.SetActive(true);
+            _optionBoxView.gameObject.SetActive(false);
+            await ClearText();
+            return result;
         }
-
-        public class OptionBuilder
+        
+        public async UniTask<int> PickOption(string first, string second, string third)
         {
-            private readonly TextBoxPresenter _presenter;
-            private readonly List<OptionView> _views = new List<OptionView>();
-
-            private int _selectedOption = -1;
+            _textBoxView.gameObject.SetActive(false);
+            _optionBoxView.gameObject.SetActive(true);
             
-            public OptionBuilder(TextBoxPresenter presenter)
-            {
-                _presenter = presenter;
-            }
+            int result = await _optionBoxView.OptionPickThree(first, second, third);
             
-            public async UniTask<int> Present()
-            {
-                EventSystem e = EventSystem.current;
-                
-                _presenter._textBoxView.optionParent.SetActive(true);
-                e.SetSelectedGameObject(_views[0].button.gameObject);
-                
-                _presenter._textBoxView.normalFrame.gameObject.SetActive(false);
-                _presenter._textBoxView.optionFrame.gameObject.SetActive(true);
-                
-                // Wait until an option is selected.
-                while (_selectedOption == -1)
-                {
-                    Transform s = e.currentSelectedGameObject.transform;
-                    Vector3 pos = s.position;
-                    pos.x += ((RectTransform)s).rect.xMax; // align with the right edge of text
-                    _presenter._textBoxView.optionSelectionHint.transform.position = pos;
-                    await UniTask.Yield();
-                }
-
-                foreach (OptionView view in _views)
-                    view.enabled = false;
-                
-                RuntimeManager.PlayOneShot(_presenter.optionSelectChirp);
-                _presenter._textBoxView.normalFrame.gameObject.SetActive(true);
-                _presenter._textBoxView.optionFrame.gameObject.SetActive(false);
-                _presenter._textBoxView.optionParent.SetActive(false);
-                _presenter._textBoxView.optionSelectionHint.gameObject.SetActive(false);
-                
-                // Release all the borrowed options
-                foreach (OptionView view in _views)
-                {
-                    view.gameObject.SetActive(false);
-                    view.onSelect.RemoveAllListeners();
-                    view.onHover.RemoveAllListeners();
-                    _presenter._optionPool.Release(view);
-                }
-                
-                // We always want a clean slate after making a decision
-                await _presenter.ClearText();
-                return _selectedOption;
-            }
-
-            public OptionBuilder WithOption(string text)
-            {
-                int index = _views.Count;
-                OptionView view = _presenter._optionPool.Get();
-                view.gameObject.SetActive(true);
-                view.textDisplay.SetText(text);
-                view.textDisplay.autoSizeTextContainer = true;
-                view.onSelect.AddListener(() => _selectedOption = index);
-                view.onHover.AddListener(() => RuntimeManager.PlayOneShot(_presenter.optionHoverChirp));
-                _views.Add(view);
-                return this;
-            }
+            _textBoxView.gameObject.SetActive(true);
+            _optionBoxView.gameObject.SetActive(false);
+            await ClearText();
+            return result;
+        }
+        
+        public async UniTask<int> PickOption(string first, string second, string third, string fourth)
+        {
+            _textBoxView.gameObject.SetActive(false);
+            _optionBoxView.gameObject.SetActive(true);
+            
+            int result = await _optionBoxView.OptionPickFour(first, second, third, fourth);
+            
+            _textBoxView.gameObject.SetActive(true);
+            _optionBoxView.gameObject.SetActive(false);
+            await ClearText();
+            return result;
         }
     }
 }

@@ -7,32 +7,25 @@ namespace Ltg8
     public class TextBoxView : MonoBehaviour
     {
         [Title("Main Text")]
-        public GameObject normalFrame;
-        public TMP_Text normalText;
-        public RawImageFlipBookView normalAnimationImage;
+        public TMP_Text mainText;
+        public GameObject mainAnimationObject;
+        public RawImageFlipBookView mainAnimationImage;
         public GameObject continueHint;
-        
-        [Title("Options")]
-        public GameObject optionFrame;
-        public GameObject optionParent;
-        public OptionView optionPrefab;
-        public GameObject optionSelectionHint;
-        
+
         [Title("Name Box")]
-        public GameObject nameBoxFrame;
+        public GameObject nameObject;
         public TMP_Text nameBoxText;
 
         public void Initialize()
         {
-            normalFrame.SetActive(true);
-            optionFrame.SetActive(false);
-            nameBoxFrame.SetActive(false);
+            nameBoxText.SetText(string.Empty);
+            mainText.SetText(string.Empty);
+            
+            nameObject.SetActive(false);
+            mainAnimationObject.SetActive(false);
             continueHint.SetActive(false);
-            optionParent.SetActive(false);
-            normalAnimationImage.gameObject.SetActive(false);
-            nameBoxText.text = string.Empty;
-            normalText.text = string.Empty;
-            normalText.maxVisibleCharacters = 0;
+            
+            mainText.maxVisibleCharacters = 0;
         }
     }
 }
