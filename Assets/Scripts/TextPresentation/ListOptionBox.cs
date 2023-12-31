@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace Ltg8
 {
+
     public class ListOptionBox : OptionBoxView
     {
         [SerializeField]
@@ -74,6 +75,7 @@ namespace Ltg8
         private void ReleaseOption(SingleOptionView option)
         {
             option.onSelect.RemoveAllListeners();
+            option.onHover.RemoveAllListeners();
             option.gameObject.SetActive(false);
             OptionPool.Release(option);
         }

@@ -5,10 +5,12 @@ using TriInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// todo: cleanup
 // todo: more randomization on the chirps (ref celeste, talk w/ luke)
-// todo: radial option box
+// todo: radial option box cleanup (needs audio, more control over different choice amounts - diff. view for each option amount?)
+// todo: better animation support
 // todo: better test w/ fake convo
+// todo: smell w/ the option functions here
+// todo: smell w/ duplicated logic between textbox and optionbox
 
 namespace Ltg8
 {

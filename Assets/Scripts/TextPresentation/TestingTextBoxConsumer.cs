@@ -42,8 +42,7 @@ namespace Ltg8
             await p.ShowMainAnimation(animSmile);
             await p.WriteText("Wanna make a <color=green>choice</color>?");
             await p.WaitForContinue();
-
-            UniTask.Delay(1000).ContinueWith(() => p.ShowOptionAnimation(animSmile)).Forget();
+            await p.ShowOptionAnimation(animSmile);
             
             switch (await p.PickOption("Nah, not really.", "Sure!", "[Ignore the narrator]")) {
                 case 0: 
