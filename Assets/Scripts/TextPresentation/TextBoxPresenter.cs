@@ -11,6 +11,7 @@ using UnityEngine.InputSystem;
 // todo: better test w/ fake convo
 // todo: smell w/ the option functions here
 // todo: smell w/ duplicated logic between textbox and optionbox
+// todo: better authoring of options (we want custom anim per option, better callbacks instead of switch)
 
 namespace Ltg8
 {
