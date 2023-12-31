@@ -18,7 +18,7 @@
                     <ui:Button text="Exit" display-tooltip-when-elided="true" name="ButtonExit" class="button-menuOption" />
                 </ui:VisualElement>
                 <ui:VisualElement name="MenuMainWindow" style="width: 82%; height: 100%; -unity-text-outline-color: rgb(55, 50, 67); background-color: rgba(215, 197, 158, 0.5); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 10px; border-right-width: 10px; border-bottom-width: 10px; border-left-width: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; transition-timing-function: ease-in-out; transition-duration: 0.5s;">
-                    <ui:VisualElement name="ContactsMenu" style="width: 100%; height: 100%; position: absolute; display: none; flex-direction: column; align-items: flex-start; justify-content: center;">
+                    <ui:VisualElement name="ContactsMenu" style="width: 100%; height: 100%; position: absolute; display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
                         <ui:VisualElement name="ContactsRow1" style="flex-direction: row; width: 100%; height: 40%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; justify-content: space-around;">
                             <ui:VisualElement name="ContactEggy" class="container-submenu" style="width: 31%; height: 100%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; justify-content: flex-start; flex-direction: row; border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60);">
                                 <ui:VisualElement name="ContactPortrait" style="height: 200px; width: 200px; justify-content: center;">
@@ -180,7 +180,7 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement name="LogMenu" style="width: 100%; height: 100%; position: absolute; display: none;" />
-                    <ui:VisualElement name="SettingsMenu" style="width: 100%; height: 100%; position: absolute; display: flex; flex-direction: row;">
+                    <ui:VisualElement name="SettingsMenu" style="width: 100%; height: 100%; position: absolute; display: none; flex-direction: row;">
                         <ui:VisualElement name="ColumnLeft" style="width: 50%; height: 100%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; justify-content: space-around; align-items: center;">
                             <ui:VisualElement name="DialogueContainer" class="container-submenu" style="width: 75%; height: 45%; flex-direction: column; align-items: center;">
                                 <ui:Label text="Dialogue" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 32px;" />
@@ -238,9 +238,10 @@
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
+                    <ui:VisualElement name="ControlsMenu" style="width: 100%; height: 100%; position: absolute; display: none; flex-direction: row;" />
                     <ui:VisualElement name="SaveMenu" style="width: 100%; height: 100%; position: absolute; display: none; align-items: center; justify-content: center;">
                         <ui:VisualElement name="Row1" style="height: 50%; width: 100%; flex-direction: row; align-items: center; justify-content: space-around; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
-                            <ui:VisualElement name="SaveBox0" class="container-submenu selectable" style="margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px; align-items: center; justify-content: flex-start; flex-direction: column;">
+                            <ui:Button display-tooltip-when-elided="true" name="SaveSlot0" focusable="false" class="container-submenu button-orange" style="flex-direction: column; align-items: center; -unity-font-style: normal; width: 29%;">
                                 <ui:Label text="Autosave Slot" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                                 <ui:VisualElement name="SlotDetails" style="flex-direction: row; align-items: center; justify-content: space-around; width: 100%;">
                                     <ui:VisualElement name="SaveText" style="align-items: flex-start; height: 200px;">
@@ -251,8 +252,8 @@
                                     </ui:VisualElement>
                                     <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; background-image: url(&apos;project://database/Assets/Graphics/Materials/Skyboxes/SB_In_The_Clouds.png?fileID=2800000&amp;guid=6f19bbf64646596498edb3bc9432dda7&amp;type=3#SB_In_The_Clouds&apos;); -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
                                 </ui:VisualElement>
-                            </ui:VisualElement>
-                            <ui:VisualElement name="SaveBox1" class="container-submenu" style="margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px; align-items: center; justify-content: flex-start; flex-direction: column;">
+                            </ui:Button>
+                            <ui:Button display-tooltip-when-elided="true" name="SaveSlot1" focusable="false" class="container-submenu button-orange" style="flex-direction: column; align-items: center; -unity-font-style: normal; width: 29%;">
                                 <ui:Label text="Save Slot #1" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                                 <ui:VisualElement name="SlotDetails" style="flex-direction: row; align-items: center; justify-content: space-around; width: 100%;">
                                     <ui:VisualElement name="SaveText" style="align-items: flex-start; height: 200px;">
@@ -261,10 +262,10 @@
                                         <ui:Label text="Time" display-tooltip-when-elided="true" name="Time" style="align-items: flex-start;" />
                                         <ui:Label text="Date" display-tooltip-when-elided="true" name="Date" style="align-items: flex-start;" />
                                     </ui:VisualElement>
-                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
+                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; background-image: none; -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
                                 </ui:VisualElement>
-                            </ui:VisualElement>
-                            <ui:VisualElement name="SaveBox2" class="container-submenu" style="margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px; align-items: center; justify-content: flex-start; flex-direction: column;">
+                            </ui:Button>
+                            <ui:Button display-tooltip-when-elided="true" name="SaveSlot2" focusable="false" class="container-submenu button-orange" style="flex-direction: column; align-items: center; -unity-font-style: normal; width: 29%;">
                                 <ui:Label text="Save Slot #2" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                                 <ui:VisualElement name="SlotDetails" style="flex-direction: row; align-items: center; justify-content: space-around; width: 100%;">
                                     <ui:VisualElement name="SaveText" style="align-items: flex-start; height: 200px;">
@@ -273,12 +274,12 @@
                                         <ui:Label text="Time" display-tooltip-when-elided="true" name="Time" style="align-items: flex-start;" />
                                         <ui:Label text="Date" display-tooltip-when-elided="true" name="Date" style="align-items: flex-start;" />
                                     </ui:VisualElement>
-                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
+                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; background-image: none; -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
                                 </ui:VisualElement>
-                            </ui:VisualElement>
+                            </ui:Button>
                         </ui:VisualElement>
                         <ui:VisualElement name="Row2" style="height: 50%; width: 100%; flex-direction: row; align-items: center; justify-content: space-around; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
-                            <ui:VisualElement name="SaveBox3" class="container-submenu" style="margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px; align-items: center; justify-content: flex-start; flex-direction: column;">
+                            <ui:Button display-tooltip-when-elided="true" name="SaveSlot3" focusable="false" class="container-submenu button-orange" style="flex-direction: column; align-items: center; -unity-font-style: normal; width: 29%;">
                                 <ui:Label text="Save Slot #3" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                                 <ui:VisualElement name="SlotDetails" style="flex-direction: row; align-items: center; justify-content: space-around; width: 100%;">
                                     <ui:VisualElement name="SaveText" style="align-items: flex-start; height: 200px;">
@@ -287,10 +288,10 @@
                                         <ui:Label text="Time" display-tooltip-when-elided="true" name="Time" style="align-items: flex-start;" />
                                         <ui:Label text="Date" display-tooltip-when-elided="true" name="Date" style="align-items: flex-start;" />
                                     </ui:VisualElement>
-                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
+                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; background-image: none; -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
                                 </ui:VisualElement>
-                            </ui:VisualElement>
-                            <ui:VisualElement name="SaveBox4" class="container-submenu" style="margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px; align-items: center; justify-content: flex-start; flex-direction: column;">
+                            </ui:Button>
+                            <ui:Button display-tooltip-when-elided="true" name="SaveSlot4" focusable="false" class="container-submenu button-orange" style="flex-direction: column; align-items: center; -unity-font-style: normal; width: 29%;">
                                 <ui:Label text="Save Slot #4" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                                 <ui:VisualElement name="SlotDetails" style="flex-direction: row; align-items: center; justify-content: space-around; width: 100%;">
                                     <ui:VisualElement name="SaveText" style="align-items: flex-start; height: 200px;">
@@ -299,10 +300,10 @@
                                         <ui:Label text="Time" display-tooltip-when-elided="true" name="Time" style="align-items: flex-start;" />
                                         <ui:Label text="Date" display-tooltip-when-elided="true" name="Date" style="align-items: flex-start;" />
                                     </ui:VisualElement>
-                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
+                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; background-image: none; -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
                                 </ui:VisualElement>
-                            </ui:VisualElement>
-                            <ui:VisualElement name="SaveBox5" class="container-submenu" style="margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px; align-items: center; justify-content: flex-start; flex-direction: column;">
+                            </ui:Button>
+                            <ui:Button display-tooltip-when-elided="true" name="SaveSlot5" focusable="false" class="container-submenu button-orange" style="flex-direction: column; align-items: center; -unity-font-style: normal; width: 29%;">
                                 <ui:Label text="Save Slot #5" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                                 <ui:VisualElement name="SlotDetails" style="flex-direction: row; align-items: center; justify-content: space-around; width: 100%;">
                                     <ui:VisualElement name="SaveText" style="align-items: flex-start; height: 200px;">
@@ -311,16 +312,18 @@
                                         <ui:Label text="Time" display-tooltip-when-elided="true" name="Time" style="align-items: flex-start;" />
                                         <ui:Label text="Date" display-tooltip-when-elided="true" name="Date" style="align-items: flex-start;" />
                                     </ui:VisualElement>
-                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
+                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; background-image: none; -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
                                 </ui:VisualElement>
-                            </ui:VisualElement>
+                            </ui:Button>
                         </ui:VisualElement>
-                        <ui:VisualElement name="SaveConfirmationWindow" class="container-submenu" style="position: absolute; width: 50%; height: 50%; background-color: rgb(181, 151, 84); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 10px; border-right-width: 10px; border-bottom-width: 10px; border-left-width: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; align-items: center; justify-content: center; flex-direction: column; top: 183px; left: 365px; display: none;">
-                            <ui:Label text="Confirm Save" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
-                            <ui:Label text="Are you sure you want to overwrite save slot #1?" display-tooltip-when-elided="true" name="ConfirmationText" style="-unity-text-align: upper-center; white-space: normal; width: 50%; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;" />
-                            <ui:VisualElement style="flex-direction: row; align-items: center; justify-content: center; width: 100%; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
-                                <ui:Button text="Yes" display-tooltip-when-elided="true" name="ButtonYes" class="button-orange" style="width: 20%;" />
-                                <ui:Button text="No" display-tooltip-when-elided="true" name="ButtonNo" class="button-orange" style="width: 20%;" />
+                        <ui:VisualElement name="SaveConfirmation" style="width: 100%; height: 100%; position: absolute; background-color: rgba(188, 163, 108, 0.5); display: none;">
+                            <ui:VisualElement name="SaveConfirmationWindow" class="container-submenu" style="position: relative; width: 50%; height: 50%; background-color: rgb(181, 151, 84); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 10px; border-right-width: 10px; border-bottom-width: 10px; border-left-width: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; align-items: center; justify-content: center; flex-direction: column; top: 183px; left: 365px; display: flex;">
+                                <ui:Label text="Confirm Save" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                                <ui:Label text="Are you sure you want to overwrite save slot #1?" display-tooltip-when-elided="true" name="ConfirmationText" style="-unity-text-align: upper-center; white-space: normal; width: 50%; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;" />
+                                <ui:VisualElement style="flex-direction: row; align-items: center; justify-content: center; width: 100%; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
+                                    <ui:Button text="Yes" display-tooltip-when-elided="true" name="ButtonYes" class="button-orange" style="width: 20%;" />
+                                    <ui:Button text="No" display-tooltip-when-elided="true" name="ButtonNo" class="button-orange" style="width: 20%;" />
+                                </ui:VisualElement>
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>

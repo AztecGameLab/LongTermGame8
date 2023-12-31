@@ -357,17 +357,3 @@
     height: 30px;
     width: 30px;
 }
-
-.selectable {
-    transition-property: scale;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-out-elastic;
-}
-
-.selectable :hover {
-    scale: 1.1 1.1;
-}
-
-.selectable :active {
-    scale: 1.2 1.2;
-}
