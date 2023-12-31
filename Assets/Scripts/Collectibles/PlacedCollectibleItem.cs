@@ -8,8 +8,9 @@ namespace Collectibles
         
         public void Interact(PlayerInteractController playerInteractController)
         {
-            playerInteractController.Inventory.collectedItems.Add(collectibleItem);
-            gameObject.SetActive(false);
+            Debug.Log(Time.time + ": " + gameObject.name);
+            // playerInteractController.Inventory.collectedItems.Add(collectibleItem);
+            // gameObject.SetActive(false);
         }
 
     }
