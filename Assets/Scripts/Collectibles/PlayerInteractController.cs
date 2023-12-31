@@ -22,7 +22,7 @@ namespace Collectibles
             if (Physics.Raycast(gameObject.transform.position, gameObject.transform.TransformDirection(Vector3.forward),
                     out RaycastHit hit, interactRange))
             {
-                return hit.collider.gameObject.TryGetComponent<IPlayerInteractable>(out playerInteractable);
+                return hit.collider.gameObject.TryGetComponent(out playerInteractable);
             }
 
             return false;

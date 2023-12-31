@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc55ea14c1fd457f99d98aa4fcc70f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleItem: {fileID: 11400000, guid: 26f8daee65d5de04ba71d59dc74f5f39, type: 2}
+  collectibleItem: {fileID: 11400000, guid: 943fa92f48a4fc14f9ac28e8af6576ef, type: 2}
 --- !u!135 &43307431
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc55ea14c1fd457f99d98aa4fcc70f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleItem: {fileID: 11400000, guid: ef08ee66fb906ac48b05d735fc09ac55, type: 2}
+  collectibleItem: {fileID: 11400000, guid: 65b6b35aa6e41b74bb80fc4be4612fbb, type: 2}
 --- !u!136 &347685757
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -586,8 +586,8 @@ GameObject:
   - component: {fileID: 2072808213}
   - component: {fileID: 2072808212}
   - component: {fileID: 2072808210}
-  - component: {fileID: 2072808218}
   - component: {fileID: 2072808217}
+  - component: {fileID: 2072808219}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -629,10 +629,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: ec4d88b0-d69d-45be-8aed-4d4fec0f7175
     m_ActionName: PlayerFreeMovement/MoveX[/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 72b57672-6e1b-4798-8ce0-bbd7cec388dd
-    m_ActionName: PlayerFreeMovement/MoveY[/Keyboard/s,/Keyboard/w]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 4cb9bb6a-7eb9-4227-a95c-3d60e00be11d
@@ -819,7 +815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactRange: 20
---- !u!114 &2072808218
+--- !u!114 &2072808219
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -828,7 +824,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2072808209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34326910fac02e54895e9da7296eacd7, type: 3}
+  m_Script: {fileID: 11500000, guid: 059fe1cf3c9cc1e4f8576f703e42f0d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   collectedItems: []
