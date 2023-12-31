@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 // todo: cleanup
 // todo: more randomization on the chirps (ref celeste, talk w/ luke)
+// todo: radial option box
 // todo: better test w/ fake convo
 
 namespace Ltg8
