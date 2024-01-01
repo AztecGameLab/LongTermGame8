@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
-using Random = UnityEngine.Random;
-namespace DefaultNamespace
+﻿using UnityEngine;
+
+namespace Ltg8.Misc
 {
     public class Spinner : MonoBehaviour
     {

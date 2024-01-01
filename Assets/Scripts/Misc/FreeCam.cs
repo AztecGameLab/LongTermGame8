@@ -1,6 +1,6 @@
-﻿using System;
-using UnityEngine;
-namespace DefaultNamespace
+﻿using UnityEngine;
+
+namespace Ltg8.Misc
 {
     public class FreeCam : MonoBehaviour
     {
