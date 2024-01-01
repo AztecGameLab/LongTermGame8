@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
+
 namespace Ltg8
 {
-
     public class RadialOptionBox : OptionBoxView
     {
         [SerializeField] 
@@ -20,8 +19,10 @@ namespace Ltg8
         private int _selectedOption;
         private RadialOptionView _hoveredOption;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+            
             if (pickTwoOptions.Count != 2) Debug.LogError("pickTwoOptions must have exactly two values!");
             if (pickThreeOptions.Count != 3) Debug.LogError("pickThreeOptions must have exactly three values!");
             if (pickFourOptions.Count != 4) Debug.LogError("pickFourOptions must have exactly four values!");
@@ -31,7 +32,7 @@ namespace Ltg8
             foreach (RadialOptionView option in pickFourOptions) option.gameObject.SetActive(false);
         }
         
-        public override async UniTask<int> OptionPickTwo(string first, string second)
+        public override async UniTask<int> PickOption(OptionData first, OptionData second)
         {
             SetSelectedOption(pickTwoOptions[0]);
             SetupOption(pickTwoOptions[0], first, 0);
@@ -41,7 +42,7 @@ namespace Ltg8
             return result;
         }
         
-        public override async UniTask<int> OptionPickThree(string first, string second, string third)
+        public override async UniTask<int> PickOption(OptionData first, OptionData second, OptionData third)
         {
             SetSelectedOption(pickThreeOptions[1]);
             SetupOption(pickThreeOptions[0], first, 0);
@@ -52,7 +53,7 @@ namespace Ltg8
             return result;
         }
         
-        public override async UniTask<int> OptionPickFour(string first, string second, string third, string fourth)
+        public override async UniTask<int> PickOption(OptionData first, OptionData second, OptionData third, OptionData fourth)
         {
             SetSelectedOption(pickFourOptions[1]);
             SetupOption(pickFourOptions[0], first, 0);
@@ -70,15 +71,16 @@ namespace Ltg8
             _hoveredOption = view;
         }
         
-        private void SetupOption(RadialOptionView option, string text, int id)
+        private void SetupOption(RadialOptionView option, OptionData data, int id)
         {
             option.gameObject.SetActive(true);
-            option.optionView.textDisplay.SetText(text);
+            option.optionView.textDisplay.SetText(data.message);
             option.optionView.onSelect.AddListener(() => _selectedOption = id);
             option.optionView.onHover.AddListener(() => {
                 _hoveredOption.selectionHint.SetActive(false);
                 _hoveredOption = option;
                 _hoveredOption.selectionHint.SetActive(true);
+                Animation = data.Animation;
             });
         }
 

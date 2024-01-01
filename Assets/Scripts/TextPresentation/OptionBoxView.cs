@@ -1,6 +1,7 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using FMODUnity;
-using TMPro;
+using TNRD;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -8,36 +9,51 @@ namespace Ltg8
 {
     public abstract class OptionBoxView : MonoBehaviour
     {
-        public TMP_Text mainText;
-        public RawImageFlipBookView mainAnimationImage;
-        public GameObject mainAnimationObject;
+        [SerializeField] private TextBoxView textBox;
+        
         public RawImageFlipBookView optionAnimationImage;
         public GameObject optionAnimationObject;
         public EventReference optionHoverSfx;
         public EventReference optionSelectSfx;
-
-        public GameObject nameObject;
-        public TMP_Text nameText;
         
         [SerializeField]
         private SingleOptionView singleOptionPrefab;
 
         protected ObjectPool<SingleOptionView> OptionPool;
+        protected IFlipBookAnimation Animation;
+        public TextBoxView TextBox => textBox;
 
-        public virtual void Initialize()
+        protected virtual void Awake()
         {
-            mainText.SetText(string.Empty);
-            nameText.SetText(string.Empty);
-            
-            nameObject.SetActive(false);
-            optionAnimationObject.SetActive(false);
-            mainAnimationObject.SetActive(false);
-            
             OptionPool = new ObjectPool<SingleOptionView>(() => Instantiate(singleOptionPrefab));
         }
 
-        public abstract UniTask<int> OptionPickTwo(string first, string second);
-        public abstract UniTask<int> OptionPickThree(string first, string second, string third);
-        public abstract UniTask<int> OptionPickFour(string first, string second, string third, string fourth);
+        private void Update()
+        {
+            Animation.Update(Time.deltaTime);
+        }
+
+        public abstract UniTask<int> PickOption(OptionData first, OptionData second);
+        public abstract UniTask<int> PickOption(OptionData first, OptionData second, OptionData third);
+        public abstract UniTask<int> PickOption(OptionData first, OptionData second, OptionData third, OptionData fourth);
+    }
+    
+    [Serializable]
+    public struct OptionData
+    {
+        [SerializeField]
+        private SerializableInterface<IFlipBookAnimation> animation;
+        
+        public string message;
+        public IFlipBookAnimation Animation => animation.Value;
+
+        public static implicit operator OptionData(string s)
+        {
+            return new OptionData 
+            {
+                message = s,
+                animation = new SerializableInterface<IFlipBookAnimation>(InvisibleFlipBookAnimation.Instance),
+            };
+        }
     }
 }

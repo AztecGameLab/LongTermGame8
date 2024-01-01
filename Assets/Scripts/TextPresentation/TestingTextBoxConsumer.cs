@@ -8,7 +8,8 @@ namespace Ltg8
         public SimpleFlipBookAnimation animSmile;
         public SimpleFlipBookAnimation animFrown;
 
-        private TextBoxPresenter p => Ltg8.TextBoxPresenter;
+        private TextBoxView t => Ltg8.TextBoxPresenter.DefaultTextBox;
+        private OptionBoxView o => Ltg8.TextBoxPresenter.DefaultOptionBox;
         
         private void Start()
         {
@@ -23,77 +24,77 @@ namespace Ltg8
 
         private async UniTaskVoid TestTextBoxes()
         {
-            await p.Open("Narrator");
+            t.gameObject.SetActive(true);
+            t.CurrentDisplayName = "Narrator";
 
             // basic test
-            await p.WriteText("Hello, world!");
-            await p.WaitForContinue();
+            await t.WriteText("Hello, world!");
+            await t.WaitForContinue();
             
             // delay + multi-part test
-            await p.ClearText();
-            await p.WriteText("Here is another line of text ...");
-            await p.Delay(1);
-            await p.WriteText(" and we're done!");
-            await p.WaitForContinue();
+            await t.ClearText();
+            await t.WriteText("Here is another line of text ...");
+            await t.Delay(1);
+            await t.WriteText(" and we're done!");
+            await t.WaitForContinue();
 
             // decision + animation test
-            await p.ClearText();
-            await p.ShowMainAnimation(animSmile);
-            await p.WriteText("Wanna make a <color=green>choice</color>?");
-            await p.WaitForContinue();
-            await p.ShowOptionAnimation(animSmile);
+            await t.ClearText();
+            t.CurrentMainAnimation = animSmile;
+            await t.WriteText("Wanna make a <color=green>choice</color>?");
+            await t.WaitForContinue();
 
-            switch (await p.PickOption("Sure", "No, choices scare me."))
+            switch (await t.PickOption(o, "Sure", "No, choices scare me."))
             {
                 case 0:
                     await Option_LikesChoices();
                     break;
                 case 1:
-                    await p.WriteText("That's fair.");
+                    await t.WriteText("That's fair.");
                     break;
             }
 
-            await p.WaitForContinue();
-            await p.Close();
+            await t.WaitForContinue();
+            t.gameObject.SetActive(false);
         }
 
         private async UniTask Option_LikesChoices()
         {
-            await p.WriteText("Well, how do you feel about three choices?");
-            await p.WaitForContinue();
+            await t.WriteText("Well, how do you feel about three choices?");
+            await t.WaitForContinue();
             
-            switch (await p.PickOption("I can handle it.", "How am I supposed to handle three choices?", "How can the textbox system can support this?"))
+            switch (await t.PickOption(o, "I can handle it.", "How am I supposed to handle three choices?", "How can the textbox system can support this?"))
             {
                 case 0:
                     await Option_ReallyLikesChoices();
                     break;
                 case 1:
-                    await p.WriteText("I'm sorry, of course three is too much.");
+                    await t.WriteText("I'm sorry, of course three is too much.");
                     break;
                 case 2:
-                    await p.WriteText("Honestly, I have no clue.");
+                    await t.WriteText("Honestly, I have no clue.");
                     break;
             }
         }
 
         private async UniTask Option_ReallyLikesChoices()
         {
-            await p.WriteText("You'll love this, then!");
-            await p.WaitForContinue();
+            await t.WriteText("You'll love this, then!");
+            await t.WaitForContinue();
 
-            switch (await p.PickOption("WTF", "FOUR OPTIONS?!?!", "Are you crazy?", "ez"))
+            switch (await t.PickOption(o, "WTF", "FOUR OPTIONS?!?!", "Are you crazy?", "ez"))
             {
                 case 0:
-                    await p.WriteText("Yep.");
+                    await t.WriteText("Yep.");
                     break;
                 case 1:
-                    await p.WriteText("Read em' and weep.");
+                    await t.WriteText("Read em' and weep.");
                     break;
                 case 2:
-                    await p.WriteText("Only a little.");
+                    await t.WriteText("Only a little.");
                     break;
                 case 3:
-                    await p.WriteText("I'm sorry, but four is the highest we can go currently...");
+                    await t.WriteText("I'm sorry, but four is the highest we can go currently...");
                     break;
             }
         }

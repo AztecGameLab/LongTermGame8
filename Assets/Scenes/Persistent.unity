@@ -415,6 +415,15 @@ MonoBehaviour:
   mainAnimationObject: {fileID: 383608734}
   mainAnimationImage: {fileID: 383608737}
   continueHint: {fileID: 95263478}
+  confirmChirp:
+    Guid:
+      Data1: -1287126499
+      Data2: 1328215302
+      Data3: 1250226573
+      Data4: -1564819282
+    Path: event:/dev_confirm
+  defaultRevealStyle: {fileID: 11400000, guid: ac1ba0348e1f0bf48b11db3f17add763, type: 2}
+  clearDuration: 0.5
   nameObject: {fileID: 1586334501}
   nameBoxText: {fileID: 1062573781}
 --- !u!1 &85816503
@@ -2503,6 +2512,15 @@ MonoBehaviour:
   mainAnimationObject: {fileID: 1672828573}
   mainAnimationImage: {fileID: 1801434345}
   continueHint: {fileID: 1164688379}
+  confirmChirp:
+    Guid:
+      Data1: -1287126499
+      Data2: 1328215302
+      Data3: 1250226573
+      Data4: -1564819282
+    Path: event:/dev_confirm
+  defaultRevealStyle: {fileID: 11400000, guid: ac1ba0348e1f0bf48b11db3f17add763, type: 2}
+  clearDuration: 0.5
   nameObject: {fileID: 1130721543}
   nameBoxText: {fileID: 364344751}
 --- !u!1 &446504732
@@ -3321,6 +3339,15 @@ MonoBehaviour:
   mainAnimationObject: {fileID: 1184600004}
   mainAnimationImage: {fileID: 1184600008}
   continueHint: {fileID: 571422981}
+  confirmChirp:
+    Guid:
+      Data1: -1287126499
+      Data2: 1328215302
+      Data3: 1250226573
+      Data4: -1564819282
+    Path: event:/dev_confirm
+  defaultRevealStyle: {fileID: 11400000, guid: ac1ba0348e1f0bf48b11db3f17add763, type: 2}
+  clearDuration: 0.5
   nameObject: {fileID: 1248874742}
   nameBoxText: {fileID: 1369964148}
 --- !u!1001 &769237088
@@ -5873,17 +5900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9044389ecf4c11904bf41ae3009a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultTextBoxView: {fileID: 433640642}
-  defaultOptionBoxView: {fileID: 1602440499}
-  defaultRevealStyle: {fileID: 11400000, guid: ac1ba0348e1f0bf48b11db3f17add763, type: 2}
-  confirmChirp:
-    Guid:
-      Data1: -1287126499
-      Data2: 1328215302
-      Data3: 1250226573
-      Data4: -1564819282
-    Path: event:/dev_confirm
-  clearDuration: 0.5
+  defaultTextBox: {fileID: 85405761}
+  defaultOptionsBox: {fileID: 1602440499}
 --- !u!114 &1438414972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5940,8 +5958,20 @@ MonoBehaviour:
     m_ActionName: PlayerFreeMovement/Sprint[/Keyboard/shift]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1438414971}
-        m_TargetAssemblyTypeName: Ltg8.TextBoxPresenter, Ltg8
+      - m_Target: {fileID: 1602440500}
+        m_TargetAssemblyTypeName: Ltg8.TextBoxView, Ltg8
+        m_MethodName: HandleContinue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1602440500}
+        m_TargetAssemblyTypeName: Ltg8.TextBoxView, Ltg8
         m_MethodName: HandleContinue
         m_Mode: 0
         m_Arguments:
@@ -6488,6 +6518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1602440498}
   - component: {fileID: 1602440499}
+  - component: {fileID: 1602440500}
   m_Layer: 5
   m_Name: Option View 01
   m_TagString: Untagged
@@ -6535,9 +6566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce86802d453f48569f5490391265a673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainText: {fileID: 66872746}
-  mainAnimationImage: {fileID: 758443268}
-  mainAnimationObject: {fileID: 758443265}
+  textBox: {fileID: 1602440500}
   optionAnimationImage: {fileID: 1138917641}
   optionAnimationObject: {fileID: 1138917638}
   optionHoverSfx:
@@ -6554,8 +6583,6 @@ MonoBehaviour:
       Data3: 1250226573
       Data4: -1564819282
     Path: event:/dev_confirm
-  nameObject: {fileID: 1077795700}
-  nameText: {fileID: 1563721696}
   singleOptionPrefab: {fileID: 6996611794744755249, guid: 50649a5eb5800c54ca1590c83e71d181,
     type: 3}
   pickTwoOptions:
@@ -6570,6 +6597,33 @@ MonoBehaviour:
   - {fileID: 298802791}
   - {fileID: 784602602}
   - {fileID: 1691118229}
+--- !u!114 &1602440500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602440497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee594bb48d404b9bba8240f0ec0f5f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainText: {fileID: 66872746}
+  mainAnimationObject: {fileID: 758443265}
+  mainAnimationImage: {fileID: 758443268}
+  continueHint: {fileID: 0}
+  confirmChirp:
+    Guid:
+      Data1: -1287126499
+      Data2: 1328215302
+      Data3: 1250226573
+      Data4: -1564819282
+    Path: event:/dev_confirm
+  defaultRevealStyle: {fileID: 11400000, guid: ac1ba0348e1f0bf48b11db3f17add763, type: 2}
+  clearDuration: 1
+  nameObject: {fileID: 1077795700}
+  nameBoxText: {fileID: 1563721696}
 --- !u!1001 &1629442292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7821,9 +7875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4a4cd236584464b2b42356c33a41ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainText: {fileID: 1326182454}
-  mainAnimationImage: {fileID: 1795522152}
-  mainAnimationObject: {fileID: 1795522149}
+  textBox: {fileID: 0}
   optionAnimationImage: {fileID: 1482584721}
   optionAnimationObject: {fileID: 1482584718}
   optionHoverSfx:
@@ -7840,8 +7892,6 @@ MonoBehaviour:
       Data3: 1250226573
       Data4: -1564819282
     Path: event:/dev_confirm
-  nameObject: {fileID: 2140814890}
-  nameText: {fileID: 1709337641}
   singleOptionPrefab: {fileID: 6996611794744755249, guid: 50649a5eb5800c54ca1590c83e71d181,
     type: 3}
   optionParent: {fileID: 1158910357}

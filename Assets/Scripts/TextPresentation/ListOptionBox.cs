@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 namespace Ltg8
 {
-
     public class ListOptionBox : OptionBoxView
     {
         [SerializeField]
@@ -16,15 +15,15 @@ namespace Ltg8
         
         private int _selectedOption;
 
-        public override void Initialize()
+        protected override void Awake()
         {
-            base.Initialize();
+            base.Awake();
             
             for (int i = 0; i < optionParent.childCount; i++)
                 Destroy(optionParent.GetChild(i).gameObject);
         }
 
-        public override async UniTask<int> OptionPickTwo(string first, string second)
+        public override async UniTask<int> PickOption(OptionData first, OptionData second)
         {
             SingleOptionView op1 = CreateOption(first, 0);
             SingleOptionView op2 = CreateOption(second, 1);
@@ -34,7 +33,7 @@ namespace Ltg8
             return result;
         }
         
-        public override async UniTask<int> OptionPickThree(string first, string second, string third)
+        public override async UniTask<int> PickOption(OptionData first, OptionData second, OptionData third)
         {
             SingleOptionView op1 = CreateOption(first, 0);
             SingleOptionView op2 = CreateOption(second, 1);
@@ -46,7 +45,7 @@ namespace Ltg8
             return result;
         }
         
-        public override async UniTask<int> OptionPickFour(string first, string second, string third, string fourth)
+        public override async UniTask<int> PickOption(OptionData first, OptionData second, OptionData third, OptionData fourth)
         {
             SingleOptionView op1 = CreateOption(first, 0);
             SingleOptionView op2 = CreateOption(second, 1);
@@ -60,15 +59,18 @@ namespace Ltg8
             return result;
         }
         
-        private SingleOptionView CreateOption(string text, int id)
+        private SingleOptionView CreateOption(OptionData data, int id)
         {
             SingleOptionView option = OptionPool.Get();
             option.gameObject.SetActive(true);
             option.transform.SetParent(optionParent);
-            option.textDisplay.SetText(text);
+            option.textDisplay.SetText(data.message);
             option.textDisplay.autoSizeTextContainer = true;
             option.onSelect.AddListener(() => _selectedOption = id);
-            option.onHover.AddListener(() => RuntimeManager.PlayOneShot(optionHoverSfx));
+            option.onHover.AddListener(() => {
+                Animation = data.Animation;
+                RuntimeManager.PlayOneShot(optionHoverSfx);
+            });
             return option;
         }
 
