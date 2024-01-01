@@ -27,9 +27,15 @@ namespace Ltg8
         public async UniTask<SaveData> ReadFromDisk(string saveId)
         {
             if (Busy) return null;
-        
+
+            string path = $"{SavePath}/{saveId}.json";
+
+            // not sure if this is best approach for unavailable saves, but its good for now
+            if (!File.Exists(path))
+                return new SaveData();
+            
             Busy = true;
-            string json = await File.ReadAllTextAsync($"{SavePath}/{saveId}.json");
+            string json = await File.ReadAllTextAsync(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
             Busy = false;
             return data;
