@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private InputAction _moveAction, _jumpAction;
     private PlayerInput _playerInput;
     private Vector3 _initialPosition;
-    private Vector2 _playerInputValue;
+    private Vector3 _playerInputValue;
     private bool _initialJump;
     private float _velocityMagnitude;
     
@@ -47,23 +47,44 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move(_playerInputValue);
+        CtrlSpeed();
         UpdateSound();
         Debug.Log(playerRb.velocity);
     }
     
     // Separate move logic to be used in FixedUpdate
-    private void Move(Vector2 playerLocation)
+    private void Move(Vector3 directionVector)
     {
-        Vector3 playerMovement = new(playerLocation.x, 0f, playerLocation.y);
-        playerMovement = playerMovement.normalized * (walkMoveSpeed * Time.fixedDeltaTime);
-        playerRb.MovePosition(playerRb.position + playerMovement);
+        //only applies force to the player if there is input
+        if(directionVector.x != 0 || directionVector.z != 0){
+            playerRb.AddForce(directionVector.normalized * walkMoveSpeed * 10f, ForceMode.Force);
+        }else{
+            playerRb.velocity = new Vector3(0, playerRb.velocity.y, 0);
+        }
 
-        CalculateVelocity();
+        // Vector3 playerMovement = new(playerLocation.x, 0f, playerLocation.y);
+        // playerMovement = playerMovement.normalized * (walkMoveSpeed * Time.fixedDeltaTime);
+        // playerRb.MovePosition(playerRb.position + playerMovement);
+
+        // CalculateVelocity();
+    }
+
+    private void CtrlSpeed()
+    {
+        //caps the player's rigidbody.velocity at some value
+        Vector3 flatVel = new Vector3(playerRb.velocity.x, 0f, playerRb.velocity.z);
+
+        if(flatVel.magnitude > walkMoveSpeed)
+        {
+            Vector3 limitedVel = flatVel.normalized * walkMoveSpeed;
+            playerRb.velocity = new Vector3(limitedVel.x, playerRb.velocity.y, limitedVel.z);
+        }
     }
     
     public void OnMove(InputAction.CallbackContext context) 
     {
-        _playerInputValue = context.ReadValue<Vector2>();
+        //converts the vector2 input into a vector3
+        _playerInputValue = new Vector3(context.ReadValue<Vector2>().x, 0f, context.ReadValue<Vector2>().y);
         RuntimeManager.AttachInstanceToGameObject(_playerFootsteps, playerRb.transform, playerRb);
     }
 
