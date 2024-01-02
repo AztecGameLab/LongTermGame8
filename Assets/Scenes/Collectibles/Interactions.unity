@@ -156,6 +156,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectibleItem: {fileID: 11400000, guid: 943fa92f48a4fc14f9ac28e8af6576ef, type: 2}
+  collectSound:
+    Guid:
+      Data1: 2115721580
+      Data2: 1193116272
+      Data3: 373612186
+      Data4: -1501527789
+    Path: event:/TestEvent
 --- !u!135 &43307431
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -267,6 +274,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectibleItem: {fileID: 11400000, guid: 65b6b35aa6e41b74bb80fc4be4612fbb, type: 2}
+  collectSound:
+    Guid:
+      Data1: 2115721580
+      Data2: 1193116272
+      Data3: 373612186
+      Data4: -1501527789
+    Path: event:/TestEvent
 --- !u!136 &347685757
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -476,6 +490,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectibleItem: {fileID: 11400000, guid: eb0acde5a502b674eb094b2138786201, type: 2}
+  collectSound:
+    Guid:
+      Data1: 2115721580
+      Data2: 1193116272
+      Data3: 373612186
+      Data4: -1501527789
+    Path: event:/TestEvent
 --- !u!65 &509735576
 BoxCollider:
   m_ObjectHideFlags: 0

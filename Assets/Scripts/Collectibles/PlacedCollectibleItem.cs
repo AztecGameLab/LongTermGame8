@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 
 namespace Collectibles
@@ -7,9 +8,11 @@ namespace Collectibles
     public class PlacedCollectibleItem : MonoBehaviour, IPlayerInteractable
     {
         public InventoryCollectibleItem collectibleItem;
-
+        public EventReference collectSound;
+        
         private List<Material> _materials;
         private bool _highlighted;
+        
 
         private void Start()
         {
@@ -19,6 +22,7 @@ namespace Collectibles
         public void Interact(PlayerInteractController playerInteractController)
         {
             playerInteractController.Inventory.collectedItems.Add(collectibleItem);
+            RuntimeManager.PlayOneShot(collectSound, transform.position);
             gameObject.SetActive(false);
         }
         
