@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 43307433}
   - component: {fileID: 43307432}
   - component: {fileID: 43307431}
-  - component: {fileID: 43307430}
+  - component: {fileID: 43307435}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -143,27 +143,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &43307430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43307429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc55ea14c1fd457f99d98aa4fcc70f25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionEnabled: 1
-  collectibleItem: {fileID: 11400000, guid: 943fa92f48a4fc14f9ac28e8af6576ef, type: 2}
-  collectSound:
-    Guid:
-      Data1: 2115721580
-      Data2: 1193116272
-      Data3: 373612186
-      Data4: -1501527789
-    Path: event:/TestEvent
 --- !u!135 &43307431
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -242,6 +221,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &43307435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43307429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0b9b075a224302bed8c7a04f497dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionEnabled: 1
+  collectibleItem: {fileID: 11400000, guid: 943fa92f48a4fc14f9ac28e8af6576ef, type: 2}
+  collectSound:
+    Guid:
+      Data1: 2115721580
+      Data2: 1193116272
+      Data3: 373612186
+      Data4: -1501527789
+    Path: event:/TestEvent
+  timeToShrink: 0.35
 --- !u!1 &347685755
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +255,7 @@ GameObject:
   - component: {fileID: 347685759}
   - component: {fileID: 347685758}
   - component: {fileID: 347685757}
-  - component: {fileID: 347685756}
+  - component: {fileID: 347685761}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -262,27 +263,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &347685756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347685755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc55ea14c1fd457f99d98aa4fcc70f25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionEnabled: 1
-  collectibleItem: {fileID: 11400000, guid: 65b6b35aa6e41b74bb80fc4be4612fbb, type: 2}
-  collectSound:
-    Guid:
-      Data1: 2115721580
-      Data2: 1193116272
-      Data3: 373612186
-      Data4: -1501527789
-    Path: event:/TestEvent
 --- !u!136 &347685757
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -362,6 +342,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &347685761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347685755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0b9b075a224302bed8c7a04f497dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionEnabled: 1
+  collectibleItem: {fileID: 11400000, guid: 65b6b35aa6e41b74bb80fc4be4612fbb, type: 2}
+  collectSound:
+    Guid:
+      Data1: 2115721580
+      Data2: 1193116272
+      Data3: 373612186
+      Data4: -1501527789
+    Path: event:/TestEvent
+  timeToShrink: 0.35
 --- !u!1 &400102255
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +473,7 @@ GameObject:
   - component: {fileID: 509735578}
   - component: {fileID: 509735577}
   - component: {fileID: 509735576}
-  - component: {fileID: 509735575}
+  - component: {fileID: 509735580}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -479,27 +481,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &509735575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509735574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc55ea14c1fd457f99d98aa4fcc70f25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionEnabled: 1
-  collectibleItem: {fileID: 11400000, guid: eb0acde5a502b674eb094b2138786201, type: 2}
-  collectSound:
-    Guid:
-      Data1: 2115721580
-      Data2: 1193116272
-      Data3: 373612186
-      Data4: -1501527789
-    Path: event:/TestEvent
 --- !u!65 &509735576
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -578,6 +559,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &509735580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509735574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0b9b075a224302bed8c7a04f497dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionEnabled: 1
+  collectibleItem: {fileID: 11400000, guid: eb0acde5a502b674eb094b2138786201, type: 2}
+  collectSound:
+    Guid:
+      Data1: 2115721580
+      Data2: 1193116272
+      Data3: 373612186
+      Data4: -1501527789
+    Path: event:/TestEvent
+  timeToShrink: 0.35
 --- !u!1 &636528207
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,6 +709,7 @@ GameObject:
   - component: {fileID: 2072808214}
   - component: {fileID: 2072808213}
   - component: {fileID: 2072808212}
+  - component: {fileID: 2072808220}
   - component: {fileID: 2072808210}
   - component: {fileID: 2072808217}
   - component: {fileID: 2072808219}
@@ -950,3 +954,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectedItems: []
+--- !u!135 &2072808220
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072808209}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.64
+  m_Center: {x: 0, y: 0, z: 0}

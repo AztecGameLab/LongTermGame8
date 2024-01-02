@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Collectibles
 {
@@ -13,6 +14,8 @@ namespace Collectibles
         /// </summary>
         /// <param name="playerInteractController"></param>
         public abstract void Interact(PlayerInteractController playerInteractController);
+        
+        public bool interactionEnabled = true;
         
         private List<Material> _materials;
         private bool _highlighted;

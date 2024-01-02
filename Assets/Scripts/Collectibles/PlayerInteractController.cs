@@ -12,8 +12,8 @@ namespace Collectibles
     public class PlayerInteractController : MonoBehaviour
     {
         public float interactRange = 5;
-        public Color highlightColor = new(48, 48, 48); 
-        
+        public Color highlightColor = new(48, 48, 48);
+
         public PlayerCollectibleInventory Inventory { get; private set; }
 
         private void Start()
@@ -26,14 +26,16 @@ namespace Collectibles
             playerInteractable = null;
 
             Transform playerTransform = gameObject.transform;
-            
+
             Collider[] objects = Physics.OverlapSphere(playerTransform.position, interactRange);
 
             HashSet<InteractableIntention> interactables = new HashSet<InteractableIntention>();
-            
+
             foreach (Collider interactCollider in objects)
             {
-                if (!interactCollider.TryGetComponent(out PlayerInteractable interactable)) continue;
+                if (!interactCollider.TryGetComponent(out PlayerInteractable interactable) ||
+                    !interactable.interactionEnabled)
+                    continue; 
 
                 Vector3 objectPosition = interactCollider.transform.position;
                 Vector3 playerToObjectVector = objectPosition - playerTransform.position;
@@ -46,19 +48,20 @@ namespace Collectibles
                     if (!hit.collider.TryGetComponent(out PlayerInteractable checkInteract))
                         continue;
                 }
-                
+
                 float angle = Vector3.Angle(playerToObjectVector, playerTransform.TransformDirection(Vector3.forward));
-                
+
                 // organize by both how close it is to the player's aim, and how close the player is to it
                 // Lower values are prioritized, so Angle 0 and Distance 0 would be the highest weight
-                float intentionWeight = angle + playerToObjectVector.sqrMagnitude * 2; 
+                float intentionWeight = angle + playerToObjectVector.sqrMagnitude * 2;
                 interactables.Add(new InteractableIntention(interactable, intentionWeight));
             }
 
             if (interactables.Count <= 0)
                 return false;
-            
-            IEnumerable<InteractableIntention> orderedAngles = interactables.OrderBy(interactableAngle => interactableAngle.intentionWeight);
+
+            IEnumerable<InteractableIntention> orderedAngles =
+                interactables.OrderBy(interactableAngle => interactableAngle.intentionWeight);
             playerInteractable = orderedAngles.First().interactable;
             return true;
         }
@@ -74,10 +77,10 @@ namespace Collectibles
             // filter out other input phases, so it only fires once per button press
             if (!context.started)
                 return;
-            
+
             if (!TryGetNearbyCollectible(out PlayerInteractable playerInteractable))
                 return;
-            
+
             playerInteractable.Interact(this);
         }
 
@@ -86,14 +89,10 @@ namespace Collectibles
             if (!TryGetNearbyCollectible(out PlayerInteractable playerInteractable))
                 return;
 
-            if (playerInteractable is PlacedCollectibleItem item)
-            {
-                item.Highlight(highlightColor);
-            }
+            playerInteractable.Highlight(highlightColor);
         }
 
-        
-        
+
         private struct InteractableIntention
         {
             public readonly PlayerInteractable interactable;
@@ -104,8 +103,6 @@ namespace Collectibles
                 this.interactable = interactable;
                 this.intentionWeight = intentionWeight;
             }
-
         }
-        
     }
 }
