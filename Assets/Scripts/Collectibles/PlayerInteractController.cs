@@ -11,8 +11,8 @@ namespace Collectibles
     )]
     public class PlayerInteractController : MonoBehaviour
     {
-        public float interactRange = 20;
-        public Color highlightColor = Color.white; 
+        public float interactRange = 5;
+        public Color highlightColor = new(48, 48, 48); 
         
         public PlayerCollectibleInventory Inventory { get; private set; }
 
