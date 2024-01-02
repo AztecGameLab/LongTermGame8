@@ -227,7 +227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43307429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.1, y: 1.85, z: -3.62}
+  m_LocalPosition: {x: 3.1, y: 1.85, z: -5.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 400102257}
   - component: {fileID: 400102256}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,7 +436,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400102255}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: -5.78}
+  m_LocalPosition: {x: 3.84, y: 0, z: -4.44}
   m_LocalScale: {x: 5.3798, y: 7.4945, z: 0.21555}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -745,9 +745,9 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2072808217}
-        m_TargetAssemblyTypeName: Collectibles.PlayerInteractController, Assembly-CSharp
+        m_TargetAssemblyTypeName: Collectibles.PlayerInteractController, Ltg8
         m_MethodName: TryInteract
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -911,7 +911,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f15ba0b56a463db2e66adf3aa82a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactRange: 20
+  interactRange: 5
+  highlightColor: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
 --- !u!114 &2072808219
 MonoBehaviour:
   m_ObjectHideFlags: 0

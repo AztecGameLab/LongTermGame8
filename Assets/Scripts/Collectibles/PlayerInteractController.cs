@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Collectibles
 {
@@ -10,6 +12,8 @@ namespace Collectibles
     public class PlayerInteractController : MonoBehaviour
     {
         public float interactRange = 20;
+        public Color highlightColor = Color.white; 
+        
         public PlayerCollectibleInventory Inventory { get; private set; }
 
         private void Start()
@@ -25,7 +29,7 @@ namespace Collectibles
             
             Collider[] objects = Physics.OverlapSphere(playerTransform.position, interactRange);
 
-            HashSet<InteractableAngle> interactables = new HashSet<InteractableAngle>();
+            HashSet<InteractableIntention> interactables = new HashSet<InteractableIntention>();
             
             foreach (Collider interactCollider in objects)
             {
@@ -44,13 +48,17 @@ namespace Collectibles
                 }
                 
                 float angle = Vector3.Angle(playerToObjectVector, playerTransform.TransformDirection(Vector3.forward));
-                interactables.Add(new InteractableAngle(interactable, angle));
+                
+                // organize by both how close it is to the player's aim, and how close the player is to it
+                // Lower values are prioritized, so Angle 0 and Distance 0 would be the highest weight
+                float intentionWeight = angle + playerToObjectVector.sqrMagnitude * 2; 
+                interactables.Add(new InteractableIntention(interactable, intentionWeight));
             }
 
             if (interactables.Count <= 0)
                 return false;
             
-            IEnumerable<InteractableAngle> orderedAngles = interactables.OrderBy(interactableAngle => interactableAngle.angle);
+            IEnumerable<InteractableIntention> orderedAngles = interactables.OrderBy(interactableAngle => interactableAngle.intentionWeight);
             playerInteractable = orderedAngles.First().interactable;
             return true;
         }
@@ -61,23 +69,40 @@ namespace Collectibles
         /// If one is found, this calls it's <see cref="M:Collectibles.IPlayerInteractable.Interact(Collectibles.PlayerInteractController)"/>
         /// method, otherwise it does nothing.
         /// </summary>
-        public void TryInteract()
+        public void TryInteract(InputAction.CallbackContext context)
         {
+            // filter out other input phases, so it only fires once per button press
+            if (!context.started)
+                return;
+            
             if (!TryGetNearbyCollectible(out IPlayerInteractable playerInteractable))
                 return;
             
             playerInteractable.Interact(this);
         }
 
-        private struct InteractableAngle
+        private void Update()
+        {
+            if (!TryGetNearbyCollectible(out IPlayerInteractable playerInteractable))
+                return;
+
+            if (playerInteractable is PlacedCollectibleItem item)
+            {
+                item.Highlight(highlightColor);
+            }
+        }
+
+        
+        
+        private struct InteractableIntention
         {
             public readonly IPlayerInteractable interactable;
-            public readonly float angle;
+            public readonly float intentionWeight;
 
-            public InteractableAngle(IPlayerInteractable interactable, float angle)
+            public InteractableIntention(IPlayerInteractable interactable, float intentionWeight)
             {
                 this.interactable = interactable;
-                this.angle = angle;
+                this.intentionWeight = intentionWeight;
             }
 
         }
