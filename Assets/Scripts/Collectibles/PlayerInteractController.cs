@@ -21,7 +21,7 @@ namespace Collectibles
             Inventory = GetComponent<PlayerCollectibleInventory>();
         }
 
-        private bool TryGetNearbyCollectible(out IPlayerInteractable playerInteractable)
+        private bool TryGetNearbyCollectible(out PlayerInteractable playerInteractable)
         {
             playerInteractable = null;
 
@@ -33,7 +33,7 @@ namespace Collectibles
             
             foreach (Collider interactCollider in objects)
             {
-                if (!interactCollider.TryGetComponent(out IPlayerInteractable interactable)) continue;
+                if (!interactCollider.TryGetComponent(out PlayerInteractable interactable)) continue;
 
                 Vector3 objectPosition = interactCollider.transform.position;
                 Vector3 playerToObjectVector = objectPosition - playerTransform.position;
@@ -43,7 +43,7 @@ namespace Collectibles
                 if (Physics.Raycast(playerTransform.position, playerToObjectVector.normalized, out RaycastHit hit,
                         playerToObjectVector.magnitude))
                 {
-                    if (!hit.collider.TryGetComponent(out IPlayerInteractable checkInteract))
+                    if (!hit.collider.TryGetComponent(out PlayerInteractable checkInteract))
                         continue;
                 }
                 
@@ -75,7 +75,7 @@ namespace Collectibles
             if (!context.started)
                 return;
             
-            if (!TryGetNearbyCollectible(out IPlayerInteractable playerInteractable))
+            if (!TryGetNearbyCollectible(out PlayerInteractable playerInteractable))
                 return;
             
             playerInteractable.Interact(this);
@@ -83,7 +83,7 @@ namespace Collectibles
 
         private void Update()
         {
-            if (!TryGetNearbyCollectible(out IPlayerInteractable playerInteractable))
+            if (!TryGetNearbyCollectible(out PlayerInteractable playerInteractable))
                 return;
 
             if (playerInteractable is PlacedCollectibleItem item)
@@ -96,10 +96,10 @@ namespace Collectibles
         
         private struct InteractableIntention
         {
-            public readonly IPlayerInteractable interactable;
+            public readonly PlayerInteractable interactable;
             public readonly float intentionWeight;
 
-            public InteractableIntention(IPlayerInteractable interactable, float intentionWeight)
+            public InteractableIntention(PlayerInteractable interactable, float intentionWeight)
             {
                 this.interactable = interactable;
                 this.intentionWeight = intentionWeight;
