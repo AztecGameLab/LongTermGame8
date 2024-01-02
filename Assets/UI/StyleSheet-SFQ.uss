@@ -357,3 +357,20 @@
     height: 30px;
     width: 30px;
 }
+
+.DialogueBoxExposition {
+    width: 80%;
+    height: 40%;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    flex-direction: column-reverse;
+    display: flex;
+}
+
+.DialogueBoxChoice {
+    height: 75%;
+}
