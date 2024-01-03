@@ -359,10 +359,8 @@
 }
 
 .DialogueBoxExposition {
-    width: 80%;
+    width: 70%;
     height: 40%;
-    align-items: flex-start;
-    justify-content: flex-end;
     padding-top: 50px;
     padding-right: 50px;
     padding-bottom: 50px;
@@ -372,5 +370,26 @@
 }
 
 .DialogueBoxChoice {
-    height: 75%;
+    height: 70%;
+    width: 70%;
+}
+
+.button-dialogueChoice {
+    -unity-font-style: normal;
+    background-color: rgba(188, 188, 188, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    white-space: normal;
+}
+
+.button-dialogueChoice :hover {
+    -unity-font-style: bold;
+    scale: 1.1 1.1;
+}
+
+.button-dialogueChoice :active {
+    scale: 1.2 1.2;
+    -unity-font-style: bold;
 }
