@@ -22,7 +22,7 @@ public class UIControllerPauseMenu : MonoBehaviour
     private Button _ButtonSettings;
     private Button _ButtonSave;
     private Button _ButtonExit;
-    
+
     private VisualElement _ContactsMenu;
     private VisualElement _MapMenu;
     private VisualElement _CollectionMenu;
@@ -30,7 +30,7 @@ public class UIControllerPauseMenu : MonoBehaviour
     private VisualElement _SettingsMenu;
     private VisualElement _SaveMenu;
     private VisualElement _ExitMenu;
-
+    
     public enum CurrentDisplay
     {
         Contacts,
@@ -63,7 +63,7 @@ public class UIControllerPauseMenu : MonoBehaviour
         _ButtonSettings = root.Q<Button>("ButtonSettings");
         _ButtonSave = root.Q<Button>("ButtonSave");
         _ButtonExit = root.Q<Button>("ButtonExit");
-        
+
         // and sub-menus
         _ContactsMenu = root.Q<VisualElement>("ContactsMenu");
         _MapMenu = root.Q<VisualElement>("MapMenu");
@@ -81,6 +81,7 @@ public class UIControllerPauseMenu : MonoBehaviour
         _ButtonSettings.RegisterCallback<ClickEvent>(PageIndicatorToSettings);
         _ButtonSave.RegisterCallback<ClickEvent>(PageIndicatorToSave);
         _ButtonExit.RegisterCallback<ClickEvent>(PageIndicatorToExit);
+
     }
 
     void Update()
@@ -256,6 +257,7 @@ public class UIControllerPauseMenu : MonoBehaviour
         // Turn on new display
         _ExitMenu.style.display = DisplayStyle.Flex;
     }
+    
 
     private void TurnOffCurrentDisplay()
     {
