@@ -19,6 +19,9 @@ namespace Ltg8
             textBox.CopyStateTo(optionBox.TextBox);
             int result = await optionBox.PickOption(first, second);
             
+            optionBox.TextBox.CurrentText = string.Empty;
+            textBox.CurrentText = string.Empty;
+            
             optionBox.gameObject.SetActive(false);
             textBox.gameObject.SetActive(true);
             return result;
@@ -32,6 +35,9 @@ namespace Ltg8
             textBox.CopyStateTo(optionBox.TextBox);
             int result = await optionBox.PickOption(first, second, third);
             
+            optionBox.TextBox.CurrentText = string.Empty;
+            textBox.CurrentText = string.Empty;
+            
             optionBox.gameObject.SetActive(false);
             textBox.gameObject.SetActive(true);
             return result;
@@ -44,6 +50,9 @@ namespace Ltg8
             
             textBox.CopyStateTo(optionBox.TextBox);
             int result = await optionBox.PickOption(first, second, third, fourth);
+            
+            optionBox.TextBox.CurrentText = string.Empty;
+            textBox.CurrentText = string.Empty;
             
             optionBox.gameObject.SetActive(false);
             textBox.gameObject.SetActive(true);

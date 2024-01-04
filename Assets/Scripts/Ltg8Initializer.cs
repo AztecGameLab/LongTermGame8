@@ -27,6 +27,10 @@ namespace Ltg8
             Ltg8.StateMachine = gameStateMachine;
             Ltg8.TextBoxPresenter = textBoxPresenter;
             Ltg8.Save = new SaveData();
+            
+            Ltg8.Controls = new Ltg8Controls();
+            Ltg8.Controls.Enable();
+            
 #if UNITY_EDITOR
             switch (Ltg8.Settings.editorSaveStrategy)
             {

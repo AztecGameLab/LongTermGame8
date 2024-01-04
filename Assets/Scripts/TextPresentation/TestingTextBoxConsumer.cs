@@ -11,13 +11,11 @@ namespace Ltg8
         private TextBoxView t => Ltg8.TextBoxPresenter.DefaultTextBox;
         private OptionBoxView o => Ltg8.TextBoxPresenter.DefaultOptionBox;
         
-        private void Start()
-        {
-            TestTextBoxes().Forget();
-        }
-
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Backspace))
+                TestTextBoxes().Forget();
+            
             animSmile.Update(Time.deltaTime);
             animFrown.Update(Time.deltaTime);
         }
@@ -25,6 +23,7 @@ namespace Ltg8
         private async UniTaskVoid TestTextBoxes()
         {
             t.gameObject.SetActive(true);
+            t.ResetAllState();
             t.CurrentDisplayName = "Narrator";
 
             // basic test

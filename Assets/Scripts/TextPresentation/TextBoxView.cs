@@ -23,12 +23,29 @@ namespace Ltg8
         private string _currentDisplayName;
         private IFlipBookAnimation _currentMainAnimation;
 
-        private void Awake()
+        public void ResetAllState()
         {
+            CurrentText = string.Empty;
+            CurrentDisplayName = string.Empty;
             CurrentMainAnimation = null;
             CurrentRevealStyle = defaultRevealStyle;
         }
+
+        private void OnEnable()
+        {
+            Ltg8.Controls.GameplayCommon.Confirm.performed += HandleConfirm;
+        }
+
+        private void OnDisable()
+        {
+            Ltg8.Controls.GameplayCommon.Confirm.performed -= HandleConfirm;
+        }
         
+        private void HandleConfirm(InputAction.CallbackContext context)
+        {
+            _continueRequested = true;
+        }
+
         private void Update()
         {
             CurrentMainAnimation?.ApplyTo(mainAnimationImage);
@@ -46,16 +63,6 @@ namespace Ltg8
             RuntimeManager.PlayOneShot(confirmChirp);
             continueHint.gameObject.SetActive(false);
             _continueRequested = false;
-        }
-        
-        public void HandleContinue(InputAction.CallbackContext context)
-        {
-            if (context.started)
-            {
-                // Called by some UnityEvent or outside script
-                // to signal the player is ready to read more text.
-                _continueRequested = true;
-            }
         }
 
         public async UniTask WriteText(string text)
@@ -92,11 +99,10 @@ namespace Ltg8
         
         public async UniTask ClearText()
         {
-            mainText.SetText(string.Empty);
-            mainText.maxVisibleCharacters = 0;
+            CurrentText = string.Empty;
             await UniTask.Delay(TimeSpan.FromSeconds(clearDuration));
         }
-        
+
         public async UniTask Delay(float seconds)
         {
             float elapsed = 0;
@@ -111,9 +117,13 @@ namespace Ltg8
         public string CurrentText
         {
             get => mainText.text;
-            set => mainText.SetText(value);
+            set
+            {
+                mainText.SetText(value);
+                mainText.maxVisibleCharacters = value.Length;
+            }
         }
-        
+
         public RevealStyle CurrentRevealStyle { get; set; }
 
         public IFlipBookAnimation CurrentMainAnimation
@@ -121,7 +131,7 @@ namespace Ltg8
             get => _currentMainAnimation;
             set
             {
-                mainAnimationObject.SetActive(value == null);
+                mainAnimationObject.SetActive(value != null);
                 value?.ApplyTo(mainAnimationImage);
                 _currentMainAnimation = value;
             }
@@ -132,7 +142,7 @@ namespace Ltg8
             get => _currentDisplayName;
             set
             {
-                nameObject.SetActive(value == string.Empty);
+                nameObject.SetActive(value != string.Empty);
                 nameBoxText.SetText(value);
                 _currentDisplayName = value;
             }

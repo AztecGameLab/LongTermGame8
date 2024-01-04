@@ -10,6 +10,7 @@ namespace Ltg8
         {
             _transparentTexture = new Texture2D(1, 1);
             _transparentTexture.SetPixel(0, 0, Color.clear);
+            _transparentTexture.Apply();
         }
 
         public void ApplyTo(FlipBookView view)

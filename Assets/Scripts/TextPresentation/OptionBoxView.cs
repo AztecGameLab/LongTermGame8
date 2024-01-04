@@ -12,7 +12,6 @@ namespace Ltg8
         [SerializeField] private TextBoxView textBox;
         
         public RawImageFlipBookView optionAnimationImage;
-        public GameObject optionAnimationObject;
         public EventReference optionHoverSfx;
         public EventReference optionSelectSfx;
         
@@ -25,12 +24,13 @@ namespace Ltg8
 
         protected virtual void Awake()
         {
+            InvisibleFlipBookAnimation.Instance.ApplyTo(optionAnimationImage);
             OptionPool = new ObjectPool<SingleOptionView>(() => Instantiate(singleOptionPrefab));
         }
 
         private void Update()
         {
-            Animation.Update(Time.deltaTime);
+            Animation?.ApplyTo(optionAnimationImage);
         }
 
         public abstract UniTask<int> PickOption(OptionData first, OptionData second);
