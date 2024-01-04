@@ -89,7 +89,7 @@ namespace Collectibles
             if (!TryGetNearbyCollectible(out PlayerInteractable playerInteractable))
                 return;
 
-            playerInteractable.Highlight(highlightColor);
+            playerInteractable.Highlight();
         }
 
 

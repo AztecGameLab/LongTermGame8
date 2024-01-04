@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -16,42 +17,25 @@ namespace Collectibles
         public abstract void Interact(PlayerInteractController playerInteractController);
         
         public bool interactionEnabled = true;
-        
-        private List<Material> _materials;
-        private bool _highlighted;
-        
-        protected virtual void Start()
-        {
-            _materials = new List<Material>(GetComponent<Renderer>().materials);
-        }
-        
-        private static readonly string EMISSION = "_EMISSION";
-        private static readonly int EMISSION_COLOR = Shader.PropertyToID("_EmissionColor");
-        public void Highlight(Color color, bool value = true)
-        {
-            _highlighted = value;
-            foreach (Material material in _materials)
-            {
-                material.SetColor(EMISSION_COLOR, color);
-                
-                if (material.IsKeywordEnabled(EMISSION) == value)
-                    continue;
+        public Transform labelPosition;
+        public GameObject labelPrefab;
 
-                if (value)
-                {
-                    material.EnableKeyword(EMISSION);
-                }
-                else
-                {
-                    material.DisableKeyword(EMISSION);
-                }
-                
-            }
+        private bool _highlighted;
+        private GameObject _label;
+ 
+        private void Start()
+        {
+            _label = Instantiate(labelPrefab, labelPosition);
         }
 
         public void Highlight(bool value = true)
         {
-            Highlight(Color.white, value);
+            _highlighted = value;
+
+            if (_label.activeSelf == value) 
+                return;
+            
+            _label.SetActive(value);
         }
 
         private void LateUpdate()
