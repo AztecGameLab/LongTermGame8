@@ -445,6 +445,7 @@ GameObject:
   - component: {fileID: 2026840039}
   - component: {fileID: 2026840038}
   - component: {fileID: 2026840041}
+  - component: {fileID: 2026840042}
   m_Layer: 5
   m_Name: UIDocForPauseMenu
   m_TagString: Untagged
@@ -509,5 +510,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a817cc261f24e96468e7870413d1eab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2026840042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026840037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c8e559a6045c64585a86b1777bdc81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
