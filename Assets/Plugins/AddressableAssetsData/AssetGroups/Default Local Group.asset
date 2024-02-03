@@ -21,6 +21,22 @@ MonoBehaviour:
     m_Address: Ltg8Settings
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 6635b204c20b86943b8abf43f3cf18a9
+    m_Address: inventory/items/cake
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 440538604c3eaee45b0ba4787304b081
+    m_Address: inventory/items/umbrella
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 56912585f7653674192176d2304d7c27
+    m_Address: inventory/items/flower
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e8e3df22aab6c6048b8b3979b0b904a7
+    m_Address: inventory/items/shovel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b31b9675a4b82e148a3724ca6e4d8064, type: 2}
   m_SchemaSet:
