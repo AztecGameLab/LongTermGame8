@@ -4,15 +4,12 @@ using Cysharp.Threading.Tasks;
 using SpaceMystery;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace Ltg8.Misc
 {
-    [Serializable]
-    public class TweenSettings /* todo: property drawer niceness */
-    {
-        public float duration;
-        public EasingFunctionReference easingFunction;
-    }
-    
     public static class UniTaskTween
     {
         public static EasingFunction DefaultEasing { get; set; } = Easing.SmoothStart2;
@@ -38,4 +35,35 @@ namespace Ltg8.Misc
             }
         }
     }
+    
+    [Serializable]
+    public class TweenSettings
+    {
+        public float duration;
+        public EasingFunctionReference easingFunction;
+    }
+    
+#if UNITY_EDITOR
+    [CustomPropertyDrawer(typeof(TweenSettings))]
+    public class TweenSettingsPropertyDrawer : PropertyDrawer
+    {
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            position = EditorGUI.PrefixLabel(position, label);
+            
+            Rect durationRect = position;
+            durationRect.width *= 0.25f;
+            
+            Rect easingRect = position;
+            easingRect.width *= 0.75f;
+            easingRect.x += durationRect.width;
+            
+            property.Next(true);
+            EditorGUI.PropertyField(durationRect, property, GUIContent.none);
+            
+            property.Next(true);
+            EditorGUI.PropertyField(easingRect, property, GUIContent.none);
+        }
+    }
+#endif
 }

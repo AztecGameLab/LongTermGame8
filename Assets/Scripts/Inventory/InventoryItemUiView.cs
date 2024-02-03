@@ -26,22 +26,27 @@ namespace Ltg8.Inventory
         private Vector3 _targetPosition;
         private CancellationTokenSource _cts;
 
+        private Vector3 HoveredScale => _originalScale * hoverMultiplier;
+        private Vector3 ClickedScale => _originalScale * clickMultiplier;
+
         public async UniTask Initialize(InventoryItem item)
         {
+            Transform t = transform; 
+            
             _item = item;
-            Transform t = transform;
             _originalScale = t.localScale;
             _targetPosition = item.position;
+            _cts = new CancellationTokenSource();
+            
             t.localScale = Vector3.zero; /* start out invisible, with a scale of 0 */
             t.position = item.position; /* load the objects saved position */
-            _cts = new CancellationTokenSource();
             await transform.TweenLocalScale(_originalScale, appearTweenSettings, _cts.Token); /* play an animation to become visible */
         }
 
         public async UniTask Disappear()
         {
             _isDisappearing = true;
-            _cts?.Cancel(); _cts = null;
+            CancelCurrentAnimation();
             await transform.TweenLocalScale(Vector3.zero, disappearTweenSettings); /* play an animation to become invisible */ 
             Destroy(gameObject);
         }
@@ -49,41 +54,50 @@ namespace Ltg8.Inventory
         private void Update()
         {
             if (_isPressed) _targetPosition = Input.mousePosition;
-            Vector3 pos = Vector3.Lerp(transform.position, _targetPosition, dragSpeed * Time.deltaTime);
-            transform.position = pos;
-            _item.position = pos;
+            
+            // move this object towards a target position a little bit each frame
+            Vector3 targetPosition = Vector3.Lerp(transform.position, _targetPosition, dragSpeed * Time.deltaTime);
+            transform.position = targetPosition;
+            _item.position = targetPosition;
         }
         
         public void OnPointerEnter(PointerEventData eventData)
         {
             _isHovered = true;
-            if (_isDisappearing || _isPressed) return;
-            _cts?.Cancel(); _cts = new CancellationTokenSource();
-            transform.TweenLocalScale(_originalScale * hoverMultiplier, hoverStartTweenSettings, _cts.Token).Forget();
+            if (_isDisappearing || _isPressed) return; /* if we are already pressed, we don't need this animation */
+            CancelCurrentAnimation();
+            transform.TweenLocalScale(HoveredScale, hoverStartTweenSettings, _cts.Token).Forget(); /* play the hover animation */
         }
         
         public void OnPointerExit(PointerEventData eventData)
         {
             _isHovered = false;
-            if (_isDisappearing || _isPressed) return;
-            _cts?.Cancel(); _cts = new CancellationTokenSource();
-            transform.TweenLocalScale(_originalScale, hoverStopTweenSettings, _cts.Token).Forget();
+            if (_isDisappearing || _isPressed) return; /* if we are already pressed, we don't need this animation */
+            CancelCurrentAnimation();
+            transform.TweenLocalScale(_originalScale, hoverStopTweenSettings, _cts.Token).Forget(); /* play the un-hover animation */
         }
         
         public void OnPointerDown(PointerEventData eventData)
         {
             _isPressed = true;
             if (_isDisappearing) return;
-            _cts?.Cancel(); _cts = new CancellationTokenSource();
-            transform.TweenLocalScale(_originalScale * clickMultiplier, pointerDownTweenSettings, _cts.Token).Forget();
+            CancelCurrentAnimation();
+            transform.TweenLocalScale(ClickedScale, pointerDownTweenSettings, _cts.Token).Forget(); /* play the click animation */
         }
         
         public void OnPointerUp(PointerEventData eventData)
         {
             _isPressed = false;
             if (_isDisappearing) return;
-            _cts?.Cancel(); _cts = new CancellationTokenSource();
-            transform.TweenLocalScale(_isHovered ? _originalScale * hoverMultiplier : _originalScale, pointerDownTweenSettings, _cts.Token).Forget();
+            CancelCurrentAnimation();
+            Vector3 targetScale = _isHovered ? HoveredScale : _originalScale; /* we could be hovering over the object or not - choose scale accordingly */
+            transform.TweenLocalScale(targetScale, pointerUpTweenSettings, _cts.Token).Forget(); /* play the un-click animation */
+        }
+
+        private void CancelCurrentAnimation()
+        {
+            _cts?.Cancel(); 
+            _cts = new CancellationTokenSource();
         }
     }
 }

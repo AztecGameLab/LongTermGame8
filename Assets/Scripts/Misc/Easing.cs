@@ -1,21 +1,13 @@
 ﻿using System;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace SpaceMystery
 {
     public delegate float EasingFunction(float t);
-
-    [Serializable]
-    public class EasingFunctionReference /* todo: nice property drawer? would like a single-file solution, if possible? */
-    {
-        [SerializeField]
-        private Easing.Type type = Easing.Type.SmoothStart2;
-
-        public EasingFunction Resolve()
-        {
-            return Easing.LookupFunction(type);
-        }
-    }
     
     public static class Easing
     {
@@ -47,4 +39,28 @@ namespace SpaceMystery
         public static float SmoothStart3(float t) => t * t * t;
         public static float SmoothStart4(float t) => t * t * t * t;
     }
+    
+    [Serializable]
+    public class EasingFunctionReference /* todo: nice property drawer? would like a single-file solution, if possible? */
+    {
+        [SerializeField]
+        private Easing.Type type = Easing.Type.SmoothStart2;
+
+        public EasingFunction Resolve()
+        {
+            return Easing.LookupFunction(type);
+        }
+    }
+    
+#if UNITY_EDITOR
+    [CustomPropertyDrawer(typeof(EasingFunctionReference))]
+    public class EasingFunctionReferencePropertyDrawer : PropertyDrawer
+    {
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            property.Next(true);
+            EditorGUI.PropertyField(position, property, label);
+        }
+    }
+#endif
 }

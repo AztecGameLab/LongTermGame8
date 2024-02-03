@@ -58,7 +58,7 @@ MonoBehaviour:
   disappearTweenSettings:
     duration: 0.5
     easingFunction:
-      type: 4
+      type: 1
   hoverStartTweenSettings:
     duration: 0.25
     easingFunction:

@@ -1128,8 +1128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec930dc7eaf4970b60bde0bfd1b267a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 0.1
-  despawnDelay: 0.1
+  spawnDelay: 0.05
+  despawnDelay: 0.05
   itemParent: {fileID: 586099942}
 --- !u!1001 &592494625
 PrefabInstance:
