@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -75,8 +76,12 @@ namespace Ltg8
         {
             option.gameObject.SetActive(true);
             option.optionView.textDisplay.SetText(data.message);
-            option.optionView.onSelect.AddListener(() => _selectedOption = id);
+            option.optionView.onSelect.AddListener(() => {
+                RuntimeManager.PlayOneShot(optionSelectSfx);
+                _selectedOption = id;
+            });
             option.optionView.onHover.AddListener(() => {
+                RuntimeManager.PlayOneShot(optionHoverSfx);
                 _hoveredOption.selectionHint.SetActive(false);
                 _hoveredOption = option;
                 _hoveredOption.selectionHint.SetActive(true);

@@ -60,17 +60,6 @@
                 },
                 {
                     "name": "",
-                    "id": "61384a12-af4d-439f-9c2e-ddc96e7fd951",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Confirm",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "905af592-4463-4a98-b70c-17479ddf2147",
                     "path": "<Keyboard>/e",
                     "interactions": "",

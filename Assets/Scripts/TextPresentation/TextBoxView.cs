@@ -4,6 +4,7 @@ using FMODUnity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 namespace Ltg8
 {
@@ -55,11 +56,11 @@ namespace Ltg8
         {
             _continueRequested = false;
             continueHint.gameObject.SetActive(true);
-            
+
             // Will not finish until `HandleContinue` is called.
             while (!_continueRequested)
                 await UniTask.Yield();
-            
+
             RuntimeManager.PlayOneShot(confirmChirp);
             continueHint.gameObject.SetActive(false);
             _continueRequested = false;
