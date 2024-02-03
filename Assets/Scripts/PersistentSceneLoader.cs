@@ -46,7 +46,9 @@ namespace Ltg8
                 default: throw new ArgumentOutOfRangeException();
             }
 #else
-            await Ltg8.StateMachine.TransitionTo(new MainMenuGameState());
+            // await Ltg8.StateMachine.TransitionTo(new MainMenuGameState());
+            await SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
 #endif
         }
     }
