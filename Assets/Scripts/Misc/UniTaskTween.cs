@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using SpaceMystery;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -12,24 +13,31 @@ namespace Ltg8.Misc
 {
     public static class UniTaskTween
     {
-        public static EasingFunction DefaultEasing { get; set; } = Easing.SmoothStart2;
-
-        public static async UniTask TweenLocalScale(this Transform transform, Vector3 target, TweenSettings settings, CancellationToken token = default)
+        public static async UniTask TweenWeight(this Volume volume, float target, TweenSettings settings, CancellationToken token = default)
         {
-            await TweenLocalScale(transform, target, settings.duration, settings.easingFunction.Resolve(), token);
+            EasingFunction easingFunction = settings.easingFunction.Resolve();
+            float elapsed = 0;
+            float start = volume.weight;
+            
+            while (elapsed < settings.duration && !token.IsCancellationRequested)
+            {
+                elapsed += Time.deltaTime;
+                float t = easingFunction(Mathf.Clamp01(elapsed / settings.duration));
+                volume.weight = Mathf.Lerp(start, target, t);
+                await UniTask.Yield();
+            }
         }
         
-        public static async UniTask TweenLocalScale(this Transform transform, Vector3 target, 
-            float duration = 1, EasingFunction easingFunction = null, CancellationToken token = default)
+        public static async UniTask TweenLocalScale(this Transform transform, Vector3 target, TweenSettings settings, CancellationToken token = default)
         {
-            easingFunction ??= DefaultEasing;
+            EasingFunction easingFunction = settings.easingFunction.Resolve();
             float elapsed = 0;
             Vector3 start = transform.localScale;
             
-            while (elapsed < duration && !token.IsCancellationRequested)
+            while (elapsed < settings.duration && !token.IsCancellationRequested)
             {
                 elapsed += Time.deltaTime;
-                float t = easingFunction(Mathf.Clamp01(elapsed / duration));
+                float t = easingFunction(Mathf.Clamp01(elapsed / settings.duration));
                 transform.localScale = Vector3.Lerp(start, target, t);
                 await UniTask.Yield();
             }
