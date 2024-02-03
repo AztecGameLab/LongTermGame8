@@ -51,12 +51,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 843424ab3d5b447e9a87475ab1bcfaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleInTime: 1
-  scaleOutTime: 1
-  easeAppearFunction:
-    type: 1
-  easeDisappearFunction:
-    type: 4
+  appearTweenSettings:
+    duration: 0.5
+    easingFunction:
+      type: 1
+  disappearTweenSettings:
+    duration: 0.5
+    easingFunction:
+      type: 4
+  hoverStartTweenSettings:
+    duration: 0.25
+    easingFunction:
+      type: 1
+  hoverStopTweenSettings:
+    duration: 0.25
+    easingFunction:
+      type: 1
+  pointerDownTweenSettings:
+    duration: 0.25
+    easingFunction:
+      type: 0
+  pointerUpTweenSettings:
+    duration: 0.25
+    easingFunction:
+      type: 0
+  hoverMultiplier: 1.25
+  clickMultiplier: 1.1
+  dragSpeed: 15
 --- !u!222 &6819330623464759389
 CanvasRenderer:
   m_ObjectHideFlags: 0
