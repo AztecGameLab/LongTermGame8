@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using Ltg8.Misc;
 using UnityEngine;
@@ -18,7 +19,9 @@ namespace Ltg8.Inventory
         [SerializeField] private float clickMultiplier = 1.1f;
         [SerializeField] private float dragSpeed = 15f;
 
-        private InventoryItem _item;
+        public event Action<DropEventData> OnDrop;
+        public InventoryItem Item { get; private set; }
+
         private bool _isPressed;
         private bool _isDisappearing;
         private bool _isHovered;
@@ -31,9 +34,9 @@ namespace Ltg8.Inventory
 
         public async UniTask Initialize(InventoryItem item)
         {
-            Transform t = transform; 
-            
-            _item = item;
+            Transform t = transform;
+
+            Item = item;
             _originalScale = t.localScale;
             _targetPosition = item.position;
             _cts = new CancellationTokenSource();
@@ -58,7 +61,7 @@ namespace Ltg8.Inventory
             // move this object towards a target position a little bit each frame
             Vector3 targetPosition = Vector3.Lerp(transform.position, _targetPosition, dragSpeed * Time.deltaTime);
             transform.position = targetPosition;
-            _item.position = targetPosition;
+            Item.position = targetPosition;
         }
         
         public void OnPointerEnter(PointerEventData eventData)
@@ -92,12 +95,18 @@ namespace Ltg8.Inventory
             CancelCurrentAnimation();
             Vector3 targetScale = _isHovered ? HoveredScale : _originalScale; /* we could be hovering over the object or not - choose scale accordingly */
             transform.TweenLocalScale(targetScale, pointerUpTweenSettings, _cts.Token).Forget(); /* play the un-click animation */
+            OnDrop?.Invoke(new DropEventData{View = this}); /* let subscribers know that we got dropped */
         }
 
         private void CancelCurrentAnimation()
         {
             _cts?.Cancel(); 
             _cts = new CancellationTokenSource();
+        }
+        
+        public struct DropEventData
+        {
+            public InventoryItemUiView View;
         }
     }
 }

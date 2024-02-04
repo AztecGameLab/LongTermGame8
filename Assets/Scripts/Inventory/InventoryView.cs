@@ -10,6 +10,8 @@ namespace Ltg8.Inventory
 {
     public class InventoryView : MonoBehaviour
     {
+        [SerializeField] private ItemTargetSelector targetSelector;
+        [SerializeField] private ItemTargetHoveredVfx itemHoverVfxPrefab;
         [SerializeField] private TweenSettings openTween;
         [SerializeField] private TweenSettings closeTween;
         [SerializeField] private float spawnDelay = 0.1f;
@@ -19,20 +21,58 @@ namespace Ltg8.Inventory
 
         private readonly List<InventoryItemUiView> _spawnedItems = new List<InventoryItemUiView>();
         private CancellationTokenSource _cts;
-        
+        private ItemTargetHoveredVfx _currentHoverEffect;
+
+        private void Start()
+        {
+            foreach (InventoryItem item in Ltg8.Save.Inventory.Items)
+                item.itemData.LoadAssetAsync<ItemData>();
+        }
+
         public async UniTask Open(InventoryData data)
         {
             CancelCurrentAnimation();
             volume.TweenWeight(1, openTween, _cts.Token).Forget(); /* show the post-processing that highlights interactable objects */
             
+            targetSelector.OnTargetChange += HandleItemTargetChange;
+            
+            if (targetSelector.HasTarget)
+            {
+                _currentHoverEffect = Instantiate(itemHoverVfxPrefab, targetSelector.HoveredTarget.transform);
+                _currentHoverEffect.Appear(targetSelector.HoveredTarget).Forget();
+            }
+            
             foreach (InventoryItem item in data.Items)
             {
                 // spawn the object asynchronously, and save a reference to it's UiView component.
-                InventoryItemUiView uiView = (await item.uiView.InstantiateAsync(itemParent)).GetComponent<InventoryItemUiView>();
+                InventoryItemUiView uiView = Instantiate(((ItemData) item.itemData.Asset).uiView, itemParent);
+                uiView.OnDrop += HandleOnDrop;
                 
                 uiView.Initialize(item).Forget(); /* play some animation where the item appears */
                 _spawnedItems.Add(uiView); /* keep track of all spawned items, so we can remove them later */
                 await UniTask.Delay(TimeSpan.FromSeconds(spawnDelay)); /* pause a little bit between animations */
+            }
+        }
+        
+        private void HandleOnDrop(InventoryItemUiView.DropEventData eventData)
+        {
+            if (targetSelector.HasTarget)
+            {
+                targetSelector.HoveredTarget.ReceiveItem(eventData.View.Item.itemData.Asset as ItemData);
+                Ltg8.Save.Inventory.Items.Remove(eventData.View.Item);
+                Close().Forget();
+            }
+        }
+        
+        private void HandleItemTargetChange(ItemTargetChangeEventData eventData)
+        {
+            if (_currentHoverEffect != null) 
+                _currentHoverEffect.Disappear().Forget();
+            
+            if (eventData.NewTarget != null)
+            {
+                _currentHoverEffect = Instantiate(itemHoverVfxPrefab, eventData.NewTarget.transform);
+                _currentHoverEffect.Appear(eventData.NewTarget).Forget();
             }
         }
 

@@ -14,7 +14,7 @@ namespace Ltg8.Inventory
     public class InventoryItem
     {
         public Vector2 position;
-        public AssetReference uiView;
+        public AssetReference itemData;
     }
 
 }

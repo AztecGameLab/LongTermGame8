@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcaa162cd8a74b6aa473d41a65af849a, type: 3}
+  m_Name: Cake
+  m_EditorClassIdentifier: 
+  uiView: {fileID: 6494908248497245575, guid: 6635b204c20b86943b8abf43f3cf18a9, type: 3}
