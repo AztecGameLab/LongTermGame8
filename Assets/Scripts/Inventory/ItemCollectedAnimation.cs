@@ -13,7 +13,7 @@ namespace Ltg8.Inventory
 
         private GameObject _prevInstance;
         
-        public async UniTask Play(InventoryItem item)
+        public async UniTask Play(InventoryItemData item)
         {
             if (_prevInstance != null) Destroy(_prevInstance.gameObject);
             nameText.SetText(item.Data.itemName);

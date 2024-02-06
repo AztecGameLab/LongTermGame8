@@ -486,8 +486,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 586099942}
   - {fileID: 648529507}
+  - {fileID: 586099942}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -522,18 +522,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 592494625}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &217403999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217403989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 337a980fa149425ba0b96865bbd49ded, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &217404000
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -547,6 +535,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0021350493, y: 0.0030000235, z: 0.0028552297}
   m_Center: {x: -2.1304239e-10, y: -0.000039073355, z: 0.0014271692}
+--- !u!114 &217404003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217403989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7e95cf1b58445eb10d69b89a5ea084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onReceiveItem:
+    m_PersistentCalls:
+      m_Calls: []
+  expectedItemGuid: items/cake
 --- !u!1 &229185708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,7 +1185,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 197746136}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1465,7 +1469,7 @@ RectTransform:
   - {fileID: 1215791760}
   - {fileID: 1989380378}
   m_Father: {fileID: 197746136}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1599,18 +1603,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 896560485}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &755322737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 755322727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 337a980fa149425ba0b96865bbd49ded, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &755322738
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1624,6 +1616,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6574834, y: 0.6854732, z: 1.2947476}
   m_Center: {x: 0.004678735, y: 0.11756153, z: 0.6477797}
+--- !u!114 &755322741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755322727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac1e8cb698394db7a65dab0529fa026d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onReceiveItem:
+    m_PersistentCalls:
+      m_Calls: []
+  targets:
+  - itemGuid: items/shovel
+    onReceived:
+      m_PersistentCalls:
+        m_Calls: []
+  - itemGuid: items/umbrella
+    onReceived:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &787848509
 GameObject:
   m_ObjectHideFlags: 0

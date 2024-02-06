@@ -6,7 +6,7 @@ namespace Ltg8.Inventory
 {
     public class TestInventoryItems : MonoBehaviour
     {
-        public List<InventoryItem> items = new List<InventoryItem>();
+        public List<InventoryItemData> items = new List<InventoryItemData>();
         public ItemData testCollectData;
         public InventoryView inventoryView;
         public ItemCollectedAnimation collectedAnimation;
@@ -20,7 +20,7 @@ namespace Ltg8.Inventory
         {
             if (GUILayout.Button("Open")) inventoryView.Open(Ltg8.Save.Inventory).Forget();
             if (GUILayout.Button("Close")) inventoryView.Close().Forget();
-            if (GUILayout.Button("Give Item")) collectedAnimation.Play(new InventoryItem{position = new Vector2(100, 100), Data = testCollectData}).Forget();
+            if (GUILayout.Button("Give Item")) collectedAnimation.Play(new InventoryItemData{position = new Vector2(100, 100), Data = testCollectData}).Forget();
         }
     }
 }

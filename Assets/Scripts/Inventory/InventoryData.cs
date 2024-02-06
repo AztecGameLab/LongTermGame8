@@ -1,32 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
+﻿using System.Collections.Generic;
 
 namespace Ltg8.Inventory
 {
     public class InventoryData
     {
-        public List<InventoryItem> Items = new List<InventoryItem>();
+        public List<InventoryItemData> Items = new List<InventoryItemData>();
     }
-
-    [Serializable]
-    public class InventoryItem
-    {
-        public Vector2 position;
-        public AssetReference itemData;
-        
-        public ItemData Data 
-        {
-            get
-            {
-                if (itemData.Asset == null)
-                    itemData.LoadAssetAsync<ItemData>().WaitForCompletion();
-                
-                return (ItemData)itemData.Asset;
-            }
-            set => itemData = new AssetReference(value.guid);
-        }
-    }
-
 }

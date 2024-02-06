@@ -20,7 +20,7 @@ namespace Ltg8.Inventory
         [SerializeField] private float dragSpeed = 15f;
 
         public event Action<DropEventData> OnDrop;
-        public InventoryItem Item { get; private set; }
+        public InventoryItemData Item { get; private set; }
 
         private bool _isPressed;
         private bool _isDisappearing;
@@ -32,7 +32,7 @@ namespace Ltg8.Inventory
         private Vector3 HoveredScale => _originalScale * hoverMultiplier;
         private Vector3 ClickedScale => _originalScale * clickMultiplier;
 
-        public async UniTask Initialize(InventoryItem item)
+        public async UniTask Initialize(InventoryItemData item)
         {
             Transform t = transform;
 
