@@ -64,8 +64,12 @@ namespace Ltg8
             SingleOptionView option = OptionPool.Get();
             option.gameObject.SetActive(true);
             option.transform.SetParent(optionParent);
-            option.textDisplay.SetText(data.message);
+            
+            // stupid TMP trying to be smart, let me pool stuff!
+            option.textDisplay.autoSizeTextContainer = false;
             option.textDisplay.autoSizeTextContainer = true;
+            
+            option.textDisplay.SetText(data.message);
             option.onSelect.AddListener(() => _selectedOption = id);
             option.onHover.AddListener(() => {
                 Animation = data.Animation;
