@@ -13,7 +13,7 @@ namespace Ltg8.Inventory
 
         private void Start()
         {
-            Ltg8.Save.Inventory.Items = items;
+            Ltg8.Save.Inventory = items;
         }
 
         private void OnGUI()

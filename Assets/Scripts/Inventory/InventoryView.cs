@@ -25,7 +25,7 @@ namespace Ltg8.Inventory
         private CancellationTokenSource _cts;
         private ItemTargetHoveredVfx _currentHoverEffect;
 
-        public async UniTask Open(InventoryData data)
+        public async UniTask Open(IEnumerable<InventoryItemData> items)
         {
             CancelCurrentAnimation();
             volume.TweenWeight(1, openTween, _cts.Token).Forget(); /* show the post-processing that highlights interactable objects */
@@ -38,7 +38,7 @@ namespace Ltg8.Inventory
                 _currentHoverEffect.Appear(targetSelector.HoveredTarget).Forget();
             }
             
-            foreach (InventoryItemData item in data.Items)
+            foreach (InventoryItemData item in items)
             {
                 // spawn the object asynchronously, and save a reference to it's UiView component.
                 // InventoryItemUiView uiView = Instantiate(((ItemData) item.itemData.Asset).uiView, itemParent);
@@ -56,7 +56,7 @@ namespace Ltg8.Inventory
             if (targetSelector.HasTarget && targetSelector.HoveredTarget.CanReceiveItem(eventData.View.Item.Data))
             {
                 targetSelector.HoveredTarget.ReceiveItem(eventData.View.Item.Data);
-                Ltg8.Save.Inventory.Items.Remove(eventData.View.Item);
+                Ltg8.Save.Inventory.Remove(eventData.View.Item);
                 eventData.View.Disappear().Forget();
             }
         }

@@ -19,7 +19,7 @@ namespace Ltg8.Inventory
             nameText.SetText(item.Data.itemName);
             _prevInstance = Instantiate(item.Data.uiView, uiViewParent);
             timeline.Play();
-            Ltg8.Save.Inventory.Items.Add(item);
+            Ltg8.Save.Inventory.Add(item);
             await UniTask.WaitUntil(() => timeline.state != PlayState.Playing);
             await UniTask.WaitUntil(() => Input.anyKeyDown);
             timeline.Resume();
