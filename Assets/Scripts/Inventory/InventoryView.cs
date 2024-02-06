@@ -8,10 +8,12 @@ using UnityEngine.Rendering;
 
 namespace Ltg8.Inventory
 {
+
     public class InventoryView : MonoBehaviour
     {
         [SerializeField] private ItemTargetSelector targetSelector;
         [SerializeField] private ItemTargetHoveredVfx itemHoverVfxPrefab;
+        [SerializeField] private InventoryItemUiView itemUiViewPrefab;
         [SerializeField] private TweenSettings openTween;
         [SerializeField] private TweenSettings closeTween;
         [SerializeField] private float spawnDelay = 0.1f;
@@ -22,12 +24,6 @@ namespace Ltg8.Inventory
         private readonly List<InventoryItemUiView> _spawnedItems = new List<InventoryItemUiView>();
         private CancellationTokenSource _cts;
         private ItemTargetHoveredVfx _currentHoverEffect;
-
-        private void Start()
-        {
-            foreach (InventoryItem item in Ltg8.Save.Inventory.Items)
-                item.itemData.LoadAssetAsync<ItemData>();
-        }
 
         public async UniTask Open(InventoryData data)
         {
@@ -45,7 +41,8 @@ namespace Ltg8.Inventory
             foreach (InventoryItem item in data.Items)
             {
                 // spawn the object asynchronously, and save a reference to it's UiView component.
-                InventoryItemUiView uiView = Instantiate(((ItemData) item.itemData.Asset).uiView, itemParent);
+                // InventoryItemUiView uiView = Instantiate(((ItemData) item.itemData.Asset).uiView, itemParent);
+                InventoryItemUiView uiView = Instantiate(itemUiViewPrefab, itemParent);
                 uiView.OnDrop += HandleOnDrop;
                 
                 uiView.Initialize(item).Forget(); /* play some animation where the item appears */
@@ -58,9 +55,9 @@ namespace Ltg8.Inventory
         {
             if (targetSelector.HasTarget)
             {
-                targetSelector.HoveredTarget.ReceiveItem(eventData.View.Item.itemData.Asset as ItemData);
+                targetSelector.HoveredTarget.ReceiveItem(eventData.View.Item.Data);
                 Ltg8.Save.Inventory.Items.Remove(eventData.View.Item);
-                Close().Forget();
+                eventData.View.Disappear().Forget();
             }
         }
         

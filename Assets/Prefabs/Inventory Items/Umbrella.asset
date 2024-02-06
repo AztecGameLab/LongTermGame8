@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcaa162cd8a74b6aa473d41a65af849a, type: 3}
   m_Name: Umbrella
   m_EditorClassIdentifier: 
-  uiView: {fileID: 6494908248497245575, guid: 440538604c3eaee45b0ba4787304b081, type: 3}
+  guid: items/umbrella
+  itemName: Umbrella
+  uiView: {fileID: 6494908248497245573, guid: 440538604c3eaee45b0ba4787304b081, type: 3}

@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcaa162cd8a74b6aa473d41a65af849a, type: 3}
   m_Name: Shovel
   m_EditorClassIdentifier: 
-  uiView: {fileID: 6494908248497245575, guid: e8e3df22aab6c6048b8b3979b0b904a7, type: 3}
+  guid: items/shovel
+  itemName: Shovel
+  uiView: {fileID: 6494908248497245573, guid: e8e3df22aab6c6048b8b3979b0b904a7, type: 3}

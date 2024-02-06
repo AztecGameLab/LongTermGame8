@@ -5,6 +5,8 @@ namespace Ltg8.Inventory
     [CreateAssetMenu]
     public class ItemData : ScriptableObject
     {
-        public InventoryItemUiView uiView;
+        public string guid;
+        public string itemName;
+        public GameObject uiView;
     }
 }

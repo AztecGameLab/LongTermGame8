@@ -15,6 +15,18 @@ namespace Ltg8.Inventory
     {
         public Vector2 position;
         public AssetReference itemData;
+        
+        public ItemData Data 
+        {
+            get
+            {
+                if (itemData.Asset == null)
+                    itemData.LoadAssetAsync<ItemData>().WaitForCompletion();
+                
+                return (ItemData)itemData.Asset;
+            }
+            set => itemData = new AssetReference(value.guid);
+        }
     }
 
 }

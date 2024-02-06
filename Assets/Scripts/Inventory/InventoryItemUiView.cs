@@ -40,7 +40,8 @@ namespace Ltg8.Inventory
             _originalScale = t.localScale;
             _targetPosition = item.position;
             _cts = new CancellationTokenSource();
-            
+
+            Instantiate(item.Data.uiView, t); /* spawn the ui view as a child of this object */
             t.localScale = Vector3.zero; /* start out invisible, with a scale of 0 */
             t.position = item.position; /* load the objects saved position */
             await transform.TweenLocalScale(_originalScale, appearTweenSettings, _cts.Token); /* play an animation to become visible */
