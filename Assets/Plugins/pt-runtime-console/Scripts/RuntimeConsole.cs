@@ -45,6 +45,9 @@ namespace poetools.Console
         [Tooltip("The input field where the user enters console commands.")]
         private InputField inputFieldDisplay;
 
+        [SerializeField]
+        private GameObject consoleView;
+
         private List<ICommand> _commandInstances;
         private List<string> _suggestions;
         private int _autoCompleteIndex;
@@ -135,14 +138,14 @@ namespace poetools.Console
 
         public void SetVisible(bool isVisible)
         {
-            bool wasVisible = gameObject.activeSelf;
-            gameObject.SetActive(isVisible);
+            bool wasVisible = consoleView.activeSelf;
+            consoleView.SetActive(isVisible);
             OnVisibilityChanged?.Invoke(wasVisible, isVisible);
         }
 
         public bool IsVisible()
         {
-            return gameObject.activeSelf;
+            return consoleView.activeSelf;
         }
 
         public void CycleAutoCompleteForward()

@@ -10,6 +10,8 @@ namespace Ltg8
         public static FmodValueAnimator FmodValueAnimator;
         public static PersistentAudio PersistentAudio;
         public static GameStateMachine StateMachine;
+        public static TextBoxPresenter TextBoxPresenter;
+        public static Ltg8Controls Controls;
         public static Camera MainCamera;
     }
 }
