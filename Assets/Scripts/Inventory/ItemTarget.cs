@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
 
@@ -23,6 +24,7 @@ namespace Ltg8.Inventory
         {
             Assert.IsTrue(CanReceiveItem(item));
             onReceiveItem.Invoke(item);
+            FindAnyObjectByType<InventoryView>().Close().Forget();
         }
     }
 }
