@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace Ltg8
 {
-    public class OverworldGameState : IGameStateLogic
+    public class OverworldGameState : IGameState
     {
         private readonly string _scenePath;
         

@@ -6627,7 +6627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c45a8a29654261b2f92a5d6dc71039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curvature: 0.015
+  curvature: 0.0084
 --- !u!4 &817161543
 Transform:
   m_ObjectHideFlags: 0
