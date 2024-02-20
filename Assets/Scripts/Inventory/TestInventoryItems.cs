@@ -20,7 +20,13 @@ namespace Ltg8.Inventory
         {
             if (GUILayout.Button("Open")) inventoryView.Open(Ltg8.Save.Inventory).Forget();
             if (GUILayout.Button("Close")) inventoryView.Close().Forget();
-            if (GUILayout.Button("Give Item")) collectedAnimation.Play(new InventoryItemData{position = new Vector2(100, 100), Data = testCollectData}).Forget();
+            if (GUILayout.Button("Give Item")) InventoryUtil.AddItem(testCollectData).Forget();
+            if (GUILayout.Button("Drop Item"))
+            {
+                InventoryItemData item = Ltg8.Save.Inventory[0];
+                InventoryUtil.CreateItemInOverworld(item.Data, new Vector3(1, 1, 1)).Forget();
+                Ltg8.Save.Inventory.Remove(item);
+            }
         }
     }
 }

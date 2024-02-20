@@ -37,6 +37,10 @@ MonoBehaviour:
     m_Address: items/cake
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 30bfa3f43594fec478b5ee5b3ce5d18d
+    m_Address: prefabs/overworld_item
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b31b9675a4b82e148a3724ca6e4d8064, type: 2}
   m_SchemaSet:

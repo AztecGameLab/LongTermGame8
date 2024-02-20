@@ -9,11 +9,9 @@ using UnityEngine.Rendering;
 
 namespace Ltg8.Inventory
 {
-
     public class InventoryView : MonoBehaviour
     {
         [SerializeField] private ItemTargetSelector targetSelector;
-        [SerializeField] private ItemTargetHoveredVfx itemHoverVfxPrefab;
         [SerializeField] private InventoryItemUiView itemUiViewPrefab;
         [SerializeField] private TweenSettings openTween;
         [SerializeField] private TweenSettings closeTween;
@@ -26,20 +24,11 @@ namespace Ltg8.Inventory
 
         private readonly List<InventoryItemUiView> _spawnedItems = new List<InventoryItemUiView>();
         private CancellationTokenSource _cts;
-        private ItemTargetHoveredVfx _currentHoverEffect;
 
         public async UniTask Open(IEnumerable<InventoryItemData> items)
         {
             CancelCurrentAnimation();
             volume.TweenWeight(1, openTween, _cts.Token).Forget(); /* show the post-processing that highlights interactable objects */
-            
-            targetSelector.OnTargetChange += HandleItemTargetChange;
-            
-            if (targetSelector.HasTarget)
-            {
-                _currentHoverEffect = Instantiate(itemHoverVfxPrefab, targetSelector.HoveredTarget.transform);
-                _currentHoverEffect.Appear(targetSelector.HoveredTarget).Forget();
-            }
             
             foreach (InventoryItemData item in items)
             {
@@ -64,18 +53,6 @@ namespace Ltg8.Inventory
             }
         }
         
-        private void HandleItemTargetChange(ItemTargetChangeEventData eventData)
-        {
-            if (_currentHoverEffect != null) 
-                _currentHoverEffect.Disappear().Forget();
-            
-            if (eventData.NewTarget != null)
-            {
-                _currentHoverEffect = Instantiate(itemHoverVfxPrefab, eventData.NewTarget.transform);
-                _currentHoverEffect.Appear(eventData.NewTarget).Forget();
-            }
-        }
-
         public async UniTask Close()
         {
             CancelCurrentAnimation(); 
