@@ -4,6 +4,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Ltg8.Misc;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 
 namespace Ltg8.Inventory
@@ -20,6 +21,8 @@ namespace Ltg8.Inventory
         [SerializeField] private float despawnDelay = 0.1f;
         [SerializeField] private Transform itemParent;
         [SerializeField] private Volume volume;
+
+        public UnityEvent onClose;
 
         private readonly List<InventoryItemUiView> _spawnedItems = new List<InventoryItemUiView>();
         private CancellationTokenSource _cts;
@@ -81,11 +84,13 @@ namespace Ltg8.Inventory
             foreach (InventoryItemUiView item in _spawnedItems) 
             {
                 item.Disappear() /* play some animation where the item disappears */
-                    .ContinueWith(() => _spawnedItems.Remove(item)); /* when items are done animating, remove them from the list */
+                    .ContinueWith(() => _spawnedItems.Remove(item)) /* when items are done animating, remove them from the list */
+                    .Forget(); 
                 await UniTask.Delay(TimeSpan.FromSeconds(despawnDelay)); /* pause a little bit between animations */
             }
 
             await UniTask.WaitUntil(() => _spawnedItems.Count <= 0); /* once there are no items in the list, everything has finished animating */
+            onClose.Invoke();
         }
         
         private void CancelCurrentAnimation()

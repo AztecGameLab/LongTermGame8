@@ -50,5 +50,10 @@ namespace Ltg8
             Ltg8.Serializer = diskSaveSerializer;
 #endif
         }
+
+        private void Update()
+        {
+            Ltg8.GameState.CurrentState?.OnUpdate();
+        }
     }
 }
