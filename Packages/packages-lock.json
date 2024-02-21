@@ -10,7 +10,7 @@
       "url": "https://package.openupm.com"
     },
     "com.cysharp.unitask": {
-      "version": "2.5.0",
+      "version": "2.5.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -176,7 +176,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.textmeshpro": {
-      "version": "3.0.6",
+      "version": "3.0.8",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -216,7 +216,7 @@
       "url": "https://packages.unity.com"
     },
     "net.tnrd.serializableinterface": {
-      "version": "2.1.0",
+      "version": "2.2.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
