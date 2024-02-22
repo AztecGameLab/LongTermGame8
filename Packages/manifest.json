@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "com.codewriter.triinspector": "1.13.2",
-    "com.cysharp.unitask": "2.5.3",
+    "com.cysharp.unitask": "2.5.0",
+    "com.neuecc.unirx": "7.1.0",
     "com.unity.addressables": "1.19.19",
     "com.unity.cinemachine": "2.8.9",
     "com.unity.collab-proxy": "2.2.0",
@@ -10,12 +11,13 @@
     "com.unity.ide.vscode": "1.2.5",
     "com.unity.inputsystem": "1.7.0",
     "com.unity.render-pipelines.universal": "12.1.13",
+    "com.unity.splines": "2.5.2",
     "com.unity.test-framework": "1.1.33",
-    "com.unity.textmeshpro": "3.0.8",
+    "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.6.5",
     "com.unity.ugui": "1.0.0",
     "com.unity.visualscripting": "1.9.1",
-    "net.tnrd.serializableinterface": "2.2.0",
+    "net.tnrd.serializableinterface": "2.1.0",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -55,6 +57,7 @@
       "scopes": [
         "com.codewriter.triinspector",
         "com.cysharp.unitask",
+        "com.neuecc.unirx",
         "com.openupm",
         "net.tnrd.serializableinterface"
       ]

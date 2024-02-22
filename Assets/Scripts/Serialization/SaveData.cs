@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Ltg8.Inventory;
 using UnityEngine;
 
 namespace Ltg8
@@ -7,6 +9,7 @@ namespace Ltg8
     {
         public Vector3 PlayerPos;
         public int PlayerSceneId;
+        public List<InventoryItemData> Inventory = new List<InventoryItemData>();
 
         public bool[] Flags = new bool[Enum.GetValues(typeof(Flag)).Length];
         public void SetFlag(Flag flag) => Flags[(int) flag] = true;

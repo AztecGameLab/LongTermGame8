@@ -30,7 +30,7 @@ namespace Ltg8
                 case EditorPlayStrategy.FromStartOfGame:
                 {
                     // If have a more complex start-up, we would make a new state for that here.
-                    await Ltg8.StateMachine.TransitionTo(new MainMenuGameState());
+                    await Ltg8.GameState.TransitionTo(new MainMenuGameState());
                     break;
                 }
                 case EditorPlayStrategy.FromCurrentScene:
@@ -40,7 +40,7 @@ namespace Ltg8
                         break;
 
                     await Ltg8.Serializer.ReadFromDisk(settings.editorSaveId);
-                    await Ltg8.StateMachine.TransitionTo(new OverworldGameState(currentScenePath));
+                    await Ltg8.GameState.TransitionTo(new OverworldGameState(currentScenePath));
                     break;
                 }
                 default: throw new ArgumentOutOfRangeException();
