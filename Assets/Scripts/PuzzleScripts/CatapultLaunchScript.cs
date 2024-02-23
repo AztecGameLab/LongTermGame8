@@ -6,8 +6,8 @@ public class CatapultLaunchScript : MonoBehaviour
 
     [SerializeField] private GameObject projectile;
     [SerializeField] private Rigidbody projectile_rb;
-    private GameObject catapult;
-    private GameObject catapult_beam;
+    private GameObject _catapult;
+    private GameObject catapult_spoon;
 
     [SerializeField] private int distance;
     [SerializeField] private float land_vertical_y;
@@ -18,11 +18,10 @@ public class CatapultLaunchScript : MonoBehaviour
     
     void Start()
     {
-        catapult = transform.gameObject;
-        catapult_beam = FindFirstChild(catapult, "Spoon").gameObject;
-        launch_angle = catapult_beam.transform.rotation.eulerAngles.x * Mathf.Deg2Rad;
+        _catapult = transform.gameObject;
+        catapult_spoon = FindFirstChild(_catapult, "Spoon").gameObject;
+        launch_angle = catapult_spoon.transform.rotation.eulerAngles.x * Mathf.Deg2Rad;
         vertical_difference = projectile_rb.transform.position.y - land_vertical_y;
-        LaunchProjectile();
     }
 
     private void SetProjectile(GameObject projectile)
@@ -31,12 +30,13 @@ public class CatapultLaunchScript : MonoBehaviour
         projectile_rb = projectile.GetComponent<Rigidbody>();
     }
     
-    private void LaunchProjectile()
+    public void LaunchProjectile()
     {
         float velocity_h = (float)(CalculateVelocity() * Math.Cos(launch_angle));
         float velocity_v = (float)(CalculateVelocity() * Math.Sin(launch_angle));
-        float velocity_x = velocity_h * catapult.transform.forward.x;
-        float velocity_z = velocity_h * catapult.transform.forward.z;
+        float velocity_x = velocity_h * _catapult.transform.forward.x;
+        float velocity_z = velocity_h * _catapult.transform.forward.z;
+        projectile_rb.useGravity = true;
         projectile_rb.velocity = new Vector3(velocity_x, velocity_v, velocity_z);
     }
 
