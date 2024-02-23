@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 namespace Ltg8
 {
-    public class MainMenuGameState : IGameStateLogic
+    public class MainMenuGameState : IGameState
     {
         public async UniTask OnEnter()
         {
@@ -14,6 +14,10 @@ namespace Ltg8
         public UniTask OnExit()
         {
             return UniTask.CompletedTask;
+        }
+
+        public void OnUpdate()
+        {
         }
     }
 }

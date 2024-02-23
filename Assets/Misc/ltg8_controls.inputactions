@@ -137,6 +137,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "OpenInventory",
+                    "type": "Button",
+                    "id": "6c680d62-c3d2-4bf2-a885-df65e3848202",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -244,7 +253,7 @@
                     "id": "cdb8dea3-a6d5-488e-9e56-1b51c586b866",
                     "path": "<Mouse>/delta/x",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Scale(factor=0.05)",
                     "groups": "Keyboard&Mouse",
                     "action": "LookX",
                     "isComposite": false,
@@ -255,9 +264,59 @@
                     "id": "abd1a67d-738c-4cc2-a956-27330a14c090",
                     "path": "<Mouse>/delta/y",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Scale(factor=0.05)",
                     "groups": "Keyboard&Mouse",
                     "action": "LookY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1fd4a8a1-f533-46ff-8af7-7a509a86da9e",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "PlayerInventory",
+            "id": "dd0e69aa-d965-412c-ab5c-731faf9cdd37",
+            "actions": [
+                {
+                    "name": "Close",
+                    "type": "Button",
+                    "id": "ba82f93f-071b-43cb-9e2c-fb01810d77c9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6a98cfc0-ec0e-4f13-9720-ec8b7c4ed1d6",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Close",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c1eaad3c-b8b3-4062-b55c-e7622ac0c515",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Close",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
