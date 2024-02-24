@@ -15,12 +15,13 @@ public class CatapultLaunchScript : MonoBehaviour
     
     private float vertical_difference;
     private bool child_found;
+    private bool catapult_ready;
+    private bool catapult_in_use;
     
     void Start()
     {
         _catapult = transform.gameObject;
         catapult_spoon = FindFirstChild(_catapult, "Spoon").gameObject;
-        launch_angle = catapult_spoon.transform.rotation.eulerAngles.x * Mathf.Deg2Rad;
         vertical_difference = projectile_rb.transform.position.y - land_vertical_y;
     }
 
@@ -29,8 +30,14 @@ public class CatapultLaunchScript : MonoBehaviour
         this.projectile = projectile;
         projectile_rb = projectile.GetComponent<Rigidbody>();
     }
+
+    public void PrepareCatapult()
+    {
+        if (catapult_in_use) { return; }
+        catapult_in_use = !catapult_in_use;
+    }
     
-    public void LaunchProjectile()
+    private void LaunchProjectile()
     {
         float velocity_h = (float)(CalculateVelocity() * Math.Cos(launch_angle));
         float velocity_v = (float)(CalculateVelocity() * Math.Sin(launch_angle));
@@ -75,5 +82,34 @@ public class CatapultLaunchScript : MonoBehaviour
 
     void Update()
     {
+        if (!catapult_in_use) {return;}
+        if(!catapult_ready){
+            if (catapult_spoon.transform.rotation.eulerAngles.x < 65)
+            {
+                catapult_spoon.transform.Rotate(0.5f, 0, 0);
+            }
+            else
+            {
+                catapult_ready = !catapult_ready;
+                catapult_in_use = !catapult_in_use;
+            }
+        }
+        else
+        {
+            if (catapult_spoon.transform.rotation.eulerAngles.x > 15)
+            {
+                catapult_spoon.transform.Rotate(-5, 0, 0);
+                if (catapult_spoon.transform.rotation.eulerAngles.x < 30)
+                {
+                    launch_angle = catapult_spoon.transform.rotation.eulerAngles.x * Mathf.Deg2Rad;
+                    LaunchProjectile();
+                }
+            }
+            else
+            {
+                catapult_ready = !catapult_ready;
+                catapult_in_use = !catapult_in_use;
+            }
+        }
     }
 }
