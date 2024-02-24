@@ -32,7 +32,6 @@ MonoBehaviour:
     m_Scopes:
     - com.codewriter.triinspector
     - com.cysharp.unitask
-    - com.neuecc.unirx
     - com.openupm
     - net.tnrd.serializableinterface
     m_IsDefault: 0
