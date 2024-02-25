@@ -17,6 +17,8 @@ public class CatapultLaunchScript : MonoBehaviour
     private bool child_found;
     private bool catapult_ready;
     private bool catapult_in_use;
+
+    [SerializeField] private Vector3 forward;
     
     void Start()
     {
@@ -41,8 +43,8 @@ public class CatapultLaunchScript : MonoBehaviour
     {
         float velocity_h = (float)(CalculateVelocity() * Math.Cos(launch_angle));
         float velocity_v = (float)(CalculateVelocity() * Math.Sin(launch_angle));
-        float velocity_x = velocity_h * _catapult.transform.forward.x;
-        float velocity_z = velocity_h * _catapult.transform.forward.z;
+        float velocity_x = -velocity_h * catapult_spoon.transform.forward.x;
+        float velocity_z = -velocity_h * catapult_spoon.transform.forward.z;
         projectile_rb.useGravity = true;
         projectile_rb.velocity = new Vector3(velocity_x, velocity_v, velocity_z);
     }
@@ -82,6 +84,7 @@ public class CatapultLaunchScript : MonoBehaviour
 
     void Update()
     {
+        forward = catapult_spoon.transform.forward;
         if (!catapult_in_use) {return;}
         if(!catapult_ready){
             if (catapult_spoon.transform.rotation.eulerAngles.x < 65)
