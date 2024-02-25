@@ -1057,26 +1057,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 25
---- !u!1 &513179263 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5034609385208380907, guid: 116445ef4d88d224ba0204e76c5dfd1f,
-    type: 3}
-  m_PrefabInstance: {fileID: 796059496}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &513179269
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 513179263}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5214659172218046519, guid: 3fe5b97d6a9bae64db1f6bbb864cfc3e, type: 3}
 --- !u!1 &539351245
 GameObject:
   m_ObjectHideFlags: 0

@@ -133,6 +133,12 @@ MonoBehaviour:
       m_Calls: []
   onRigidbodyTriggerEnter:
     m_PersistentCalls:
+      m_Calls: []
+  onRigidbodyTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerEnter:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 526972761}
         m_TargetAssemblyTypeName: CatapultAmmoScript, Ltg8
@@ -146,7 +152,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onRigidbodyTriggerExit:
+  onTriggerExit:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 526972761}
@@ -161,12 +167,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onTriggerEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onTriggerExit:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &1296577549069026759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -382,6 +382,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1296577549069026759}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &3335655792357908911
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5034609385208380907}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5214659172218046519, guid: 3fe5b97d6a9bae64db1f6bbb864cfc3e, type: 3}
 --- !u!114 &5639696039455978096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,7 +471,7 @@ PrefabInstance:
     - target: {fileID: 8977614063689625964, guid: 8107d455c85fed14b9bd8f431765c966,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.812
+      value: -0.657
       objectReference: {fileID: 0}
     - target: {fileID: 8977614063689625964, guid: 8107d455c85fed14b9bd8f431765c966,
         type: 3}

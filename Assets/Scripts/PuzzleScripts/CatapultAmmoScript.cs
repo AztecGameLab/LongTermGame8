@@ -27,17 +27,17 @@ public class CatapultAmmoScript : MonoBehaviour
         GUILayout.Label(output);
     }
 
-    public void ObjectLoaded(Rigidbody enteredRb)
+    public void ObjectLoaded(GameObject enteredObject)
     {
         if (_loaded && _loadedItem != null) return;
         
         _loaded = true;
-        _loadedItem = enteredRb.gameObject;
+        _loadedItem = enteredObject;
     }
 
-    public void ObjectUnloaded(Rigidbody exitedRb)
+    public void ObjectUnloaded(GameObject exitedObject)
     {
-        if (_loadedItem == null || exitedRb.gameObject != _loadedItem) return;
+        if (_loadedItem == null || exitedObject != _loadedItem) return;
         
         _loaded = false;
         _loadedItem = null;
@@ -47,7 +47,11 @@ public class CatapultAmmoScript : MonoBehaviour
     {
         if (_loaded) return;
 
-        player.transform.position = loadPosition.position;
+        if (player.TryGetComponent(out CharacterController playerController))
+        {
+            playerController.Move(loadPosition.position - player.transform.position);
+        }
+        // player.transform.position = loadPosition.position;
     }
 
     public async void PlaceItem(ItemData item)
