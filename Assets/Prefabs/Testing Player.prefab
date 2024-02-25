@@ -430,8 +430,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSelector: {fileID: 1068367371359854893}
-  itemHoverVfxPrefab: {fileID: 1769939608487987441, guid: 9e61648caee91314f8463856a7b72fd6,
-    type: 3}
   itemUiViewPrefab: {fileID: 9209471498526994585, guid: 33db7d59f0ddaee478e07863e4800d7e,
     type: 3}
   openTween:
