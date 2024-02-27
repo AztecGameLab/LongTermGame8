@@ -430,8 +430,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSelector: {fileID: 1068367371359854893}
-  itemHoverVfxPrefab: {fileID: 1769939608487987441, guid: 9e61648caee91314f8463856a7b72fd6,
-    type: 3}
   itemUiViewPrefab: {fileID: 9209471498526994585, guid: 33db7d59f0ddaee478e07863e4800d7e,
     type: 3}
   openTween:
@@ -554,7 +552,7 @@ Animator:
   m_GameObject: {fileID: 1068367370860318076}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 384d24a0581bfc141a5d97509290989d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1252,7 +1250,7 @@ Transform:
   m_GameObject: {fileID: 1068367371721748608}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.54922, y: 0.54922, z: 0.54922}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1068367370722448758}
@@ -1265,7 +1263,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068367371721748608}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 5085549440225541910, guid: 0f02b323ebc14314e88d6697b4a40a34, type: 3}
 --- !u!23 &1068367371721748671
 MeshRenderer:
   m_ObjectHideFlags: 0
