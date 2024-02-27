@@ -13,6 +13,11 @@ namespace Ltg8.Player
 
         private ProximityInteractableController _controller;
 
+        public void DestroySelf()
+        {
+            Destroy(gameObject);
+        }
+
         private void OnEnable()
         {
             _controller = FindAnyObjectByType<ProximityInteractableController>();
