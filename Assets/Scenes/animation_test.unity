@@ -246,8 +246,8 @@ MonoBehaviour:
   controller: {fileID: 1010972831}
   player: {fileID: 1010972824}
   animatorController: {fileID: 1273471431}
-  lookMagnitude: 10
-  rotatePlayerSpeed: 5
+  lookMagnitude: 13
+  rotatePlayerSpeed: 10
 --- !u!1 &1273471429 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1068367371721748608, guid: 54c2b4d63c62bc94eb31c70c8269dc5a,
