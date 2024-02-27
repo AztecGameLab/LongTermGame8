@@ -1,6 +1,4 @@
-﻿using System;
-using DefaultNamespace;
-using poetools.Core.Abstraction;
+﻿using poetools.Core.Abstraction;
 using UnityEngine;
 
 namespace Ltg8.Player
@@ -8,44 +6,61 @@ namespace Ltg8.Player
     public class PlayerAnimation : MonoBehaviour
     {
         private static readonly int IsIdle = Animator.StringToHash("isIdle");
+
+        [SerializeField] 
+        private PlayerController controller;
         
-        [SerializeField] private PhysicsComponent player;
-        [SerializeField] private Animator animatorController;
+        [SerializeField] 
+        private PhysicsComponent player;
+        
+        [SerializeField] 
+        private Animator animatorController;
+
+        [SerializeField] 
+        private float lookMagnitude;
+        
+        [SerializeField] 
+        private float rotatePlayerSpeed;
+        
+        private Transform _playerTransform;
         private float _playerInitialMagnitude;
+        private float _initialYaw;
         private bool _isIdle;
 
         private void Start()
         {
-            animatorController.SetBool(IsIdle, true);
-            // Debug.Log(player.Velocity.magnitude);
-            // Initial magnitude of Sigmund for logic checks (temp const due to bugs)
+            animatorController.SetBool(IsIdle, true); // initial state: idle
+            _playerTransform = GetComponent<Transform>();
             _playerInitialMagnitude = player.Velocity.magnitude;
         }
 
         private void Update()
         {
+            RotatePlayer();
             CheckPlayerIdleState(player.Velocity.magnitude);
+        }
+
+        private void RotatePlayer()
+        {
+            // Threshold for player rotation based on mouse position
+            if (Mathf.Abs(controller.InputYaw) <= lookMagnitude) return;
+            
+            float rotatePlayerY = controller.InputYaw * rotatePlayerSpeed * Time.deltaTime;
+            _playerTransform.Rotate(0, rotatePlayerY, 0);
         }
 
         private void CheckPlayerIdleState(float currentMagnitude)
         {
-            // TO DO: Pass in layer to ChangeAnimationState
-            Debug.Log(currentMagnitude);
-            // If Sigmund isn't moving, plays animation
+            // If Sigmund isn't moving, plays idle animation
             if (currentMagnitude <= _playerInitialMagnitude)
             {
-                Debug.Log("Sigmund isn't moving");
                 ChangeAnimationState(true);
             }
-            else
+            // else if grounded and walking, plays walking animation
+            else if (!controller.InputJumpHeld) 
             {
                 ChangeAnimationState(false);
             }
-        }
-
-        public void CreateAnimationList(Animator test)
-        {
-            
         }
 
         private void ChangeAnimationState(bool newState)
