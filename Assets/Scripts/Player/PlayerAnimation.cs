@@ -1,5 +1,6 @@
 ﻿using poetools.Core.Abstraction;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Ltg8.Player
 {
@@ -17,21 +18,17 @@ namespace Ltg8.Player
         private Animator animatorController;
 
         [SerializeField] 
-        private float lookMagnitude;
-        
-        [SerializeField] 
         private float rotatePlayerSpeed;
         
-        private Transform _playerTransform;
-        private float _playerInitialMagnitude;
+        [SerializeField]
+        private Transform playerTransform;
+        
         private float _initialYaw;
         private bool _isIdle;
 
         private void Start()
         {
             animatorController.SetBool(IsIdle, true); // initial state: idle
-            _playerTransform = GetComponent<Transform>();
-            _playerInitialMagnitude = player.Velocity.magnitude;
         }
 
         private void Update()
@@ -42,17 +39,26 @@ namespace Ltg8.Player
 
         private void RotatePlayer()
         {
-            // Threshold for player rotation based on mouse position
-            if (Mathf.Abs(controller.InputYaw) <= lookMagnitude) return;
+            Vector3 facingDirection = player.Velocity;
+            facingDirection.y = 0;
+            facingDirection = facingDirection.normalized;
             
-            float rotatePlayerY = controller.InputYaw * rotatePlayerSpeed * Time.deltaTime;
-            _playerTransform.Rotate(0, rotatePlayerY, 0);
+            // Threshold for player rotation based on mouse position
+            if (facingDirection.sqrMagnitude < 0.1f) return;
+
+            playerTransform.rotation = Quaternion.Lerp(playerTransform.rotation, Quaternion.LookRotation(facingDirection), rotatePlayerSpeed * Time.deltaTime);
+            // float rotatePlayerY = controller.InputYaw * rotatePlayerSpeed * Time.deltaTime;
+            // playerTransform.Rotate(0, rotatePlayerY, 0);
         }
 
         private void CheckPlayerIdleState(float currentMagnitude)
         {
+            Vector3 facingDirection = player.Velocity;
+            facingDirection.y = 0;
+            facingDirection = facingDirection.normalized;
+            
             // If Sigmund isn't moving, plays idle animation
-            if (currentMagnitude <= _playerInitialMagnitude)
+            if (facingDirection.sqrMagnitude < 0.1f)
             {
                 ChangeAnimationState(true);
             }
@@ -66,13 +72,6 @@ namespace Ltg8.Player
         private void ChangeAnimationState(bool newState)
         {
             animatorController.SetBool(IsIdle, newState);
-        }
-
-        private void OnGUI()
-        {
-            // Debug UI code
-            // static cl
-            GUILayout.Label("Hello World");
         }
     }
 }
