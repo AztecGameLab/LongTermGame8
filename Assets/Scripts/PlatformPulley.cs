@@ -6,9 +6,12 @@ namespace Ltg8
 {
     public class PlatformPulley : MonoBehaviour
     {
-        //public GameObject hitPlatformRef;
         public GameObject otherPlatformRef;
         public PlatformPulley otherplatformPulleyRef;
+
+        public AudioSource audioSource;
+        public AudioClip moveSound;
+        public float volume = 1f;
 
         public float movementSpeed = 0.1f;
         public float dampen = 1f;
@@ -27,6 +30,8 @@ namespace Ltg8
 
             otherPlatformRef.transform.position = Vector3.MoveTowards(otherPlatformRef.transform.position, 
                 otherPlatformRef.transform.position + Vector3.up * scalar2, movementSpeed * Time.deltaTime);
+
+            audioSource.PlayOneShot(moveSound, volume);
 
             //add to the current weight of this platform
             weightOn += col.rigidbody.mass;
