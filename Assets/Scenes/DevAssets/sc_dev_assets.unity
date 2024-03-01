@@ -1126,6 +1126,12 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+  - position: {x: 200, y: 200}
+    itemData:
+      m_AssetGUID: 4a84defeb1f45c9408e3d203a1af549c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
   testCollectData: {fileID: 11400000, guid: 9ee7bcd7e72b0f3429b794ec7b3e3163, type: 2}
   inventoryView: {fileID: 586099943}
   collectedAnimation: {fileID: 648529508}
@@ -9726,9 +9732,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animSmile:
-    data: {fileID: 11400000, guid: 1a6497f7ec3fddb42b8d7ea84120654d, type: 2}
+    data: {fileID: 11400000, guid: 3e53101ec6630a44f94a5a479e77555e, type: 2}
   animFrown:
-    data: {fileID: 11400000, guid: 87371e80a2b7d5c4bad012cb0e5dfb8f, type: 2}
+    data: {fileID: 11400000, guid: 3e53101ec6630a44f94a5a479e77555e, type: 2}
 --- !u!4 &1861801371
 Transform:
   m_ObjectHideFlags: 0
