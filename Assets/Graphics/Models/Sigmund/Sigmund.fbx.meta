@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: 8b843a7c7244f4e39891ea8d674432ff
+guid: 9346a220d08c3804aa1e29e9e3ab6a42
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SigFace.001
+    second: {fileID: 2100000, guid: 4f7a6f943362a4f4db405b3f242bb4f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: initialShadingGroup
+    second: {fileID: 2100000, guid: 1333da55dcc902545b4c9e940c303809, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: SigFace.001
+    second: {fileID: 2800000, guid: 0c8d99b9c2a053d4bb8be1b9b9dc2b1c, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
