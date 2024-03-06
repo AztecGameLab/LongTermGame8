@@ -1,12 +1,12 @@
 ﻿using poetools.Core.Abstraction;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Ltg8.Player
 {
     public class PlayerAnimation : MonoBehaviour
     {
         private static readonly int IsIdle = Animator.StringToHash("isIdle");
+        private static readonly int Jump = Animator.StringToHash("jump");
 
         [SerializeField] 
         private PlayerController controller;
@@ -29,6 +29,7 @@ namespace Ltg8.Player
         private void Start()
         {
             animatorController.SetBool(IsIdle, true); // initial state: idle
+            controller.onJump.AddListener(() => animatorController.SetTrigger(Jump));
         }
 
         private void Update()
