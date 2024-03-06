@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Ltg8.Player;
+using UnityEditor.Experimental.GraphView;
 
 namespace Catapult
 {
@@ -9,6 +11,8 @@ namespace Catapult
 
         [SerializeField] private GameObject projectile;
         [SerializeField] private Rigidbody projectile_rb;
+        public GameObject launched_object;
+        private Rigidbody launched_object_rb;
         private GameObject _catapult;
         private GameObject catapult_spoon;
         private GameObject catapult_platform;
@@ -26,6 +30,8 @@ namespace Catapult
         private Animator catapult_animator;
 
         [SerializeField] private GameObject cogTurner;
+        [SerializeField] private GameObject enterProx;
+        [SerializeField] private GameObject basketProx;
         private CogTurning cog;
         
             void Start()
@@ -40,12 +46,23 @@ namespace Catapult
             vertical_difference = projectile_rb.transform.position.y - land_vertical_y;
             catapult_animator.enabled = false;
             cog = cogTurner.GetComponent<CogTurning>();
+            enterProx.SetActive(false);
         }
 
-        private void SetProjectile(GameObject projectile)
+        public void SetProjectile(GameObject projectile)
         {
             this.projectile = projectile;
-            projectile_rb = projectile.GetComponent<Rigidbody>();
+            if (projectile)
+            {
+                projectile_rb = projectile.GetComponent<Rigidbody>();
+                Debug.Log("Projectile Set");
+                catapult_basket.GetComponent<FixedJoint>().connectedBody = projectile.GetComponent<Rigidbody>();
+            }
+            else
+            {
+                projectile_rb = null;
+            }
+            
         }
 
         public void PrepareCatapult()
@@ -58,33 +75,57 @@ namespace Catapult
             if (!catapult_ready)
             {
                 StartCoroutine(PlayandPauseAnimation(catapult_animator, 5.5f, 1f));
+                StartCoroutine(LayerChange(catapult_basket, 6, 5.5f));
                 catapult_ready = !catapult_ready;
                 StartCoroutine(Cooldown(catapult_in_use, 6f));
                 cog.setTime(5.5f);
                 cog.turnCog("Launch");
+                StartCoroutine(DelayAction(toggleEnterProx,6f));
             }
-
             else
             {
+                enterProx.SetActive(false);
+                basketProx.SetActive(false);
+                if (!(projectile == null))
+                {
+                    launched_object = projectile;
+                    launched_object_rb = projectile_rb;
+                    if (launched_object.TryGetComponent(out CharacterController characterController))
+                    {
+                        launched_object.GetComponent<CharacterController>().enabled = false;
+                        //launched_object.GetComponent<BoxCollider>().enabled = false;
+                    }
+                    else
+                    {
+                        launched_object.GetComponent<BoxCollider>().enabled = false;
+                    }
+                    StartCoroutine(DelayAction(LaunchProjectile, 0.55f));
+                }
                 StartCoroutine(PlayandPauseAnimation(catapult_animator, 4.5f, 2f));
                 catapult_ready = !catapult_ready;
                 StartCoroutine(Cooldown(catapult_in_use, 2.75f));
-                StartCoroutine(DelayAction(LaunchProjectile, 0.55f));
                 cog.setTime(2f);
-                cog.turnCog("Launch");
+                cog.turnCog("Launch");  
             }
         }
 
         private void LaunchProjectile()
         {
+            Debug.Log("Launch");
             catapult_basket.GetComponent<FixedJoint>().connectedBody = null;
+            if (launched_object)
+            {
+                StartCoroutine(DelayCollider(launched_object.GetComponent<BoxCollider>(), launched_object.GetComponent<SphereCollider>(),0.5f));
+            }
             launch_angle = catapult_spoon.transform.rotation.eulerAngles.x * Mathf.Deg2Rad;
             float velocity_h = (float)(CalculateVelocity() * Math.Cos(launch_angle));
             float velocity_v = (float)(CalculateVelocity() * Math.Sin(launch_angle));
             float velocity_x = -velocity_h * catapult_spoon.transform.forward.x;
             float velocity_z = -velocity_h * catapult_spoon.transform.forward.z;
-            projectile_rb.useGravity = true;
-            projectile_rb.velocity = new Vector3(velocity_x, velocity_v, velocity_z);
+            launched_object_rb.useGravity = true;
+            launched_object_rb.velocity = new Vector3(velocity_x, velocity_v, velocity_z);
+            catapult_basket.layer = default;
+            SetProjectile(null);
         }
 
         private float CalculateVelocity()
@@ -152,6 +193,35 @@ namespace Catapult
             method();
         }
 
+        private IEnumerator<WaitForSeconds> LayerChange(GameObject item, int newValue, float time)
+        {
+            yield return new WaitForSeconds(time);
+            item.layer = newValue;
+        }
+        
+        /*private IEnumerator<WaitForSeconds> DelayBool(bool boolean, float time)
+        {
+            yield return new WaitForSeconds(time);
+            boolean = !boolean;
+        }*/
+
+        private IEnumerator<WaitForSeconds> DelayCollider(BoxCollider collider, SphereCollider collider2, float time)
+        {
+            yield return new WaitForSeconds(time);
+            collider.enabled = !collider.enabled;
+            collider2.enabled = !collider2.enabled;
+        }
+
+        private void toggleEnterProx()
+        {
+            enterProx.SetActive(!enterProx.activeSelf);
+        }
+
+        private void toggleBasketProx()
+        {
+            basketProx.SetActive(!basketProx.activeSelf);
+        }
+        
         void Update()
         {
             if (!catapult_in_use)
