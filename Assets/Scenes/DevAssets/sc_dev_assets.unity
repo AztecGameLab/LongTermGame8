@@ -1363,12 +1363,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5343c0748df445cadc53fb22be04a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &755322727 stripped
+--- !u!1 &755322727
 GameObject:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 45916f074b934b3478f4f3ad1ad4a772,
     type: 3}
   m_PrefabInstance: {fileID: 896560485}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 755322745}
+  - component: {fileID: 755322738}
+  - component: {fileID: 755322731}
+  - component: {fileID: 755322741}
+  - component: {fileID: 755322744}
+  m_Layer: 0
+  m_Name: 
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!114 &755322731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1383,12 +1398,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spinSpeed: 50
   axis: {x: 0, y: 0, z: 1}
---- !u!4 &755322734 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 45916f074b934b3478f4f3ad1ad4a772,
-    type: 3}
-  m_PrefabInstance: {fileID: 896560485}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &755322738
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1439,6 +1448,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 25
+--- !u!4 &755322745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755322727}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &787848509
 GameObject:
   m_ObjectHideFlags: 0
@@ -7675,7 +7699,6 @@ Transform:
   - {fileID: 1387765051}
   - {fileID: 1430732821}
   - {fileID: 413976060}
-  - {fileID: 755322734}
   - {fileID: 217403996}
   m_Father: {fileID: 0}
   m_RootOrder: 4
