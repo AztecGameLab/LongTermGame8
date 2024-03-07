@@ -1,4 +1,5 @@
 ﻿using System;
+using poetools.Core.Abstraction;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,7 +13,19 @@ namespace Ltg8.Player
         private float enterBuffer = 0.1f;
 
         [SerializeField] 
+        private float climbSpeed = 1;
+
+        [SerializeField] 
+        private float animationSpeed = 10f;
+
+        [SerializeField] 
+        private Gravity gravity;
+
+        [SerializeField] 
         private GameObject playerBody;
+        
+        [SerializeField] 
+        private GameObject playerRotateTransform;
 
         [SerializeField] 
         private Animator playerAnimator;
@@ -40,11 +53,12 @@ namespace Ltg8.Player
 
             // update animation if we have input
             playerAnimator.SetBool(IsClimbing, _climbMovementDelta != 0);
+            playerRotateTransform.transform.rotation = Quaternion.Lerp(playerRotateTransform.transform.rotation, Quaternion.LookRotation(_attachmentPoint.BottomToTopVector.normalized), animationSpeed * Time.deltaTime);
 
             // actually move the player up or down the rope based on input
-            _currentRopePos += _climbMovementDelta;
-            Vector3 targetPos = _attachmentPoint.BottomToTopVector * _currentRopePos;
-            playerBody.transform.position = Vector3.Lerp(playerBody.transform.position, targetPos, 15 * Time.deltaTime);
+            _currentRopePos += _climbMovementDelta * Time.deltaTime * climbSpeed;
+            Vector3 targetPos = _attachmentPoint.BottomClimbTransform.position + _attachmentPoint.BottomToTopVector * (_currentRopePos / _attachmentPoint.ClimbDistance);
+            playerBody.transform.position = Vector3.Lerp(playerBody.transform.position, targetPos, animationSpeed * Time.deltaTime);
 
             // check to see if we leave the top or bottom
             if (_currentRopePos >= _attachmentPoint.ClimbDistance && _attachmentPoint.topDismountTransform != null)
@@ -52,6 +66,9 @@ namespace Ltg8.Player
             
             else if (_currentRopePos <= 0 && _attachmentPoint.BottomDismountTransform != null)
                 ExitRope(RopeLocation.Bottom);
+            
+            // debug
+            Debug.DrawLine(_attachmentPoint.BottomClimbTransform.position, targetPos);
         }
 
         // only we determine when we should exit
@@ -59,6 +76,8 @@ namespace Ltg8.Player
         {
             Ltg8.Controls.PlayerFreeMovement.Enable();
             Ltg8.Controls.PlayerClimbingMovement.Disable();
+            gravity.enabled = true;
+            playerAnimator.SetBool(IsClimbing, false);
 
             switch (location)
             {
@@ -79,6 +98,7 @@ namespace Ltg8.Player
         {
             Ltg8.Controls.PlayerFreeMovement.Disable();
             Ltg8.Controls.PlayerClimbingMovement.Enable();
+            gravity.enabled = false;
             _attachmentPoint = point;
             
             switch (location)

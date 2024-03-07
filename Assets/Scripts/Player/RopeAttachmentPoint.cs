@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Ltg8.Inventory;
 using UnityEngine;
@@ -9,10 +8,10 @@ namespace Ltg8.Player
 
     public class RopeAttachmentPoint : ItemTarget
     {
+        public int initialStage;
         public List<RopeStage> stages;
         public ProximityInteractable topClimbInteractable;
         public ProximityInteractable ropeHolderInteractable;
-        public ItemTarget ropeDeployTarget;
         public Transform topClimbTransform;
         public Transform topDismountTransform;
         public string ropeId;
@@ -30,21 +29,49 @@ namespace Ltg8.Player
             
             private set
             {
+                if (value < 0)
+                {
+                    topClimbInteractable.enabled = false;
+                    ropeHolderInteractable.enabled = false;
+                }
+                else
+                {
+                    topClimbInteractable.enabled = true;
+                    ropeHolderInteractable.enabled = true;
+                }
+                
+                // add listener to bottom interact, remove old one
+                if (_currentStage >= 0)
+                {
+                    stages[_currentStage].bottomClimbInteractable.onPlayerInteractStart.RemoveListener(HandleBottomInteract);
+                    stages[_currentStage].bottomClimbInteractable.enabled = false;
+                }
+                
+                _currentStage = value;
+
+                if (_currentStage >= 0)
+                {
+                    stages[_currentStage].bottomClimbInteractable.onPlayerInteractStart.AddListener(HandleBottomInteract);
+                    stages[_currentStage].bottomClimbInteractable.enabled = true;
+                }
+                
                 // enable the correct models for this stage
                 for (int i = 0; i < stages.Count; i++)
                     stages[i].ropeModel.SetActive(i <= _currentStage);
-                
-                // add listener to bottom interact, remove old one
-                stages[_currentStage].bottomClimbInteractable.onPlayerInteractStart.RemoveListener(HandleBottomInteract);
-                _currentStage = value;
-                stages[_currentStage].bottomClimbInteractable.onPlayerInteractStart.AddListener(HandleBottomInteract);
             }
         }
         
         private void Start()
         {
+            // all ropes start disabled by default
+            foreach (RopeStage ropeStage in stages)
+            {
+                ropeStage.bottomClimbInteractable.enabled = false;
+            }
+            
             topClimbInteractable.onPlayerInteractStart.AddListener(HandleTopInteract);
             ropeHolderInteractable.onPlayerInteractStart.AddListener(HandleRopeCollect);
+            CurrentStage = initialStage;
         }
 
         public override bool CanReceiveItem(ItemData data)
@@ -78,14 +105,6 @@ namespace Ltg8.Player
         {
             // enter climbing state at bottom, trust player to get out of it
             FindAnyObjectByType<PlayerRopeClimbingLogic>().EnterRope(this, PlayerRopeClimbingLogic.RopeLocation.Bottom);
-        }
-
-        [Serializable] public class RopeStage
-        {
-            public GameObject ropeModel;
-            public Transform bottomClimbTransform;
-            public Transform bottomDismountTransform;
-            public ProximityInteractable bottomClimbInteractable;
         }
     }
 }
