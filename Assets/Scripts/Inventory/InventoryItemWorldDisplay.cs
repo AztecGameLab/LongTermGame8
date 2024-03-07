@@ -7,9 +7,12 @@ namespace Ltg8.Inventory
         [SerializeField] private Transform uiParent;
 
         private Transform _activeItem;
+        public ItemData CurrentData { get; private set; }
 
         public void Display(ItemData data)
         {
+            CurrentData = data;
+            
             if (_activeItem != null)
             {
                 Destroy(_activeItem.gameObject);
