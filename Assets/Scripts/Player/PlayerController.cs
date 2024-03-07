@@ -1,6 +1,7 @@
 ﻿using poetools.Core.Abstraction;
 using pt_player_3d.Scripts;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Ltg8.Player
 {
@@ -20,6 +21,8 @@ namespace Ltg8.Player
         
         [SerializeField] 
         private Transform yawTransform;
+
+        public UnityEvent onJump;
         
         public Vector3 InputDirection { get; set; }
         public float InputPitch { get; set; }
@@ -28,6 +31,7 @@ namespace Ltg8.Player
         public bool InputInteractHeld { get; set; }
 
         private bool _wasInteractHeld;
+        private float _lastJumpTime;
 
         public void ClearInputState()
         {
@@ -51,6 +55,11 @@ namespace Ltg8.Player
             {
                 // jump
                 physics.Velocity += Vector3.up * settings.jumpSpeed;
+                
+                if (Time.time - _lastJumpTime > 0.1f)
+                    onJump.Invoke();
+                
+                _lastJumpTime = Time.time;
             }
             
             // proximity interact
