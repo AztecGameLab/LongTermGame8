@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 91406714}
   - component: {fileID: 91406713}
   m_Layer: 0
-  m_Name: Proximity Interactable (1)
+  m_Name: Basket Proximity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,18 +166,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3672880822791611324}
-        m_TargetAssemblyTypeName: CogTurning, Ltg8
-        m_MethodName: turnCog
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Launch
           m_BoolArgument: 0
         m_CallState: 2
   onPlayerInteractStop:
@@ -1744,6 +1732,94 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5343c0748df445cadc53fb22be04a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &676160315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 676160317}
+  - component: {fileID: 676160316}
+  m_Layer: 0
+  m_Name: Animation Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &676160316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676160315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8394b30b2bb744e56b79622ceeb4775e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &676160317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676160315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1618172239718253892}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &684959624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 684959625}
+  - component: {fileID: 684959626}
+  m_Layer: 0
+  m_Name: Audio Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &684959625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684959624}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5442101336491168296}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &684959626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684959624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450e7625bff314ff28b9b8d5477cefd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &755322727 stripped
@@ -6655,13 +6731,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42eefea44ffb202449ac2a666f0217a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadPosition: {fileID: 529938725}
-  unloadPosition: {fileID: 584840161}
-  _loaded: 0
-  _loadedItem: {fileID: 0}
   launchBasketProx: {fileID: 91406712}
-  catapult: {fileID: 2107464416319397886}
-  catapult_basket: {fileID: 5034609384790137475}
+  loadPosition: {fileID: 529938725}
+  launchScript: {fileID: 2107464416319397887}
 --- !u!1 &809423990
 GameObject:
   m_ObjectHideFlags: 0
@@ -9526,18 +9598,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &1635140221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635140210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 802381cb7ef564672aca221b844c81f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1635140222
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9551,19 +9611,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &1635140223
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635140210}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.85
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!81 &1635140224
 AudioListener:
   m_ObjectHideFlags: 0
@@ -11328,6 +11375,7 @@ Transform:
   - {fileID: 7373802233997646981}
   - {fileID: 186540857820435227}
   - {fileID: 3672880822791611327}
+  - {fileID: 676160317}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11401,14 +11449,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fb0e516b0d34289a0a3ab2b0187af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 535754883}
-  projectile_rb: {fileID: 535754884}
-  launched_object: {fileID: 0}
-  distance: 20
-  land_vertical_y: 0
-  cogTurner: {fileID: 3672880822791611326}
+  catapultSpoon: {fileID: 1475044947267064954}
+  catapultPlatform: {fileID: 284235746201374253}
+  catapultBasket: {fileID: 5034609384790137475}
   enterProx: {fileID: 7883755680892508578}
   basketProx: {fileID: 91406712}
+  distance: 20
+  verticalY: 0
+  animationController: {fileID: 676160316}
+  cog: {fileID: 3672880822791611324}
 --- !u!1 &2301495098600174358
 GameObject:
   m_ObjectHideFlags: 0
@@ -11685,6 +11734,7 @@ MonoBehaviour:
   cogLaunch: {fileID: 3670524554130696343}
   cogRotate: {fileID: 29846444366427414}
   cogLever: {fileID: 8096110470533357422}
+  launch: {fileID: 2107464416319397887}
 --- !u!1 &3672880822791611326
 GameObject:
   m_ObjectHideFlags: 0
@@ -12140,6 +12190,7 @@ Transform:
   - {fileID: 7883755680892508577}
   - {fileID: 584840161}
   - {fileID: 1716451438}
+  - {fileID: 684959625}
   m_Father: {fileID: 1618172239718253892}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12178,7 +12229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1716451437}
   audioClip: {fileID: 8300000, guid: 66b754067b77b4b99924be99d7a7f9f0, type: 3}
-  rotate: 0
+  audioController: {fileID: 684959626}
 --- !u!4 &5531723861968237206
 Transform:
   m_ObjectHideFlags: 0
@@ -12256,7 +12307,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5442101336491168298}
         m_TargetAssemblyTypeName: CatapultRotationScript, Ltg8
-        m_MethodName: rotateCatapult
+        m_MethodName: RotateCatapult
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12267,9 +12318,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 3672880822791611324}
-        m_TargetAssemblyTypeName: CogTurning, Ltg8
-        m_MethodName: turnCog
-        m_Mode: 5
+        m_TargetAssemblyTypeName: CatapultScripts.CogTurning, Ltg8
+        m_MethodName: RotateCog
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12283,7 +12334,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5442101336491168298}
         m_TargetAssemblyTypeName: CatapultRotationScript, Ltg8
-        m_MethodName: rotateCatapult
+        m_MethodName: RotateCatapult
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12294,9 +12345,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 3672880822791611324}
-        m_TargetAssemblyTypeName: CogTurning, Ltg8
-        m_MethodName: turnCog
-        m_Mode: 5
+        m_TargetAssemblyTypeName: CatapultScripts.CogTurning, Ltg8
+        m_MethodName: RotateCog
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12318,7 +12369,7 @@ GameObject:
   - component: {fileID: 5651548911249524424}
   - component: {fileID: 5651548911249524425}
   m_Layer: 0
-  m_Name: Proximity Interactable
+  m_Name: Rotate Proximity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12350,18 +12401,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3672880822791611324}
-        m_TargetAssemblyTypeName: CogTurning, Ltg8
-        m_MethodName: turnCog
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Launch
           m_BoolArgument: 0
         m_CallState: 2
   onPlayerInteractStop:
@@ -12396,7 +12435,7 @@ GameObject:
   - component: {fileID: 5651548911409188661}
   - component: {fileID: 5651548911409188660}
   m_Layer: 0
-  m_Name: Proximity Interactable
+  m_Name: Launch Proximity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13163,7 +13202,7 @@ GameObject:
   - component: {fileID: 7883755680892508577}
   - component: {fileID: 7883755680892508579}
   m_Layer: 0
-  m_Name: Proximity Interactable
+  m_Name: Enter Proximity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
