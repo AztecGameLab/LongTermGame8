@@ -20,7 +20,7 @@ namespace Ltg8
         [Required] public Camera mainCamera;
         [Required] public TextBoxPresenter textBoxPresenter;
         [Required] public ItemRegistry itemRegistry;
-    
+     
         private void Awake()
         {
             Ltg8.Settings = settings;

@@ -41,6 +41,10 @@ MonoBehaviour:
     m_Address: prefabs/overworld_item
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 4a84defeb1f45c9408e3d203a1af549c
+    m_Address: items/walkie_talkie
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b31b9675a4b82e148a3724ca6e4d8064, type: 2}
   m_SchemaSet:
