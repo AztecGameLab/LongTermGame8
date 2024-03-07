@@ -6,24 +6,38 @@ using UnityEngine;
 
 namespace Ltg8.Player
 {
-    public class RopeAttachmentPoint : MonoBehaviour
+
+    public class RopeAttachmentPoint : ItemTarget
     {
         public List<RopeStage> stages;
         public ProximityInteractable topClimbInteractable;
         public ProximityInteractable ropeHolderInteractable;
-        public Transform topPosition;
+        public ItemTarget ropeDeployTarget;
+        public Transform topClimbTransform;
+        public Transform topDismountTransform;
         public string ropeId;
-
+        
         private int _currentStage;
+
+        public Transform BottomClimbTransform => stages[CurrentStage].bottomClimbTransform;
+        public Transform BottomDismountTransform => stages[CurrentStage].bottomDismountTransform;
+        public Vector3 BottomToTopVector => topClimbTransform.position - BottomClimbTransform.position;
+        public float ClimbDistance => Vector3.Distance(BottomClimbTransform.position, topClimbTransform.position);
+        
         public int CurrentStage
         {
             get => _currentStage;
+            
             private set
             {
-                _currentStage = value;
                 // enable the correct models for this stage
-                // add listener to bottom interact, remove old one
+                for (int i = 0; i < stages.Count; i++)
+                    stages[i].ropeModel.SetActive(i <= _currentStage);
                 
+                // add listener to bottom interact, remove old one
+                stages[_currentStage].bottomClimbInteractable.onPlayerInteractStart.RemoveListener(HandleBottomInteract);
+                _currentStage = value;
+                stages[_currentStage].bottomClimbInteractable.onPlayerInteractStart.AddListener(HandleBottomInteract);
             }
         }
         
@@ -33,22 +47,22 @@ namespace Ltg8.Player
             ropeHolderInteractable.onPlayerInteractStart.AddListener(HandleRopeCollect);
         }
 
-        public void HandleRopeDeploy()
+        public override bool CanReceiveItem(ItemData data)
         {
-            InventoryUtil.RemoveItem(ropeId);
-            CurrentStage++;
-
-            if (CurrentStage >= stages.Count)
-            {
-                // disable deploy interactable
-            }
+            // we can only accept items if its a rope and if we have more stages
+            return CurrentStage < stages.Count - 1 && data.guid == ropeId;
         }
-        
+
+        public override void ReceiveItem(ItemData item)
+        {
+            base.ReceiveItem(item);
+            CurrentStage++;
+        }
+
         private void HandleRopeCollect(GameObject _)
         {
             if (CurrentStage >= 0)
             {
-                // enable deploy interactable
                 InventoryUtil.AddItem(ropeId).Forget();
                 CurrentStage--;
             }
@@ -56,18 +70,21 @@ namespace Ltg8.Player
 
         private void HandleTopInteract(GameObject _)
         {
-            // enter climbing state at top
+            // enter climbing state at top, trust player to get out of it
+            FindAnyObjectByType<PlayerRopeClimbingLogic>().EnterRope(this, PlayerRopeClimbingLogic.RopeLocation.Top);
         }
 
         private void HandleBottomInteract(GameObject _)
         {
-            // enter climbing state at bottom
+            // enter climbing state at bottom, trust player to get out of it
+            FindAnyObjectByType<PlayerRopeClimbingLogic>().EnterRope(this, PlayerRopeClimbingLogic.RopeLocation.Bottom);
         }
 
         [Serializable] public class RopeStage
         {
             public GameObject ropeModel;
-            public Transform bottomPosition;
+            public Transform bottomClimbTransform;
+            public Transform bottomDismountTransform;
             public ProximityInteractable bottomClimbInteractable;
         }
     }

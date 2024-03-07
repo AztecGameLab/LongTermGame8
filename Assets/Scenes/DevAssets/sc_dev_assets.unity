@@ -138,17 +138,17 @@ PrefabInstance:
     - target: {fileID: 3391673526646109392, guid: 71acf5f7d94b726499c10ce2dbd98b08,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.591195
+      value: -1.04
       objectReference: {fileID: 0}
     - target: {fileID: 3391673526646109392, guid: 71acf5f7d94b726499c10ce2dbd98b08,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5000007
+      value: 5.089
       objectReference: {fileID: 0}
     - target: {fileID: 3391673526646109392, guid: 71acf5f7d94b726499c10ce2dbd98b08,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.9938731
+      value: -5.06
       objectReference: {fileID: 0}
     - target: {fileID: 3391673526646109392, guid: 71acf5f7d94b726499c10ce2dbd98b08,
         type: 3}
@@ -190,8 +190,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rope Attachment Point 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6981177003963466668, guid: 71acf5f7d94b726499c10ce2dbd98b08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 71acf5f7d94b726499c10ce2dbd98b08, type: 3}
+--- !u!1 &6330599 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3391673526646109395, guid: 71acf5f7d94b726499c10ce2dbd98b08,
+    type: 3}
+  m_PrefabInstance: {fileID: 6330598}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6330600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6330599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873540fc488a42d2b8d33ad48e8536ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onReceiveItem:
+    m_PersistentCalls:
+      m_Calls: []
+  stages: []
+  topClimbInteractable: {fileID: 0}
+  ropeHolderInteractable: {fileID: 0}
+  ropeDeployTarget: {fileID: 0}
+  topClimbTransform: {fileID: 0}
+  topDismountTransform: {fileID: 0}
+  ropeId: 
 --- !u!1 &109165089
 GameObject:
   m_ObjectHideFlags: 0
