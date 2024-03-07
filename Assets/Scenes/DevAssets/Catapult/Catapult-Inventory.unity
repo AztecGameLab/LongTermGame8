@@ -11456,6 +11456,13 @@ MonoBehaviour:
   basketProx: {fileID: 91406712}
   distance: 20
   verticalY: 0
+  audioController: {fileID: 684959626}
+  audioSource: {fileID: 1716451437}
+  audios:
+  - {fileID: 8300000, guid: f9e53c62606154b159a098c880e7d63e, type: 3}
+  - {fileID: 8300000, guid: 6794edbf582334e3fb30aede214b5e3f, type: 3}
+  - {fileID: 8300000, guid: 829abfb13ffb2476fad79d08866b4237, type: 3}
+  - {fileID: 8300000, guid: 66b6521fd09fb467da9c0c822368692e, type: 3}
   animationController: {fileID: 676160316}
   cog: {fileID: 3672880822791611324}
 --- !u!1 &2301495098600174358

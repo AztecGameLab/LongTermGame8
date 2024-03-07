@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Audio
@@ -32,6 +29,24 @@ namespace Audio
             }
         }
 
+        public void PlayAudio(AudioSource source, AudioClip clip, float time)
+        {
+            if (!source.isPlaying)
+            {
+                source.clip = clip;
+                source.time = time;
+                source.Play();
+            }
+        }
+
+        public void StopAudio()
+        {
+            if (_source.isPlaying)
+            {
+                _source.Stop();
+            }
+        }
+        
         public void ToggleAudio(bool cancel = false)
         {
             if (cancel)

@@ -92,7 +92,15 @@ namespace Catapult
             var enteredObjectSc = gameObject.AddComponent<SphereCollider>();
             enteredObjectSc.isTrigger = true;
             enteredObjectSc.enabled = false;
-            enteredObjectSc.radius = 0.65f;
+            if (gameObject.TryGetComponent(out CharacterController _))
+            {
+                enteredObjectSc.radius = 0.65f;
+            }
+            else
+            {
+                enteredObjectSc.radius = 0.8f;
+            }
+            
         }
     }
 }

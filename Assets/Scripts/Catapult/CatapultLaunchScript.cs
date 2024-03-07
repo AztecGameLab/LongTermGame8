@@ -1,7 +1,10 @@
 using System;
 using Animation;
+using Audio;
 using Ltg8.Inventory;
+using UnityEditor.SearchService;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Catapult
 {
@@ -21,6 +24,10 @@ namespace Catapult
 
         private int _catapultState;
 
+        [SerializeField] private AudioController audioController;
+        [SerializeField] private AudioSource audioSource; 
+        [SerializeField] private AudioClip[] audios;
+        
         [SerializeField] private AnimationController animationController;
         private Animator _catapultAnimator;
         
@@ -57,6 +64,8 @@ namespace Catapult
                         ToggleProjectilePhysics();
                         Invoke(nameof(LaunchProjectile), 0.55f);
                     }
+                    audioController.SetParameters(audioSource, audios[1]);
+                    audioController.PlayAudio();
                     animationController.PlayandPauseAnimation(_catapultAnimator, 2f, 4.5f);
                     cog.SetTime(2f);
                     NextState();
@@ -65,6 +74,9 @@ namespace Catapult
                     break;
                 }
                 default:
+                    audioController.SetParameters(audioSource,audios[0]);
+                    PlayAndPauseAudio();
+                    Invoke(nameof(PlayAndPauseAudio), 5.5f);
                     animationController.PlayandPauseAnimation(_catapultAnimator, 1f, 5.5f);
                     cog.SetTime(5.5f);
                     NextState();
@@ -78,6 +90,7 @@ namespace Catapult
         private void LaunchProjectile()
         {
             SetProjectile(null);
+            ProjectileAudio(_launchedObject);
             ToggleBasketLoadable();
             Invoke(nameof(ToggleProjectilePhysics), 0.5f);
             var launchAngle = catapultSpoon.transform.rotation.eulerAngles.x * Mathf.Deg2Rad;
@@ -159,6 +172,23 @@ namespace Catapult
         public int GetCatapultState()
         {
             return _catapultState;
+        }
+
+        public void PlayAndPauseAudio()
+        {
+            if(audioSource.isPlaying){audioController.StopAudio();}
+            else{audioController.PlayAudio();}
+        }
+
+        private void ProjectileAudio(GameObject projectile)
+        {
+            var projectileSource = projectile.AddComponent<AudioSource>();
+            var projectileController = projectile.AddComponent<AudioController>();
+            projectileController.SetParameters(projectileSource, audios[2]);
+            if (Mathf.Abs(Random.Range(0, 20)) == 9 && _launchedObject)
+            {
+                projectileController.PlayAudio(projectileSource, audios[3], 0);
+            }
         }
     }
 }
