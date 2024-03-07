@@ -3861,8 +3861,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918297797}
-  m_LocalRotation: {x: 0.2766438, y: -0.5174397, z: 0.18180062, w: 0.7890963}
-  m_LocalPosition: {x: 2.2065942, y: 9.661869, z: -0.61935085}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.658, z: -5.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7382,6 +7382,7 @@ MonoBehaviour:
   persistentAudio: {fileID: 389771554}
   mainCamera: {fileID: 918297799}
   textBoxPresenter: {fileID: 1438414971}
+  itemRegistry: {fileID: 11400000, guid: 4124888a5e90d9a4097f184a2a1110f0, type: 2}
 --- !u!1 &1795522149
 GameObject:
   m_ObjectHideFlags: 0

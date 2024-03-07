@@ -111,7 +111,7 @@ public class CatapultAmmoScript : MonoBehaviour
         {
             _loadedItem.transform.position += new Vector3(0,-3,0);
             _loadedItem.SetActive(false);
-            InventoryUtil.AddItem(_loadedItem.GetComponentInChildren<InventoryItemWorldDisplay>().CurrentData).Forget();
+            InventoryUtil.AddItem(_loadedItem.GetComponentInChildren<InventoryItemWorldDisplay>().CurrentData.guid).Forget();
         }
     }
 
