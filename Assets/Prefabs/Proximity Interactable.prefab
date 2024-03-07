@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3243a0efaec4880a9f079848de45e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  promptText: 
   onPlayerInteractStart:
     m_PersistentCalls:
       m_Calls: []

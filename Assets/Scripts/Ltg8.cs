@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Ltg8.Inventory;
+using UnityEngine;
 
 namespace Ltg8
 {
@@ -13,5 +14,6 @@ namespace Ltg8
         public static TextBoxPresenter TextBoxPresenter;
         public static Ltg8Controls Controls;
         public static Camera MainCamera;
+        public static ItemRegistry ItemRegistry;
     }
 }

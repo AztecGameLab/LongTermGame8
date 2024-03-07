@@ -59,5 +59,10 @@ namespace Ltg8.Player
                 _controller.ActiveInteractable = _controller.FindNearestInteractable();
             }
         }
+
+        public void setPromptText(string text)
+        {
+            promptText = text;
+        }
     }
 }

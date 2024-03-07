@@ -20,7 +20,7 @@ namespace Ltg8.Inventory
         {
             if (GUILayout.Button("Open")) inventoryView.Open(Ltg8.Save.Inventory).Forget();
             if (GUILayout.Button("Close")) inventoryView.Close().Forget();
-            if (GUILayout.Button("Give Item")) InventoryUtil.AddItem(testCollectData).Forget();
+            if (GUILayout.Button("Give Item")) InventoryUtil.AddItem(testCollectData.guid).Forget();
             if (GUILayout.Button("Drop Item"))
             {
                 InventoryItemData item = Ltg8.Save.Inventory[0];

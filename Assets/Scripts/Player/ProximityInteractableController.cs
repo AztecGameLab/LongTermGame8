@@ -38,6 +38,7 @@ namespace Ltg8.Player
             }
 
             ProximityInteractable nearest = FindNearestInteractable();
+            
             proximityUiObject.SetActive(nearest != null);
             proximityUiText.SetText(nearest.promptText);
             

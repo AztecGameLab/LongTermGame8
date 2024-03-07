@@ -30,7 +30,7 @@ namespace Ltg8.Inventory
         {
             if (_activeData != null)
             {
-                InventoryUtil.AddItem(_activeData).Forget();
+                InventoryUtil.AddItem(_activeData.guid).Forget();
                 Destroy(_activeItem.gameObject);
                 _activeItem = null;
                 _activeData = null;
