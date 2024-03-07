@@ -1,50 +1,74 @@
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using UnityEngine; 
 using Ltg8.Inventory;
+using UnityEngine;
 
 namespace Ltg8.Player
 {
-    public class RopeAttachmentPoint : ProximityInteractable
+    public class RopeAttachmentPoint : MonoBehaviour
     {
-        private bool isDeployed = false;
-        public ItemData ropeData;
-        public Mesh attachedMesh;
-        public Mesh unattachedMesh;
-        private MeshFilter meshFilter;
+        public List<RopeStage> stages;
+        public ProximityInteractable topClimbInteractable;
+        public ProximityInteractable ropeHolderInteractable;
+        public Transform topPosition;
+        public string ropeId;
 
-
-        // Start is called before the first frame update
-        void Start()
+        private int _currentStage;
+        public int CurrentStage
         {
-            meshFilter = GetComponent<MeshFilter>();
-            if(isDeployed){
-                promptText = "Collect Rope";
-                meshFilter.mesh = attachedMesh;
-            }else{
-                meshFilter.mesh = unattachedMesh;
-            }
-        }
-
-        public void deployRope(){
-            if(!isDeployed){
-                Debug.Log("Rope isn't deployed. Deploying rope!");
-                promptText = "Collect Rope";
-                isDeployed = !isDeployed;
-                meshFilter.mesh = attachedMesh;
-            }
-        }
-
-        public void collectRope(){
-            if(isDeployed)
+            get => _currentStage;
+            private set
             {
-                Debug.Log("Rope is already deployed. Collecting rope!");
-                promptText = "";
-                InventoryUtil.AddItem(ropeData).Forget();
-                isDeployed = !isDeployed;
-                meshFilter.mesh = unattachedMesh;
+                _currentStage = value;
+                // enable the correct models for this stage
+                // add listener to bottom interact, remove old one
+                
             }
+        }
+        
+        private void Start()
+        {
+            topClimbInteractable.onPlayerInteractStart.AddListener(HandleTopInteract);
+            ropeHolderInteractable.onPlayerInteractStart.AddListener(HandleRopeCollect);
+        }
+
+        public void HandleRopeDeploy()
+        {
+            InventoryUtil.RemoveItem(ropeId);
+            CurrentStage++;
+
+            if (CurrentStage >= stages.Count)
+            {
+                // disable deploy interactable
+            }
+        }
+        
+        private void HandleRopeCollect(GameObject _)
+        {
+            if (CurrentStage >= 0)
+            {
+                // enable deploy interactable
+                InventoryUtil.AddItem(ropeId).Forget();
+                CurrentStage--;
+            }
+        }
+
+        private void HandleTopInteract(GameObject _)
+        {
+            // enter climbing state at top
+        }
+
+        private void HandleBottomInteract(GameObject _)
+        {
+            // enter climbing state at bottom
+        }
+
+        [Serializable] public class RopeStage
+        {
+            public GameObject ropeModel;
+            public Transform bottomPosition;
+            public ProximityInteractable bottomClimbInteractable;
         }
     }
 }

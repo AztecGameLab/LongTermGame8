@@ -1,4 +1,5 @@
 ﻿using System;
+using Ltg8.Inventory;
 using TriInspector;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ namespace Ltg8
         [Required] public PersistentAudio persistentAudio;
         [Required] public Camera mainCamera;
         [Required] public TextBoxPresenter textBoxPresenter;
+        [Required] public ItemRegistry itemRegistry;
     
         private void Awake()
         {
@@ -30,6 +32,7 @@ namespace Ltg8
             Ltg8.MainCamera = mainCamera;
             Ltg8.Controls = new Ltg8Controls();
             Ltg8.Controls.Enable();
+            Ltg8.ItemRegistry = itemRegistry;
             
 #if UNITY_EDITOR
             switch (Ltg8.Settings.editorSaveStrategy)
