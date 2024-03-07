@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/DevAssets/Physics-Testing.unity.meta
+guid: c767f90206c5c4c7cb7464a24cbb1655
+DefaultImporter:
+========
 guid: 9ff18f20d1afdca4b8da7fa6e6468939
 TextScriptImporter:
+>>>>>>>> main:Packages/pt-physics-util/README.md.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
