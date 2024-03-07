@@ -15,6 +15,8 @@ namespace Ltg8.Inventory
                 Debug.LogError($"The object {name} is not on the ItemTarget layer, but has an ItemTarget script!");
         }
 
+        public virtual bool WillConsumeItem() => true;
+
         public virtual bool CanReceiveItem(ItemData data)
         {
             return true;

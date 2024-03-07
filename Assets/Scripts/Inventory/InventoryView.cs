@@ -45,12 +45,25 @@ namespace Ltg8.Inventory
         
         private void HandleOnDrop(InventoryItemUiView.DropEventData eventData)
         {
-            if (targetSelector.HasTarget && targetSelector.HoveredTarget.CanReceiveItem(eventData.View.Item.Data))
+            if (targetSelector.HasTarget)
             {
-                targetSelector.HoveredTarget.ReceiveItem(eventData.View.Item.Data);
-                Ltg8.Save.Inventory.Remove(eventData.View.Item);
-                eventData.View.Disappear().Forget();
-                _spawnedItems.Remove(eventData.View);
+                bool willConsume = false;
+                
+                foreach (ItemTarget target in targetSelector.HoveredTarget.GetComponents<ItemTarget>())
+                {
+                    if (target.CanReceiveItem(eventData.View.Item.Data))
+                    {
+                        willConsume |= target.WillConsumeItem();
+                        target.ReceiveItem(eventData.View.Item.Data);
+                    }
+                }
+
+                if (willConsume)
+                {
+                    Ltg8.Save.Inventory.Remove(eventData.View.Item);
+                    eventData.View.Disappear().Forget();
+                    _spawnedItems.Remove(eventData.View);
+                }
             }
         }
         

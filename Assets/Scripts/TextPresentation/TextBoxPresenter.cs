@@ -16,5 +16,8 @@ namespace Ltg8
         
         [SerializeField] private OptionBoxView defaultOptionsBox;
         public OptionBoxView DefaultOptionBox => defaultOptionsBox;
+
+        [SerializeField] private TextBoxView eggyTextBox;
+        public TextBoxView EggyTextBox => eggyTextBox;
     }
 }

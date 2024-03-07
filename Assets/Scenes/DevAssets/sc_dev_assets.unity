@@ -543,6 +543,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 25
+--- !u!114 &217404012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217403989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 446d7e7f41d9421aa696aa1f6d37b2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onReceiveItem:
+    m_PersistentCalls:
+      m_Calls: []
+  dialogueText:
+  - textFrames:
+    - This is literally a rubber duck.
+  - textFrames:
+    - I guess it is weird that its spinning...
+  - textFrames:
+    - Why are you so interested in this thing?
 --- !u!1 &229185708
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,8 +746,14 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &282823961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 149449636964882380, guid: 54c2b4d63c62bc94eb31c70c8269dc5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1068367371352705822}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &324188219
 GameObject:
   m_ObjectHideFlags: 0
@@ -7989,6 +8017,41 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1068367371352705822}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1095469511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282823961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 446d7e7f41d9421aa696aa1f6d37b2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onReceiveItem:
+    m_PersistentCalls:
+      m_Calls: []
+  dialogueText:
+  - textFrames:
+    - Hi sigmund
+  - textFrames:
+    - ...
+  - textFrames:
+    - Yes I'm still here
+--- !u!65 &1095469512
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282823961}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.071803, y: 2.4003358, z: 2.3422623}
+  m_Center: {x: 0.0026032662, y: 1.2249348, z: 0.17843585}
 --- !u!1 &1119713780
 GameObject:
   m_ObjectHideFlags: 0
@@ -9786,7 +9849,7 @@ PrefabInstance:
     - target: {fileID: 8867394928131175010, guid: 24d863c284a503449868267d067ddc5d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8867394928131175010, guid: 24d863c284a503449868267d067ddc5d,
         type: 3}
@@ -11451,7 +11514,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 31.311, z: 0}
 --- !u!114 &1924966678
 MonoBehaviour:
@@ -12225,7 +12288,7 @@ PrefabInstance:
     - target: {fileID: 5494422360524924372, guid: 950c59902cce71f4ba8cd1c6d30ebe4d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5494422360524924372, guid: 950c59902cce71f4ba8cd1c6d30ebe4d,
         type: 3}
