@@ -11983,9 +11983,9 @@ GameObject:
   - component: {fileID: 4842573052794530644}
   - component: {fileID: 8719101851955834989}
   - component: {fileID: 3335655791930984135}
-  - component: {fileID: 5639696039163303192}
   - component: {fileID: 8884927442145809310}
   - component: {fileID: 8884927442145809309}
+  - component: {fileID: 8884927442145809311}
   m_Layer: 0
   m_Name: Basket
   m_TagString: Untagged
@@ -12194,34 +12194,6 @@ Transform:
   m_Father: {fileID: 9059771392465205993}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5639696039163303192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5034609384790137475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d7e95cf1b58445eb10d69b89a5ea084, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onReceiveItem:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 807014449}
-        m_TargetAssemblyTypeName: CatapultAmmoScript, Ltg8
-        m_MethodName: PlaceItem
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  expectedItemGuid: items/cake
 --- !u!4 &5651548911249524424
 Transform:
   m_ObjectHideFlags: 0
@@ -13669,6 +13641,35 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &8884927442145809311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5034609384790137475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83576c1308a744f293da8668daa15ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onReceiveItem:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 807014449}
+        m_TargetAssemblyTypeName: CatapultAmmoScript, Ltg8
+        m_MethodName: PlaceItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  allowedItems:
+  - items/cake
 --- !u!54 &8985564383568353736
 Rigidbody:
   m_ObjectHideFlags: 0
