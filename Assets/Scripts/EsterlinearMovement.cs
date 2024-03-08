@@ -23,7 +23,8 @@ public class EsterlinearMovement : MonoBehaviour
     
     public GameObject Ester;
     public GameObject Sigmund;
-    
+     public GameObject[] hidingspots;
+
     private static readonly int Spotted = Animator.StringToHash("spotted");
     public Animator esterAnimator;
     public TweenSettings esterHideTweenSettings;
@@ -31,9 +32,6 @@ public class EsterlinearMovement : MonoBehaviour
     private CancellationTokenSource _cts;
     private Vector3 _previousHidingSpot;
     
-    // Hiding spot list container
-     public GameObject[] hidingspots;
-
      private async UniTask MoveEster(Vector3 to, CancellationToken token)
      {
          esterAnimator.SetTrigger(Spotted); // play shocked anim
