@@ -45,6 +45,10 @@ MonoBehaviour:
     m_Address: items/walkie_talkie
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: db5aacdc593877f4aa435b23a7d7aae0
+    m_Address: items/rope
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b31b9675a4b82e148a3724ca6e4d8064, type: 2}
   m_SchemaSet:

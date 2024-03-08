@@ -43,7 +43,7 @@ namespace Catapult
             child_found = false;
             catapult_basket = FindFirstChild(catapult_spoon, "Basket").gameObject;
             catapult_animator = catapult_platform.GetComponent<Animator>();
-            vertical_difference = projectile_rb.transform.position.y - land_vertical_y;
+            vertical_difference = transform.position.y - land_vertical_y;
             catapult_animator.enabled = false;
             cog = cogTurner.GetComponent<CogTurning>();
             enterProx.SetActive(false);
