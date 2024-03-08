@@ -13,6 +13,21 @@ namespace Ltg8.Misc
 {
     public static class UniTaskTween
     {
+        public static async UniTask TweenPosition(this Transform transform, Vector3 target, TweenSettings settings, CancellationToken token = default)
+        {
+            EasingFunction easingFunction = settings.easingFunction.Resolve();
+            float elapsed = 0;
+            Vector3 start = transform.position;
+            
+            while (elapsed < settings.duration && !token.IsCancellationRequested)
+            {
+                elapsed += Time.deltaTime;
+                float t = easingFunction(Mathf.Clamp01(elapsed / settings.duration));
+                transform.position = Vector3.Lerp(start, target, t);
+                await UniTask.Yield();
+            }
+        }
+        
         public static async UniTask TweenWeight(this Volume volume, float target, TweenSettings settings, CancellationToken token = default)
         {
             EasingFunction easingFunction = settings.easingFunction.Resolve();

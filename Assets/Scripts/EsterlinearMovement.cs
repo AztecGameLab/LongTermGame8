@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
+using Ltg8.Misc;
 
 public class EsterlinearMovement : MonoBehaviour
 {
@@ -21,8 +24,23 @@ public class EsterlinearMovement : MonoBehaviour
     public GameObject Ester;
     public GameObject Sigmund;
     
+    public Animator esterAnimator;
+    public TweenSettings esterHideTweenSettings;
+    public float esterHeight;
+    private CancellationTokenSource _cts;
+    private Vector3 _previousHidingSpot;
+    
     // Hiding spot list container
      public GameObject[] hidingspots;
+
+     private async UniTask MoveEster(Vector3 to, CancellationToken token)
+     {
+         esterAnimator.SetTrigger("surprised"); // play shocked anim
+         await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: token); // wait for anim to end
+         await Ester.transform.TweenPosition(Ester.transform.position + (Vector3.down * esterHeight), esterHideTweenSettings, token); // slide down into ground
+         Ester.transform.position = to + (Vector3.down * esterHeight); // teleport to new pos
+         await Ester.transform.TweenPosition(to, esterHideTweenSettings, token); // slide up out of ground
+     }
 
      void Start() {
         // As mentioned above, if you do this approach, everytime there is more hiding spots, we'll have to go back in, you know what I mean?
@@ -57,7 +75,16 @@ public class EsterlinearMovement : MonoBehaviour
         //     }
         // }
 
-        Ester.transform.position = Get2ndClosestHidingSpot();
+        Vector3 currentHidingSpot = Get2ndClosestHidingSpot();
+        
+        if (currentHidingSpot != _previousHidingSpot) // just changed
+        {
+            _cts?.Cancel();
+            _cts = new CancellationTokenSource();
+            MoveEster(currentHidingSpot, _cts.Token).Forget();
+        }
+        
+        _previousHidingSpot = currentHidingSpot;
     }
 
     Vector3 Get2ndClosestHidingSpot()
