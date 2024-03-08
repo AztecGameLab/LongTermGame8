@@ -1,0 +1,10 @@
+{
+  "name": "com.poetools.physics-util",
+  "version": "0.0.1",
+  "displayName": "Poetools Physics Utilities",
+  "description": "Super convienient tools for working with physics in Unity.",
+  "author": {
+    "name": "poetahto",
+    "email": "epic.potat@gmail.com"
+  }
+}

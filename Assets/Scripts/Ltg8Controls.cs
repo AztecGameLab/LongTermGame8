@@ -159,6 +159,15 @@ public partial class @Ltg8Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c680d62-c3d2-4bf2-a885-df65e3848202"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -266,7 +275,7 @@ public partial class @Ltg8Controls: IInputActionCollection2, IDisposable
                     ""id"": ""cdb8dea3-a6d5-488e-9e56-1b51c586b866"",
                     ""path"": ""<Mouse>/delta/x"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""Scale(factor=0.05)"",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""LookX"",
                     ""isComposite"": false,
@@ -277,9 +286,59 @@ public partial class @Ltg8Controls: IInputActionCollection2, IDisposable
                     ""id"": ""abd1a67d-738c-4cc2-a956-27330a14c090"",
                     ""path"": ""<Mouse>/delta/y"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""Scale(factor=0.05)"",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""LookY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1fd4a8a1-f533-46ff-8af7-7a509a86da9e"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""PlayerInventory"",
+            ""id"": ""dd0e69aa-d965-412c-ab5c-731faf9cdd37"",
+            ""actions"": [
+                {
+                    ""name"": ""Close"",
+                    ""type"": ""Button"",
+                    ""id"": ""ba82f93f-071b-43cb-9e2c-fb01810d77c9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""6a98cfc0-ec0e-4f13-9720-ec8b7c4ed1d6"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Close"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c1eaad3c-b8b3-4062-b55c-e7622ac0c515"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Close"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -290,168 +349,46 @@ public partial class @Ltg8Controls: IInputActionCollection2, IDisposable
             ""id"": ""cd3b25df-de2e-4047-9ff3-e73a41b628e5"",
             ""actions"": [
                 {
-                    ""name"": ""MoveX"",
-                    ""type"": ""Value"",
-                    ""id"": ""c245d749-7cfb-44df-8589-d31a42f5dba9"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""MoveY"",
-                    ""type"": ""Value"",
-                    ""id"": ""fbdbd933-0406-4188-b8a4-8cb23a02ef4c"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""LookX"",
+                    ""name"": ""ClimbMove"",
                     ""type"": ""Value"",
                     ""id"": ""0147b900-2443-44b6-8cb3-001b588e2474"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""LookY"",
-                    ""type"": ""Value"",
-                    ""id"": ""eeed2574-8ee7-4674-aae4-808b2f58c661"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""cde552da-957a-421a-98f7-784bd65bf56f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""8c41e8fd-3ffb-4530-9eca-e27b3d7acc8e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""b1bf30e8-a6b9-4203-88c2-f2974c16a449"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3ab404ac-d77b-485e-bf75-44dad841a282"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a6c44cb0-73eb-42ee-a982-e0859d4719db"",
-                    ""path"": ""<Mouse>/delta/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""LookX"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c5af197e-5f2f-48a9-88b0-67fd8a94c700"",
-                    ""path"": ""<Mouse>/delta/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""LookY"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""WS"",
-                    ""id"": ""546eaeff-ea91-4d07-9f91-9d4deac54bde"",
+                    ""name"": ""Keyboard"",
+                    ""id"": ""2b1a3f67-434d-4d34-9e1f-6af6f1866ace"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveY"",
+                    ""action"": ""ClimbMove"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""3898a054-1346-4fe9-9440-9284bc2cc4a0"",
+                    ""id"": ""f1568740-677c-4a8d-8916-83d3afa6b7f6"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""MoveY"",
+                    ""groups"": """",
+                    ""action"": ""ClimbMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""e675ad0f-6248-4315-ba8d-e5632135ca7f"",
+                    ""id"": ""ab131325-3278-4614-a25b-4b6c67b0a202"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""MoveY"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""AD"",
-                    ""id"": ""2b90811c-4556-4b8b-b897-bba28273dd10"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveX"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""f9cc66ec-e85b-4962-aeb3-06a1bf8967e8"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""MoveX"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""b0d58679-c2e3-4b0d-97ef-85a355771ed7"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""MoveX"",
+                    ""action"": ""ClimbMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -495,14 +432,13 @@ public partial class @Ltg8Controls: IInputActionCollection2, IDisposable
         m_PlayerFreeMovement_Jump = m_PlayerFreeMovement.FindAction("Jump", throwIfNotFound: true);
         m_PlayerFreeMovement_Sprint = m_PlayerFreeMovement.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerFreeMovement_Interact = m_PlayerFreeMovement.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerFreeMovement_OpenInventory = m_PlayerFreeMovement.FindAction("OpenInventory", throwIfNotFound: true);
+        // PlayerInventory
+        m_PlayerInventory = asset.FindActionMap("PlayerInventory", throwIfNotFound: true);
+        m_PlayerInventory_Close = m_PlayerInventory.FindAction("Close", throwIfNotFound: true);
         // PlayerClimbingMovement
         m_PlayerClimbingMovement = asset.FindActionMap("PlayerClimbingMovement", throwIfNotFound: true);
-        m_PlayerClimbingMovement_MoveX = m_PlayerClimbingMovement.FindAction("MoveX", throwIfNotFound: true);
-        m_PlayerClimbingMovement_MoveY = m_PlayerClimbingMovement.FindAction("MoveY", throwIfNotFound: true);
-        m_PlayerClimbingMovement_LookX = m_PlayerClimbingMovement.FindAction("LookX", throwIfNotFound: true);
-        m_PlayerClimbingMovement_LookY = m_PlayerClimbingMovement.FindAction("LookY", throwIfNotFound: true);
-        m_PlayerClimbingMovement_Jump = m_PlayerClimbingMovement.FindAction("Jump", throwIfNotFound: true);
-        m_PlayerClimbingMovement_Interact = m_PlayerClimbingMovement.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerClimbingMovement_ClimbMove = m_PlayerClimbingMovement.FindAction("ClimbMove", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -625,6 +561,7 @@ public partial class @Ltg8Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerFreeMovement_Jump;
     private readonly InputAction m_PlayerFreeMovement_Sprint;
     private readonly InputAction m_PlayerFreeMovement_Interact;
+    private readonly InputAction m_PlayerFreeMovement_OpenInventory;
     public struct PlayerFreeMovementActions
     {
         private @Ltg8Controls m_Wrapper;
@@ -636,6 +573,7 @@ public partial class @Ltg8Controls: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerFreeMovement_Jump;
         public InputAction @Sprint => m_Wrapper.m_PlayerFreeMovement_Sprint;
         public InputAction @Interact => m_Wrapper.m_PlayerFreeMovement_Interact;
+        public InputAction @OpenInventory => m_Wrapper.m_PlayerFreeMovement_OpenInventory;
         public InputActionMap Get() { return m_Wrapper.m_PlayerFreeMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -666,6 +604,9 @@ public partial class @Ltg8Controls: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @OpenInventory.started += instance.OnOpenInventory;
+            @OpenInventory.performed += instance.OnOpenInventory;
+            @OpenInventory.canceled += instance.OnOpenInventory;
         }
 
         private void UnregisterCallbacks(IPlayerFreeMovementActions instance)
@@ -691,6 +632,9 @@ public partial class @Ltg8Controls: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @OpenInventory.started -= instance.OnOpenInventory;
+            @OpenInventory.performed -= instance.OnOpenInventory;
+            @OpenInventory.canceled -= instance.OnOpenInventory;
         }
 
         public void RemoveCallbacks(IPlayerFreeMovementActions instance)
@@ -709,25 +653,61 @@ public partial class @Ltg8Controls: IInputActionCollection2, IDisposable
     }
     public PlayerFreeMovementActions @PlayerFreeMovement => new PlayerFreeMovementActions(this);
 
+    // PlayerInventory
+    private readonly InputActionMap m_PlayerInventory;
+    private List<IPlayerInventoryActions> m_PlayerInventoryActionsCallbackInterfaces = new List<IPlayerInventoryActions>();
+    private readonly InputAction m_PlayerInventory_Close;
+    public struct PlayerInventoryActions
+    {
+        private @Ltg8Controls m_Wrapper;
+        public PlayerInventoryActions(@Ltg8Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Close => m_Wrapper.m_PlayerInventory_Close;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerInventory; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerInventoryActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerInventoryActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerInventoryActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerInventoryActionsCallbackInterfaces.Add(instance);
+            @Close.started += instance.OnClose;
+            @Close.performed += instance.OnClose;
+            @Close.canceled += instance.OnClose;
+        }
+
+        private void UnregisterCallbacks(IPlayerInventoryActions instance)
+        {
+            @Close.started -= instance.OnClose;
+            @Close.performed -= instance.OnClose;
+            @Close.canceled -= instance.OnClose;
+        }
+
+        public void RemoveCallbacks(IPlayerInventoryActions instance)
+        {
+            if (m_Wrapper.m_PlayerInventoryActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlayerInventoryActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerInventoryActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerInventoryActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PlayerInventoryActions @PlayerInventory => new PlayerInventoryActions(this);
+
     // PlayerClimbingMovement
     private readonly InputActionMap m_PlayerClimbingMovement;
     private List<IPlayerClimbingMovementActions> m_PlayerClimbingMovementActionsCallbackInterfaces = new List<IPlayerClimbingMovementActions>();
-    private readonly InputAction m_PlayerClimbingMovement_MoveX;
-    private readonly InputAction m_PlayerClimbingMovement_MoveY;
-    private readonly InputAction m_PlayerClimbingMovement_LookX;
-    private readonly InputAction m_PlayerClimbingMovement_LookY;
-    private readonly InputAction m_PlayerClimbingMovement_Jump;
-    private readonly InputAction m_PlayerClimbingMovement_Interact;
+    private readonly InputAction m_PlayerClimbingMovement_ClimbMove;
     public struct PlayerClimbingMovementActions
     {
         private @Ltg8Controls m_Wrapper;
         public PlayerClimbingMovementActions(@Ltg8Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MoveX => m_Wrapper.m_PlayerClimbingMovement_MoveX;
-        public InputAction @MoveY => m_Wrapper.m_PlayerClimbingMovement_MoveY;
-        public InputAction @LookX => m_Wrapper.m_PlayerClimbingMovement_LookX;
-        public InputAction @LookY => m_Wrapper.m_PlayerClimbingMovement_LookY;
-        public InputAction @Jump => m_Wrapper.m_PlayerClimbingMovement_Jump;
-        public InputAction @Interact => m_Wrapper.m_PlayerClimbingMovement_Interact;
+        public InputAction @ClimbMove => m_Wrapper.m_PlayerClimbingMovement_ClimbMove;
         public InputActionMap Get() { return m_Wrapper.m_PlayerClimbingMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -737,46 +717,16 @@ public partial class @Ltg8Controls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerClimbingMovementActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerClimbingMovementActionsCallbackInterfaces.Add(instance);
-            @MoveX.started += instance.OnMoveX;
-            @MoveX.performed += instance.OnMoveX;
-            @MoveX.canceled += instance.OnMoveX;
-            @MoveY.started += instance.OnMoveY;
-            @MoveY.performed += instance.OnMoveY;
-            @MoveY.canceled += instance.OnMoveY;
-            @LookX.started += instance.OnLookX;
-            @LookX.performed += instance.OnLookX;
-            @LookX.canceled += instance.OnLookX;
-            @LookY.started += instance.OnLookY;
-            @LookY.performed += instance.OnLookY;
-            @LookY.canceled += instance.OnLookY;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
-            @Interact.started += instance.OnInteract;
-            @Interact.performed += instance.OnInteract;
-            @Interact.canceled += instance.OnInteract;
+            @ClimbMove.started += instance.OnClimbMove;
+            @ClimbMove.performed += instance.OnClimbMove;
+            @ClimbMove.canceled += instance.OnClimbMove;
         }
 
         private void UnregisterCallbacks(IPlayerClimbingMovementActions instance)
         {
-            @MoveX.started -= instance.OnMoveX;
-            @MoveX.performed -= instance.OnMoveX;
-            @MoveX.canceled -= instance.OnMoveX;
-            @MoveY.started -= instance.OnMoveY;
-            @MoveY.performed -= instance.OnMoveY;
-            @MoveY.canceled -= instance.OnMoveY;
-            @LookX.started -= instance.OnLookX;
-            @LookX.performed -= instance.OnLookX;
-            @LookX.canceled -= instance.OnLookX;
-            @LookY.started -= instance.OnLookY;
-            @LookY.performed -= instance.OnLookY;
-            @LookY.canceled -= instance.OnLookY;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
-            @Interact.started -= instance.OnInteract;
-            @Interact.performed -= instance.OnInteract;
-            @Interact.canceled -= instance.OnInteract;
+            @ClimbMove.started -= instance.OnClimbMove;
+            @ClimbMove.performed -= instance.OnClimbMove;
+            @ClimbMove.canceled -= instance.OnClimbMove;
         }
 
         public void RemoveCallbacks(IPlayerClimbingMovementActions instance)
@@ -826,14 +776,14 @@ public partial class @Ltg8Controls: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnOpenInventory(InputAction.CallbackContext context);
+    }
+    public interface IPlayerInventoryActions
+    {
+        void OnClose(InputAction.CallbackContext context);
     }
     public interface IPlayerClimbingMovementActions
     {
-        void OnMoveX(InputAction.CallbackContext context);
-        void OnMoveY(InputAction.CallbackContext context);
-        void OnLookX(InputAction.CallbackContext context);
-        void OnLookY(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
+        void OnClimbMove(InputAction.CallbackContext context);
     }
 }

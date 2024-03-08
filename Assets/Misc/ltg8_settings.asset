@@ -15,5 +15,5 @@ MonoBehaviour:
   persistentScenePath: Assets/Scenes/sc_persistent.unity
   mainMenuScenePath: Assets/Scenes/MainMenu/sc_main_menu.unity
   editorPlayStrategy: 0
-  editorSaveStrategy: 1
+  editorSaveStrategy: 0
   editorSaveId: dev_test

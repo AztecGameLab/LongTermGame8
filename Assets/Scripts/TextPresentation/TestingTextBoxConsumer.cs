@@ -5,8 +5,8 @@ namespace Ltg8
 {
     public class TestingTextBoxConsumer : MonoBehaviour
     {
-        public SimpleFlipBookAnimation animSmile;
-        public SimpleFlipBookAnimation animFrown;
+        public SpriteFlipBookAnimation animSmile;
+        public SpriteFlipBookAnimation animFrown;
 
         private TextBoxView t => Ltg8.TextBoxPresenter.DefaultTextBox;
         private OptionBoxView o => Ltg8.TextBoxPresenter.DefaultOptionBox;

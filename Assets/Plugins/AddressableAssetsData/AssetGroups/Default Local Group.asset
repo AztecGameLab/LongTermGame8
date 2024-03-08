@@ -21,6 +21,30 @@ MonoBehaviour:
     m_Address: Ltg8Settings
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: dba2b74c567142646aec89d67bf3c165
+    m_Address: items/umbrella
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bb4a2caa00e8a724494ca8d0d22e170c
+    m_Address: items/shovel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8228de47083304840a3946e5df15b80b
+    m_Address: items/flower
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9ee7bcd7e72b0f3429b794ec7b3e3163
+    m_Address: items/cake
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 30bfa3f43594fec478b5ee5b3ce5d18d
+    m_Address: prefabs/overworld_item
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4a84defeb1f45c9408e3d203a1af549c
+    m_Address: items/walkie_talkie
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b31b9675a4b82e148a3724ca6e4d8064, type: 2}
   m_SchemaSet:

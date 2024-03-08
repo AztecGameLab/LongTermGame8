@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d8bc9f1cc51461dbc296bdad7a0604a, type: 3}
+  m_Name: portrait_eggy_normal
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -760071317, guid: dd3659ca09311474ca5fe2d88500204d, type: 3}
+  - {fileID: -444080442, guid: dd3659ca09311474ca5fe2d88500204d, type: 3}
+  - {fileID: -1480003702, guid: dd3659ca09311474ca5fe2d88500204d, type: 3}
+  - {fileID: -753062358, guid: dd3659ca09311474ca5fe2d88500204d, type: 3}
+  - {fileID: -1079819696, guid: dd3659ca09311474ca5fe2d88500204d, type: 3}
+  - {fileID: 1903581485, guid: dd3659ca09311474ca5fe2d88500204d, type: 3}
+  - {fileID: -1395341161, guid: dd3659ca09311474ca5fe2d88500204d, type: 3}
+  - {fileID: 2059640980, guid: dd3659ca09311474ca5fe2d88500204d, type: 3}
+  - {fileID: 1489447400, guid: dd3659ca09311474ca5fe2d88500204d, type: 3}
+  updateRateSeconds: 0.15
