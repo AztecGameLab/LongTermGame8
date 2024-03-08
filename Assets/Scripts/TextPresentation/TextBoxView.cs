@@ -4,7 +4,6 @@ using FMODUnity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 namespace Ltg8
 {
@@ -12,7 +11,7 @@ namespace Ltg8
     {
         [SerializeField] private TMP_Text mainText;
         [SerializeField] private GameObject mainAnimationObject;
-        [SerializeField] private RawImageFlipBookView mainAnimationImage;
+        [SerializeField] private ImageFlipbookView mainAnimationImage;
         [SerializeField] private GameObject continueHint;
         [SerializeField] private EventReference confirmChirp;
         [SerializeField] private RevealStyle defaultRevealStyle;

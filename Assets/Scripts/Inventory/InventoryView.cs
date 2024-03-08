@@ -45,11 +45,25 @@ namespace Ltg8.Inventory
         
         private void HandleOnDrop(InventoryItemUiView.DropEventData eventData)
         {
-            if (targetSelector.HasTarget && targetSelector.HoveredTarget.CanReceiveItem(eventData.View.Item.Data))
+            if (targetSelector.HasTarget)
             {
-                targetSelector.HoveredTarget.ReceiveItem(eventData.View.Item.Data);
-                Ltg8.Save.Inventory.Remove(eventData.View.Item);
-                eventData.View.Disappear().Forget();
+                bool willConsume = false;
+                
+                foreach (ItemTarget target in targetSelector.HoveredTarget.GetComponents<ItemTarget>())
+                {
+                    if (target.CanReceiveItem(eventData.View.Item.Data))
+                    {
+                        willConsume |= target.WillConsumeItem();
+                        target.ReceiveItem(eventData.View.Item.Data);
+                    }
+                }
+
+                if (willConsume)
+                {
+                    Ltg8.Save.Inventory.Remove(eventData.View.Item);
+                    eventData.View.Disappear().Forget();
+                    _spawnedItems.Remove(eventData.View);
+                }
             }
         }
         
@@ -57,13 +71,17 @@ namespace Ltg8.Inventory
         {
             CancelCurrentAnimation(); 
             volume.TweenWeight(0, closeTween, _cts.Token).Forget(); /* hide the post-processing that highlights interactable objects */
+            float delay = 0;
             
-            foreach (InventoryItemUiView item in _spawnedItems) 
+            foreach (InventoryItemUiView item in _spawnedItems)
             {
-                item.Disappear() /* play some animation where the item disappears */
-                    .ContinueWith(() => _spawnedItems.Remove(item)) /* when items are done animating, remove them from the list */
-                    .Forget(); 
-                await UniTask.Delay(TimeSpan.FromSeconds(despawnDelay)); /* pause a little bit between animations */
+                /* pause a little bit between animations before removing */
+                
+                UniTask.Delay(TimeSpan.FromSeconds(delay))
+                    .ContinueWith(() => item.Disappear()
+                        .ContinueWith(() => _spawnedItems.Remove(item))); 
+                
+                delay += despawnDelay;
             }
 
             await UniTask.WaitUntil(() => _spawnedItems.Count <= 0); /* once there are no items in the list, everything has finished animating */

@@ -233,6 +233,10 @@ GameObject:
   - component: {fileID: 1068367370722448752}
   - component: {fileID: 1068367370722448753}
   - component: {fileID: 1010972835}
+  - component: {fileID: 881823878356494759}
+  - component: {fileID: 1006202545766238664}
+  - component: {fileID: 8705194905482889042}
+  - component: {fileID: 3729428379554035197}
   m_Layer: 0
   m_Name: Testing Player
   m_TagString: Untagged
@@ -401,6 +405,60 @@ MonoBehaviour:
   animatorController: {fileID: 1947197829}
   rotatePlayerSpeed: 5
   playerTransform: {fileID: 5910019122228396983}
+--- !u!114 &881823878356494759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068367370722448761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 802381cb7ef564672aca221b844c81f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &1006202545766238664
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068367370722448761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.85
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!65 &8705194905482889042
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068367370722448761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!54 &3729428379554035197
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068367370722448761}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 1
 --- !u!1 &1068367370796902395
 GameObject:
   m_ObjectHideFlags: 0
