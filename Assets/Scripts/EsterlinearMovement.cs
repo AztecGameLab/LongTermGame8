@@ -24,6 +24,7 @@ public class EsterlinearMovement : MonoBehaviour
     public GameObject Ester;
     public GameObject Sigmund;
     
+    private static readonly int Spotted = Animator.StringToHash("spotted");
     public Animator esterAnimator;
     public TweenSettings esterHideTweenSettings;
     public float esterHeight;
@@ -35,7 +36,7 @@ public class EsterlinearMovement : MonoBehaviour
 
      private async UniTask MoveEster(Vector3 to, CancellationToken token)
      {
-         esterAnimator.SetTrigger("surprised"); // play shocked anim
+         esterAnimator.SetTrigger(Spotted); // play shocked anim
          await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: token); // wait for anim to end
          await Ester.transform.TweenPosition(Ester.transform.position + (Vector3.down * esterHeight), esterHideTweenSettings, token); // slide down into ground
          Ester.transform.position = to + (Vector3.down * esterHeight); // teleport to new pos
