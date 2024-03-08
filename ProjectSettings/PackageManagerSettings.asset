@@ -32,8 +32,10 @@ MonoBehaviour:
     m_Scopes:
     - com.codewriter.triinspector
     - com.cysharp.unitask
-    - com.openupm
+    - com.neuecc.unirx
+    - com.unity.2d.sprite
     - net.tnrd.serializableinterface
+    - com.openupm
     m_IsDefault: 0
     m_Capabilities: 0
     m_ConfigSource: 4

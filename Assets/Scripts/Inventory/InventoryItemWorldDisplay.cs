@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Ltg8.Inventory
 {
@@ -7,20 +8,33 @@ namespace Ltg8.Inventory
         [SerializeField] private Transform uiParent;
 
         private Transform _activeItem;
-        public ItemData CurrentData { get; private set; }
+        private ItemData _activeData;
 
         public void Display(ItemData data)
         {
-            CurrentData = data;
-            
             if (_activeItem != null)
             {
                 Destroy(_activeItem.gameObject);
                 _activeItem = null;
+                _activeData = null;
             }
-            
-            if (data != null) 
+
+            if (data != null)
+            {
                 _activeItem = Instantiate(data.uiView, uiParent).transform;
+                _activeData = data;
+            }
+        }
+
+        public void Collect()
+        {
+            if (_activeData != null)
+            {
+                InventoryUtil.AddItem(_activeData.guid).Forget();
+                Destroy(_activeItem.gameObject);
+                _activeItem = null;
+                _activeData = null;
+            }
         }
     }
 }

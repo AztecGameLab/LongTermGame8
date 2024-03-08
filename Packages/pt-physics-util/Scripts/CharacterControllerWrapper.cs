@@ -32,6 +32,9 @@ namespace DefaultNamespace
         {
             if (deltaTime <= 0)
                 deltaTime = Time.deltaTime;
+            
+            if (shouldSyncPhysics)
+                Physics.SyncTransforms();
 
             // The built-in velocity function breaks for some reason, so we have to calc our own velocity.
             Vector3 beforePos = _character.transform.position;
@@ -45,9 +48,6 @@ namespace DefaultNamespace
             // This line ensures we can only lose speed from collisions. We never want to gain speed from a collision.
             if (Mathf.Round(resultantVelocity.sqrMagnitude) < Mathf.Round(Velocity.sqrMagnitude))
                 Velocity = resultantVelocity;
-
-            if (shouldSyncPhysics)
-                Physics.SyncTransforms();
         }
     }
 }
