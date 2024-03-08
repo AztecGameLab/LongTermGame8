@@ -488,7 +488,7 @@ MonoBehaviour:
   ropeHolderInteractable: {fileID: 2791205729291981168}
   topClimbTransform: {fileID: 6497215136678055177}
   topDismountTransform: {fileID: 6497215137533976473}
-  ropeId: items/cake
+  ropeId: items/rope
 --- !u!4 &6746400776149734210 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4d9b33d2e73f1d54eb5edbcdb4498e05,

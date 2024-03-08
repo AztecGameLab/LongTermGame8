@@ -18,6 +18,7 @@ namespace Ltg8.Inventory
             if (_prevInstance != null) Destroy(_prevInstance.gameObject);
             nameText.SetText(item.Data.itemName);
             _prevInstance = Instantiate(item.Data.uiView, uiViewParent);
+            GetComponent<CanvasGroup>().alpha = 1;
             timeline.Play();
             Ltg8.Save.Inventory.Add(item);
             await UniTask.WaitUntil(() => timeline.state != PlayState.Playing);

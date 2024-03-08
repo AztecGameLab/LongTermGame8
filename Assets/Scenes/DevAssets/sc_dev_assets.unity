@@ -491,11 +491,11 @@ MonoBehaviour:
       m_Calls: []
   dialogueText:
   - textFrames:
-    - This is literally a rubber duck.
-  - textFrames:
-    - I guess it is weird that its spinning...
+    - Sigmund, this is literally just a duck.
   - textFrames:
     - Why are you so interested in this thing?
+  - textFrames:
+    - I guess it is weird that its spinning...
 --- !u!1 &229185708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,6 +1301,12 @@ MonoBehaviour:
   - position: {x: 200, y: 200}
     itemData:
       m_AssetGUID: 4a84defeb1f45c9408e3d203a1af549c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - position: {x: 200, y: 200}
+    itemData:
+      m_AssetGUID: db5aacdc593877f4aa435b23a7d7aae0
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -7996,7 +8002,7 @@ PrefabInstance:
     - target: {fileID: 1945837541971974523, guid: 76bfb86deeae0f648aa893fe12bbcad6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2827761609837825653, guid: 76bfb86deeae0f648aa893fe12bbcad6,
         type: 3}
@@ -8006,7 +8012,7 @@ PrefabInstance:
     - target: {fileID: 3026259911448878839, guid: 76bfb86deeae0f648aa893fe12bbcad6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3636584339736902418, guid: 76bfb86deeae0f648aa893fe12bbcad6,
         type: 3}
@@ -8071,7 +8077,7 @@ PrefabInstance:
     - target: {fileID: 7680342739849444975, guid: 76bfb86deeae0f648aa893fe12bbcad6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76bfb86deeae0f648aa893fe12bbcad6, type: 3}
