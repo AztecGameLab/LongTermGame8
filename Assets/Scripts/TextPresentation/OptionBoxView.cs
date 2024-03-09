@@ -11,7 +11,7 @@ namespace Ltg8
     {
         [SerializeField] private TextBoxView textBox;
         
-        public RawImageFlipBookView optionAnimationImage;
+        public ImageFlipbookView optionAnimationImage;
         public EventReference optionHoverSfx;
         public EventReference optionSelectSfx;
         

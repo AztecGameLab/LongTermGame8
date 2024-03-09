@@ -4,7 +4,6 @@ using FMODUnity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 namespace Ltg8
 {
@@ -12,13 +11,14 @@ namespace Ltg8
     {
         [SerializeField] private TMP_Text mainText;
         [SerializeField] private GameObject mainAnimationObject;
-        [SerializeField] private RawImageFlipBookView mainAnimationImage;
+        [SerializeField] private ImageFlipbookView mainAnimationImage;
         [SerializeField] private GameObject continueHint;
         [SerializeField] private EventReference confirmChirp;
         [SerializeField] private RevealStyle defaultRevealStyle;
         [SerializeField] private float clearDuration;
         [SerializeField] private GameObject nameObject;
         [SerializeField] private TMP_Text nameBoxText;
+        [SerializeField] private SpriteFlipBookAnimation defaultAnimation;
         
         private bool _continueRequested;
         private string _currentDisplayName;
@@ -28,7 +28,7 @@ namespace Ltg8
         {
             CurrentText = string.Empty;
             CurrentDisplayName = string.Empty;
-            CurrentMainAnimation = null;
+            CurrentMainAnimation = defaultAnimation;
             CurrentRevealStyle = defaultRevealStyle;
         }
 
@@ -49,6 +49,7 @@ namespace Ltg8
 
         private void Update()
         {
+            defaultAnimation.Update(Time.deltaTime);
             CurrentMainAnimation?.ApplyTo(mainAnimationImage);
         }
 

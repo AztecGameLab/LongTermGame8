@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace Ltg8.Inventory
 {
-    public class FilteredItemTarget : ItemTarget
+
+    public class ExcludeItemTarget : ItemTarget
     {
         [SerializeField]
         private List<string> notAllowedItems;
