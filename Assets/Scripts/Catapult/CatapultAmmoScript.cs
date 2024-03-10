@@ -49,12 +49,12 @@ namespace Catapult
         {
             if (_loadedItem == null) return; // If the catapult isn't loaded, return
             // If the item being removed from the catapult was not launched from the catapult
-            if (!launchScript.GetLaunchedObject() == _loadedItem) 
+            if (!launchScript.GetLaunchedObject() || launchScript.GetLaunchedObject() != _loadedItem) 
             {
                 Invoke(nameof(RemoveItem),0.1f); 
             }
             // Set the catapult's loaded item to nothing
-            _loadedItem = null;
+            Invoke(nameof(Nullify), 0.11f);
         }
 
         // Places the player into the catapult 
@@ -62,7 +62,7 @@ namespace Catapult
         {
             if (_loadedItem) { // If the catapult is already loaded
                 // The item needs to exit the trigger to execute ObjectUnloaded
-                _loadedItem.transform.position += new Vector3(0,-3,0); 
+                //_loadedItem.transform.position += new Vector3(0,3,0); 
                 // Deactivates the item so the player can't see it
                 _loadedItem.SetActive(false);
                 return;} // Return, the player will have to call the function again
@@ -104,6 +104,9 @@ namespace Catapult
         {
             // If there is no loaded item or the loaded item is a player, return 
             if (!_loadedItem || _loadedItem.TryGetComponent(out CharacterController _)) return;
+            // Re-collect the item in the catapult
+            _loadedItem.transform.Find("Item World Display").gameObject.
+                GetComponent<InventoryItemWorldDisplay>().Collect();
             Destroy(_loadedItem); // Destroy the item
             launchScript.SetProjectile(null); // Set the catapult's projectile to nothing
         }
@@ -123,6 +126,11 @@ namespace Catapult
             enteredObjectSc.enabled = false;
             // Set the radius of the Sphere Collider to be 0.15 above the object's length
             enteredObjectSc.radius = gameObject.transform.localScale.x + 0.15f;
+        }
+
+        private void Nullify()
+        {
+            _loadedItem = null;
         }
     }
 }

@@ -1682,7 +1682,7 @@ GameObject:
   - component: {fileID: 4764392696743333109}
   - component: {fileID: 5284223499767535182}
   m_Layer: 0
-  m_Name: Current Catapult Variant
+  m_Name: Catapult V1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -15,10 +15,15 @@ namespace Catapult
             if (gameObject.TryGetComponent(out CharacterController _)) // If the projectile is player
             {
                 // Disable projectile physics, re-enable player physics
-                projectileRb.useGravity = false; 
+                projectileRb.useGravity = false;
                 gameObject.GetComponent<BoxCollider>().enabled = false;
                 gameObject.GetComponent<CharacterController>().enabled = true;
             }
+            else
+            {
+                gameObject.transform.Find("Trigger").gameObject.SetActive(true);
+            }
+
             // Disable the Sphere Collider so the trigger disables and the script is not re-called
             projectileSc.enabled = false;
             // Disable projectile motion

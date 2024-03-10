@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Animation;
 using Audio;
 using Ltg8.Inventory;
@@ -53,9 +54,9 @@ namespace Catapult
             _catapultAnimator = catapultPlatform.GetComponent<Animator>();
             _catapultAnimator.enabled = false;
             
-            /* Disables the SingleItemTarget script for the basket, primarily to avoid an error that occurs
+            /* Disables the MultiItemTarget script for the basket, primarily to avoid an error that occurs
              when the game loads*/
-            catapultBasket.GetComponent<SingleItemTarget>().enabled = false;
+            catapultBasket.GetComponent<MultiItemTarget>().enabled = false;
             
             // Ensures that the "Enter" & "Basket Launch" Proximity interactables are initially disabled
             ToggleProximities();
@@ -198,15 +199,17 @@ namespace Catapult
                 _launchedObject.GetComponent<CharacterController>().enabled = false;
                 return;
             }
-            // If the projectile is "launching", disable its BoxCollider before launching
+            // If the projectile is "launching", disable its BoxCollider and Trigger before launching
             if(_launchedObject.GetComponent<BoxCollider>().enabled)
             {
                 _launchedObject.GetComponent<BoxCollider>().enabled = false;
+                _launchedObject.transform.Find("Trigger").gameObject.SetActive(false);
                 return;
             }
             // If the projectile has been "launched", re-enable its Colliders during flight
             _launchedObject.GetComponent<BoxCollider>().enabled = true;
             _launchedObject.GetComponent<SphereCollider>().enabled = true;
+            StartCoroutine(RemoveLaunchedObject());
         }
 
         /* Toggles the Basket's ItemTarget functionalities, which is what allows items to be loaded
@@ -215,7 +218,7 @@ namespace Catapult
         {
             // Toggles basket between Loadable (L-6) & Non-Loadable (L-Default) layers
             catapultBasket.layer = catapultBasket.layer == default ? 6 : default;
-            var targetScript = catapultBasket.GetComponent<SingleItemTarget>();
+            var targetScript = catapultBasket.GetComponent<MultiItemTarget>();
             // Toggles the SingleItemTarget Script 
             targetScript.enabled = !targetScript.enabled;
         }
@@ -244,10 +247,17 @@ namespace Catapult
             var projectileController = projectile.AddComponent<AudioController>();
             projectileController.SetParameters(projectileSource, audios[2]); // Sets up the "Thud" audio
             // Eeerrm excuse me, what could this be? Who put this here? 
-            if (Mathf.Abs(Random.Range(0, 20)) == 9 && _launchedObject)
+            if (Random.Range(0, 20) == 9 && _launchedObject)
             {
                 projectileController.PlayAudio(projectileSource, audios[3], 0);
             }
         }
+
+        private IEnumerator<WaitUntil> RemoveLaunchedObject()
+        {
+            yield return new WaitUntil(()=> _launchedObject.TryGetComponent(out SphereCollider _));
+            _launchedObject = null;
+        }
+        
     }
 }
