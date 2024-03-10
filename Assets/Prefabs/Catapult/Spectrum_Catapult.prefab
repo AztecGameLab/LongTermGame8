@@ -2227,7 +2227,7 @@ PrefabInstance:
     - target: {fileID: 8977614063689625965, guid: 8107d455c85fed14b9bd8f431765c966,
         type: 3}
       propertyPath: onPlayerInteractStop.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: rotateCatapult
+      value: RotateCatapult
       objectReference: {fileID: 0}
     - target: {fileID: 8977614063689625965, guid: 8107d455c85fed14b9bd8f431765c966,
         type: 3}
@@ -2237,7 +2237,7 @@ PrefabInstance:
     - target: {fileID: 8977614063689625965, guid: 8107d455c85fed14b9bd8f431765c966,
         type: 3}
       propertyPath: onPlayerInteractStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: rotateCatapult
+      value: RotateCatapult
       objectReference: {fileID: 0}
     - target: {fileID: 8977614063689625965, guid: 8107d455c85fed14b9bd8f431765c966,
         type: 3}

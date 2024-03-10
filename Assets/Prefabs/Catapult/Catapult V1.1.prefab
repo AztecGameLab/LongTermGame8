@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6548671302654776113
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4764392696743333109, guid: 4318ff069a76d460ab99236f3abd3d96,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764392696743333109, guid: 4318ff069a76d460ab99236f3abd3d96,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.423686
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764392696743333109, guid: 4318ff069a76d460ab99236f3abd3d96,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764392696743333109, guid: 4318ff069a76d460ab99236f3abd3d96,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.024137
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764392696743333109, guid: 4318ff069a76d460ab99236f3abd3d96,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764392696743333109, guid: 4318ff069a76d460ab99236f3abd3d96,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764392696743333109, guid: 4318ff069a76d460ab99236f3abd3d96,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764392696743333109, guid: 4318ff069a76d460ab99236f3abd3d96,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764392696743333109, guid: 4318ff069a76d460ab99236f3abd3d96,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764392696743333109, guid: 4318ff069a76d460ab99236f3abd3d96,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764392696743333109, guid: 4318ff069a76d460ab99236f3abd3d96,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284223499767535183, guid: 4318ff069a76d460ab99236f3abd3d96,
+        type: 3}
+      propertyPath: m_Name
+      value: Catapult V1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1886545714034875561, guid: 4318ff069a76d460ab99236f3abd3d96, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 4318ff069a76d460ab99236f3abd3d96, type: 3}
+--- !u!114 &1048194277928487601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6082783090282731904, guid: 4318ff069a76d460ab99236f3abd3d96,
+    type: 3}
+  m_PrefabInstance: {fileID: 6548671302654776113}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42eefea44ffb202449ac2a666f0217a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5428361112462540803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1275895771477545778, guid: 4318ff069a76d460ab99236f3abd3d96,
+    type: 3}
+  m_PrefabInstance: {fileID: 6548671302654776113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1326293291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5428361112462540803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac1e8cb698394db7a65dab0529fa026d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onReceiveItem:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1048194277928487601}
+        m_TargetAssemblyTypeName: Catapult.CatapultAmmoScript, Ltg8
+        m_MethodName: PlaceItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  targets:
+  - itemGuid: items/cake
+    onReceived:
+      m_PersistentCalls:
+        m_Calls: []
+  - itemGuid: items/umbrella
+    onReceived:
+      m_PersistentCalls:
+        m_Calls: []
+  - itemGuid: items/flower
+    onReceived:
+      m_PersistentCalls:
+        m_Calls: []
+  - itemGuid: items/shovel
+    onReceived:
+      m_PersistentCalls:
+        m_Calls: []
