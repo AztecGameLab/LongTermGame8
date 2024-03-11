@@ -1,6 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace Ltg8.Inventory
 {
@@ -26,10 +25,10 @@ namespace Ltg8.Inventory
             }
         }
 
-        public static async UniTask<GameObject> CreateItemInOverworld(ItemData data, Vector3 position)
+        public static InventoryItemWorldDisplay CreateItemInOverworld(ItemData data, Vector3 position)
         {
-            GameObject instance = await Addressables.InstantiateAsync("prefabs/overworld_item", position, Quaternion.identity);
-            instance.GetComponentInChildren<InventoryItemWorldDisplay>().Display(data);
+            InventoryItemWorldDisplay instance = Object.Instantiate(Ltg8.Settings.overworldItemPrefab, position, Quaternion.identity);
+            instance.Display(data);
             return instance;
         }
     }

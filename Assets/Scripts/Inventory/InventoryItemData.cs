@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace Ltg8.Inventory
 {
@@ -8,18 +7,12 @@ namespace Ltg8.Inventory
     public class InventoryItemData
     {
         public Vector2 position;
-        public AssetReference itemData;
+        public string itemId;
         
-        public ItemData Data 
+        public ItemData Data
         {
-            get
-            {
-                if (itemData.Asset == null)
-                    itemData.LoadAssetAsync<ItemData>().WaitForCompletion();
-                
-                return (ItemData)itemData.Asset;
-            }
-            set => itemData = new AssetReference(value.guid);
+            get => Ltg8.ItemRegistry.FindItem(itemId);
+            set => itemId = value.guid;
         }
     }
 }

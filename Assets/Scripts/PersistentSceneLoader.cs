@@ -1,7 +1,6 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 
 namespace Ltg8
@@ -15,7 +14,7 @@ namespace Ltg8
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static async void Initialize()
         {
-            Ltg8Settings settings = Addressables.LoadAssetAsync<Ltg8Settings>("Ltg8Settings").WaitForCompletion();
+            Ltg8Settings settings = Resources.Load<Ltg8Settings>("ltg8_settings");
             string currentScenePath = SceneManager.GetActiveScene().path;
 
             if (currentScenePath != settings.persistentScenePath)

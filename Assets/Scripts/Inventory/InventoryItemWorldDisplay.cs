@@ -6,9 +6,16 @@ namespace Ltg8.Inventory
     public class InventoryItemWorldDisplay : MonoBehaviour
     {
         [SerializeField] private Transform uiParent;
+        [SerializeField] private string defaultItemId;
 
         private Transform _activeItem;
         private ItemData _activeData;
+
+        private void Start()
+        {
+            if (defaultItemId != string.Empty)
+                Display(Ltg8.ItemRegistry.FindItem(defaultItemId));
+        }
 
         public void Display(ItemData data)
         {

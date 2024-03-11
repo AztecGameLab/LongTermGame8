@@ -92,11 +92,10 @@ public class CatapultAmmoScript : MonoBehaviour
         }
     }
 
-    public async void PlaceItem(ItemData item)
+    public void PlaceItem(ItemData item)
     {
         if (_loaded) return;
-
-        await InventoryUtil.CreateItemInOverworld(item, loadPosition.position);
+        InventoryUtil.CreateItemInOverworld(item, loadPosition.position);
     }
 
     public void Unload()
