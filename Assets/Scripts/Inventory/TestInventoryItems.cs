@@ -24,7 +24,7 @@ namespace Ltg8.Inventory
             if (GUILayout.Button("Drop Item"))
             {
                 InventoryItemData item = Ltg8.Save.Inventory[0];
-                InventoryUtil.CreateItemInOverworld(item.Data, new Vector3(1, 1, 1)).Forget();
+                InventoryUtil.CreateItemInOverworld(item.Data, new Vector3(1, 1, 1));
                 Ltg8.Save.Inventory.Remove(item);
             }
         }

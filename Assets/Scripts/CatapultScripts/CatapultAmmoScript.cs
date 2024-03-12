@@ -19,20 +19,20 @@ public class CatapultAmmoScript : MonoBehaviour
     [SerializeField] private GameObject catapult;
     [SerializeField] private GameObject catapult_basket;
 
-    private void OnGUI()
-    {
-        string output;
-        if (_loadedItem != null)
-        {
-            output = _loadedItem.name;
-        }
-        else
-        {
-            output = "null";
-        }
-
-        GUILayout.Label(output);
-    }
+    // private void OnGUI()
+    // {
+    //     string output;
+    //     if (_loadedItem != null)
+    //     {
+    //         output = _loadedItem.name;
+    //     }
+    //     else
+    //     {
+    //         output = "null";
+    //     }
+    //
+    //     GUILayout.Label(output);
+    // }
 
     public void ObjectLoaded(GameObject enteredObject)
     {
@@ -92,11 +92,10 @@ public class CatapultAmmoScript : MonoBehaviour
         }
     }
 
-    public async void PlaceItem(ItemData item)
+    public void PlaceItem(ItemData item)
     {
         if (_loaded) return;
-
-        await InventoryUtil.CreateItemInOverworld(item, loadPosition.position);
+        InventoryUtil.CreateItemInOverworld(item, loadPosition.position);
     }
 
     public void Unload()

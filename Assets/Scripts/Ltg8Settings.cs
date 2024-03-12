@@ -1,4 +1,5 @@
-﻿using TriInspector;
+﻿using Ltg8.Inventory;
+using TriInspector;
 using UnityEngine;
 
 namespace Ltg8
@@ -9,6 +10,7 @@ namespace Ltg8
     {
         [Scene] public string persistentScenePath;
         [Scene] public string mainMenuScenePath;
+        public InventoryItemWorldDisplay overworldItemPrefab;
 
         [Title("Editor")]
 

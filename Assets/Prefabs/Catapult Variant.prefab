@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8757266042566245809}
   - component: {fileID: 7699908492183407498}
   - component: {fileID: 6250049678284713517}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 976457071679498637}
   - component: {fileID: 6193068085189674491}
   - component: {fileID: 6434778141292789622}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5268520625450989673}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terminal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,13 +209,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4428827652615610906}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4428827652615610906
 Transform:
   m_ObjectHideFlags: 0
@@ -243,7 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2139271593395537747}
   - component: {fileID: 2139271593395537744}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CogTurner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 1531029202315293514}
   - component: {fileID: 259313284647708732}
   - component: {fileID: 7048316671761035076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terminal_Cog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 166458992307086225}
   - component: {fileID: 1190414690050252736}
   - component: {fileID: 5295546404856302415}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 2934109232045605884}
   - component: {fileID: 5030356054602899587}
   - component: {fileID: 4898836253995133435}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terminal_Spoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 7173152301162518138}
   - component: {fileID: 1167237213992822345}
   - component: {fileID: 1553945252065866736}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 961016303828768472}
   - component: {fileID: 8198361750671720342}
   - component: {fileID: 1509970096448033702}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -704,13 +704,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5976927189736103429}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5976927189736103429
 Transform:
   m_ObjectHideFlags: 0
@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 3407124336163714269}
   - component: {fileID: 7263941010823476933}
   - component: {fileID: 7263941010823476934}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -836,7 +836,7 @@ GameObject:
   - component: {fileID: 2002586941194748986}
   - component: {fileID: 2717521942967003055}
   - component: {fileID: 8892796854229225743}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terminal_Cog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -918,7 +918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3407124335444927894}
   - component: {fileID: 3407124335444927893}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Proximity Interactable (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 3407124335601925322}
   - component: {fileID: 3407124335601925323}
   - component: {fileID: 3407124335601925332}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LoadedTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1045,7 +1045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0cac51d4e4acaf4eb248c817facc7ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showDebug: 1
+  showDebug: 0
   excludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1124,7 +1124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3407124335803784649}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LoadPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1155,7 +1155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3407124335857604365}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UnloadPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1189,7 +1189,7 @@ GameObject:
   - component: {fileID: 3407124336143775089}
   - component: {fileID: 3407124336143775091}
   - component: {fileID: 3407124336143775090}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BasketTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1296,7 +1296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3407124337008090242}
   - component: {fileID: 3407124337008090241}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform Speaker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1423,13 +1423,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3305132382536972279}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terminal1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3305132382536972279
 Transform:
   m_ObjectHideFlags: 0
@@ -1459,7 +1459,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4124292975586206120}
   - component: {fileID: 3636584339736902419}
-  m_Layer: 0
+  - component: {fileID: 618362339}
+  - component: {fileID: 618362337}
+  m_Layer: 6
   m_Name: Catapult Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1473,7 +1475,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3636584339736902418}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.2292347, y: 0.5, z: -16.608793}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1507,6 +1509,126 @@ MonoBehaviour:
   cogTurner: {fileID: 2139271593395537746}
   enterProx: {fileID: 4764865088943996238}
   basketProx: {fileID: 3407124335444927892}
+--- !u!65 &618362339
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3636584339736902418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.2478476, y: 3.7035685, z: 5.505702}
+  m_Center: {x: -0.0067853928, y: 1.3517842, z: 0.19000006}
+--- !u!114 &618362337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3636584339736902418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47dd86e55a1462a86df5614a1a424eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onReceiveItem:
+    m_PersistentCalls:
+      m_Calls: []
+  repairSteps:
+  - onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3026259911448878839}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    targetItem: {fileID: 11400000, guid: 3c800f90e9db92a41b1065d66bc2c5f1, type: 2}
+  - onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1945837541971974523}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    targetItem: {fileID: 11400000, guid: ac8341a0802f43b4380a677880c1115f, type: 2}
+  - onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7680342739849444975}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    targetItem: {fileID: 11400000, guid: b17a6811ada4f8e4ca2ba72db15aa85b, type: 2}
+  - onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3510560381383202810}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    targetItem: {fileID: 11400000, guid: 289be5c955030a444b04464e0c339780, type: 2}
+  onRepairFinish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4764865088943996238}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 7000524849738165210}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &4051059303350913390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1518,7 +1640,7 @@ GameObject:
   - component: {fileID: 6879022853575949796}
   - component: {fileID: 2729404760124144870}
   - component: {fileID: 6838515423683154963}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCylinder3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1599,7 +1721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5446167589664272644}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1635,7 +1757,7 @@ GameObject:
   - component: {fileID: 802158216744570735}
   - component: {fileID: 3727576950891791875}
   - component: {fileID: 6965166413194743731}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terminal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1717,13 +1839,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4764865088943996237}
   - component: {fileID: 4764865088943996239}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Proximity Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4764865088943996237
 Transform:
   m_ObjectHideFlags: 0
@@ -1785,7 +1907,7 @@ GameObject:
   - component: {fileID: 4764865089690359293}
   - component: {fileID: 4764865089690359292}
   - component: {fileID: 8141740066924833712}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1881,7 +2003,7 @@ GameObject:
   - component: {fileID: 8799785553424984062}
   - component: {fileID: 4275503035123143760}
   - component: {fileID: 6348026788043559578}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere_Mount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1964,7 +2086,7 @@ GameObject:
   - component: {fileID: 4735623044596863083}
   - component: {fileID: 2287080364541747162}
   - component: {fileID: 6954773804120189925}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2047,7 +2169,7 @@ GameObject:
   - component: {fileID: 5283064698874147709}
   - component: {fileID: 2292010797152176216}
   - component: {fileID: 8861819375654998779}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2130,7 +2252,7 @@ GameObject:
   - component: {fileID: 6214098631181138179}
   - component: {fileID: 7800494346143591727}
   - component: {fileID: 7697720570566527499}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terminal_Cog1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2214,7 +2336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7000524849629913636}
   - component: {fileID: 7000524849629913637}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Proximity Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2316,13 +2438,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7000524849738165209}
   - component: {fileID: 7000524849738165208}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Proximity Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7000524849738165209
 Transform:
   m_ObjectHideFlags: 0
@@ -2396,7 +2518,7 @@ GameObject:
   - component: {fileID: 7000524850912660116}
   - component: {fileID: 7000524850912660117}
   - component: {fileID: 6051618244652463321}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2493,7 +2615,7 @@ GameObject:
   - component: {fileID: 7000524851005735785}
   - component: {fileID: 7000524851005735784}
   - component: {fileID: 6051618244543135012}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2589,7 +2711,7 @@ GameObject:
   - component: {fileID: 5317831866967935023}
   - component: {fileID: 7684590654703436067}
   - component: {fileID: 8215854244228408574}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2672,7 +2794,7 @@ GameObject:
   - component: {fileID: 8893726526490544515}
   - component: {fileID: 4372439879112566445}
   - component: {fileID: 7553900910149061645}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2755,7 +2877,8 @@ GameObject:
   - component: {fileID: 4166005197644530758}
   - component: {fileID: 8894246741156529158}
   - component: {fileID: 7414245257278229706}
-  m_Layer: 0
+  - component: {fileID: 798875205}
+  m_Layer: 6
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2827,6 +2950,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &798875205
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7653098727602342479}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3909233067320746374, guid: 3fe5b97d6a9bae64db1f6bbb864cfc3e, type: 3}
 --- !u!1 &7680342739849444975
 GameObject:
   m_ObjectHideFlags: 0
@@ -2842,13 +2979,13 @@ GameObject:
   - component: {fileID: 6054267157708207986}
   - component: {fileID: 6054267157708207985}
   - component: {fileID: 6054267157708207987}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Basket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6054267157708207984
 Transform:
   m_ObjectHideFlags: 0
@@ -3002,7 +3139,7 @@ GameObject:
   - component: {fileID: 435135932968988697}
   - component: {fileID: 1675625492255744781}
   - component: {fileID: 2674768158145676374}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terminal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3085,7 +3222,7 @@ GameObject:
   - component: {fileID: 5015593748128526251}
   - component: {fileID: 5977231344244258904}
   - component: {fileID: 2128812567510746291}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terminal_Spoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3166,7 +3303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 726760668639924745}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

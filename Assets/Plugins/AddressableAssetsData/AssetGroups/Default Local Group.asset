@@ -17,10 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 00271ce0fce4ec34bb68191b83a56e6b
   m_SerializeEntries:
-  - m_GUID: 9823fdc2daa4d9040b94afee2b9e8af5
-    m_Address: Ltg8Settings
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: dba2b74c567142646aec89d67bf3c165
     m_Address: items/umbrella
     m_ReadOnly: 0
