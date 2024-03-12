@@ -19,6 +19,7 @@ namespace Ltg8.Inventory
             nameText.SetText(item.Data.itemName);
             _prevInstance = Instantiate(item.Data.uiView, uiViewParent);
             GetComponent<CanvasGroup>().alpha = 1;
+            transform.localScale = Vector3.one;
             timeline.Play();
             Ltg8.Save.Inventory.Add(item);
             await UniTask.WaitUntil(() => timeline.state != PlayState.Playing);

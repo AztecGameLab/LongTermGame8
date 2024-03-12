@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8885373611585084739}
   - component: {fileID: 2323120723610218306}
   m_Layer: 5
-  m_Name: Camera Base
+  m_Name: Catapult Hook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,9 +66,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 457131386, guid: 229056136d47349bebb6a9c27434c9c3, type: 3}
+  m_Sprite: {fileID: 129028555, guid: 1c23564e01909334da86c6e94c4d95d2, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

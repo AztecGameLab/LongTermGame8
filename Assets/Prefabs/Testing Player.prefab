@@ -372,7 +372,8 @@ GameObject:
   - component: {fileID: 1006202545766238664}
   - component: {fileID: 8705194905482889042}
   - component: {fileID: 3729428379554035197}
-  m_Layer: 0
+  - component: {fileID: 1831266584}
+  m_Layer: 10
   m_Name: Testing Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +453,7 @@ MonoBehaviour:
   maxHits: 5
   ignoreLayers:
     serializedVersion: 2
-    m_Bits: 4
+    m_Bits: 516
   autoUpdate: 1
   radius: 0.5
   center: {x: 0, y: 0.5, z: 0}
@@ -594,6 +595,25 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &1831266584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068367370722448761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073c5586bd344667b4b11855c679f866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enterBuffer: 0.1
+  climbSpeed: 5
+  animationSpeed: 10
+  gravity: {fileID: 1068367370722448752}
+  playerBody: {fileID: 1068367370722448761}
+  playerRotateTransform: {fileID: 8691141483426102006}
+  playerAnimator: {fileID: 1947197829}
 --- !u!1 &1068367370796902395
 GameObject:
   m_ObjectHideFlags: 0
@@ -2153,6 +2173,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5479675164570066145, guid: 9346a220d08c3804aa1e29e9e3ab6a42,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 52acf3e421e276648b9f8f0b1cb45556, type: 2}
     - target: {fileID: 5704886995314195309, guid: 9346a220d08c3804aa1e29e9e3ab6a42,
         type: 3}
       propertyPath: m_Layer
@@ -2232,6 +2257,41 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &1095469512
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149449636964882380}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.071803, y: 2.4003358, z: 2.3422623}
+  m_Center: {x: 0.0026032662, y: 1.2249348, z: 0.17843585}
+--- !u!114 &1095469511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149449636964882380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 446d7e7f41d9421aa696aa1f6d37b2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onReceiveItem:
+    m_PersistentCalls:
+      m_Calls: []
+  dialogueText:
+  - textFrames:
+    - Hi sigmund
+  - textFrames:
+    - ...
+  - textFrames:
+    - Yes I'm still here
 --- !u!4 &673608152400924022 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9346a220d08c3804aa1e29e9e3ab6a42,
