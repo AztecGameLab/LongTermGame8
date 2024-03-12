@@ -19,5 +19,8 @@ namespace Ltg8
 
         [SerializeField] private TextBoxView eggyTextBox;
         public TextBoxView EggyTextBox => eggyTextBox;
+        
+        [SerializeField] private TextBoxView sigmundTextBox;
+        public TextBoxView SigmundTextBox => sigmundTextBox;
     }
 }
