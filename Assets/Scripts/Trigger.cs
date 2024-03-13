@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -203,5 +204,15 @@ public class Trigger : MonoBehaviour
             GUILayout.Label($"Colliders: {_currentColliders.Count}");
             GUILayout.Label($"Rigidbodies: {_currentRigidbodies.Count}");
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        BoxCollider boxCollider = GetComponent<BoxCollider>();
+        Color color = Color.yellow;
+        color.a = 0.4f;
+        Gizmos.color = color;
+        Gizmos.matrix = boxCollider.transform.localToWorldMatrix;
+        Gizmos.DrawCube(boxCollider.center, boxCollider.size);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
@@ -27,6 +28,15 @@ namespace Ltg8.Inventory
             Assert.IsTrue(CanReceiveItem(item));
             onReceiveItem.Invoke(item);
             FindAnyObjectByType<InventoryView>().Close().Forget();
+        }
+
+        private void OnDrawGizmos()
+        {
+            Collider col = GetComponent<Collider>();
+            Color color = Color.green;
+            color.a = 0.2f;
+            Gizmos.color = color;
+            Gizmos.DrawCube(col.bounds.center, col.bounds.size);
         }
     }
 }

@@ -32,9 +32,9 @@ MonoBehaviour:
     character: 0
   - text: <i> A cat-a-pult. I wonder if I can get over with that. Worth a shot...</i>
     character: 1
-  - text: ... And that's why you shouldn't just toss youself in a catapult.
+  - text: ... And that's why you shouldn't just toss yourself in a catapult.
     character: 0
   - text: Right!
     character: 1
-  - text: (This looks like it could be fun)
+  - text: <i>(This looks like it could be fun)</i>
     character: 1
