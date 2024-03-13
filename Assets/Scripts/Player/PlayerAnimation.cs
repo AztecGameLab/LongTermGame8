@@ -56,10 +56,10 @@ namespace Ltg8.Player
         {
             Vector3 facingDirection = player.Velocity;
             facingDirection.y = 0;
-            facingDirection = facingDirection.normalized;
             
             // If Sigmund isn't moving, plays idle animation
-            if (facingDirection.sqrMagnitude < 0.1f)
+            float minSpeed = 0.5f;
+            if (facingDirection.sqrMagnitude < minSpeed * minSpeed)
             {
                 ChangeAnimationState(true);
             }

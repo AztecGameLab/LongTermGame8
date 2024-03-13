@@ -17,6 +17,9 @@ namespace Ltg8
             _inventory.onClose.AddListener(HandleOnClose);
             await _inventory.Open(Ltg8.Save.Inventory);
             
+            Cursor.visible = true; 
+            Cursor.lockState = CursorLockMode.None;
+            
             Ltg8.Controls.PlayerInventory.Enable();
             Ltg8.Controls.PlayerInventory.Close.performed += HandleCloseInventory;
         }

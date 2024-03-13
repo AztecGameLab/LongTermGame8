@@ -13,4 +13,11 @@ MonoBehaviour:
   m_Name: settings_player_movement
   m_EditorClassIdentifier: 
   speed: 5
-  jumpSpeed: 2
+  sprintSpeed: 7
+  normalFov: 60
+  sprintFov: 73
+  fovSpeed: 4
+  groundAcceleration: 20
+  groundDeceleration: 15
+  airAcceleration: 10
+  jumpSpeed: 5

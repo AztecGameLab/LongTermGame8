@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Ltg8
@@ -12,6 +13,10 @@ namespace Ltg8
         {
             Ltg8.Controls.PlayerFreeMovement.Enable();
             Ltg8.Controls.PlayerFreeMovement.OpenInventory.performed += HandleOpenInventory;
+            
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            
             return UniTask.CompletedTask;
         }
 
