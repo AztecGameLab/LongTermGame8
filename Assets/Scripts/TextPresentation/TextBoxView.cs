@@ -90,7 +90,7 @@ namespace Ltg8
                     processedCharacters = text.IndexOf('>', processedCharacters) + 1;
                 
                 // We only want to chirp on visible characters, e.g. anything BUT a space
-                if (text[processedCharacters] != ' ')
+                if (processedCharacters < text.Length && text[processedCharacters] != ' ')
                     RuntimeManager.PlayOneShot(CurrentRevealStyle.audioPerCharacter);
                 
                 processedCharacters++;

@@ -21,7 +21,9 @@ namespace Ltg8
 
         public void ApplyTo(FlipBookView view)
         {
-            view.DisplayImage(data.sprites[_index]);
+            if (data != null)
+                view.DisplayImage(data.sprites[_index]);
+            else view.DisplayImage(null);
         }
         
         public void Update(float deltaTime)

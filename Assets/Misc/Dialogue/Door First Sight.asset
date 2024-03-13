@@ -10,12 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f525c24366240539953f0836922cf4f, type: 3}
-  m_Name: Catapult Walkie
+  m_Name: Door First Sight
   m_EditorClassIdentifier: 
-  frames:
-  - text: WTf is this BROO
-    character: 0
-  - text: idk lol gonna jump in it
-    character: 1
-  - text: whyyy
-    character: 0
+  frames: []
