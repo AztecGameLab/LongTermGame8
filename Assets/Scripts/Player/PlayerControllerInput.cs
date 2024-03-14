@@ -13,6 +13,8 @@ namespace Ltg8.Player
             
             movement.LookX.performed += HandleLookX;
             movement.LookY.performed += HandleLookY;
+            movement.LookX.canceled += HandleLookX;
+            movement.LookY.canceled += HandleLookY;
             movement.Jump.performed += HandleJump;
             movement.Jump.canceled += HandleJump;
             movement.MoveX.performed += HandleMoveX;
@@ -49,13 +51,15 @@ namespace Ltg8.Player
         private void HandleLookX(InputAction.CallbackContext context)
         {
             if (context.performed)
-                controller.InputYaw += context.ReadValue<float>();
+                controller.InputYawDelta = context.ReadValue<float>();
+            else controller.InputYawDelta = 0;
         }
         
         private void HandleLookY(InputAction.CallbackContext context)
         {
             if (context.performed)
-                controller.InputPitch -= context.ReadValue<float>();
+                controller.InputPitchDelta -= context.ReadValue<float>();
+            else controller.InputPitchDelta = 0;
         }
     }
 }

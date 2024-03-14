@@ -908,7 +908,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 5
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -2236,6 +2236,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1068367371688176285}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1095469512
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149449636964882380}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.071803, y: 2.4003358, z: 2.3422623}
+  m_Center: {x: 0.0026032662, y: 1.2249348, z: 0.17843585}
 --- !u!95 &1947197829
 Animator:
   serializedVersion: 5
@@ -2257,19 +2270,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &1095469512
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149449636964882380}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.071803, y: 2.4003358, z: 2.3422623}
-  m_Center: {x: 0.0026032662, y: 1.2249348, z: 0.17843585}
 --- !u!114 &1095469511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2286,12 +2286,41 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   dialogueText:
-  - textFrames:
-    - Hi sigmund
-  - textFrames:
-    - ...
-  - textFrames:
-    - Yes I'm still here
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!65 &1623168003
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149449636964882380}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.071803, y: 2.4003358, z: 2.3422623}
+  m_Center: {x: 0.0026032662, y: 1.2249348, z: 0.17843585}
+--- !u!114 &1623168002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149449636964882380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 446d7e7f41d9421aa696aa1f6d37b2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onReceiveItem:
+    m_PersistentCalls:
+      m_Calls: []
+  dialogueText:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &673608152400924022 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9346a220d08c3804aa1e29e9e3ab6a42,

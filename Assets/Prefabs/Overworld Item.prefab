@@ -310,7 +310,7 @@ PrefabInstance:
     - target: {fileID: 280123976988032428, guid: c80526d459537af4db669610b161170e,
         type: 3}
       propertyPath: m_Name
-      value: Trigger
+      value: Overworld Item
       objectReference: {fileID: 0}
     - target: {fileID: 280123976988032428, guid: c80526d459537af4db669610b161170e,
         type: 3}
@@ -420,12 +420,31 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1627824261503354298}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1545863661566523414}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0cac51d4e4acaf4eb248c817facc7ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1545863661566523414 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 280123976988032428, guid: c80526d459537af4db669610b161170e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1627824261503354298}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3438621817164903647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545863661566523414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb982b78a2243868e4680be678acc28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 8143205848722079650}
 --- !u!4 &1545863661566523415 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 280123976988032429, guid: c80526d459537af4db669610b161170e,
