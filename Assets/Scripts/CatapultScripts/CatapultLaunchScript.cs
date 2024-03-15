@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Ltg8.Player;
-using UnityEditor.Experimental.GraphView;
 
 namespace Catapult
 {

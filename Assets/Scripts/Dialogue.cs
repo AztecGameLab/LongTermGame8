@@ -19,6 +19,13 @@ namespace Ltg8
         }
             
         public Frame[] frames;
+        public static bool _isRunning;
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetStatics()
+        {
+            _isRunning = false;
+        }
 
         public void RunAndForget()
         {
@@ -27,6 +34,9 @@ namespace Ltg8
 
         public async UniTask Run()
         {
+            if (_isRunning)
+                return;
+            
             foreach (Frame frame in frames)
             {
                 // setup textbox based on character
@@ -52,6 +62,7 @@ namespace Ltg8
                 }
                     
                 // run dialogue
+                _isRunning = true;
                 view.gameObject.SetActive(true);
 
                 await view.ClearText();
@@ -59,6 +70,7 @@ namespace Ltg8
                 await view.WaitForContinue();
                     
                 view.gameObject.SetActive(false);
+                _isRunning = false;
             }
         }
     }

@@ -23,7 +23,8 @@ namespace Ltg8
             // Wait one frame so entrypoint can initialize itself
             await UniTask.Yield();
             
-#if UNITY_EDITOR
+// #if UNITY_EDITOR
+#if false
             switch (Ltg8.Settings.editorPlayStrategy)
             {
                 case EditorPlayStrategy.FromStartOfGame:
@@ -45,9 +46,10 @@ namespace Ltg8
                 default: throw new ArgumentOutOfRangeException();
             }
 #else
+            await Ltg8.GameState.TransitionTo(new OverworldGameState("Assets/Scenes/rockyjumpyroad/rockyjumpyroad M.unity")); // todo : LAME
             // await Ltg8.StateMachine.TransitionTo(new MainMenuGameState());
-            await SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
-            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
+            // await SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+            // SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(1));
 #endif
         }
     }

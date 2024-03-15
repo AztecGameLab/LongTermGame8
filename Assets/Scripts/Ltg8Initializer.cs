@@ -34,7 +34,7 @@ namespace Ltg8
             Ltg8.Controls.Enable();
             Ltg8.ItemRegistry = itemRegistry;
             
-#if UNITY_EDITOR
+// #if UNITY_EDITOR
             switch (Ltg8.Settings.editorSaveStrategy)
             {
                 case EditorSaveStrategy.NonPersistent:
@@ -49,9 +49,9 @@ namespace Ltg8
                 }
                 default: throw new ArgumentOutOfRangeException();
             }
-#else
-            Ltg8.Serializer = diskSaveSerializer;
-#endif
+// #else
+//             Ltg8.Serializer = diskSaveSerializer;
+// #endif
         }
 
         private void Update()
