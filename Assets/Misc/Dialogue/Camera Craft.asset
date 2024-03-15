@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f525c24366240539953f0836922cf4f, type: 3}
+  m_Name: Camera Craft
+  m_EditorClassIdentifier: 
+  frames:
+  - text: Wait a second, I have so many of these camera parts...
+    character: 1
+  - text: What if I just put that here, and...
+    character: 1
+  - text: Wait, Sigmund what are you doing? Be careful there, that stuff is...
+    character: 0
+  - text: Done! Yay! Eggy, I made a camera!
+    character: 1
+  - text: Really? It actually... works?
+    character: 0
+  - text: Check this out!
+    character: 1
+  - text: <i>The camera flashes.</i>
+    character: 2
+  - text: Oh, wow you weren't kidding.
+    character: 0
+  - text: Now I can show you all the cool stuff I find!
+    character: 1
+  - text: Oh... fun...
+    character: 0
+  - text: Wait, remember that door from earlier! Send me a picture of that!
+    character: 0
+  - text: I think if I can see it I can figure out a way to open it.
+    character: 0
+  - text: Awesome! Let's do it!
+    character: 1
+  - text: Do you remember how to get back to that door?
+    character: 0
+  - text: Uh.... yes! I'll find it! You can count on me!
+    character: 1

@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Ltg8.Inventory
 {
@@ -7,6 +8,7 @@ namespace Ltg8.Inventory
     {
         public string[] requiredItemIds;
         public string combinedStickerId;
+        public UnityEvent onCombine;
 
         private void FixedUpdate()
         {
@@ -43,6 +45,7 @@ namespace Ltg8.Inventory
                 }
 
                 InventoryUtil.AddItem(combinedStickerId).Forget();
+                onCombine.Invoke();
             }
         }
     }
