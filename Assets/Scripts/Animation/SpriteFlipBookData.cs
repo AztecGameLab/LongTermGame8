@@ -28,6 +28,9 @@ namespace Ltg8
         
         public void Update(float deltaTime)
         {
+            if (data == null)
+                return;
+            
             if (_elapsed > data.updateRateSeconds)
             {
                 _index = (_index + 1) % data.sprites.Length;

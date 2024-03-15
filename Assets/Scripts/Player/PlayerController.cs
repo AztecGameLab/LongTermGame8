@@ -1,5 +1,4 @@
-﻿using System;
-using Cinemachine;
+﻿using Cinemachine;
 using poetools.Core.Abstraction;
 using pt_player_3d.Scripts;
 using UnityEngine;
@@ -15,6 +14,7 @@ namespace Ltg8.Player
         [SerializeField] private Transform pitchTransform;
         [SerializeField] private Transform yawTransform;
         [SerializeField] private CinemachineVirtualCamera playerCamera;
+        [SerializeField] private ParticleSystem sprintingParticles;
 
         public UnityEvent onJump;
         
@@ -22,12 +22,12 @@ namespace Ltg8.Player
         public float InputPitchDelta { get; set; }
         public float InputYawDelta { get; set; }
         public bool InputJumpHeld { get; set; }
-        public bool InputInteractHeld { get; set; }
 
         private bool _wasInteractHeld;
         private bool _wasJumpHeld;
         private float _lastJumpTime;
         private bool _isSprinting;
+        private bool _wasSprinting;
         private float _pitch;
         private float _yaw;
         private CinemachineBrain _brain;
@@ -45,22 +45,31 @@ namespace Ltg8.Player
 
         private void Update()
         {
+            // sprinting
             if (groundCheck.IsGrounded)
                 _isSprinting = Input.GetKey(KeyCode.LeftShift);
 
             bool shouldCameraAnim = _isSprinting && physics.Velocity.sqrMagnitude > 0.5f * 0.5f;
-            
-            // foreach (Camera cam in FindObjectsByType<Camera>(FindObjectsSortMode.None))
-            // {
-            //     cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, shouldCameraAnim ? settings.sprintFov : settings.normalFov, settings.fovSpeed * Time.deltaTime);
-            // }
-
             playerCamera.m_Lens.FieldOfView = Mathf.Lerp(playerCamera.m_Lens.FieldOfView, shouldCameraAnim ? settings.sprintFov : settings.normalFov, settings.fovSpeed * Time.deltaTime);
+
+            // if we are airborne, stop particles
+            if (!groundCheck.IsGrounded && sprintingParticles.isPlaying)
+                sprintingParticles.Stop();
             
+            // if we stop sprinting, stop particles
+            if (!_isSprinting && sprintingParticles.isPlaying)
+                sprintingParticles.Stop();
+            
+            // if we start sprinting, play particles
+            if (_isSprinting && !sprintingParticles.isPlaying)
+                sprintingParticles.Play();
+            
+            // movement
             Vector3 targetVelocity = InputDirection.normalized * (_isSprinting ? settings.sprintSpeed : settings.speed); // todo: real input sys
             targetVelocity = Ltg8.MainCamera.transform.localToWorldMatrix.MultiplyVector(targetVelocity);
             targetVelocity.y = physics.Velocity.y;
             bool isAccelerating = InputDirection != Vector3.zero;
+            
             if (groundCheck.IsGrounded)
             {
                 physics.Velocity = isAccelerating 
@@ -73,7 +82,7 @@ namespace Ltg8.Player
             }
             
             // camera rotation
-            if (_brain.ActiveVirtualCamera == playerCamera)
+            if (ReferenceEquals(_brain.ActiveVirtualCamera, playerCamera))
             {
                 _pitch += InputPitchDelta;
                 _yaw += InputYawDelta;
@@ -93,15 +102,8 @@ namespace Ltg8.Player
                 _lastJumpTime = Time.time;
             }
             
-            // proximity interact
-            if (!_wasInteractHeld && InputInteractHeld)
-            {
-                // just started
-                // search for nearest interactable
-            }
-            
-            _wasInteractHeld = InputInteractHeld;
             _wasJumpHeld = InputJumpHeld;
+            _wasSprinting = _isSprinting;
         }
     }
 }
