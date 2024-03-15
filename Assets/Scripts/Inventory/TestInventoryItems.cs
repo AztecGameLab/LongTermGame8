@@ -6,6 +6,7 @@ namespace Ltg8.Inventory
 {
     public class TestInventoryItems : MonoBehaviour
     {
+        public bool showImGuiControls = false;
         public List<InventoryItemData> items = new List<InventoryItemData>();
         public ItemData testCollectData;
         public InventoryView inventoryView;
@@ -18,6 +19,9 @@ namespace Ltg8.Inventory
 
         private void OnGUI()
         {
+            if (!showImGuiControls)
+                return;
+            
             if (GUILayout.Button("Open")) inventoryView.Open(Ltg8.Save.Inventory).Forget();
             if (GUILayout.Button("Close")) inventoryView.Close().Forget();
             if (GUILayout.Button("Give Item")) InventoryUtil.AddItem(testCollectData.guid).Forget();

@@ -12,4 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f525c24366240539953f0836922cf4f, type: 3}
   m_Name: Final Door First Sight
   m_EditorClassIdentifier: 
-  frames: []
+  frames:
+  - text: Hey! A door!
+    character: 1
+  - text: That door appears to lead outward, away from these cliffs.
+    character: 0
+  - text: If we can open it, we might be able to find someone who can help.
+    character: 0
+  - text: So how do we open it?
+    character: 1
+  - text: Uhhhh... can you describe it to me?
+    character: 0
+  - text: Well... it's big. And square.
+    character: 1
+  - text: You know what, I think we'll have to come back to this later.
+    character: 0
+  - text: Awww.
+    character: 1

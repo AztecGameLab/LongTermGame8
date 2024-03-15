@@ -19,4 +19,4 @@ MonoBehaviour:
       Data3: -110930556
       Data4: 1760972035
     Path: event:/dev_chirp
-  revealIntervalMs: 50
+  revealIntervalMs: 10

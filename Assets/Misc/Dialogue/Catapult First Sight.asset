@@ -32,7 +32,10 @@ MonoBehaviour:
     character: 0
   - text: <i> A cat-a-pult. I wonder if I can get over with that. Worth a shot...</i>
     character: 1
-  - text: ... And that's why you shouldn't just toss yourself in a catapult.
+  - text: It looks like it's current broken, but my scan detected the missing pieces
+      scattered nearby.
+    character: 0
+  - text: If you can find them, we could get this thing working again.
     character: 0
   - text: Right!
     character: 1

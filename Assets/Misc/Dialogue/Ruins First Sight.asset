@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f525c24366240539953f0836922cf4f, type: 3}
   m_Name: Ruins First Sight
   m_EditorClassIdentifier: 
-  frames: []
+  frames:
+  - text: Eggy, who do you think left all these ruins here?
+    character: 1
+  - text: I'm honestly not sure. I would be careful if I were you. E0ven if it looks
+      abandonded, you can never be too careful.
+    character: 0

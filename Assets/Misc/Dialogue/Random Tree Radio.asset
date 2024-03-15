@@ -12,4 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f525c24366240539953f0836922cf4f, type: 3}
   m_Name: Random Tree Radio
   m_EditorClassIdentifier: 
-  frames: []
+  frames:
+  - text: Hey! Hey! Hey! Eggy! Check this out!
+    character: 1
+  - text: Uh.... what is it?
+    character: 0
+  - text: Its... a tree!
+    character: 1
+  - text: Is there anything different about it?
+    character: 0
+  - text: It looks cool.
+    character: 1
+  - text: Are you sure it doesn't just look like every other tree in the area.
+    character: 0
+  - text: Nope. It is my favorite tree now.
+    character: 1

@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f525c24366240539953f0836922cf4f, type: 3}
   m_Name: Climbing First Sight
   m_EditorClassIdentifier: 
-  frames: []
+  frames:
+  - text: More climbing!
+    character: 1
+  - text: It's a good thing somebody left all these platforms around!
+    character: 1
+  - text: 'I guess the previous inhabitants hadn''t discovered ladders, huh. '
+    character: 0

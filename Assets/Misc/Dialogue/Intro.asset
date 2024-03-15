@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f525c24366240539953f0836922cf4f, type: 3}
+  m_Name: Intro
+  m_EditorClassIdentifier: 
+  frames:
+  - text: Sigmund? Hey, can you hear me?
+    character: 0
+  - text: Oof...
+    character: 1
+  - text: Are you okay? Hey!
+    character: 0
+  - text: I'm okay... just a little dizzy...
+    character: 1
+  - text: Alright, alright, cool... um...
+    character: 0
+  - text: Best chance to get you home is to find some sort of civilization and figure
+      out what this place is about.
+    character: 0
+  - text: There seems to be an opening due east from your position.
+    character: 0
+  - text: East! So that's like... uhhh...
+    character: 1
+  - text: ... To your right.
+    character: 0
+  - text: Oh yeah! I'll start walking now!
+    character: 1
+  - text: Alright.
+    character: 0
+  - text: Oh, and keep your eyes peeled for any signs of intelligent life...
+    character: 0
+  - text: If you see anyone or anything, let me know immediately.
+    character: 0
+  - text: Okay! I'll keep a lookout!
+    character: 1
