@@ -9,12 +9,13 @@ public class Breakable : MonoBehaviour
     //Call the broken version of the object.
     [SerializeField] private GameObject broken;
 
-    private void Update() 
-    {
-        //calls the canBreak bool from the Breaks scprit.
-        bool canBreak = boulder.GetComponent<Breaks>().canBreak;
+    //If conditions are valid to break the object the Breaks script changes the value to true.
+    //This bool makes sure that individual objects are broken.
+    public bool Break = false;
 
-        if(canBreak == true)
+    private void Update() 
+    {       
+        if(Break == true)
         {
             SetBroken();
         }

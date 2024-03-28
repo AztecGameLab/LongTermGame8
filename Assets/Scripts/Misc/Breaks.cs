@@ -22,7 +22,9 @@ public class Breaks : MonoBehaviour
             //Imp.magnitude is the float vlaue of force exerted by the colliding object.
             if(Imp.magnitude > forceThresh)
             {
-                canBreak = true;
+                //This line gets the Break boolean from the colliding/Breakable object script and set it to true.
+                //This line ensures that individual objects are borken and not all objects with the breakable tag.
+                collision.gameObject.GetComponent<Breakable>().Break = true;
             }       
         }
     }
