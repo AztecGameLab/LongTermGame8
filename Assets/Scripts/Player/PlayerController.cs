@@ -15,6 +15,7 @@ namespace Ltg8.Player
         [SerializeField] private Transform yawTransform;
         [SerializeField] private CinemachineVirtualCamera playerCamera;
         [SerializeField] private ParticleSystem sprintingParticles;
+        [SerializeField] private int sensitivity = 1;
 
         public UnityEvent onJump;
         
@@ -43,6 +44,11 @@ namespace Ltg8.Player
             _brain = FindAnyObjectByType<CinemachineBrain>();
         }
 
+        public void ChangePlayerSensitivity(int set)
+        {
+            sensitivity = set;
+        }
+        
         private void Update()
         {
             // sprinting
@@ -85,7 +91,7 @@ namespace Ltg8.Player
             if (ReferenceEquals(_brain.ActiveVirtualCamera, playerCamera))
             {
                 _pitch += InputPitchDelta;
-                _yaw += InputYawDelta;
+                _yaw += InputYawDelta * sensitivity;
                 _pitch = Mathf.Clamp(_pitch, -90, 90);
                 pitchTransform.localRotation = Quaternion.Euler(_pitch, 0, 0);
                 yawTransform.localRotation = Quaternion.Euler(0, _yaw, 0);

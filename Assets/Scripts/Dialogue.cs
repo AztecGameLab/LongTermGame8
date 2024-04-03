@@ -20,11 +20,17 @@ namespace Ltg8
             
         public Frame[] frames;
         public static bool _isRunning;
+        public static bool _ignoreDialogue;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
         {
             _isRunning = false;
+        }
+
+        public static void SetIgnoreDialogue(bool set)
+        {
+            _ignoreDialogue = set;
         }
 
         public void RunAndForget()
@@ -34,8 +40,14 @@ namespace Ltg8
 
         public async UniTask Run()
         {
-            if (_isRunning)
+            var player = GameObject.Find("Player");
+            
+            Debug.Log("Dialogue Task");
+            
+            if (_isRunning || player.GetComponent<IgnoreDialogue>().DoesIgnoreDialogue())
                 return;
+            
+            Debug.Log("Dialogue Not Ignored");
             
             foreach (Frame frame in frames)
             {
