@@ -4,6 +4,7 @@ using Catapult;
 using Cysharp.Threading.Tasks;
 using Ltg8.Inventory;
 using Ltg8.Player;
+using Player;
 using UnityEngine;
 
 public class CatapultAmmoScript : MonoBehaviour

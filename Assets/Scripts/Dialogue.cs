@@ -1,5 +1,6 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using poetools.PluginScripts.Executions;
 using UnityEngine;
 
 namespace Ltg8
@@ -42,12 +43,8 @@ namespace Ltg8
         {
             var player = GameObject.Find("Player");
             
-            Debug.Log("Dialogue Task");
-            
             if (_isRunning || player.GetComponent<IgnoreDialogue>().DoesIgnoreDialogue())
                 return;
-            
-            Debug.Log("Dialogue Not Ignored");
             
             foreach (Frame frame in frames)
             {

@@ -1,4 +1,5 @@
-﻿using poetools.Core.Abstraction;
+﻿using Player;
+using poetools.Core.Abstraction;
 using UnityEngine;
 
 namespace Ltg8.Player

@@ -1,10 +1,11 @@
 ﻿using Cinemachine;
+using Ltg8.Player;
 using poetools.Core.Abstraction;
 using pt_player_3d.Scripts;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Ltg8.Player
+namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
@@ -15,7 +16,7 @@ namespace Ltg8.Player
         [SerializeField] private Transform yawTransform;
         [SerializeField] private CinemachineVirtualCamera playerCamera;
         [SerializeField] private ParticleSystem sprintingParticles;
-        [SerializeField] private int sensitivity = 1;
+        [SerializeField] private float sensitivity = 1;
 
         public UnityEvent onJump;
         
@@ -44,7 +45,7 @@ namespace Ltg8.Player
             _brain = FindAnyObjectByType<CinemachineBrain>();
         }
 
-        public void ChangePlayerSensitivity(int set)
+        public void ChangePlayerSensitivity(float set)
         {
             sensitivity = set;
         }
@@ -72,7 +73,7 @@ namespace Ltg8.Player
             
             // movement
             Vector3 targetVelocity = InputDirection.normalized * (_isSprinting ? settings.sprintSpeed : settings.speed); // todo: real input sys
-            targetVelocity = Ltg8.MainCamera.transform.localToWorldMatrix.MultiplyVector(targetVelocity);
+            targetVelocity = Ltg8.Ltg8.MainCamera.transform.localToWorldMatrix.MultiplyVector(targetVelocity);
             targetVelocity.y = physics.Velocity.y;
             bool isAccelerating = InputDirection != Vector3.zero;
             
