@@ -42,8 +42,8 @@ namespace poetools.PluginScripts.Commands
         // Disables gravity (if enabled) and calls the NoClipMovement script to activate no-clipping
         private void TogglePhysics()
         {
-            _player.GetComponent<Rigidbody>().useGravity = false;
             _player.GetComponent<NoClipMovement>().ToggleNoclip();
+            _player.GetComponent<Rigidbody>().useGravity = false;
         }
     }
 }

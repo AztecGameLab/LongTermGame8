@@ -36,7 +36,7 @@ namespace poetools.PluginScripts.Commands
             else
             {
                 _dialogueToggle = true;
-                console.Log(Name, "Dialogue Triggers Deactivated");
+                console.Log(Name, "Dialogue Triggers Deactivated (If a textbox is open, press enter to hide it");
             }
         }
     }

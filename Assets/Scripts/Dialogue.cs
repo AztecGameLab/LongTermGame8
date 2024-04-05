@@ -77,9 +77,12 @@ namespace Ltg8
                 await view.ClearText();
                 await view.WriteText(frame.text);
                 await view.WaitForContinue();
-                    
                 view.gameObject.SetActive(false);
                 _isRunning = false;
+                if(player.GetComponent<IgnoreDialogue>().DoesIgnoreDialogue())
+                {
+                    return;
+                }
             }
         }
     }
