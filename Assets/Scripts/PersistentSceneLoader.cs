@@ -23,8 +23,8 @@ namespace Ltg8
             // Wait one frame so entrypoint can initialize itself
             await UniTask.Yield();
             
-// #if UNITY_EDITOR
-#if false
+#if UNITY_EDITOR
+// #if false
             switch (Ltg8.Settings.editorPlayStrategy)
             {
                 case EditorPlayStrategy.FromStartOfGame:

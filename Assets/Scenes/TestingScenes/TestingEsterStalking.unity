@@ -773,6 +773,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Testing Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1068367371007026413, guid: 54c2b4d63c62bc94eb31c70c8269dc5a,
+        type: 3}
+      propertyPath: m_Lens.FieldOfView
+      value: 60.00002
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54c2b4d63c62bc94eb31c70c8269dc5a, type: 3}
 --- !u!1 &402300715 stripped
@@ -1299,13 +1304,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ester: {fileID: 1513959369}
   Sigmund: {fileID: 402300715}
+  hidingspots: []
   esterAnimator: {fileID: 1513959370}
   esterHideTweenSettings:
     duration: 1
     easingFunction:
       type: 3
   esterHeight: 2
-  hidingspots: []
 --- !u!1 &1534119590
 GameObject:
   m_ObjectHideFlags: 0
