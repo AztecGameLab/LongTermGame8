@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/sc_persistent.unity
     guid: c329b186664017a44a917b56e4db33ef
   - enabled: 1
-    path: Assets/Scenes/rockyjumpyroad/rockyjumpyroad M.unity
+    path: Assets/Scenes/RockyJumpyRoad/rockyjumpyroad M.unity
     guid: ae058af8d4f12be4bb5dc0c3da2123bd
   - enabled: 1
     path: Assets/Scenes/MainMenu/sc_main_menu.unity

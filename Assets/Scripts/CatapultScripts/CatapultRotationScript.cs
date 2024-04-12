@@ -11,6 +11,7 @@ public class CatapultRotationScript : MonoBehaviour
 
     private GameObject catapult_platform;
     [SerializeField] private bool rotate;
+    [SerializeField] private float rotateSpeed = 45;
     
     void Start()
     {
@@ -21,7 +22,7 @@ public class CatapultRotationScript : MonoBehaviour
     {
         if (rotate)
         {
-            catapult_platform.transform.Rotate(0, 0.3f, 0);
+            catapult_platform.transform.Rotate(0, rotateSpeed * Time.deltaTime, 0);
         }
     }
 
