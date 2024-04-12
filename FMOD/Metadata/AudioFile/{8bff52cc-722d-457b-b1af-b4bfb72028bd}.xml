@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{8bff52cc-722d-457b-b1af-b4bfb72028bd}">
+		<property name="assetPath">
+			<value>Zander/Y_BLD_Rolling_2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.3956666666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{0cae2677-60cd-47d6-9130-93a2b82f59bd}</destination>
+		</relationship>
+	</object>
+</objects>

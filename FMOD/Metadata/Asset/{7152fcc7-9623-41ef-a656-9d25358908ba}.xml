@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{7152fcc7-9623-41ef-a656-9d25358908ba}">
+		<property name="assetPath">
+			<value>Kyra/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{0cae2677-60cd-47d6-9130-93a2b82f59bd}</destination>
+		</relationship>
+	</object>
+</objects>
