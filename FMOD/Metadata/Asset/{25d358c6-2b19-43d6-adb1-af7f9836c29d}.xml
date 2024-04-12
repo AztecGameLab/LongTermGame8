@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{25d358c6-2b19-43d6-adb1-af7f9836c29d}">
+		<property name="assetPath">
+			<value>Zander/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{0cae2677-60cd-47d6-9130-93a2b82f59bd}</destination>
+		</relationship>
+	</object>
+</objects>
