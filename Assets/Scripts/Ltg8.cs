@@ -15,5 +15,6 @@ namespace Ltg8
         public static Ltg8Controls Controls;
         public static Camera MainCamera;
         public static ItemRegistry ItemRegistry;
+        public static IScreenTransition LevelChangeTransition;
     }
 }
