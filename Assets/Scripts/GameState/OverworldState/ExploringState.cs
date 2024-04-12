@@ -13,6 +13,7 @@ namespace Ltg8
         {
             Ltg8.Controls.PlayerFreeMovement.Enable();
             Ltg8.Controls.PlayerFreeMovement.OpenInventory.performed += HandleOpenInventory;
+            Ltg8.Controls.GameplayCommon.Pause.performed += HandleOpenPause;
             
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -24,6 +25,7 @@ namespace Ltg8
         {
             Ltg8.Controls.PlayerFreeMovement.Disable();
             Ltg8.Controls.PlayerFreeMovement.OpenInventory.performed -= HandleOpenInventory;
+            Ltg8.Controls.GameplayCommon.Pause.performed -= HandleOpenInventory;
             return UniTask.CompletedTask;
         }
         
@@ -32,6 +34,11 @@ namespace Ltg8
             OverworldState.StateMachine.TransitionTo(OverworldState.InteractingState).Forget();
         }
 
+        private void HandleOpenPause(InputAction.CallbackContext context)
+        {
+            OverworldState.StateMachine.TransitionTo(OverworldState.PausedState).Forget();
+        }
+        
         public void OnUpdate() {}
     }
 }

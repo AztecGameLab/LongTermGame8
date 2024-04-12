@@ -10,6 +10,7 @@ namespace Ltg8
         public AsyncStateMachine<IOverworldState> StateMachine { get; }
         public ExploringState ExploringState { get; }
         public InteractingState InteractingState { get; }
+        public PausedState PausedState { get; }
         
         public OverworldGameState(string scenePath)
         {
@@ -20,6 +21,10 @@ namespace Ltg8
             };
             
             InteractingState = new InteractingState {
+                OverworldState = this,
+            };
+
+            PausedState = new PausedState {
                 OverworldState = this,
             };
             
