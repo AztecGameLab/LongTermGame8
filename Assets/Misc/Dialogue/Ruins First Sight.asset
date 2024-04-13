@@ -15,6 +15,6 @@ MonoBehaviour:
   frames:
   - text: Eggy, who do you think left all these ruins here?
     character: 1
-  - text: I'm honestly not sure. I would be careful if I were you. E0ven if it looks
+  - text: I'm honestly not sure. I would be careful if I were you. Even if it looks
       abandonded, you can never be too careful.
     character: 0

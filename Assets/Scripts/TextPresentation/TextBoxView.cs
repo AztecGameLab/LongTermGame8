@@ -81,7 +81,7 @@ namespace Ltg8
                 if (_continueRequested)
                 {
                     mainText.maxVisibleCharacters += totalCharacters - processedCharacters;
-                    RuntimeManager.PlayOneShot(CurrentRevealStyle.audioPerCharacter);
+                    // RuntimeManager.PlayOneShot(CurrentRevealStyle.audioPerCharacter);
                     break;
                 }
 
@@ -90,8 +90,8 @@ namespace Ltg8
                     processedCharacters = text.IndexOf('>', processedCharacters) + 1;
                 
                 // We only want to chirp on visible characters, e.g. anything BUT a space
-                if (processedCharacters < text.Length && text[processedCharacters] != ' ')
-                    RuntimeManager.PlayOneShot(CurrentRevealStyle.audioPerCharacter);
+                // if (processedCharacters < text.Length && text[processedCharacters] != ' ')
+                    // RuntimeManager.PlayOneShot(CurrentRevealStyle.audioPerCharacter);
                 
                 processedCharacters++;
                 mainText.maxVisibleCharacters++;

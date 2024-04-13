@@ -78,7 +78,7 @@ namespace Catapult
                 StartCoroutine(Cooldown(catapult_in_use, 6f));
                 cog.setTime(5.5f);
                 cog.turnCog("Launch");
-                StartCoroutine(DelayAction(toggleEnterProx,6f));
+                StartCoroutine(DelayAction(() => enterProx.SetActive(true),6f));
             }
             else
             {
