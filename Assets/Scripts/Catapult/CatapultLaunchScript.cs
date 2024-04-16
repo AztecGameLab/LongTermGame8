@@ -56,7 +56,7 @@ namespace Catapult
             
             /* Disables the MultiItemTarget script for the basket, primarily to avoid an error that occurs
              when the game loads*/
-            catapultBasket.GetComponent<MultiItemTarget>().enabled = false;
+            catapultBasket.GetComponent<IncludeItemTarget>().enabled = false;
             
             // Ensures that the "Enter" & "Basket Launch" Proximity interactables are initially disabled
             ToggleProximities();

@@ -91,12 +91,12 @@ namespace Catapult
         }
 
         // Create and Load an item into the catapult
-        public async void PlaceItem(ItemData item)
+        public void PlaceItem(ItemData item)
         {
             if (_loadedItem) return; // If the catapult is already loaded, return
 
             // Create the object chosen by the player in the Overworld and place it into the basket
-            await InventoryUtil.CreateItemInOverworld(item, loadPosition.position);
+            InventoryUtil.CreateItemInOverworld(item, loadPosition.position);
         }
 
         // Remove an item inside the catapult (Only called when catapult did not launch)
