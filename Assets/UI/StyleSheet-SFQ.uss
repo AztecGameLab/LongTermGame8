@@ -1,0 +1,395 @@
+.button-orange {
+    border-left-color: rgb(215, 197, 158);
+    border-right-color: rgb(215, 197, 158);
+    border-top-color: rgb(215, 197, 158);
+    border-bottom-color: rgb(215, 197, 158);
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    background-color: rgb(175, 139, 60);
+    font-size: 24px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    -unity-font-style: bold;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    color: rgb(255, 255, 255);
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out-elastic;
+    transition-property: scale;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.button-orange:hover {
+    scale: 1.1 1.1;
+}
+
+.button-orange:active {
+    scale: 1.2 1.2;
+    background-color: rgb(181, 151, 84);
+    border-left-color: rgb(233, 225, 206);
+    border-right-color: rgb(233, 225, 206);
+    border-top-color: rgb(233, 225, 206);
+    border-bottom-color: rgb(233, 225, 206);
+}
+
+.button-orange:disabled {
+    background-color: rgba(175, 139, 60, 0.5);
+    border-left-color: rgba(215, 197, 158, 0.5);
+    border-right-color: rgba(215, 197, 158, 0.5);
+    border-top-color: rgba(215, 197, 158, 0.5);
+    border-bottom-color: rgba(215, 197, 158, 0.5);
+    scale: 0.9 0.9;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.button-menuOption {
+    font-size: 36px;
+    background-color: rgba(44, 40, 54, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.button-menuOption:hover {
+    scale: 1.1 1.1;
+}
+
+.button-menuOption:active {
+    scale: 1.2 1.2;
+}
+
+.button-menuOption:disabled {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.textDisplayHeader {
+    color: rgb(255, 255, 255);
+    font-size: 80px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/Gluten/Gluten-SemiBold%20SDF%201.asset?fileID=11400000&guid=851a26cea26ec0f4c8ab2b0cbcd0302d&type=2#Gluten-SemiBold SDF 1');
+    -unity-paragraph-spacing: 36px;
+    -unity-text-align: upper-center;
+}
+
+.containerOrange {
+    background-color: rgba(175, 139, 60, 0.5);
+    border-left-color: rgb(215, 197, 158);
+    border-right-color: rgb(215, 197, 158);
+    border-top-color: rgb(215, 197, 158);
+    border-bottom-color: rgb(215, 197, 158);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-submenu {
+    width: 31%;
+    height: 100%;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    justify-content: flex-start;
+    flex-direction: row;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-left-color: rgb(175, 139, 60);
+    border-right-color: rgb(175, 139, 60);
+    border-top-color: rgb(175, 139, 60);
+    border-bottom-color: rgb(175, 139, 60);
+    background-color: rgba(175, 139, 60, 0.5);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.container-item {
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(175, 139, 60, 0.5);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.SideMenuOnScreen {
+    width: 40%;
+    height: 95%;
+    background-color: rgba(175, 139, 60, 0.5);
+    border-left-color: rgb(175, 139, 60);
+    border-right-color: rgb(175, 139, 60);
+    border-top-color: rgb(175, 139, 60);
+    border-bottom-color: rgb(175, 139, 60);
+    border-top-width: 20px;
+    border-right-width: 20px;
+    border-bottom-width: 20px;
+    border-left-width: 20px;
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    border-bottom-left-radius: 80px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    transition-property: translate;
+    transition-duration: 1s;
+    translate: 0 0;
+    transition-timing-function: ease-in;
+    transition-delay: 0s;
+}
+
+.SideMenuSlidingOut {
+    translate: -125% 0;
+}
+
+.NormalScreenSpace {
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/ShantellSans/ShantellSans-Medium%20SDF.asset?fileID=11400000&guid=2ec2023a001865343aa51713bdcd474d&type=2#ShantellSans-Medium SDF');
+    -unity-font-style: normal;
+    background-color: rgb(25, 22, 35);
+    color: rgb(255, 255, 255);
+}
+
+.ScreenSpaceGoesDark {
+    background-color: rgb(2, 2, 2);
+    transition-duration: 2s;
+    transition-timing-function: ease-in;
+    transition-delay: 0.5s;
+}
+
+.PageIndicatorAtTop {
+    position: absolute;
+    width: 246px;
+    height: 74px;
+    border-left-color: rgb(215, 197, 158);
+    border-right-color: rgb(215, 197, 158);
+    border-top-color: rgb(215, 197, 158);
+    border-bottom-color: rgb(215, 197, 158);
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background-color: rgb(175, 139, 60);
+    display: flex;
+}
+
+.PageIndicatorAtContacts {
+    translate: 0 0;
+}
+
+.PageIndicatorAtMap {
+    translate: 0 99px;
+}
+
+.PageIndicatorAtCollection {
+    translate: 0 193px;
+}
+
+.PageIndicatorAtLog {
+    translate: 0 290px;
+}
+
+.PageIndicatorAtSettings {
+    translate: 0 384px;
+}
+
+.PageIndicatorAtControls {
+    translate: 0 476px;
+}
+
+.PageIndicatorAtSave {
+    translate: 0 572px;
+}
+
+.PageIndicatorAtExit {
+    translate: 0 667px;
+}
+
+.PauseMenuDown {
+    width: 1762px;
+    height: 894px;
+    background-color: rgba(175, 139, 60, 0.8);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-left-color: rgb(175, 139, 60);
+    border-right-color: rgb(175, 139, 60);
+    border-top-color: rgb(175, 139, 60);
+    border-bottom-color: rgb(175, 139, 60);
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    font-size: 24px;
+    transform-origin: center 815%;
+    translate: 0 1080px;
+}
+
+.PauseMenuOnScreen {
+    translate: 0 0;
+}
+
+#SFQSlider Label {
+    display: none;
+}
+
+#SFQSlider #unity-drag-container {
+    height: 60px;
+}
+
+#SFQSlider #unity-dragger {
+    width: 40px;
+    height: 40px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    top: 10px;
+    background-color: rgb(215, 197, 158);
+    border-left-color: rgb(175, 139, 60);
+    border-right-color: rgb(175, 139, 60);
+    border-top-color: rgb(175, 139, 60);
+    border-bottom-color: rgb(175, 139, 60);
+}
+
+#SFQSlider #unity-tracker {
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    top: 20px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: rgb(175, 139, 60);
+}
+
+#SFQToggle Label {
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-right;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+#SFQToggle #unity-checkmark {
+    background-color: rgb(175, 139, 60);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    height: 30px;
+    width: 30px;
+}
+
+.DialogueBoxExposition {
+    width: 70%;
+    height: 40%;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    flex-direction: column-reverse;
+    display: flex;
+}
+
+.DialogueBoxChoice {
+    height: 70%;
+    width: 70%;
+}
+
+.button-dialogueChoice {
+    -unity-font-style: normal;
+    background-color: rgba(188, 188, 188, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    white-space: normal;
+}
+
+.button-dialogueChoice :hover {
+    -unity-font-style: bold;
+    scale: 1.1 1.1;
+}
+
+.button-dialogueChoice :active {
+    scale: 1.2 1.2;
+    -unity-font-style: bold;
+}
