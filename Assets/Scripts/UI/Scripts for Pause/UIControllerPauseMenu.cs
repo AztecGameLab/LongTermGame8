@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 using Debug = UnityEngine.Debug;
 
-public class UIControllerPauseMenu : MonoBehaviour
+namespace Ltg8
+{
+    public class UIControllerPauseMenu : MonoBehaviour
 {
     [SerializeField] private KeyCode PauseKey = KeyCode.P;
     [SerializeField] private bool PauseMenuOnScreen = false;
     [SerializeField] private string currentPI = null;
+    
+    public UnityEvent onClose;
     
     private VisualElement _PauseMenu;
     private VisualElement _PageIndicator;
@@ -84,6 +89,28 @@ public class UIControllerPauseMenu : MonoBehaviour
 
     }
 
+    public void Open()
+    {
+        if (!PauseMenuOnScreen)
+        {
+            Time.timeScale = 0;
+            _PauseMenu.AddToClassList("PauseMenuOnScreen");
+            PauseMenuOnScreen = true;
+        }
+    }
+
+    public void Close()
+    {
+        if (PauseMenuOnScreen)
+        {
+            Time.timeScale = 1;
+            _PauseMenu.RemoveFromClassList("PauseMenuOnScreen");
+            PauseMenuOnScreen = false;
+            
+            onClose.Invoke();
+        }
+    }
+    
     void Update()
     {
         if (Input.GetKeyDown(PauseKey))
@@ -298,5 +325,5 @@ public class UIControllerPauseMenu : MonoBehaviour
                 break;
         }
     }
+}   
 }
-

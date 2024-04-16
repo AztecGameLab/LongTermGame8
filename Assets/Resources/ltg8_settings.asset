@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: ltg8_settings
   m_EditorClassIdentifier: 
   persistentScenePath: Assets/Scenes/sc_persistent.unity
-  mainMenuScenePath: Assets/Scenes/MainMenu/sc_main_menu.unity
+  mainMenuScenePath: Assets/Scenes/Start Menu Scene.unity
+  overworldItemPrefab: {fileID: 0}
   editorPlayStrategy: 0
   editorSaveStrategy: 0
   editorSaveId: dev_test

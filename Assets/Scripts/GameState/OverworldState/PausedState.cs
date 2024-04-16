@@ -1,8 +1,8 @@
 ﻿using Cysharp.Threading.Tasks;
-using Ltg8.Inventory;
 using Ltg8.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 
 namespace Ltg8
 {
@@ -10,11 +10,11 @@ namespace Ltg8
     {
         public OverworldGameState OverworldState { get; set; }
 
-        private PauseView _pauseView;
+        private UIControllerPauseMenu _pauseView;
 
         public async UniTask OnEnter()
         {
-            _pauseView = Object.FindAnyObjectByType<PauseView>();
+            _pauseView = Object.FindAnyObjectByType<UIControllerPauseMenu>();
             _pauseView.onClose.AddListener(HandleOnClose);
             _pauseView.Open();
             

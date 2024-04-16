@@ -71,6 +71,7 @@ public class pauseSettingsMenu : MonoBehaviour
     // These bottom methods do the same thing. They get the value of the slider, and update the text to display that value
     void SliderValueChangedDialogue(ChangeEvent<float> value)
     {
+        Debug.Log("Sliding in dms");
         float v = Mathf.Round(value.newValue);
         _ScrollSpeedDisplay.text = v.ToString() + "%";
     }
