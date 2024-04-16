@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using PluginScripts;
+using poetools.PluginScripts;
 using UnityEngine;
 
 namespace poetools.Console.Commands

@@ -1,6 +1,8 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using FMODUnity;
+using PluginScripts;
+using poetools.PluginScripts.Executions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -41,9 +43,16 @@ namespace Ltg8
         {
             Ltg8.Controls.GameplayCommon.Confirm.performed -= HandleConfirm;
         }
+
+        private static bool IsConsoleOpen()
+        {
+            var console = GameObject.Find("Runtime Console").GetComponent<RuntimeConsole>();
+            return console.IsVisible();
+        }
         
         private void HandleConfirm(InputAction.CallbackContext context)
         {
+            if (IsConsoleOpen()) return;
             _continueRequested = true;
         }
 

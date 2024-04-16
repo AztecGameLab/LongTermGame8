@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using poetools.Console;
 using poetools.Console.Commands;
+using poetools.PluginScripts.Executions;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace poetools.Console
+namespace PluginScripts
 {
     public class RuntimeConsole : MonoBehaviour
     {
@@ -16,7 +18,8 @@ namespace poetools.Console
         [SerializeField]
         [Tooltip("Whether the console should begin opened or closed.")]
         private bool startVisible;
-
+        
+        
         [SerializeField]
         [Tooltip("The commands that are registered with the console by default.")]
         private Command[] autoRegisterCommands;
@@ -134,6 +137,21 @@ namespace poetools.Console
         public void ToggleVisibility()
         {
             SetVisible(!IsVisible());
+            var player = GameObject.Find("Player");
+            if (IsVisible())
+            {
+                player.GetComponent<CharacterController>().enabled = false;
+                player.GetComponent<NoClipMovement>().SetConsole(true);
+            }
+            else if(player.GetComponent<NoClipMovement>().GetNoclip())
+            {
+                player.GetComponent<CharacterController>().enabled = false;
+                player.GetComponent<NoClipMovement>().SetConsole(false);
+            }
+            else
+            {
+                player.GetComponent<CharacterController>().enabled = true;
+            }
         }
 
         public void SetVisible(bool isVisible)

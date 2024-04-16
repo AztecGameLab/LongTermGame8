@@ -1,5 +1,6 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using poetools.PluginScripts.Executions;
 using UnityEngine;
 
 namespace Ltg8
@@ -20,11 +21,17 @@ namespace Ltg8
             
         public Frame[] frames;
         public static bool _isRunning;
+        public static bool _ignoreDialogue;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
         {
             _isRunning = false;
+        }
+
+        public static void SetIgnoreDialogue(bool set)
+        {
+            _ignoreDialogue = set;
         }
 
         public void RunAndForget()
@@ -34,7 +41,9 @@ namespace Ltg8
 
         public async UniTask Run()
         {
-            if (_isRunning)
+            var player = GameObject.Find("Player");
+            
+            if (_isRunning || player.GetComponent<IgnoreDialogue>().DoesIgnoreDialogue())
                 return;
             
             foreach (Frame frame in frames)
@@ -68,9 +77,12 @@ namespace Ltg8
                 await view.ClearText();
                 await view.WriteText(frame.text);
                 await view.WaitForContinue();
-                    
                 view.gameObject.SetActive(false);
                 _isRunning = false;
+                if(player.GetComponent<IgnoreDialogue>().DoesIgnoreDialogue())
+                {
+                    return;
+                }
             }
         }
     }

@@ -1,5 +1,7 @@
 ﻿using System;
+using PluginScripts;
 using poetools.Console.Commands;
+using poetools.PluginScripts;
 using UnityEngine;
 
 namespace poetools.Console

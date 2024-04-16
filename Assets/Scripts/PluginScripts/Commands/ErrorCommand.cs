@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using PluginScripts;
+using poetools.PluginScripts;
 
 namespace poetools.Console.Commands
 {
-    public class NullCommand : ICommand
+    public class ErrorCommand : ICommand
     {
         public string Name => string.Empty;
         public string Help => string.Empty;
@@ -11,7 +13,8 @@ namespace poetools.Console.Commands
 
         public void Execute(string[] args, RuntimeConsole console)
         {
-            // Do nothing.
+            string message = "<color=grey><i>Invalid command! Try using \"help [command]\" for proper usage.</i></color>";
+            console.LogRaw($"\n{message}");
         }
 
         public void Dispose()

@@ -1,5 +1,6 @@
 ﻿using Cinemachine;
 using Ltg8.Player;
+using Player;
 using UnityEngine;
 
 namespace Misc

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using PluginScripts;
+using poetools.PluginScripts;
+using UnityEngine;
 
 namespace poetools.Console.Commands
 {
