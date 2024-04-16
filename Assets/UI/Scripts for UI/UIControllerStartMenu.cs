@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,7 @@ public class UIControllerStartMenu : MonoBehaviour
         _ButtonContainer = root.Q<VisualElement>("ButtonContainer");
         _ScreenSpace = root.Q<VisualElement>("ScreenSpace");
         _ButtonStart = root.Q<Button>("ButtonStart");
+        
         
         _ButtonStart.RegisterCallback<ClickEvent>(WhenStartIsPressed);
     }
