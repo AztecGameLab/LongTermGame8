@@ -18,12 +18,9 @@ namespace Ltg8.Inventory
             _prevTarget = HoveredTarget;
             Ray ray = Ltg8.MainCamera.ScreenPointToRay(Input.mousePosition);
             int hits = Physics.RaycastNonAlloc(ray, _resultBuffer, float.PositiveInfinity, LayerMask.GetMask("ItemTarget"));
-            if (HoveredTarget)
-            {
-                HoveredTarget = hits == 0
-                    ? null
-                    : RaycastUtil.FindNearestWithComponent<ItemTarget>(hits, _resultBuffer).gameObject;
-            }
+            HoveredTarget = hits == 0
+                ? null
+                : RaycastUtil.FindNearestWithComponent<ItemTarget>(hits, _resultBuffer).gameObject;
 
             if (_prevTarget != HoveredTarget)
             {
