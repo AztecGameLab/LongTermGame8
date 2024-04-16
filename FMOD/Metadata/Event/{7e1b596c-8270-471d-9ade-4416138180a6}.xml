@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{7e1b596c-8270-471d-9ade-4416138180a6}">
 		<property name="name">
-			<value>TestEvent</value>
+			<value>dev_footstep</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
 		</property>
 		<relationship name="folder">
-			<destination>{1173df54-d739-4088-8f54-4325f19e332f}</destination>
+			<destination>{4a461143-b8b9-4ac2-97a9-68c5216d614e}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{166337e1-8dd2-4b79-82f3-2692f96324fe}</destination>

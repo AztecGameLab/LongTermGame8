@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8482c661e31d46959ebafee8837ca5a9, type: 3}
+  m_Name: rs_default
+  m_EditorClassIdentifier: 
+  audioPerCharacter:
+    Guid:
+      Data1: -1472437354
+      Data2: 1286148919
+      Data3: -110930556
+      Data4: 1760972035
+    Path: event:/dev_chirp
+  revealIntervalMs: 10

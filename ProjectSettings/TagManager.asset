@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - breakable
+  - hiding spot
   layers:
   - Default
   - TransparentFX
@@ -11,12 +13,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ItemTarget
+  - BackgroundPostProcessing
+  - ForegroundPostProcessing
+  - Detail
+  - Player
+  - IgnoreDetail
   - 
   - 
   - 

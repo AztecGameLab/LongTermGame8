@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f525c24366240539953f0836922cf4f, type: 3}
+  m_Name: Open Final Door
+  m_EditorClassIdentifier: 
+  frames:
+  - text: Eggy! I'm gonna send you a picture of the door!
+    character: 1
+  - text: Alright, I'm getting it now.
+    character: 0
+  - text: <i>This is the end of the demo / prototype. Thanks for playing! </i>
+    character: 2

@@ -1,5 +1,5 @@
 {
-    "name": "Ltg8Controls",
+    "name": "ltg8_controls",
     "maps": [
         {
             "name": "GameplayCommon",
@@ -9,6 +9,15 @@
                     "name": "Pause",
                     "type": "Button",
                     "id": "d6d7e278-4b05-430f-806d-dad2201711ce",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Confirm",
+                    "type": "Button",
+                    "id": "a3edbee8-6170-4459-9b66-963d451b80ec",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -24,6 +33,39 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7bc5330d-7532-4174-937c-8eaa69473dca",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33b50be7-11b8-4517-b5d1-df6d57374bc3",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "905af592-4463-4a98-b70c-17479ddf2147",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -91,6 +133,15 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "363234a2-43c3-4d7f-876c-20326a142251",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenInventory",
+                    "type": "Button",
+                    "id": "6c680d62-c3d2-4bf2-a885-df65e3848202",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -202,7 +253,7 @@
                     "id": "cdb8dea3-a6d5-488e-9e56-1b51c586b866",
                     "path": "<Mouse>/delta/x",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Scale(factor=0.05)",
                     "groups": "Keyboard&Mouse",
                     "action": "LookX",
                     "isComposite": false,
@@ -213,9 +264,59 @@
                     "id": "abd1a67d-738c-4cc2-a956-27330a14c090",
                     "path": "<Mouse>/delta/y",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Scale(factor=0.05)",
                     "groups": "Keyboard&Mouse",
                     "action": "LookY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1fd4a8a1-f533-46ff-8af7-7a509a86da9e",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "PlayerInventory",
+            "id": "dd0e69aa-d965-412c-ab5c-731faf9cdd37",
+            "actions": [
+                {
+                    "name": "Close",
+                    "type": "Button",
+                    "id": "ba82f93f-071b-43cb-9e2c-fb01810d77c9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6a98cfc0-ec0e-4f13-9720-ec8b7c4ed1d6",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Close",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c1eaad3c-b8b3-4062-b55c-e7622ac0c515",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Close",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -226,168 +327,46 @@
             "id": "cd3b25df-de2e-4047-9ff3-e73a41b628e5",
             "actions": [
                 {
-                    "name": "MoveX",
-                    "type": "Value",
-                    "id": "c245d749-7cfb-44df-8589-d31a42f5dba9",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "MoveY",
-                    "type": "Value",
-                    "id": "fbdbd933-0406-4188-b8a4-8cb23a02ef4c",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "LookX",
+                    "name": "ClimbMove",
                     "type": "Value",
                     "id": "0147b900-2443-44b6-8cb3-001b588e2474",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "LookY",
-                    "type": "Value",
-                    "id": "eeed2574-8ee7-4674-aae4-808b2f58c661",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "cde552da-957a-421a-98f7-784bd65bf56f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Interact",
-                    "type": "Button",
-                    "id": "8c41e8fd-3ffb-4530-9eca-e27b3d7acc8e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "b1bf30e8-a6b9-4203-88c2-f2974c16a449",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3ab404ac-d77b-485e-bf75-44dad841a282",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a6c44cb0-73eb-42ee-a982-e0859d4719db",
-                    "path": "<Mouse>/delta/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "LookX",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c5af197e-5f2f-48a9-88b0-67fd8a94c700",
-                    "path": "<Mouse>/delta/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "LookY",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "WS",
-                    "id": "546eaeff-ea91-4d07-9f91-9d4deac54bde",
+                    "name": "Keyboard",
+                    "id": "2b1a3f67-434d-4d34-9e1f-6af6f1866ace",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveY",
+                    "action": "ClimbMove",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "negative",
-                    "id": "3898a054-1346-4fe9-9440-9284bc2cc4a0",
+                    "id": "f1568740-677c-4a8d-8916-83d3afa6b7f6",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "MoveY",
+                    "groups": "",
+                    "action": "ClimbMove",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "positive",
-                    "id": "e675ad0f-6248-4315-ba8d-e5632135ca7f",
+                    "id": "ab131325-3278-4614-a25b-4b6c67b0a202",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "MoveY",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "AD",
-                    "id": "2b90811c-4556-4b8b-b897-bba28273dd10",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
                     "groups": "",
-                    "action": "MoveX",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "f9cc66ec-e85b-4962-aeb3-06a1bf8967e8",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "MoveX",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "b0d58679-c2e3-4b0d-97ef-85a355771ed7",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "MoveX",
+                    "action": "ClimbMove",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

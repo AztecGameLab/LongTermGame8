@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f525c24366240539953f0836922cf4f, type: 3}
+  m_Name: Broken Bridge First Sight
+  m_EditorClassIdentifier: 
+  frames:
+  - text: Heyyy, the bridge fell down! How am I supposed to get across?
+    character: 1
+  - text: I'm sure there's some other way.
+    character: 0
+  - text: I don't see any ropes or platforms...
+    character: 1
+  - text: We probably need some more advanced technology to scale a cliff of that
+      size.
+    character: 0
+  - text: If only I could just fly! Then it would be so easy.
+    character: 1
+  - text: Hmm, that's true...
+    character: 0

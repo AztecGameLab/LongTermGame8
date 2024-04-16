@@ -30,7 +30,7 @@ namespace Ltg8.Editor
             GUILayout.Label("Curvature");
             float newCurvature = GUILayout.HorizontalSlider(Shader.GetGlobalFloat(Ltg8Curvature), 0, 0.03f);
             Shader.SetGlobalFloat(Ltg8Curvature, newCurvature);
-            GetWindow<SceneView>().Repaint();
+            // GetWindow<SceneView>().Repaint();
             GUILayout.Space(25);
 
             // Draw the 'Load Persistent' button

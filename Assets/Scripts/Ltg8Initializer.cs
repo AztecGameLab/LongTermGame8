@@ -1,4 +1,5 @@
 ﻿using System;
+using Ltg8.Inventory;
 using TriInspector;
 using UnityEngine;
 
@@ -16,16 +17,24 @@ namespace Ltg8
         [Required] public InMemorySaveSerializer inMemorySaveSerializer;
         [Required] public FmodValueAnimator fmodValueAnimator;
         [Required] public PersistentAudio persistentAudio;
-        [Required] public GameStateMachine gameStateMachine;
-    
+        [Required] public Camera mainCamera;
+        [Required] public TextBoxPresenter textBoxPresenter;
+        [Required] public ItemRegistry itemRegistry;
+     
         private void Awake()
         {
             Ltg8.Settings = settings;
             Ltg8.FmodValueAnimator = fmodValueAnimator;
             Ltg8.PersistentAudio = persistentAudio;
-            Ltg8.StateMachine = gameStateMachine;
+            Ltg8.GameState = new AsyncStateMachine<IGameState>();
+            Ltg8.TextBoxPresenter = textBoxPresenter;
             Ltg8.Save = new SaveData();
-#if UNITY_EDITOR
+            Ltg8.MainCamera = mainCamera;
+            Ltg8.Controls = new Ltg8Controls();
+            Ltg8.Controls.Enable();
+            Ltg8.ItemRegistry = itemRegistry;
+            
+// #if UNITY_EDITOR
             switch (Ltg8.Settings.editorSaveStrategy)
             {
                 case EditorSaveStrategy.NonPersistent:
@@ -40,9 +49,14 @@ namespace Ltg8
                 }
                 default: throw new ArgumentOutOfRangeException();
             }
-#else
-            Ltg8.Serializer = diskSaveSerializer;
-#endif
+// #else
+//             Ltg8.Serializer = diskSaveSerializer;
+// #endif
+        }
+
+        private void Update()
+        {
+            Ltg8.GameState.CurrentState?.OnUpdate();
         }
     }
 }
