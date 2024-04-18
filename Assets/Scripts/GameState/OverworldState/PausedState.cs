@@ -1,5 +1,4 @@
 ﻿using Cysharp.Threading.Tasks;
-using Ltg8.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,13 +9,13 @@ namespace Ltg8
     {
         public OverworldGameState OverworldState { get; set; }
 
-        private UIControllerPauseMenu _pauseView;
+        private UIControllerPauseMenu _pauseMenu;
 
         public async UniTask OnEnter()
         {
-            _pauseView = Object.FindAnyObjectByType<UIControllerPauseMenu>();
-            _pauseView.onClose.AddListener(HandleOnClose);
-            _pauseView.Open();
+            _pauseMenu = Object.FindAnyObjectByType<UIControllerPauseMenu>();
+            _pauseMenu.onClose.AddListener(HandleOnClose);
+            _pauseMenu.Open();
             
             Cursor.visible = true; 
             Cursor.lockState = CursorLockMode.None;
@@ -26,9 +25,9 @@ namespace Ltg8
         
         public async UniTask OnExit()
         {
-            _pauseView.Close();
+            _pauseMenu.Close();
             
-            _pauseView.onClose.RemoveListener(HandleOnClose);
+            _pauseMenu.onClose.RemoveListener(HandleOnClose);
             Ltg8.Controls.GameplayCommon.Pause.performed -= HandleClosePause;
         }
         
@@ -39,7 +38,7 @@ namespace Ltg8
         
         private void HandleClosePause(InputAction.CallbackContext context)
         {
-            _pauseView.Close();
+            _pauseMenu.Close();
         }
 
         public void OnUpdate() {}
