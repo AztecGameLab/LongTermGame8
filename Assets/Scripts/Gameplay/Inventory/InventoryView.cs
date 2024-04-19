@@ -25,6 +25,7 @@ namespace Ltg8.Inventory
         private readonly List<InventoryItemUiView> _spawnedItems = new List<InventoryItemUiView>();
         private CancellationTokenSource _cts;
 
+
         public async UniTask Open(IEnumerable<InventoryItemData> items)
         {
             CancelCurrentAnimation();

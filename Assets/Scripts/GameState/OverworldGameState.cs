@@ -34,9 +34,10 @@ namespace Ltg8
             await StateMachine.TransitionTo(ExploringState); // todo: maybe some worlds transition and don't default to exploring...
         }
         
-        public UniTask OnExit()
+        public async UniTask OnExit()
         {
-            return UniTask.CompletedTask;
+            await SceneManager.UnloadSceneAsync(_scenePath);
+            StateMachine.TransitionTo(null).Forget();
         }
 
         public void OnUpdate()
