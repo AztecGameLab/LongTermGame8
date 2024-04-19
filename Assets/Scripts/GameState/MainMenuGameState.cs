@@ -11,9 +11,10 @@ namespace Ltg8
             SceneManager.SetActiveScene(SceneManager.GetSceneByPath(path));
         }
         
-        public UniTask OnExit()
+        public async UniTask OnExit()
         {
-            return UniTask.CompletedTask;
+            string path = Ltg8.Settings.mainMenuScenePath;
+            await SceneManager.UnloadSceneAsync(path);
         }
 
         public void OnUpdate()

@@ -10,6 +10,7 @@ namespace Ltg8
     {
         [Scene] public string persistentScenePath;
         [Scene] public string mainMenuScenePath;
+        [Scene] public string defaultOverworldScenePath;
         public InventoryItemWorldDisplay overworldItemPrefab;
 
         [Title("Editor")]

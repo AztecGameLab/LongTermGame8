@@ -1,4 +1,6 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Ltg8
@@ -14,6 +16,11 @@ namespace Ltg8
         
         public OverworldGameState(string scenePath)
         {
+            if (string.IsNullOrEmpty(scenePath))
+            {
+                scenePath = Ltg8.Settings.defaultOverworldScenePath;
+            }
+            
             _scenePath = scenePath;
             
             ExploringState = new ExploringState {
@@ -35,6 +42,8 @@ namespace Ltg8
         {
             await SceneManager.LoadSceneAsync(_scenePath, LoadSceneMode.Additive);
             SceneManager.SetActiveScene(SceneManager.GetSceneByPath(_scenePath));
+
+            Ltg8.Save.PlayerSceneName = _scenePath;
             
             await StateMachine.TransitionTo(ExploringState); // todo: maybe some worlds transition and don't default to exploring...
         }
