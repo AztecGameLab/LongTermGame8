@@ -1,78 +1,77 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.UIElements;
 
-public class pauseSaveMenu : MonoBehaviour
+namespace Ltg8
 {
-    // References
-    private Button _SaveSlot0;
-    private Button _SaveSlot1;
-    private Button _SaveSlot2;
-    private Button _SaveSlot3;
-    private Button _SaveSlot4;
-    private Button _SaveSlot5;
+    public class pauseSaveMenu : MonoBehaviour
+    {
+        private const int NumSaveSlots = 6;
+
+        // References
+        private Button[] _saveSlots;
     
-    private VisualElement _SaveConfirmation;
+        private VisualElement _saveConfirmation;
 
-    private Button _ButtonYesSaveConfirmation;
-    private Button _ButtonNoSaveConfirmation;
+        private Button _buttonYesSaveConfirmation;
+        private Button _buttonNoSaveConfirmation;
+
+        private Label _confirmationText;
+        private int _selectedSlot;
     
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Getting root to reach the other elements of UI document
-        var root = GetComponent<UIDocument>().rootVisualElement;
+        // Start is called before the first frame update
+        private void Start()
+        {
+            // Getting root to reach the other elements of UI document
+            var root = GetComponent<UIDocument>().rootVisualElement;
         
-        // Getting references for...
+            // Getting references for...
         
-        // Save Slots...
-        _SaveSlot0 = root.Q<Button>("SaveSlot0");
-        _SaveSlot1 = root.Q<Button>("SaveSlot1");
-        _SaveSlot2 = root.Q<Button>("SaveSlot2");
-        _SaveSlot3 = root.Q<Button>("SaveSlot3");
-        _SaveSlot4 = root.Q<Button>("SaveSlot4");
-        _SaveSlot5 = root.Q<Button>("SaveSlot5");
+            // Save Slots...
+            _saveSlots = new Button[NumSaveSlots];
+            for (var i = 0; i < NumSaveSlots; i++)
+            {
+                var saveSlot = root.Q<Button>("SaveSlot" + i);
+                _saveSlots[i] = saveSlot;
+                var slot = i;
+                saveSlot.clicked += () => DisplaySaveConfirmation(slot);
+            }
         
-        // Save confirmation window
-        _SaveConfirmation = root.Q<VisualElement>("SaveConfirmation");
-        
-        // Yes and no buttons for save confirmation...
-        _ButtonYesSaveConfirmation = root.Q<Button>("ButtonYes");
-        _ButtonNoSaveConfirmation = root.Q<Button>("ButtonNo");
-        
-        
-        // Call methods...
-        // ...when pressing on the save slots on the save menu
-        _SaveSlot0.RegisterCallback<ClickEvent>(DisplaySaveConfirmation);
-        _SaveSlot1.RegisterCallback<ClickEvent>(DisplaySaveConfirmation);
-        _SaveSlot2.RegisterCallback<ClickEvent>(DisplaySaveConfirmation);
-        _SaveSlot3.RegisterCallback<ClickEvent>(DisplaySaveConfirmation);
-        _SaveSlot4.RegisterCallback<ClickEvent>(DisplaySaveConfirmation);
-        _SaveSlot5.RegisterCallback<ClickEvent>(DisplaySaveConfirmation);
-        
-        // ...When pressing yes/no on the confirmation
-        _ButtonNoSaveConfirmation.RegisterCallback<ClickEvent>(CloseSaveConfirmation);
-        _ButtonYesSaveConfirmation.RegisterCallback<ClickEvent>(PressedYesOnSaveConfirmation);
-    }
+            // Save confirmation window
+            _saveConfirmation = root.Q<VisualElement>("SaveConfirmation");
 
-    private void DisplaySaveConfirmation(ClickEvent evt)
-    {
-        _SaveConfirmation.style.display = DisplayStyle.Flex;
-    }
-
-    private void CloseSaveConfirmation(ClickEvent evt)
-    {
-        _SaveConfirmation.style.display = DisplayStyle.None;
-    }
-
-    private void PressedYesOnSaveConfirmation(ClickEvent evt)
-    {
-        // TODO: Save game
+            _confirmationText = root.Q<Label>("ConfirmationText");
         
-        // Close SaveConfirmation window
-        _SaveConfirmation.style.display = DisplayStyle.None;
+            // Yes and no buttons for save confirmation...
+            _buttonYesSaveConfirmation = root.Q<Button>("ButtonYes");
+            _buttonNoSaveConfirmation = root.Q<Button>("ButtonNo");
+        
+            // ...When pressing yes/no on the confirmation
+            _buttonNoSaveConfirmation.clicked += CloseSaveConfirmation;
+            _buttonYesSaveConfirmation.clicked += PressedYesOnSaveConfirmation;
+        }
+
+        private void DisplaySaveConfirmation(int saveSlot)
+        {
+            _selectedSlot = saveSlot;
+            _confirmationText.text = $"Are you sure you want to overwrite save slot #{saveSlot}?";
+            _saveConfirmation.style.display = DisplayStyle.Flex;
+        }
+
+        private void CloseSaveConfirmation()
+        {
+            _saveConfirmation.style.display = DisplayStyle.None;
+        }
+
+        private void PressedYesOnSaveConfirmation()
+        {
+            // TODO: Save game
+        
+            // Close SaveConfirmation window
+            _saveConfirmation.style.display = DisplayStyle.None;
+        }
     }
 }
