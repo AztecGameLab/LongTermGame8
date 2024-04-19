@@ -37,6 +37,7 @@ namespace Ltg8
         public async UniTask OnExit()
         {
             await SceneManager.UnloadSceneAsync(_scenePath);
+            StateMachine.TransitionTo(null).Forget();
         }
 
         public void OnUpdate()
