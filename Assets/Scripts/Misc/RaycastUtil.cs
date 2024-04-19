@@ -19,7 +19,7 @@ namespace Misc
                 );
 
             // extract the component from our resulting hit, and return it
-            if (hit.rigidbody != null) hit.rigidbody.TryGetComponent(out result);
+            if (hit.rigidbody != null && hit.rigidbody.TryGetComponent(out T comp)) result = comp;
             else hit.collider.TryGetComponent(out result);
             return result;
         }
