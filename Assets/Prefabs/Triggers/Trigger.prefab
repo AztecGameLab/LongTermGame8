@@ -49,7 +49,7 @@ MonoBehaviour:
   showDebug: 0
   excludeLayers:
     serializedVersion: 2
-    m_Bits: 1015
+    m_Bits: 3063
   onColliderTriggerEnter:
     m_PersistentCalls:
       m_Calls: []
