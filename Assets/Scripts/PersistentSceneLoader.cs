@@ -41,9 +41,9 @@ namespace Ltg8
 
                     if (currentScenePath == settings.mainMenuScenePath)
                     {
-                        await SceneManager.LoadSceneAsync(currentScenePath, LoadSceneMode.Additive);
-                        SceneManager.SetActiveScene(SceneManager.GetSceneByPath(currentScenePath));
-                        break;   
+                        await Ltg8.Serializer.ReadFromDisk(settings.editorSaveId);
+                        await Ltg8.GameState.TransitionTo(new MainMenuGameState());
+                        break;
                     }
 
                     await Ltg8.Serializer.ReadFromDisk(settings.editorSaveId);

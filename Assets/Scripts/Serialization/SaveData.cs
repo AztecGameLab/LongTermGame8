@@ -9,6 +9,7 @@ namespace Ltg8
     {
         public Vector3 PlayerPos;
         public int PlayerSceneId;
+        public string PlayerSceneName;
         public List<InventoryItemData> Inventory = new List<InventoryItemData>();
 
         public bool[] Flags = new bool[Enum.GetValues(typeof(Flag)).Length];
