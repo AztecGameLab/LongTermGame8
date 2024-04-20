@@ -15,9 +15,14 @@ namespace Ltg8
         // References
         [SerializeField] private VisualElement _SideMenu;
         [SerializeField] private VisualElement _ButtonContainer;
-        [SerializeField] private Button _ButtonStart;
         [SerializeField] private VisualElement _ScreenSpace;
+        [SerializeField] private Button _ButtonStart;
+        [SerializeField] private Button _ButtonContinue;
+        [SerializeField] private Button _ButtonSettings;
+        [SerializeField] private Button _ButtonCredits;
         [SerializeField] private Button _ButtonExit;
+
+
 
 
         // For anyone wanting to do stuff with the other stuff, do the same as was done for these first three 
@@ -32,10 +37,15 @@ namespace Ltg8
             _ButtonContainer = root.Q<VisualElement>("ButtonContainer");
             _ScreenSpace = root.Q<VisualElement>("ScreenSpace");
             _ButtonStart = root.Q<Button>("ButtonStart");
+            _ButtonContinue = root.Q<Button>("ButtonContinue");
+            _ButtonSettings = root.Q<Button>("ButtonSettings");
+            _ButtonCredits = root.Q<Button>("ButtonCredits");
             _ButtonExit = root.Q<Button>("ButtonExit");
 
-
             _ButtonStart.RegisterCallback<ClickEvent>(WhenStartIsPressed);
+            _ButtonContinue.RegisterCallback<ClickEvent>(WhenContinueIsPressed);
+            _ButtonSettings.RegisterCallback<ClickEvent>(WhenSettingsIsPressed);
+            _ButtonCredits.RegisterCallback<ClickEvent>(WhenCreditsIsPressed);
             _ButtonExit.RegisterCallback<ClickEvent>(WhenExitIsPressed);
         }
 
@@ -57,6 +67,21 @@ namespace Ltg8
             // LOAD THE FIRST SCENE HERE!!!!!
             Debug.Log("Switch to desired scene");
             await Ltg8.GameState.TransitionTo(new OverworldGameState(Ltg8.Save.PlayerSceneName));
+        }
+
+        public void WhenContinueIsPressed(ClickEvent evt)
+        {
+            Debug.Log("Continue was pressed");
+        }
+        
+        public void WhenSettingsIsPressed(ClickEvent evt)
+        {
+            Debug.Log("Settings was pressed");
+        }
+        
+        public void WhenCreditsIsPressed(ClickEvent evt)
+        {
+            Debug.Log("Credits was pressed");
         }
 
         private void WhenExitIsPressed(ClickEvent evt)
