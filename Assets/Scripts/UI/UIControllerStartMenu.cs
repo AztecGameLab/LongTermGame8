@@ -6,6 +6,7 @@ using poetools.Console.Commands;
 using UnityEditor;
 #endif
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace Ltg8
@@ -82,6 +83,8 @@ namespace Ltg8
         public void WhenCreditsIsPressed(ClickEvent evt)
         {
             Debug.Log("Credits was pressed");
+            // We could maybe do an animation of like a fade out or something... maybe
+            SceneManager.LoadScene("Credits");
         }
 
         private void WhenExitIsPressed(ClickEvent evt)
