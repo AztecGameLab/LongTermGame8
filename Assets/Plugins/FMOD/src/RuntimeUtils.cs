@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Plugins.FMOD.src;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -109,10 +110,10 @@ namespace FMODUnity
         public EventNotFoundException(EventReference eventReference)
             : base("[FMOD] Event not found: " + eventReference.ToString())
         {
-            Guid = eventReference.Guid;
+            Guid = eventReference.guid;
 
 #if UNITY_EDITOR
-            Path = eventReference.Path;
+            Path = eventReference.path;
 #endif
         }
     }

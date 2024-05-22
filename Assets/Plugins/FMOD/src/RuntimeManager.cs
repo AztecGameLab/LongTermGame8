@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using Plugins.FMOD.src;
 using UnityEngine;
 
 #if UNITY_ADDRESSABLES_EXIST
@@ -1110,7 +1111,7 @@ retry:
             }
 
 #if UNITY_EDITOR
-            return new EventReference() { Path = path, Guid = guid };
+            return new EventReference() { path = path, guid = guid };
 #else
             return new EventReference() { Guid = guid };
 #endif
@@ -1120,7 +1121,7 @@ retry:
         {
             try
             {
-                return CreateInstance(eventReference.Guid);
+                return CreateInstance(eventReference.guid);
             }
             catch (EventNotFoundException)
             {
@@ -1161,11 +1162,12 @@ retry:
             return newInstance;
         }
 
-        public static void PlayOneShot(EventReference eventReference, Vector3 position = new Vector3())
+        // NOTE: = new()
+        public static void PlayOneShot(EventReference eventReference, Vector3 position = new() /* new Vector3() */)
         {
             try
             {
-                PlayOneShot(eventReference.Guid, position);
+                PlayOneShot(eventReference.guid, position);
             }
             catch (EventNotFoundException)
             {
@@ -1197,7 +1199,7 @@ retry:
         {
             try
             {
-                PlayOneShotAttached(eventReference.Guid, gameObject);
+                PlayOneShotAttached(eventReference.guid, gameObject);
             }
             catch (EventNotFoundException)
             {
@@ -1235,7 +1237,7 @@ retry:
         {
             try
             {
-                return GetEventDescription(eventReference.Guid);
+                return GetEventDescription(eventReference.guid);
             }
             catch (EventNotFoundException)
             {

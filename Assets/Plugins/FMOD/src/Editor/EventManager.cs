@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using UnityEditor.Build;
 using System.Reflection;
+using Plugins.FMOD.src;
 using UnityEditor.Build.Reporting;
 using UnityEngine.SceneManagement;
 
@@ -696,18 +697,18 @@ namespace FMODUnity
 
             if (eventLinkage == EventLinkage.GUID)
             {
-                editorEventRef = EventFromGUID(eventReference.Guid);
+                editorEventRef = EventFromGUID(eventReference.guid);
 
                 if (editorEventRef == null)
                 {
                     return false;
                 }
 
-                if (eventReference.Path != editorEventRef.Path)
+                if (eventReference.path != editorEventRef.Path)
                 {
                     RuntimeUtils.DebugLogWarningFormat(
                         "FMOD: EventReference path '{0}' doesn't match GUID {1} on object '{2}' in scene '{3}'. {4}",
-                        eventReference.Path, eventReference.Guid, EditorUtils.GameObjectPath(parent), scene.name,
+                        eventReference.path, eventReference.guid, EditorUtils.GameObjectPath(parent), scene.name,
                         UpdaterInstructions);
                 }
 
@@ -715,21 +716,21 @@ namespace FMODUnity
             }
             else if (eventLinkage == EventLinkage.Path)
             {
-                editorEventRef = EventFromPath(eventReference.Path);
+                editorEventRef = EventFromPath(eventReference.path);
 
                 if (editorEventRef == null)
                 {
                     return false;
                 }
 
-                if (eventReference.Guid != editorEventRef.Guid)
+                if (eventReference.guid != editorEventRef.Guid)
                 {
                     RuntimeUtils.DebugLogWarningFormat(
                         "FMOD: Changing EventReference GUID to {0} to match path '{1}' on object '{2}' in scene '{3}'. {4}",
-                        editorEventRef.Guid, eventReference.Path, EditorUtils.GameObjectPath(parent), scene.name,
+                        editorEventRef.Guid, eventReference.path, EditorUtils.GameObjectPath(parent), scene.name,
                         UpdaterInstructions);
 
-                    eventReference.Guid = editorEventRef.Guid;
+                    eventReference.guid = editorEventRef.Guid;
                     EditorUtility.SetDirty(parent);
 
                     changed = true;
@@ -1180,7 +1181,7 @@ namespace FMODUnity
         {
             if (Settings.Instance.EventLinkage == EventLinkage.Path)
             {
-                if (string.IsNullOrEmpty(eventReference.Path) && !eventReference.Guid.IsNull)
+                if (string.IsNullOrEmpty(eventReference.path) && !eventReference.guid.IsNull)
                 {
                     return EventLinkage.GUID;
                 }
@@ -1191,7 +1192,7 @@ namespace FMODUnity
             }
             else // Assume EventLinkage.GUID
             {
-                if (eventReference.Guid.IsNull && !string.IsNullOrEmpty(eventReference.Path))
+                if (eventReference.guid.IsNull && !string.IsNullOrEmpty(eventReference.path))
                 {
                     return EventLinkage.Path;
                 }

@@ -1674,8 +1674,8 @@ namespace FMODUnity
                         StudioEventEmitter emitter = Undo.AddComponent<StudioEventEmitter>(target);
 
                         EditorEventRef eventRef = data as EditorEventRef;
-                        emitter.EventReference.Path = eventRef.Path;
-                        emitter.EventReference.Guid = eventRef.Guid;
+                        emitter.EventReference.path = eventRef.Path;
+                        emitter.EventReference.guid = eventRef.Guid;
                     }
                     else if (data is EditorBankRef)
                     {
@@ -1719,8 +1719,8 @@ namespace FMODUnity
                     newObject = new GameObject(name + " Emitter");
 
                     StudioEventEmitter emitter = newObject.AddComponent<StudioEventEmitter>();
-                    emitter.EventReference.Path = path;
-                    emitter.EventReference.Guid = eventRef.Guid;
+                    emitter.EventReference.path = path;
+                    emitter.EventReference.guid = eventRef.Guid;
 
                     Undo.RegisterCreatedObjectUndo(newObject, "Create Studio Event Emitter");
                 }

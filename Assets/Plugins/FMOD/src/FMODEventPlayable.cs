@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using Plugins.FMOD.src;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
@@ -134,8 +135,8 @@ namespace FMODUnity
                 }
                 else
                 {
-                    int index = EventReference.Path.LastIndexOf("/");
-                    OwningClip.displayName = EventReference.Path.Substring(index + 1);
+                    int index = EventReference.path.LastIndexOf("/");
+                    OwningClip.displayName = EventReference.path.Substring(index + 1);
                 }
             }
             if (behavior != null)

@@ -1,15 +1,19 @@
 ﻿using System;
+using Animation.FlipBook;
 using Cysharp.Threading.Tasks;
 using FMODUnity;
+using Ltg8;
+using Plugins.FMOD.src;
 using TNRD;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace Ltg8
+namespace TextPresentation
 {
+    // NOTE: Abstract class, some or all of the implementation will be done in derived scripts
     public abstract class OptionBoxView : MonoBehaviour
     {
-        [SerializeField] private TextBoxView textBox;
+        [SerializeField] private TextBoxView textBox; //
         
         public ImageFlipbookView optionAnimationImage;
         public EventReference optionHoverSfx;

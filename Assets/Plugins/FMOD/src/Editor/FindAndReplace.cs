@@ -134,7 +134,7 @@ namespace FMODUnity
         {
             for (int i = lastMatch + 1; i < emitters.Count; i++)
             {
-                if (emitters[i].EventReference.Path.IndexOf(findText, 0, StringComparison.CurrentCultureIgnoreCase) >= 0)
+                if (emitters[i].EventReference.path.IndexOf(findText, 0, StringComparison.CurrentCultureIgnoreCase) >= 0)
                 {
                     lastMatch = i;
                     EditorGUIUtility.PingObject(emitters[i]);

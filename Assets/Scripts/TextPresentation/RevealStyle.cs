@@ -1,6 +1,8 @@
 ﻿using FMODUnity;
+using Plugins.FMOD.src;
 using UnityEngine;
-namespace Ltg8
+
+namespace TextPresentation
 {
     [CreateAssetMenu]
     public class RevealStyle : ScriptableObject
