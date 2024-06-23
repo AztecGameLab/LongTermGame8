@@ -453,10 +453,10 @@ namespace FMODUnity
             FMODEventPlayableBehavior.Enter += (sender, args) =>
             {
                 FMODEventPlayableBehavior behavior = sender as FMODEventPlayableBehavior;
-                if (!string.IsNullOrEmpty(behavior.EventReference.path))
+                if (!string.IsNullOrEmpty(behavior.EventReference.Path))
                 {
                     LoadPreviewBanks();
-                    EditorEventRef eventRef = EventManager.EventFromPath(behavior.EventReference.path);
+                    EditorEventRef eventRef = EventManager.EventFromPath(behavior.EventReference.Path);
                     Dictionary<string, float> paramValues = new Dictionary<string, float>();
                     foreach (EditorParamRef param in eventRef.Parameters)
                     {
@@ -493,7 +493,7 @@ namespace FMODUnity
                 {
                     LoadPreviewBanks();
                     FMOD.Studio.EventDescription eventDescription;
-                    system.getEventByID(playable.EventReference.guid, out eventDescription);
+                    system.getEventByID(playable.EventReference.Guid, out eventDescription);
                     playable.LinkParameters(eventDescription);
                 }
             };
@@ -1841,8 +1841,8 @@ namespace FMODUnity
             SerializedProperty guidProperty = property.FindPropertyRelative("Guid");
 
             return new EventReference() {
-                path = pathProperty.stringValue,
-                guid = guidProperty.GetGuid(),
+                Path = pathProperty.stringValue,
+                Guid = guidProperty.GetGuid(),
             };
         }
     }

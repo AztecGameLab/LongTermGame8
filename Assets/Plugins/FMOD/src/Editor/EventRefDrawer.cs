@@ -138,7 +138,7 @@ namespace FMODUnity
                             valueRect.xMax = position.xMax - copyIcon.width - 7;
 
                             GUI.Label(labelRect, new GUIContent("GUID"));
-                            GUI.Label(valueRect, eventReference.guid.ToString());
+                            GUI.Label(valueRect, eventReference.Guid.ToString());
 
                             Rect copyRect = valueRect;
                             copyRect.xMin = valueRect.xMax;
@@ -146,7 +146,7 @@ namespace FMODUnity
 
                             if (GUI.Button(copyRect, new GUIContent(copyIcon, "Copy To Clipboard")))
                             {
-                                EditorGUIUtility.systemCopyBuffer = eventReference.guid.ToString();
+                                EditorGUIUtility.systemCopyBuffer = eventReference.Guid.ToString();
                             }
 
                             valueRect.xMax = position.xMax;
@@ -284,7 +284,7 @@ namespace FMODUnity
         {
             if (EventManager.GetEventLinkage(eventReference) == EventLinkage.Path)
             {
-                if (eventReference.guid != editorEventRef.Guid)
+                if (eventReference.Guid != editorEventRef.Guid)
                 {
                     return new MismatchInfo() {
                         Message = "GUID doesn't match path",
@@ -302,7 +302,7 @@ namespace FMODUnity
             }
             else // EventLinkage.GUID
             {
-                if (eventReference.path != editorEventRef.Path)
+                if (eventReference.Path != editorEventRef.Path)
                 {
                     return new MismatchInfo() {
                         Message = "Path doesn't match GUID",
@@ -350,21 +350,21 @@ namespace FMODUnity
         {
             if (EventManager.GetEventLinkage(eventReference) == EventLinkage.Path)
             {
-                return EventManager.EventFromPath(eventReference.path);
+                return EventManager.EventFromPath(eventReference.Path);
             }
             else // Assume EventLinkage.GUID
             {
-                return EventManager.EventFromGUID(eventReference.guid);
+                return EventManager.EventFromGUID(eventReference.Guid);
             }
         }
 
         private static EditorEventRef GetRenamedEventRef(EventReference eventReference)
         {
-            if (Settings.Instance.EventLinkage == EventLinkage.Path && !eventReference.guid.IsNull)
+            if (Settings.Instance.EventLinkage == EventLinkage.Path && !eventReference.Guid.IsNull)
             {
-                EditorEventRef editorEventRef = EventManager.EventFromGUID(eventReference.guid);
+                EditorEventRef editorEventRef = EventManager.EventFromGUID(eventReference.Guid);
 
-                if (editorEventRef != null && editorEventRef.Path != eventReference.path)
+                if (editorEventRef != null && editorEventRef.Path != eventReference.Path)
                 {
                     return editorEventRef;
                 }

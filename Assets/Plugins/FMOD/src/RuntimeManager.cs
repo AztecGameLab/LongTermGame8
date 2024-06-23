@@ -1111,7 +1111,7 @@ retry:
             }
 
 #if UNITY_EDITOR
-            return new EventReference() { path = path, guid = guid };
+            return new EventReference() { Path = path, Guid = guid };
 #else
             return new EventReference() { Guid = guid };
 #endif
@@ -1121,7 +1121,7 @@ retry:
         {
             try
             {
-                return CreateInstance(eventReference.guid);
+                return CreateInstance(eventReference.Guid);
             }
             catch (EventNotFoundException)
             {
@@ -1162,12 +1162,12 @@ retry:
             return newInstance;
         }
 
-        // NOTE: = new()
+        // NOTE: "= new()" uses the default constructor, so for Vector3, this means (0,0,0)
         public static void PlayOneShot(EventReference eventReference, Vector3 position = new() /* new Vector3() */)
         {
             try
             {
-                PlayOneShot(eventReference.guid, position);
+                PlayOneShot(eventReference.Guid, position);
             }
             catch (EventNotFoundException)
             {
@@ -1187,7 +1187,7 @@ retry:
             }
         }
 
-        public static void PlayOneShot(FMOD.GUID guid, Vector3 position = new Vector3())
+        public static void PlayOneShot(FMOD.GUID guid, Vector3 position = new() /*new Vector3()*/)
         {
             var instance = CreateInstance(guid);
             instance.set3DAttributes(RuntimeUtils.To3DAttributes(position));
@@ -1199,7 +1199,7 @@ retry:
         {
             try
             {
-                PlayOneShotAttached(eventReference.guid, gameObject);
+                PlayOneShotAttached(eventReference.Guid, gameObject);
             }
             catch (EventNotFoundException)
             {
@@ -1237,7 +1237,7 @@ retry:
         {
             try
             {
-                return GetEventDescription(eventReference.guid);
+                return GetEventDescription(eventReference.Guid);
             }
             catch (EventNotFoundException)
             {

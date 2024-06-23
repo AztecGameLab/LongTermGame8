@@ -432,39 +432,39 @@ namespace FMODUnity
 
             if (Settings.Instance.EventLinkage == EventLinkage.GUID)
             {
-                EditorEventRef editorEventRef = EventManager.EventFromGUID(eventReference.guid);
+                EditorEventRef editorEventRef = EventManager.EventFromGUID(eventReference.Guid);
 
                 if (editorEventRef == null)
                 {
                     return null;
                 }
 
-                if (eventReference.path != editorEventRef.Path)
+                if (eventReference.Path != editorEventRef.Path)
                 {
-                    return Task.UpdateEventReferencePath(subObjectPath, fieldName, eventReference.path,
-                        editorEventRef.Path, eventReference.guid);
+                    return Task.UpdateEventReferencePath(subObjectPath, fieldName, eventReference.Path,
+                        editorEventRef.Path, eventReference.Guid);
                 }
             }
             else if (Settings.Instance.EventLinkage == EventLinkage.Path)
             {
-                EditorEventRef editorEventRef = EventManager.EventFromPath(eventReference.path);
+                EditorEventRef editorEventRef = EventManager.EventFromPath(eventReference.Path);
 
                 if (editorEventRef != null)
                 {
-                    if (eventReference.guid != editorEventRef.Guid)
+                    if (eventReference.Guid != editorEventRef.Guid)
                     {
-                        return Task.UpdateEventReferenceGuid(subObjectPath, fieldName, eventReference.guid,
-                            editorEventRef.Guid, eventReference.path);
+                        return Task.UpdateEventReferenceGuid(subObjectPath, fieldName, eventReference.Guid,
+                            editorEventRef.Guid, eventReference.Path);
                     }
                 }
-                else if (!eventReference.guid.IsNull)
+                else if (!eventReference.Guid.IsNull)
                 {
-                    editorEventRef = EventManager.EventFromGUID(eventReference.guid);
+                    editorEventRef = EventManager.EventFromGUID(eventReference.Guid);
 
                     if (editorEventRef != null)
                     {
-                        return Task.UpdateEventReferencePath(subObjectPath, fieldName, eventReference.path,
-                            editorEventRef.Path, eventReference.guid);
+                        return Task.UpdateEventReferencePath(subObjectPath, fieldName, eventReference.Path,
+                            editorEventRef.Path, eventReference.Guid);
                     }
                 }
             }
@@ -993,14 +993,14 @@ namespace FMODUnity
                     Execute: (data, target) => {
                         StudioEventEmitter emitter = target as StudioEventEmitter;
 
-                        emitter.EventReference.path = emitter.Event;
+                        emitter.EventReference.Path = emitter.Event;
                         emitter.Event = string.Empty;
 
-                        EditorEventRef eventRef = EventManager.EventFromPath(emitter.EventReference.path);
+                        EditorEventRef eventRef = EventManager.EventFromPath(emitter.EventReference.Path);
 
                         if (eventRef != null)
                         {
-                            emitter.EventReference.guid = eventRef.Guid;
+                            emitter.EventReference.Guid = eventRef.Guid;
                         }
 
                         EditorUtility.SetDirty(emitter);
@@ -1066,13 +1066,13 @@ namespace FMODUnity
                         PrefabUtility.SetPropertyModifications(emitter, modifications);
 
                         // Set the EventReference override
-                        emitter.EventReference.path = path;
+                        emitter.EventReference.Path = path;
 
                         EditorEventRef eventRef = EventManager.EventFromPath(path);
 
                         if (eventRef != null)
                         {
-                            emitter.EventReference.guid = eventRef.Guid;
+                            emitter.EventReference.Guid = eventRef.Guid;
                         }
 
                         EditorUtility.SetDirty(emitter);
@@ -1107,14 +1107,14 @@ namespace FMODUnity
                     Execute: (data, target) => {
                         FMODEventPlayable playable = target as FMODEventPlayable;
 
-                        playable.EventReference.path = playable.eventName;
+                        playable.EventReference.Path = playable.eventName;
                         playable.eventName = string.Empty;
 
-                        EditorEventRef eventRef = EventManager.EventFromPath(playable.EventReference.path);
+                        EditorEventRef eventRef = EventManager.EventFromPath(playable.EventReference.Path);
 
                         if (eventRef != null)
                         {
-                            playable.EventReference.guid = eventRef.Guid;
+                            playable.EventReference.Guid = eventRef.Guid;
                         }
 
                         EditorUtility.SetDirty(playable);
@@ -1224,13 +1224,13 @@ namespace FMODUnity
                         FieldInfo oldField = type.GetField(oldFieldName, DefaultBindingFlags);
                         FieldInfo newField = type.GetField(newFieldName, DefaultBindingFlags);
 
-                        EventReference eventReference = new EventReference() { path = path };
+                        EventReference eventReference = new EventReference() { Path = path };
 
                         EditorEventRef eventRef = EventManager.EventFromPath(path);
 
                         if (eventRef != null)
                         {
-                            eventReference.guid = eventRef.Guid;
+                            eventReference.Guid = eventRef.Guid;
                         }
 
                         oldField.SetValue(target, string.Empty);
@@ -1331,7 +1331,7 @@ namespace FMODUnity
 
                         EventReference value = (EventReference)field.GetValue(target);
 
-                        return value.path == data[2] && value.guid.ToString() == data[4];
+                        return value.Path == data[2] && value.Guid.ToString() == data[4];
                     },
                     Execute: (data, rootObject) => {
                         object target = FindSubObject(rootObject, data[0]);
@@ -1340,7 +1340,7 @@ namespace FMODUnity
                         FieldInfo field = targetType.GetField(data[1], DefaultBindingFlags);
 
                         EventReference value = (EventReference)field.GetValue(target);
-                        value.path = data[3];
+                        value.Path = data[3];
 
                         field.SetValue(target, value);
 
@@ -1367,7 +1367,7 @@ namespace FMODUnity
 
                         EventReference value = (EventReference)field.GetValue(target);
 
-                        return value.guid.ToString() == data[2] && value.path == data[4];
+                        return value.Guid.ToString() == data[2] && value.Path == data[4];
                     },
                     Execute: (data, rootObject) => {
                         object target = FindSubObject(rootObject, data[0]);
@@ -1376,7 +1376,7 @@ namespace FMODUnity
                         FieldInfo field = targetType.GetField(data[1], DefaultBindingFlags);
 
                         EventReference value = (EventReference)field.GetValue(target);
-                        value.guid = FMOD.GUID.Parse(data[3]);
+                        value.Guid = FMOD.GUID.Parse(data[3]);
 
                         field.SetValue(target, value);
 

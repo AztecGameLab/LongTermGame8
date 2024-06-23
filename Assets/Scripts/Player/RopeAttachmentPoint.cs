@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Inventory;
 using Ltg8.Inventory;
 using UnityEngine;
 

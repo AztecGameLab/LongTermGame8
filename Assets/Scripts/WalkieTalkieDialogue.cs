@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using Inventory;
 using Ltg8.Inventory;
 
 namespace Ltg8

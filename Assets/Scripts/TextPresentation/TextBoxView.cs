@@ -12,27 +12,27 @@ namespace TextPresentation
 {
     public class TextBoxView : MonoBehaviour
     {
-        [SerializeField] private TMP_Text mainText; // Main Dialogue Box Text
-        [SerializeField] private GameObject mainAnimationObject; // Empty GameObject for ImageFlipBook
-        [SerializeField] private ImageFlipbookView mainAnimationImage; // The image of the one talking
-        [SerializeField] private GameObject continueHint; // Icon that appears when you can continue text
-        [SerializeField] private EventReference confirmChirp; 
-        [SerializeField] private RevealStyle defaultRevealStyle; 
-        [SerializeField] private float clearDuration; // The amount of time to wait after clearing text
-        [SerializeField] private GameObject nameObject; // Empty GameObject for character name
-        [SerializeField] private TMP_Text nameBoxText; // Character name
-        [SerializeField] private SpriteFlipBookAnimation defaultAnimation; // Animation for the character talking
+        [SerializeField] private TMP_Text mainText; // [Text] for the dialogue
+        [SerializeField] private GameObject mainAnimationObject; // [Image] for the character speaking
+        [SerializeField] private ImageFlipbookView mainAnimationImage; // [Script] for the image's animation
+        [SerializeField] private GameObject continueHint; // [Image] for the icon that says you can continue
+        [SerializeField] private EventReference confirmChirp; // Audio???
+        [SerializeField] private RevealStyle defaultRevealStyle; // [Scriptable Object] default for how text is revealed
+        [SerializeField] private float clearDuration; // [Float] The amount of time to wait after clearing text
+        [SerializeField] private GameObject nameObject; // [Empty GameObject] holds character's name and dialogue frame
+        [SerializeField] private TMP_Text nameBoxText; // [Text] Text for the character's name
+        [SerializeField] private SpriteFlipBookAnimation defaultAnimation; // [Class] Controller & Data for the sprite animation
         
-        private bool _continueRequested; // Determines whether the player has chosen to "Continue"
-        private string _currentDisplayName; // The name for the character currently talking
-        private IFlipBookAnimation _currentMainAnimation; // The animation currently playing
+        private bool _continueRequested; // [Boolean] Determines whether the player has chosen to "Continue"
+        private string _currentDisplayName; // [String] The name for the character currently talking
+        private IFlipBookAnimation _currentMainAnimation; // [Interface] Holds the animation currently playing
 
         // Resets all the details of the dialogue box to their default values
         public void ResetAllState()
         {
-            CurrentText = string.Empty; // Sets the current text to nothing
+            CurrentText = string.Empty; // Sets the current dialogue text to nothing
             CurrentDisplayName = string.Empty; // Sets the current "speaker" name to nothing
-            CurrentMainAnimation = defaultAnimation; // Sets the current animation to a default animation
+            CurrentMainAnimation = defaultAnimation; // Sets the current animation (data) to default 
             CurrentRevealStyle = defaultRevealStyle; // Sets the RevealStyle to the default reveal style
         }
         

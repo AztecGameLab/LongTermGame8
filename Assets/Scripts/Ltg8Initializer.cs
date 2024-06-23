@@ -1,4 +1,5 @@
 ﻿using System;
+using Inventory;
 using Ltg8.Inventory;
 using TriInspector;
 using UnityEngine;

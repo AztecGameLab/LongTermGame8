@@ -93,10 +93,10 @@ namespace FMODUnity
 
                 if (!emitter.EventReference.IsNull)
                 {
-                    expanded[emitterIndex] = EditorGUILayout.Foldout(expanded[emitterIndex], emitter.EventReference.path);
+                    expanded[emitterIndex] = EditorGUILayout.Foldout(expanded[emitterIndex], emitter.EventReference.Path);
                     if (expanded[emitterIndex])
                     {
-                        var eventRef = EventManager.EventFromGUID(emitter.EventReference.guid);
+                        var eventRef = EventManager.EventFromGUID(emitter.EventReference.Guid);
 
                         foreach (var paramRef in eventRef.LocalParameters)
                         {

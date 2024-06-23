@@ -1,4 +1,5 @@
-﻿using Ltg8.Inventory;
+﻿using Inventory;
+using Ltg8.Inventory;
 using UnityEngine;
 
 namespace Ltg8

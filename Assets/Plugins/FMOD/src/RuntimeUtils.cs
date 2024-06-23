@@ -110,10 +110,10 @@ namespace FMODUnity
         public EventNotFoundException(EventReference eventReference)
             : base("[FMOD] Event not found: " + eventReference.ToString())
         {
-            Guid = eventReference.guid;
+            Guid = eventReference.Guid;
 
 #if UNITY_EDITOR
-            Path = eventReference.path;
+            Path = eventReference.Path;
 #endif
         }
     }

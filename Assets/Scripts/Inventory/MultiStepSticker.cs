@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using Inventory;
 using UnityEngine;
 using UnityEngine.Events;
 

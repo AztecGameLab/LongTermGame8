@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Inventory;
 using Ltg8.Misc;
 using UnityEngine;
 using UnityEngine.Events;

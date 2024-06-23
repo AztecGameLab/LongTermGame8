@@ -1,16 +1,18 @@
-﻿using Ltg8.Inventory;
+﻿using Inventory;
+using Ltg8.Inventory;
 using TriInspector;
 using UnityEngine;
 
 namespace Ltg8
 {
-    [HideMonoScript]
+    [HideMonoScript] // NOTE: Prevents something from showing up in the inspector
     [CreateAssetMenu(menuName = "LTG8/Settings")]
     public class Ltg8Settings : ScriptableObject
     {
-        [Scene] public string persistentScenePath;
-        [Scene] public string mainMenuScenePath;
-        public InventoryItemWorldDisplay overworldItemPrefab;
+        // NOTE: [Scene] allows having scenes as an input in the inspector
+        [Scene] public string persistentScenePath; // Input for the persistent scene
+        [Scene] public string mainMenuScenePath; // Input for the main menu scene
+        public InventoryItemWorldDisplay overworldItemPrefab; //  
 
         [Title("Editor")]
 

@@ -1,3 +1,4 @@
+using Inventory;
 using Ltg8.Inventory;
 using UnityEditor;
 using UnityEngine;

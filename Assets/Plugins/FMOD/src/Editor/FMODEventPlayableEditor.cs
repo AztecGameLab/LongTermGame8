@@ -68,9 +68,9 @@ namespace FMODUnity
 
         private void RefreshEventRef()
         {
-            if (eventPath != eventPlayable.EventReference.path)
+            if (eventPath != eventPlayable.EventReference.Path)
             {
-                eventPath = eventPlayable.EventReference.path;
+                eventPath = eventPlayable.EventReference.Path;
 
                 if (!string.IsNullOrEmpty(eventPath))
                 {

@@ -1,5 +1,6 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using Inventory;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;

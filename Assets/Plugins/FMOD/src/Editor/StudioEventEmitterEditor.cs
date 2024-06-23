@@ -21,7 +21,7 @@ namespace FMODUnity
         {
             var emitter = target as StudioEventEmitter;
 
-            EditorEventRef editorEvent = EventManager.EventFromGUID(emitter.EventReference.guid);
+            EditorEventRef editorEvent = EventManager.EventFromGUID(emitter.EventReference.Guid);
             if (editorEvent != null && editorEvent.Is3D)
             {
                 EditorGUI.BeginChangeCheck();

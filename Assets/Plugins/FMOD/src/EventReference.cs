@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.Serialization;
 
 namespace Plugins.FMOD.src
 {
@@ -8,11 +9,11 @@ namespace Plugins.FMOD.src
     {
         // NOTE: global:: goes to the global namespace rather than the namespace written above
         // NOTE: GUID is a Globally Unique Identifier used to identify scenes, prefabs, etc
-        public global::FMOD.GUID guid;
+        [FormerlySerializedAs("guid")] public global::FMOD.GUID Guid;
 
                 // NOTE: #if UNITY_EDITOR ensures that the code only runs in the editor, not in the build
         #if UNITY_EDITOR
-                public string path;
+                [FormerlySerializedAs("path")] public string Path;
 
                 // NOTE: Func<input, output>
                 // This Function takes a string in as an input, and outputs a GUID
@@ -23,12 +24,12 @@ namespace Plugins.FMOD.src
                 // Returns the guid & path
                 public override string ToString()
                 {
-                    return $"{guid} ({path})";
+                    return $"{Guid} ({Path})";
                      // Former Code --> string.Format("{0} ({1})", guid, path);
                 }
 
                 // Checks if both the path and guid are null
-                public bool IsNull => string.IsNullOrEmpty(path) && guid.IsNull;
+                public bool IsNull => string.IsNullOrEmpty(Path) && Guid.IsNull;
                 
                 /* Former Code 
                  * public bool IsNull
@@ -50,7 +51,7 @@ namespace Plugins.FMOD.src
                         throw new InvalidOperationException("EventReference.Find called before EventManager was initialized");
                     }
                     // Return a new EventReference with the given path and guid
-                    return new EventReference { path = path, guid = GuidLookupDelegate(path) };
+                    return new EventReference { Path = path, Guid = GuidLookupDelegate(path) };
                 }
         #else 
                 public override string ToString()

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Inventory;
 using UnityEngine;
 
 namespace Ltg8.Inventory
