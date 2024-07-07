@@ -2,244 +2,21 @@
     <Style src="project://database/Assets/UI/StyleSheet-SFQ.uss?fileID=7433441132597879392&amp;guid=0c0f32eb8b3bf3848a057ba9a6268cda&amp;type=3#StyleSheet-SFQ" />
     <ui:VisualElement name="ScreenSpace" style="flex-direction: column; justify-content: space-around; width: 100%; height: 100%; background-color: rgba(55, 50, 67, 0); -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/ShantellSans/ShantellSans-Medium%20SDF.asset?fileID=11400000&amp;guid=2ec2023a001865343aa51713bdcd474d&amp;type=2#ShantellSans-Medium SDF&apos;); align-items: center; color: rgb(255, 255, 255);">
         <ui:VisualElement name="PauseMenu" class="PauseMenuDown" style="height: 90%; width: 95%; transition-timing-function: ease-in-out-back; transition-duration: 0.5s; background-color: rgba(175, 139, 60, 0.9);">
-            <ui:VisualElement name="PauseHeader" style="height: 15%; width: 100%; -unity-text-align: upper-center; font-size: 60px; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/Gluten/Gluten-SemiBold%20SDF%201.asset?fileID=11400000&amp;guid=851a26cea26ec0f4c8ab2b0cbcd0302d&amp;type=2#Gluten-SemiBold SDF 1&apos;); -unity-font-style: normal; justify-content: space-around;">
-                <ui:Label text="Paused" display-tooltip-when-elided="true" enable-rich-text="false" name="Paused" class="textDisplayHeader" />
+            <ui:VisualElement name="PauseHeader" style="height: 15%; width: 100%; -unity-text-align: upper-center; -unity-font-definition: url(&apos;project://database/Assets/UI/Fonts/Gluten/Gluten-SemiBold%20SDF%201.asset?fileID=11400000&amp;guid=851a26cea26ec0f4c8ab2b0cbcd0302d&amp;type=2#Gluten-SemiBold SDF 1&apos;); -unity-font-style: normal; justify-content: space-around; font-size: 24px;">
+                <ui:Label text="Paused" display-tooltip-when-elided="true" enable-rich-text="false" name="Paused" class="textDisplayHeader" style="font-size: 80px;" />
             </ui:VisualElement>
             <ui:VisualElement name="PauseBody" style="align-items: stretch; width: 100%; height: 80%; flex-direction: row;">
-                <ui:VisualElement name="MenuOptions" style="width: 15%; height: 100%; align-items: stretch; justify-content: space-around; -unity-font-style: bold; font-size: 24px; text-shadow: 0 1px 2.1px rgba(0, 0, 0, 0.5);">
-                    <ui:VisualElement name="PageIndicator" class="PageIndicatorAtTop PageIndicatorAtContacts" style="transition-duration: 0.3s; transition-timing-function: ease-in-out-back; left: 15px; top: 10px;" />
-                    <ui:Button text="Contacts" display-tooltip-when-elided="true" name="ButtonContacts" class="button-menuOption" style="-unity-font-style: bold; display: flex;" />
-                    <ui:Button text="Map" display-tooltip-when-elided="true" name="ButtonMap" class="button-menuOption" />
-                    <ui:Button text="Collection" display-tooltip-when-elided="true" name="ButtonCollection" class="button-menuOption" />
-                    <ui:Button text="Log" display-tooltip-when-elided="true" name="ButtonQuestLog" class="button-menuOption" />
-                    <ui:Button text="Settings" display-tooltip-when-elided="true" name="ButtonSettings" class="button-menuOption" />
-                    <ui:Button text="Controls" display-tooltip-when-elided="true" name="ButtonControls" class="button-menuOption" />
+                <ui:VisualElement name="MenuOptions" style="width: 15%; height: 100%; align-items: center; justify-content: space-around; -unity-font-style: bold; font-size: 24px; text-shadow: 0 1px 2.1px rgba(0, 0, 0, 0.5); flex-direction: column;">
+                    <ui:VisualElement name="PageIndicator" class="PageIndicatorAtTop PageIndicatorAtSave" style="transition-duration: 0.3s; transition-timing-function: ease-in-out-back; left: 5%; top: 0; right: 305px; height: 12.5%;" />
                     <ui:Button text="Save" display-tooltip-when-elided="true" name="ButtonSave" class="button-menuOption" />
+                    <ui:Button text="Load" display-tooltip-when-elided="true" name="ButtonLoad" class="button-menuOption" />
+                    <ui:Button text="Controls" display-tooltip-when-elided="true" name="ButtonControls" class="button-menuOption" />
+                    <ui:Button text="Settings" display-tooltip-when-elided="true" name="ButtonSettings" class="button-menuOption" />
+                    <ui:Button text="Extra" display-tooltip-when-elided="true" name="ButtonExtra" class="button-menuOption" />
                     <ui:Button text="Exit" display-tooltip-when-elided="true" name="ButtonExit" class="button-menuOption" />
                 </ui:VisualElement>
                 <ui:VisualElement name="MenuMainWindow" style="width: 82%; height: 100%; -unity-text-outline-color: rgb(55, 50, 67); background-color: rgba(215, 197, 158, 0.5); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 10px; border-right-width: 10px; border-bottom-width: 10px; border-left-width: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; transition-timing-function: ease-in-out; transition-duration: 0.5s;">
-                    <ui:VisualElement name="ContactsMenu" style="width: 100%; height: 100%; position: absolute; display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
-                        <ui:VisualElement name="ContactsRow1" style="flex-direction: row; width: 100%; height: 40%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; justify-content: space-around;">
-                            <ui:VisualElement name="ContactEggy" class="container-submenu" style="width: 31%; height: 100%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; justify-content: flex-start; flex-direction: row; border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60);">
-                                <ui:VisualElement name="ContactPortrait" style="height: 200px; width: 200px; justify-content: center;">
-                                    <ui:VisualElement name="PortraitBG" class="container-item" style="width: 100%; height: 100%; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
-                                    <ui:VisualElement name="PortraitPic" class="containerOrange" style="width: 100%; height: 100%; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; position: absolute; background-image: url(&apos;project://database/Assets/Plugins/FMOD/images/AddIcon.png?fileID=2800000&amp;guid=3300e81f02e64924eb7cb7782713b126&amp;type=3#AddIcon&apos;); -unity-background-image-tint-color: rgba(255, 255, 255, 0.5);" />
-                                </ui:VisualElement>
-                                <ui:VisualElement name="ContactInfo" style="width: 50%; height: 100%; align-items: center; -unity-text-align: upper-center; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; justify-content: center;">
-                                    <ui:Label text="Eggy" name="ContactName" class="textDisplayHeader" style="font-size: 36px;" />
-                                    <ui:Label text="Friend" name="Relationship" style="-unity-text-align: upper-center;" />
-                                    <ui:VisualElement name="RelationshipIcons" style="background-image: none; width: 100%; height: 50%; flex-direction: row; align-items: center; justify-content: center;">
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px;" />
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px;" />
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                            <ui:VisualElement name="Contact2" class="container-submenu">
-                                <ui:VisualElement name="ContactPortrait" style="height: 200px; width: 200px; justify-content: center;">
-                                    <ui:VisualElement name="PortraitBG" class="container-item" style="width: 100%; height: 100%;" />
-                                    <ui:VisualElement name="PortraitPic" style="width: 100%; height: 100%; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; position: absolute; background-image: url(&apos;project://database/Assets/Plugins/FMOD/images/AddIcon.png?fileID=2800000&amp;guid=3300e81f02e64924eb7cb7782713b126&amp;type=3#AddIcon&apos;); -unity-background-image-tint-color: rgba(255, 255, 255, 0.5); display: none;" />
-                                </ui:VisualElement>
-                                <ui:VisualElement name="ContactInfo" style="width: 50%; height: 100%; align-items: center; -unity-text-align: upper-center; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; justify-content: center;">
-                                    <ui:Label text="???" name="ContactName" class="textDisplayHeader" style="font-size: 36px;" />
-                                    <ui:Label text="Stranger" name="Relationship" style="-unity-text-align: upper-center;" />
-                                    <ui:VisualElement name="RelationshipIcons" style="background-image: none; width: 100%; height: 50%; flex-direction: row; align-items: center; justify-content: center;">
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                            <ui:VisualElement name="Contact3" class="container-submenu" style="width: 31%; height: 100%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; justify-content: flex-start; flex-direction: row; border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60);">
-                                <ui:VisualElement name="ContactPortrait" style="height: 200px; width: 200px; justify-content: center;">
-                                    <ui:VisualElement name="PortraitBG" class="container-item" style="width: 100%; height: 100%;" />
-                                    <ui:VisualElement name="PortraitPic" class="containerOrange" style="width: 100%; height: 100%; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; position: absolute; background-image: url(&apos;project://database/Assets/Plugins/FMOD/images/AddIcon.png?fileID=2800000&amp;guid=3300e81f02e64924eb7cb7782713b126&amp;type=3#AddIcon&apos;); -unity-background-image-tint-color: rgba(255, 255, 255, 0.5); display: none;" />
-                                </ui:VisualElement>
-                                <ui:VisualElement name="ContactInfo" style="width: 50%; height: 100%; align-items: center; -unity-text-align: upper-center; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; justify-content: center;">
-                                    <ui:Label text="???" name="ContactName" class="textDisplayHeader" style="font-size: 36px;" />
-                                    <ui:Label text="Stranger" name="Relationship" style="-unity-text-align: upper-center;" />
-                                    <ui:VisualElement name="RelationshipIcons" style="background-image: none; width: 100%; height: 50%; flex-direction: row; align-items: center; justify-content: center;">
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                        <ui:VisualElement name="ContactsRow2" style="flex-direction: row; width: 100%; height: 40%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; justify-content: space-around;">
-                            <ui:VisualElement name="Contact4" class="container-submenu" style="width: 31%; height: 100%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; justify-content: flex-start; flex-direction: row; border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60);">
-                                <ui:VisualElement name="ContactPortrait" style="height: 200px; width: 200px; justify-content: center;">
-                                    <ui:VisualElement name="PortraitBG" class="container-item" style="width: 100%; height: 100%;" />
-                                    <ui:VisualElement name="PortraitPic" class="containerOrange" style="width: 100%; height: 100%; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; position: absolute; background-image: url(&apos;project://database/Assets/Plugins/FMOD/images/AddIcon.png?fileID=2800000&amp;guid=3300e81f02e64924eb7cb7782713b126&amp;type=3#AddIcon&apos;); -unity-background-image-tint-color: rgba(255, 255, 255, 0.5); display: none;" />
-                                </ui:VisualElement>
-                                <ui:VisualElement name="ContactInfo" style="width: 50%; height: 100%; align-items: center; -unity-text-align: upper-center; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; justify-content: center;">
-                                    <ui:Label text="???" name="ContactName" class="textDisplayHeader" style="font-size: 36px;" />
-                                    <ui:Label text="Stranger" name="Relationship" style="-unity-text-align: upper-center;" />
-                                    <ui:VisualElement name="RelationshipIcons" style="background-image: none; width: 100%; height: 50%; flex-direction: row; align-items: center; justify-content: center;">
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                            <ui:VisualElement name="Contact5" class="container-submenu" style="width: 31%; height: 100%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; justify-content: flex-start; flex-direction: row; border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60);">
-                                <ui:VisualElement name="ContactPortrait" style="height: 200px; width: 200px; justify-content: center;">
-                                    <ui:VisualElement name="PortraitBG" class="container-item" style="width: 100%; height: 100%; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
-                                    <ui:VisualElement name="PortraitPic" class="containerOrange" style="width: 100%; height: 100%; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; position: absolute; background-image: url(&apos;project://database/Assets/Plugins/FMOD/images/AddIcon.png?fileID=2800000&amp;guid=3300e81f02e64924eb7cb7782713b126&amp;type=3#AddIcon&apos;); -unity-background-image-tint-color: rgba(255, 255, 255, 0.5); display: none;" />
-                                </ui:VisualElement>
-                                <ui:VisualElement name="ContactInfo" style="width: 50%; height: 100%; align-items: center; -unity-text-align: upper-center; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; justify-content: center;">
-                                    <ui:Label text="???" name="ContactName" class="textDisplayHeader" style="font-size: 36px;" />
-                                    <ui:Label text="Stranger" name="Relationship" style="-unity-text-align: upper-center;" />
-                                    <ui:VisualElement name="RelationshipIcons" style="background-image: none; width: 100%; height: 50%; flex-direction: row; align-items: center; justify-content: center;">
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                            <ui:VisualElement name="Contact6" class="container-submenu" style="width: 31%; height: 100%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; justify-content: flex-start; flex-direction: row; border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60);">
-                                <ui:VisualElement name="ContactPortrait" style="height: 200px; width: 200px; justify-content: center;">
-                                    <ui:VisualElement name="PortraitBG" class="container-item" style="width: 100%; height: 100%; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
-                                    <ui:VisualElement name="PortraitPic" class="containerOrange" style="width: 100%; height: 100%; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; position: absolute; background-image: url(&apos;project://database/Assets/Plugins/FMOD/images/AddIcon.png?fileID=2800000&amp;guid=3300e81f02e64924eb7cb7782713b126&amp;type=3#AddIcon&apos;); -unity-background-image-tint-color: rgba(255, 255, 255, 0.5); display: none;" />
-                                </ui:VisualElement>
-                                <ui:VisualElement name="ContactInfo" style="width: 50%; height: 100%; align-items: center; -unity-text-align: upper-center; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; justify-content: center;">
-                                    <ui:Label text="???" name="ContactName" class="textDisplayHeader" style="font-size: 36px;" />
-                                    <ui:Label text="Stranger" name="Relationship" style="-unity-text-align: upper-center;" />
-                                    <ui:VisualElement name="RelationshipIcons" style="background-image: none; width: 100%; height: 50%; flex-direction: row; align-items: center; justify-content: center;">
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                        <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6090568113533005507&amp;guid=ed2deafb8b5210644962d61804e8f786&amp;type=3#check&apos;); width: 50px; height: 50px; -unity-background-image-tint-color: rgba(0, 0, 0, 0.51);" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                    </ui:VisualElement>
-                    <ui:VisualElement name="MapMenu" style="width: 100%; height: 100%; position: absolute; display: none;" />
-                    <ui:VisualElement name="CollectionMenu" style="width: 100%; height: 100%; position: absolute; display: none; flex-direction: row;">
-                        <ui:VisualElement name="CollectionMenuColumnLeft" style="width: 70%; height: 100%; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; justify-content: space-between;">
-                            <ui:VisualElement name="CurrentLevelContainer" style="width: 100%; height: 65%; align-items: center; justify-content: flex-start;">
-                                <ui:Label text="World 1: Ember" display-tooltip-when-elided="true" name="CurrentWorldHeader" enable-rich-text="false" class="textDisplayHeader" style="font-size: 36px; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;" />
-                                <ui:VisualElement name="CurrentLevelBox" class="containerOrange" style="width: 100%; height: 80%; border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;">
-                                    <ui:VisualElement name="ItemRow1" style="width: 100%; height: 50%; flex-direction: row; justify-content: space-around; align-items: center;">
-                                        <ui:VisualElement name="Item" class="container-item" />
-                                        <ui:VisualElement name="Item" class="container-item" />
-                                        <ui:VisualElement name="Item" class="container-item" />
-                                        <ui:VisualElement name="Item" class="container-item" />
-                                        <ui:VisualElement name="Item" class="container-item" />
-                                    </ui:VisualElement>
-                                    <ui:VisualElement name="ItemRow2" style="width: 100%; height: 50%; flex-direction: row; justify-content: space-around; align-items: center;">
-                                        <ui:VisualElement name="Item" class="container-item" />
-                                        <ui:VisualElement name="Item" class="container-item" />
-                                        <ui:VisualElement name="Item" class="container-item" />
-                                        <ui:VisualElement name="Item" class="container-item" style="visibility: hidden;" />
-                                        <ui:VisualElement name="Item" class="container-item" style="visibility: hidden;" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                            <ui:VisualElement name="KeyItemsContainer" style="width: 100%; height: 35%;">
-                                <ui:Label text="Key Items:" display-tooltip-when-elided="true" name="KeyItemsHeader" class="textDisplayHeader" style="font-size: 36px; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;" />
-                                <ui:VisualElement name="KeyItemsBox" class="containerOrange" style="width: 100%; height: 80%; border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;">
-                                    <ui:VisualElement name="ItemRow" style="width: 100%; height: 50%; flex-direction: row; justify-content: space-around; align-items: center;">
-                                        <ui:VisualElement name="Item" class="container-item" />
-                                        <ui:VisualElement name="Item" class="container-item" />
-                                        <ui:VisualElement name="Item" class="container-item" />
-                                        <ui:VisualElement name="Item" class="container-item" />
-                                        <ui:VisualElement name="Item" class="container-item" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                        <ui:VisualElement name="CollectionMenuColumnRight" style="width: 30%; height: 100%; align-items: center; -unity-text-align: upper-center; justify-content: flex-start; font-size: 36px; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
-                            <ui:Label text="Progress:" display-tooltip-when-elided="true" name="ProgressHeader" class="textDisplayHeader" style="font-size: 36px; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;" />
-                            <ui:VisualElement name="WorldProgressContainer" style="justify-content: space-between; height: 100%; width: 100%; align-items: center;">
-                                <ui:VisualElement name="World1ProgressGroup" class="OrangeContainer containerOrange" style="width: 300px; height: 150px; border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;">
-                                    <ui:Label text="World 1: Ember" display-tooltip-when-elided="true" name="World1ProgressLabel" enable-rich-text="false" style="font-size: 24px;" />
-                                    <ui:VisualElement name="World1ProgressStatus" style="height: 100px; justify-content: center; flex-direction: row; align-items: center;">
-                                        <ui:Label text="0" display-tooltip-when-elided="true" name="World1CollectedStatus" />
-                                        <ui:Label text="/" display-tooltip-when-elided="true" name="World1Collectedslash" />
-                                        <ui:Label text="8" display-tooltip-when-elided="true" name="World1TotalStatus" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                                <ui:VisualElement name="World2ProgressGroup" class="containerOrange" style="background-color: rgba(175, 139, 60, 0.5); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; height: 150px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; width: 300px;">
-                                    <ui:Label text="World 2: ???" display-tooltip-when-elided="true" name="World2ProgressLabel" style="font-size: 24px;" />
-                                    <ui:VisualElement name="World2ProgressStatus" style="height: 100px; justify-content: center; flex-direction: row; align-items: center;">
-                                        <ui:Label text="0" display-tooltip-when-elided="true" name="World2CollectedStatus" />
-                                        <ui:Label text="/" display-tooltip-when-elided="true" name="World2Collectedslash" />
-                                        <ui:Label text="?" display-tooltip-when-elided="true" name="World2TotalStatus" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                                <ui:VisualElement name="World3ProgressGroup" class="containerOrange" style="background-color: rgba(175, 139, 60, 0.5); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; height: 150px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; width: 300px;">
-                                    <ui:Label text="World 3: ???" display-tooltip-when-elided="true" name="World3ProgressLabel" style="font-size: 24px;" />
-                                    <ui:VisualElement name="World3ProgressStatus" style="height: 100px; justify-content: center; flex-direction: row; align-items: center;">
-                                        <ui:Label text="0" display-tooltip-when-elided="true" name="World3CollectedStatus" />
-                                        <ui:Label text="/" display-tooltip-when-elided="true" name="World3Collectedslash" />
-                                        <ui:Label text="?" display-tooltip-when-elided="true" name="World3TotalStatus" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                    </ui:VisualElement>
-                    <ui:VisualElement name="LogMenu" style="width: 100%; height: 100%; position: absolute; display: none;" />
-                    <ui:VisualElement name="SettingsMenu" style="width: 100%; height: 100%; position: absolute; display: none; flex-direction: row;">
-                        <ui:VisualElement name="ColumnLeft" style="width: 50%; height: 100%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; justify-content: space-around; align-items: center;">
-                            <ui:VisualElement name="DialogueContainer" class="container-submenu" style="width: 75%; height: 45%; flex-direction: column; align-items: center;">
-                                <ui:Label text="Dialogue" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 32px;" />
-                                <ui:VisualElement name="ScrollSpeed" style="width: 60%; align-items: center; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-                                    <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" name="SFQSlider" style="width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
-                                    <ui:VisualElement name="TextContainer" style="flex-direction: row; top: -15px;">
-                                        <ui:Label text="Scroll Speed" display-tooltip-when-elided="true" name="Description" style="-unity-font-style: normal;" />
-                                        <ui:Label text="50%" display-tooltip-when-elided="true" name="ScrollSpeedDisplay" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                                <ui:VisualElement name="Autoplay" style="width: 60%; align-items: flex-end; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-                                    <ui:Toggle label="Autoplay" name="SFQToggle" style="align-items: center;" />
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                            <ui:VisualElement name="InterfaceContainer" class="container-submenu" style="width: 75%; height: 45%; justify-content: flex-start; align-items: center; flex-direction: column;">
-                                <ui:Label text="Interface" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 32px;" />
-                                <ui:VisualElement name="ShowMinimap" style="width: 60%; align-items: flex-end; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-                                    <ui:Toggle label="Show Minimap" name="SFQToggle" style="align-items: center;" />
-                                </ui:VisualElement>
-                                <ui:VisualElement name="ShowQuestMarker" style="width: 60%; align-items: flex-end; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-                                    <ui:Toggle label="Show Quest Marker" name="SFQToggle" style="align-items: center;" />
-                                </ui:VisualElement>
-                                <ui:VisualElement name="ShowQuestTracker" style="width: 60%; align-items: flex-end; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-                                    <ui:Toggle label="Show Quest Tracker" name="SFQToggle" style="align-items: center;" />
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                        <ui:VisualElement name="ColumnRight" style="width: 50%; height: 100%; justify-content: space-around; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; align-items: center;">
-                            <ui:VisualElement name="AudioContainer" class="container-submenu" style="width: 75%; height: 45%; justify-content: flex-start; align-items: center; flex-direction: column;">
-                                <ui:Label text="Audio" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 32px;" />
-                                <ui:VisualElement name="SFXVolume" style="width: 60%; align-items: center; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-                                    <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" name="SFQSlider" style="width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
-                                    <ui:VisualElement name="TextContainer" style="flex-direction: row; align-items: flex-start; top: -15px;">
-                                        <ui:Label text="Sound FX" display-tooltip-when-elided="true" name="Description" style="-unity-font-style: normal;" />
-                                        <ui:Label text="50%" display-tooltip-when-elided="true" name="SFXVolumeDisplay" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                                <ui:VisualElement name="MusicVolume" style="width: 60%; align-items: center; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-                                    <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" name="SFQSlider" style="width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
-                                    <ui:VisualElement name="TextContainer" style="flex-direction: row; top: -15px;">
-                                        <ui:Label text="Music" display-tooltip-when-elided="true" name="Description" style="-unity-font-style: normal;" />
-                                        <ui:Label text="50%" display-tooltip-when-elided="true" name="MusicVolumeDisplay" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                            <ui:VisualElement name="AutosavesContainer" class="container-submenu" style="width: 75%; height: 45%; align-items: center; justify-content: flex-start; flex-direction: column;">
-                                <ui:Label text="Autosaves" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 32px;" />
-                                <ui:VisualElement name="ASFrequency" style="width: 60%; align-items: center; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-                                    <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" name="SFQSlider" style="width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
-                                    <ui:VisualElement name="TextContainer" style="flex-direction: row; top: -15px;">
-                                        <ui:Label text="Frequency:" display-tooltip-when-elided="true" name="Description" style="-unity-font-style: normal;" />
-                                        <ui:Label text="Every 5 min" display-tooltip-when-elided="true" name="ASFrequencyDisplay" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
-                            </ui:VisualElement>
-                        </ui:VisualElement>
-                    </ui:VisualElement>
-                    <ui:VisualElement name="ControlsMenu" style="width: 100%; height: 100%; position: absolute; display: none; flex-direction: row;" />
-                    <ui:VisualElement name="SaveMenu" style="width: 100%; height: 100%; position: absolute; display: none; align-items: center; justify-content: center;">
+                    <ui:VisualElement name="SaveMenu" style="width: 100%; height: 100%; position: absolute; display: flex; align-items: center; justify-content: center;">
                         <ui:VisualElement name="Row1" style="height: 50%; width: 100%; flex-direction: row; align-items: center; justify-content: space-around; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
                             <ui:Button display-tooltip-when-elided="true" name="SaveSlot0" focusable="false" class="container-submenu button-orange" style="flex-direction: column; align-items: center; -unity-font-style: normal; width: 29%;">
                                 <ui:Label text="Autosave Slot" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
@@ -250,7 +27,7 @@
                                         <ui:Label text="12:48 pm" display-tooltip-when-elided="true" name="Time" style="align-items: flex-start;" />
                                         <ui:Label text="12/30/23" display-tooltip-when-elided="true" name="Date" style="align-items: flex-start;" />
                                     </ui:VisualElement>
-                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; background-image: url(&apos;project://database/Assets/Graphics/Materials/Skyboxes/SB_In_The_Clouds.png?fileID=2800000&amp;guid=6f19bbf64646596498edb3bc9432dda7&amp;type=3#SB_In_The_Clouds&apos;); -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
+                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; background-image: url(&apos;project://database/Assets/Graphics/Textures/t_in_the_sky.png?fileID=2800000&amp;guid=6f19bbf64646596498edb3bc9432dda7&amp;type=3#t_in_the_sky&apos;); -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
                                 </ui:VisualElement>
                             </ui:Button>
                             <ui:Button display-tooltip-when-elided="true" name="SaveSlot1" focusable="false" class="container-submenu button-orange" style="flex-direction: column; align-items: center; -unity-font-style: normal; width: 29%;">
@@ -327,6 +104,154 @@
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
+                    <ui:VisualElement name="LoadMenu" style="width: 100%; height: 100%; position: absolute; display: none; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="Row1" style="height: 50%; width: 100%; flex-direction: row; align-items: center; justify-content: space-around; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+                            <ui:Button display-tooltip-when-elided="true" name="LoadSlot0" focusable="false" class="container-submenu button-orange" style="flex-direction: column; align-items: center; -unity-font-style: normal; width: 29%;">
+                                <ui:Label text="Autosave Slot" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                                <ui:VisualElement name="SlotDetails" style="flex-direction: row; align-items: center; justify-content: space-around; width: 100%;">
+                                    <ui:VisualElement name="SaveText" style="align-items: flex-start; height: 200px;">
+                                        <ui:Label text="Ember" display-tooltip-when-elided="true" name="World" style="align-items: flex-start;" />
+                                        <ui:Label text="Level 1" display-tooltip-when-elided="true" name="Level" style="align-items: flex-start;" />
+                                        <ui:Label text="12:48 pm" display-tooltip-when-elided="true" name="Time" style="align-items: flex-start;" />
+                                        <ui:Label text="12/30/23" display-tooltip-when-elided="true" name="Date" style="align-items: flex-start;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; background-image: url(&apos;project://database/Assets/Graphics/Textures/t_in_the_sky.png?fileID=2800000&amp;guid=6f19bbf64646596498edb3bc9432dda7&amp;type=3#t_in_the_sky&apos;); -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                            <ui:Button display-tooltip-when-elided="true" name="LoadSlot1" focusable="false" class="container-submenu button-orange" style="flex-direction: column; align-items: center; -unity-font-style: normal; width: 29%;">
+                                <ui:Label text="Save Slot #1" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                                <ui:VisualElement name="SlotDetails" style="flex-direction: row; align-items: center; justify-content: space-around; width: 100%;">
+                                    <ui:VisualElement name="SaveText" style="align-items: flex-start; height: 200px;">
+                                        <ui:Label text="World" display-tooltip-when-elided="true" name="World" style="align-items: flex-start;" />
+                                        <ui:Label text="Level" display-tooltip-when-elided="true" name="Level" style="align-items: flex-start;" />
+                                        <ui:Label text="Time" display-tooltip-when-elided="true" name="Time" style="align-items: flex-start;" />
+                                        <ui:Label text="Date" display-tooltip-when-elided="true" name="Date" style="align-items: flex-start;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; background-image: none; -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                            <ui:Button display-tooltip-when-elided="true" name="LoadSlot2" focusable="false" class="container-submenu button-orange" style="flex-direction: column; align-items: center; -unity-font-style: normal; width: 29%;">
+                                <ui:Label text="Save Slot #2" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                                <ui:VisualElement name="SlotDetails" style="flex-direction: row; align-items: center; justify-content: space-around; width: 100%;">
+                                    <ui:VisualElement name="SaveText" style="align-items: flex-start; height: 200px;">
+                                        <ui:Label text="World" display-tooltip-when-elided="true" name="World" style="align-items: flex-start;" />
+                                        <ui:Label text="Level" display-tooltip-when-elided="true" name="Level" style="align-items: flex-start;" />
+                                        <ui:Label text="Time" display-tooltip-when-elided="true" name="Time" style="align-items: flex-start;" />
+                                        <ui:Label text="Date" display-tooltip-when-elided="true" name="Date" style="align-items: flex-start;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; background-image: none; -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="Row2" style="height: 50%; width: 100%; flex-direction: row; align-items: center; justify-content: space-around; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+                            <ui:Button display-tooltip-when-elided="true" name="LoadSlot3" focusable="false" class="container-submenu button-orange" style="flex-direction: column; align-items: center; -unity-font-style: normal; width: 29%;">
+                                <ui:Label text="Save Slot #3" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                                <ui:VisualElement name="SlotDetails" style="flex-direction: row; align-items: center; justify-content: space-around; width: 100%;">
+                                    <ui:VisualElement name="SaveText" style="align-items: flex-start; height: 200px;">
+                                        <ui:Label text="World" display-tooltip-when-elided="true" name="World" style="align-items: flex-start;" />
+                                        <ui:Label text="Level" display-tooltip-when-elided="true" name="Level" style="align-items: flex-start;" />
+                                        <ui:Label text="Time" display-tooltip-when-elided="true" name="Time" style="align-items: flex-start;" />
+                                        <ui:Label text="Date" display-tooltip-when-elided="true" name="Date" style="align-items: flex-start;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; background-image: none; -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                            <ui:Button display-tooltip-when-elided="true" name="LoadSlot4" focusable="false" class="container-submenu button-orange" style="flex-direction: column; align-items: center; -unity-font-style: normal; width: 29%;">
+                                <ui:Label text="Save Slot #4" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                                <ui:VisualElement name="SlotDetails" style="flex-direction: row; align-items: center; justify-content: space-around; width: 100%;">
+                                    <ui:VisualElement name="SaveText" style="align-items: flex-start; height: 200px;">
+                                        <ui:Label text="World" display-tooltip-when-elided="true" name="World" style="align-items: flex-start;" />
+                                        <ui:Label text="Level" display-tooltip-when-elided="true" name="Level" style="align-items: flex-start;" />
+                                        <ui:Label text="Time" display-tooltip-when-elided="true" name="Time" style="align-items: flex-start;" />
+                                        <ui:Label text="Date" display-tooltip-when-elided="true" name="Date" style="align-items: flex-start;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; background-image: none; -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                            <ui:Button display-tooltip-when-elided="true" name="LoadSlot5" focusable="false" class="container-submenu button-orange" style="flex-direction: column; align-items: center; -unity-font-style: normal; width: 29%;">
+                                <ui:Label text="Save Slot #5" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                                <ui:VisualElement name="SlotDetails" style="flex-direction: row; align-items: center; justify-content: space-around; width: 100%;">
+                                    <ui:VisualElement name="SaveText" style="align-items: flex-start; height: 200px;">
+                                        <ui:Label text="World" display-tooltip-when-elided="true" name="World" style="align-items: flex-start;" />
+                                        <ui:Label text="Level" display-tooltip-when-elided="true" name="Level" style="align-items: flex-start;" />
+                                        <ui:Label text="Time" display-tooltip-when-elided="true" name="Time" style="align-items: flex-start;" />
+                                        <ui:Label text="Date" display-tooltip-when-elided="true" name="Date" style="align-items: flex-start;" />
+                                    </ui:VisualElement>
+                                    <ui:VisualElement name="Screenshot" class="container-item" style="width: 200px; height: 200px; background-image: none; -unity-background-scale-mode: scale-and-crop; -unity-background-image-tint-color: rgba(255, 255, 255, 0.9); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px;" />
+                                </ui:VisualElement>
+                            </ui:Button>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="LoadConfirmation" style="width: 100%; height: 100%; position: absolute; background-color: rgba(188, 163, 108, 0.5); display: none;">
+                            <ui:VisualElement name="LoadConfirmationWindow" class="container-submenu" style="position: relative; width: 50%; height: 50%; background-color: rgb(181, 151, 84); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 10px; border-right-width: 10px; border-bottom-width: 10px; border-left-width: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; align-items: center; justify-content: center; flex-direction: column; top: 183px; left: 365px; display: flex;">
+                                <ui:Label text="Confirm Load" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                                <ui:Label text="Are you sure you want to overwrite load slot #1? This will override any unsaved progress!" display-tooltip-when-elided="true" name="LoadConfirmationText" style="-unity-text-align: upper-center; white-space: normal; width: 50%; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;" />
+                                <ui:VisualElement style="flex-direction: row; align-items: center; justify-content: center; width: 100%; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
+                                    <ui:Button text="Yes" display-tooltip-when-elided="true" name="LoadYes" class="button-orange" style="width: 20%;" />
+                                    <ui:Button text="No" display-tooltip-when-elided="true" name="LoadNo" class="button-orange" style="width: 20%;" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="ControlsMenu" style="width: 100%; height: 100%; position: absolute; display: none; flex-direction: row;" />
+                    <ui:VisualElement name="SettingsMenu" style="width: 100%; height: 100%; position: absolute; display: none; flex-direction: row;">
+                        <ui:VisualElement name="ColumnLeft" style="width: 50%; height: 100%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; justify-content: space-around; align-items: center;">
+                            <ui:VisualElement name="DialogueContainer" class="container-submenu" style="width: 75%; height: 45%; flex-direction: column; align-items: center;">
+                                <ui:Label text="Dialogue" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 32px;" />
+                                <ui:VisualElement name="ScrollSpeed" style="width: 60%; align-items: center; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+                                    <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" name="SFQSlider" style="width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                                    <ui:VisualElement name="TextContainer" style="flex-direction: row; top: -15px;">
+                                        <ui:Label text="Scroll Speed" display-tooltip-when-elided="true" name="Description" style="-unity-font-style: normal;" />
+                                        <ui:Label text="50%" display-tooltip-when-elided="true" name="ScrollSpeedDisplay" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                                <ui:VisualElement name="Autoplay" style="width: 60%; align-items: flex-end; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+                                    <ui:Toggle label="Autoplay" name="SFQToggle" style="align-items: center;" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="InterfaceContainer" class="container-submenu" style="width: 75%; height: 45%; justify-content: flex-start; align-items: center; flex-direction: column;">
+                                <ui:Label text="Interface" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 32px;" />
+                                <ui:VisualElement name="ShowMinimap" style="width: 60%; align-items: flex-end; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+                                    <ui:Toggle label="Show Minimap" name="SFQToggle" style="align-items: center;" />
+                                </ui:VisualElement>
+                                <ui:VisualElement name="ShowQuestMarker" style="width: 60%; align-items: flex-end; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+                                    <ui:Toggle label="Show Quest Marker" name="SFQToggle" style="align-items: center;" />
+                                </ui:VisualElement>
+                                <ui:VisualElement name="ShowQuestTracker" style="width: 60%; align-items: flex-end; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+                                    <ui:Toggle label="Show Quest Tracker" name="SFQToggle" style="align-items: center;" />
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="ColumnRight" style="width: 50%; height: 100%; justify-content: space-around; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; align-items: center;">
+                            <ui:VisualElement name="AudioContainer" class="container-submenu" style="width: 75%; height: 45%; justify-content: flex-start; align-items: center; flex-direction: column;">
+                                <ui:Label text="Audio" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 32px;" />
+                                <ui:VisualElement name="SFXVolume" style="width: 60%; align-items: center; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+                                    <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" name="SFQSlider" style="width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                                    <ui:VisualElement name="TextContainer" style="flex-direction: row; align-items: flex-start; top: -15px;">
+                                        <ui:Label text="Sound FX" display-tooltip-when-elided="true" name="Description" style="-unity-font-style: normal;" />
+                                        <ui:Label text="50%" display-tooltip-when-elided="true" name="SFXVolumeDisplay" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                                <ui:VisualElement name="MusicVolume" style="width: 60%; align-items: center; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+                                    <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" name="SFQSlider" style="width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                                    <ui:VisualElement name="TextContainer" style="flex-direction: row; top: -15px;">
+                                        <ui:Label text="Music" display-tooltip-when-elided="true" name="Description" style="-unity-font-style: normal;" />
+                                        <ui:Label text="50%" display-tooltip-when-elided="true" name="MusicVolumeDisplay" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="AutosavesContainer" class="container-submenu" style="width: 75%; height: 45%; align-items: center; justify-content: flex-start; flex-direction: column;">
+                                <ui:Label text="Autosaves" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 32px;" />
+                                <ui:VisualElement name="ASFrequency" style="width: 60%; align-items: center; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+                                    <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" name="SFQSlider" style="width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                                    <ui:VisualElement name="TextContainer" style="flex-direction: row; top: -15px;">
+                                        <ui:Label text="Frequency:" display-tooltip-when-elided="true" name="Description" style="-unity-font-style: normal;" />
+                                        <ui:Label text="Every 5 min" display-tooltip-when-elided="true" name="ASFrequencyDisplay" />
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="ExtraMenu" style="width: 100%; height: 100%; position: absolute; display: none; flex-direction: row;" />
                     <ui:VisualElement name="ExitMenu" style="width: 100%; height: 100%; position: absolute; display: none; align-items: center; justify-content: space-around;">
                         <ui:VisualElement name="ExitConfirm" style="width: 50%; height: 50%; background-color: rgba(175, 139, 60, 0.5); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; border-top-width: 10px; border-right-width: 10px; border-bottom-width: 10px; border-left-width: 10px; align-items: center; justify-content: center;">
                             <ui:Label text="Are you sure you want to exit?&#10;All unsaved progress will be lost!" display-tooltip-when-elided="true" name="ExitConfirmText" class="DisplayHeader" style="font-size: 35px; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;" />

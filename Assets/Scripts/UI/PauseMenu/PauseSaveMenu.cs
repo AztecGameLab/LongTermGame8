@@ -1,19 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 using UnityEngine.UIElements;
 
 namespace Ltg8
 {
-    public class pauseSaveMenu : MonoBehaviour
+    public class PauseSaveMenu : MonoBehaviour
     {
         private const int NumSaveSlots = 6;
 
+        private DiskSaveSerializer _saveSerializer;
+        
         // References
         private Button[] _saveSlots;
-    
+
         private VisualElement _saveConfirmation;
 
         private Button _buttonYesSaveConfirmation;
@@ -21,15 +19,17 @@ namespace Ltg8
 
         private Label _confirmationText;
         private int _selectedSlot;
-    
+
         // Start is called before the first frame update
         private void Start()
         {
+            _saveSerializer = FindAnyObjectByType<DiskSaveSerializer>();
+            
             // Getting root to reach the other elements of UI document
             var root = GetComponent<UIDocument>().rootVisualElement;
-        
+
             // Getting references for...
-        
+
             // Save Slots...
             _saveSlots = new Button[NumSaveSlots];
             for (var i = 0; i < NumSaveSlots; i++)
@@ -39,16 +39,16 @@ namespace Ltg8
                 var slot = i;
                 saveSlot.clicked += () => DisplaySaveConfirmation(slot);
             }
-        
+
             // Save confirmation window
             _saveConfirmation = root.Q<VisualElement>("SaveConfirmation");
 
             _confirmationText = root.Q<Label>("ConfirmationText");
-        
+
             // Yes and no buttons for save confirmation...
             _buttonYesSaveConfirmation = root.Q<Button>("ButtonYes");
             _buttonNoSaveConfirmation = root.Q<Button>("ButtonNo");
-        
+
             // ...When pressing yes/no on the confirmation
             _buttonNoSaveConfirmation.clicked += CloseSaveConfirmation;
             _buttonYesSaveConfirmation.clicked += PressedYesOnSaveConfirmation;
@@ -66,12 +66,13 @@ namespace Ltg8
             _saveConfirmation.style.display = DisplayStyle.None;
         }
 
-        private void PressedYesOnSaveConfirmation()
+        private async void PressedYesOnSaveConfirmation()
         {
             // TODO: Save game
-        
+            await _saveSerializer.WriteToDisk(_selectedSlot.ToString(), Ltg8.Save);
+
             // Close SaveConfirmation window
-            _saveConfirmation.style.display = DisplayStyle.None;
+            CloseSaveConfirmation();
         }
     }
 }

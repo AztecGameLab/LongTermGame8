@@ -6,6 +6,7 @@ namespace Ltg8
     {
         public async UniTask OnEnter()
         {
+            
             string path = Ltg8.Settings.mainMenuScenePath;
             await SceneManager.LoadSceneAsync(path, LoadSceneMode.Additive);
             SceneManager.SetActiveScene(SceneManager.GetSceneByPath(path));

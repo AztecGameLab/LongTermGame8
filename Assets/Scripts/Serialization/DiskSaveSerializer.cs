@@ -6,7 +6,7 @@ namespace Ltg8
 {
     public class DiskSaveSerializer : MonoBehaviour, IConsoleDebugInfo, ISaveSerializer
     {
-        public static string SavePath => $"{Application.persistentDataPath}/saves";
+        public static string SavePath => $"{Application.persistentDataPath}/saves/";
         public bool Busy { get; private set; }
     
         public async UniTask WriteToDisk(string saveId, SaveData data)
@@ -15,10 +15,10 @@ namespace Ltg8
         
             Busy = true;
             string json = JsonUtility.ToJson(data, true);
-            string path = $"{SavePath}/{saveId}.json";
+            string path = $"{SavePath}{saveId}.json";
         
-            if (!Directory.Exists(Path.GetDirectoryName(path)))
-                Directory.CreateDirectory(path);
+            if (!Directory.Exists(Path.GetDirectoryName(SavePath)))
+                Directory.CreateDirectory(SavePath);
         
             await File.WriteAllTextAsync(path, json);
             Busy = false;

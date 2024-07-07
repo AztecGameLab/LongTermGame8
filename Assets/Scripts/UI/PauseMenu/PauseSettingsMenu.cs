@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class pauseSettingsMenu : MonoBehaviour
+public class PauseSettingsMenu : MonoBehaviour
 {
     // root of the UI doc and parents
     // private VisualElement root;

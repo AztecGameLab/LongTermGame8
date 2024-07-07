@@ -204,8 +204,8 @@
 
 .PageIndicatorAtTop {
     position: absolute;
-    width: 246px;
-    height: 74px;
+    width: 90%;
+    height: 100px;
     border-left-color: rgb(215, 197, 158);
     border-right-color: rgb(215, 197, 158);
     border-top-color: rgb(215, 197, 158);
@@ -222,36 +222,28 @@
     display: flex;
 }
 
-.PageIndicatorAtContacts {
-    translate: 0 0;
+.PageIndicatorAtSave {
+    translate: 0 20%;
 }
 
-.PageIndicatorAtMap {
-    translate: 0 99px;
-}
-
-.PageIndicatorAtCollection {
-    translate: 0 193px;
-}
-
-.PageIndicatorAtLog {
-    translate: 0 290px;
-}
-
-.PageIndicatorAtSettings {
-    translate: 0 384px;
+.PageIndicatorAtLoad {
+    translate: 0 150%;
 }
 
 .PageIndicatorAtControls {
-    translate: 0 476px;
+    translate: 0 282.5%;
 }
 
-.PageIndicatorAtSave {
-    translate: 0 572px;
+.PageIndicatorAtSettings {
+    translate: 0 415%;
+}
+
+.PageIndicatorAtExtra {
+    translate: 0 550%;
 }
 
 .PageIndicatorAtExit {
-    translate: 0 667px;
+    translate: 0 685%;
 }
 
 .PauseMenuDown {
@@ -272,7 +264,7 @@
     border-left-width: 10px;
     font-size: 24px;
     transform-origin: center 815%;
-    translate: 0 1080px;
+    translate: 0 110%;
 }
 
 .PauseMenuOnScreen {
