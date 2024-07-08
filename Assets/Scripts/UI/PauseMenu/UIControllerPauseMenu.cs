@@ -58,6 +58,7 @@ namespace Ltg8
             if (!pauseMenuOnScreen)
             {
                 Time.timeScale = 0;
+                GetComponent<UIDocument>().sortingOrder = 1;
                 _pauseMenu.AddToClassList("PauseMenuOnScreen");
                 pauseMenuOnScreen = true;
             }
@@ -68,6 +69,7 @@ namespace Ltg8
             if (pauseMenuOnScreen)
             {
                 Time.timeScale = 1;
+                GetComponent<UIDocument>().sortingOrder = 0;
                 _pauseMenu.RemoveFromClassList("PauseMenuOnScreen");
                 pauseMenuOnScreen = false;
 

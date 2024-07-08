@@ -25,11 +25,19 @@ namespace Ltg8.Inventory
         private readonly List<InventoryItemUiView> _spawnedItems = new List<InventoryItemUiView>();
         private CancellationTokenSource _cts;
 
+        private Canvas _canvas;
+
+        private void Start()
+        {
+            _canvas = GetComponentInParent<Canvas>();
+        }
 
         public async UniTask Open(IEnumerable<InventoryItemData> items)
         {
             CancelCurrentAnimation();
             volume.TweenWeight(1, openTween, _cts.Token).Forget(); /* show the post-processing that highlights interactable objects */
+            
+            _canvas.sortingOrder = 1;
             
             foreach (InventoryItemData item in items)
             {
@@ -86,6 +94,7 @@ namespace Ltg8.Inventory
             }
 
             await UniTask.WaitUntil(() => _spawnedItems.Count <= 0); /* once there are no items in the list, everything has finished animating */
+            _canvas.sortingOrder = 0;
             onClose.Invoke();
         }
         

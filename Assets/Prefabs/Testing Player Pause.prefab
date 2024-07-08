@@ -398,8 +398,8 @@ Transform:
   - {fileID: 1068367370670256403}
   - {fileID: 1068367370370129681}
   - {fileID: 1068367371359854892}
-  - {fileID: 1068367371180299974}
   - {fileID: 4659098284429906434}
+  - {fileID: 1068367371180299974}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -982,7 +982,7 @@ RectTransform:
   - {fileID: 1068367370796902392}
   - {fileID: 4149217225029836764}
   m_Father: {fileID: 1068367370722448758}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1008,7 +1008,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &1068367371180299976
 MonoBehaviour:
@@ -12046,7 +12046,7 @@ PrefabInstance:
     - target: {fileID: 8862233706261555309, guid: 4b577215ec1a5034c9be6d72b0baded0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8862233706261555309, guid: 4b577215ec1a5034c9be6d72b0baded0,
         type: 3}
