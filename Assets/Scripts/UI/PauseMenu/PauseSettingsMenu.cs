@@ -8,18 +8,20 @@ public class PauseSettingsMenu : MonoBehaviour
 {
     // root of the UI doc and parents
     // private VisualElement root;
+    private VisualElement _dialogueContainer;
     private VisualElement _SFXVolume;
     private VisualElement _MusicVolume;
     private VisualElement _AutosavesContainer;
 
+    // Dialogue Radio
+    private RadioButtonGroup _dialogueRadio;
+
     // Sliders
-    private VisualElement DialogueSlider;
     public VisualElement AudioSlider;
     public VisualElement MusicSlider;
     public VisualElement AutoSaveSlider;
 
     // Slider percentages
-    private Label _ScrollSpeedDisplay;
     private Label _SFXVolumeDisplay;
     private Label _MusicVolumeDisplay;
     private Label _ASFrequencyDisplay;
@@ -37,45 +39,44 @@ public class PauseSettingsMenu : MonoBehaviour
     {
         // Getting root 
         var root = GetComponent<UIDocument>().rootVisualElement;
-        
+
         //Getting parents to get references with same names
+        _dialogueContainer = root.Q<VisualElement>("DialogueContainer");
         _SFXVolume = root.Q<VisualElement>("SFXVolume");
         _MusicVolume = root.Q<VisualElement>("MusicVolume");
         _AutosavesContainer = root.Q<VisualElement>("AutosavesContainer");
-        
+
         // Getting references...
-            // For Dialogue
-        DialogueSlider = root.Q<Slider>("SFQSlider");
-        _ScrollSpeedDisplay = root.Q<Label>("ScrollSpeedDisplay");
-        
-            // For Audio
+        // For Dialogue
+        _dialogueRadio = _dialogueContainer.Q<RadioButtonGroup>("SFQRadio");
+        SetDialogueSpeed(_dialogueRadio.value);
+
+        // For Audio
         AudioSlider = _SFXVolume.Q("SFQSlider");
         _SFXVolumeDisplay = root.Q<Label>("SFXVolumeDisplay");
 
-            // For Musix
+        // For Musix
         MusicSlider = _MusicVolume.Q("SFQSlider");
         _MusicVolumeDisplay = root.Q<Label>("MusicVolumeDisplay");
 
-            // For AutoSave
+        // For AutoSave
         AutoSaveSlider = _AutosavesContainer.Q("SFQSlider");
         _ASFrequencyDisplay = root.Q<Label>("ASFrequencyDisplay");
 
 
         // Method to call when the a slider moves
-        DialogueSlider.RegisterCallback<ChangeEvent<float>>(SliderValueChangedDialogue);
+        _dialogueRadio.RegisterValueChangedCallback(evt => SetDialogueSpeed(evt.newValue));
         AudioSlider.RegisterCallback<ChangeEvent<float>>(SliderValueChangedAudio);
         MusicSlider.RegisterCallback<ChangeEvent<float>>(SliderValueChangedMusic);
         AutoSaveSlider.RegisterCallback<ChangeEvent<float>>(SliderValueChangedAutoSave);
     }
 
-    // These bottom methods do the same thing. They get the value of the slider, and update the text to display that value
-    void SliderValueChangedDialogue(ChangeEvent<float> value)
+    private static void SetDialogueSpeed(int value)
     {
-        Debug.Log("Sliding in dms");
-        float v = Mathf.Round(value.newValue);
-        _ScrollSpeedDisplay.text = v.ToString() + "%";
+        Ltg8.Ltg8.Settings.dialogueSettings.selected = value;
     }
 
+    // These bottom methods do the same thing. They get the value of the slider, and update the text to display that value
     void SliderValueChangedAudio(ChangeEvent<float> value)
     {
         float v = Mathf.Round(value.newValue);
@@ -92,13 +93,14 @@ public class PauseSettingsMenu : MonoBehaviour
     {
         float v = Mathf.Round(value.newValue);
 
-        if (v == 0) { _ASFrequencyDisplay.text = "Never"; }
+        if (v == 0)
+        {
+            _ASFrequencyDisplay.text = "Never";
+        }
         else
-        { 
+        {
             // Do switch cases to make this number match whatever frequency it should match
             _ASFrequencyDisplay.text = "Every " + v.ToString() + "min";
         }
-        
     }
-
 }

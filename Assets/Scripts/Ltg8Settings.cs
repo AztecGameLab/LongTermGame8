@@ -12,6 +12,7 @@ namespace Ltg8
         [Scene] public string mainMenuScenePath;
         [Scene] public string defaultOverworldScenePath;
         public InventoryItemWorldDisplay overworldItemPrefab;
+        public Ltg8DialogueSettings dialogueSettings;
 
         [Title("Editor")]
 

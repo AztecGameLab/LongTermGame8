@@ -16,7 +16,7 @@
                     <ui:Button text="Exit" display-tooltip-when-elided="true" name="ButtonExit" class="button-menuOption" />
                 </ui:VisualElement>
                 <ui:VisualElement name="MenuMainWindow" style="width: 82%; height: 100%; -unity-text-outline-color: rgb(55, 50, 67); background-color: rgba(215, 197, 158, 0.5); border-left-color: rgb(175, 139, 60); border-right-color: rgb(175, 139, 60); border-top-color: rgb(175, 139, 60); border-bottom-color: rgb(175, 139, 60); border-top-width: 10px; border-right-width: 10px; border-bottom-width: 10px; border-left-width: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; transition-timing-function: ease-in-out; transition-duration: 0.5s;">
-                    <ui:VisualElement name="SaveMenu" style="width: 100%; height: 100%; position: absolute; display: flex; align-items: center; justify-content: center;">
+                    <ui:VisualElement name="SaveMenu" style="width: 100%; height: 100%; position: absolute; display: none; align-items: center; justify-content: center;">
                         <ui:VisualElement name="Row1" style="height: 50%; width: 100%; flex-direction: row; align-items: center; justify-content: space-around; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
                             <ui:Button display-tooltip-when-elided="true" name="SaveSlot0" focusable="false" class="container-submenu button-orange" style="flex-direction: column; align-items: center; -unity-font-style: normal; width: 29%;">
                                 <ui:Label text="Autosave Slot" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 36px; align-items: center; margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
@@ -193,17 +193,12 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement name="ControlsMenu" style="width: 100%; height: 100%; position: absolute; display: none; flex-direction: row;" />
-                    <ui:VisualElement name="SettingsMenu" style="width: 100%; height: 100%; position: absolute; display: none; flex-direction: row;">
+                    <ui:VisualElement name="SettingsMenu" style="width: 100%; height: 100%; position: absolute; display: flex; flex-direction: row;">
                         <ui:VisualElement name="ColumnLeft" style="width: 50%; height: 100%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; justify-content: space-around; align-items: center;">
                             <ui:VisualElement name="DialogueContainer" class="container-submenu" style="width: 75%; height: 45%; flex-direction: column; align-items: center;">
                                 <ui:Label text="Dialogue" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 32px;" />
-                                <ui:VisualElement name="ScrollSpeed" style="width: 60%; align-items: center; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-                                    <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" name="SFQSlider" style="width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
-                                    <ui:VisualElement name="TextContainer" style="flex-direction: row; top: -15px;">
-                                        <ui:Label text="Scroll Speed" display-tooltip-when-elided="true" name="Description" style="-unity-font-style: normal;" />
-                                        <ui:Label text="50%" display-tooltip-when-elided="true" name="ScrollSpeedDisplay" />
-                                    </ui:VisualElement>
-                                </ui:VisualElement>
+                                <ui:Label text="Speed" display-tooltip-when-elided="true" name="Speed" class="textDisplayHeader" style="font-size: 30px; color: rgb(255, 255, 255); -unity-text-align: upper-center; margin-top: 3%;" />
+                                <ui:RadioButtonGroup name="SFQRadio" value="1" choices="Slow, Normal, Fast" />
                                 <ui:VisualElement name="Autoplay" style="width: 60%; align-items: flex-end; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
                                     <ui:Toggle label="Autoplay" name="SFQToggle" style="align-items: center;" />
                                 </ui:VisualElement>
@@ -225,14 +220,14 @@
                             <ui:VisualElement name="AudioContainer" class="container-submenu" style="width: 75%; height: 45%; justify-content: flex-start; align-items: center; flex-direction: column;">
                                 <ui:Label text="Audio" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 32px;" />
                                 <ui:VisualElement name="SFXVolume" style="width: 60%; align-items: center; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-                                    <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" name="SFQSlider" style="width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                                    <ui:Slider picking-mode="Ignore" label="Slider" value="50" high-value="100" name="SFQSlider" style="width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
                                     <ui:VisualElement name="TextContainer" style="flex-direction: row; align-items: flex-start; top: -15px;">
                                         <ui:Label text="Sound FX" display-tooltip-when-elided="true" name="Description" style="-unity-font-style: normal;" />
                                         <ui:Label text="50%" display-tooltip-when-elided="true" name="SFXVolumeDisplay" />
                                     </ui:VisualElement>
                                 </ui:VisualElement>
                                 <ui:VisualElement name="MusicVolume" style="width: 60%; align-items: center; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-                                    <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" name="SFQSlider" style="width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                                    <ui:Slider picking-mode="Ignore" label="Slider" value="50" high-value="100" name="SFQSlider" style="width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
                                     <ui:VisualElement name="TextContainer" style="flex-direction: row; top: -15px;">
                                         <ui:Label text="Music" display-tooltip-when-elided="true" name="Description" style="-unity-font-style: normal;" />
                                         <ui:Label text="50%" display-tooltip-when-elided="true" name="MusicVolumeDisplay" />
@@ -242,7 +237,7 @@
                             <ui:VisualElement name="AutosavesContainer" class="container-submenu" style="width: 75%; height: 45%; align-items: center; justify-content: flex-start; flex-direction: column;">
                                 <ui:Label text="Autosaves" display-tooltip-when-elided="true" name="Header" class="textDisplayHeader" style="font-size: 32px;" />
                                 <ui:VisualElement name="ASFrequency" style="width: 60%; align-items: center; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-                                    <ui:Slider picking-mode="Ignore" label="Slider" value="42" high-value="100" name="SFQSlider" style="width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                                    <ui:Slider picking-mode="Ignore" label="Slider" value="50" high-value="100" name="SFQSlider" style="width: 100%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
                                     <ui:VisualElement name="TextContainer" style="flex-direction: row; top: -15px;">
                                         <ui:Label text="Frequency:" display-tooltip-when-elided="true" name="Description" style="-unity-font-style: normal;" />
                                         <ui:Label text="Every 5 min" display-tooltip-when-elided="true" name="ASFrequencyDisplay" />

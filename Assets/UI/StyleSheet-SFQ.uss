@@ -350,6 +350,21 @@
     width: 30px;
 }
 
+#SFQRadio Label {
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-right;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    min-width: 0;
+    flex-direction: column;
+}
+
+#SFQRadio > VisualElement {
+    flex-direction: row;
+}
+
 .DialogueBoxExposition {
     width: 70%;
     height: 40%;

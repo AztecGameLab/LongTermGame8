@@ -95,7 +95,8 @@ namespace Ltg8
                 
                 processedCharacters++;
                 mainText.maxVisibleCharacters++;
-                await UniTask.Delay(CurrentRevealStyle.revealIntervalMs);
+                var multiplier = Ltg8.Settings.dialogueSettings.dialogueSpeedMultipliers[Ltg8.Settings.dialogueSettings.selected];
+                await UniTask.Delay((int)(CurrentRevealStyle.revealIntervalMs * (1 / multiplier)));
             }
         } 
         

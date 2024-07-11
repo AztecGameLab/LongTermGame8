@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   persistentScenePath: Assets/Scenes/sc_persistent.unity
   mainMenuScenePath: Assets/Scenes/Start Menu Scene.unity
+  defaultOverworldScenePath: Assets/Scenes/rockyjumpyroad/rockyjumpyroad Pause.unity
   overworldItemPrefab: {fileID: 0}
+  dialogueSettings: {fileID: 11400000, guid: cef9dc1a8acbf394f811793783f24c73, type: 2}
   editorPlayStrategy: 0
   editorSaveStrategy: 0
   editorSaveId: dev_test
