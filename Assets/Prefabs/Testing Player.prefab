@@ -10352,6 +10352,7 @@ MonoBehaviour:
   controller: {fileID: 1068367370722448757}
   player: {fileID: 1068367370722448755}
   animatorController: {fileID: 1947197829}
+  audio: {fileID: 0}
   rotatePlayerSpeed: 5
   playerTransform: {fileID: 5910019122228396983}
 --- !u!114 &881823878356494759
@@ -10856,6 +10857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1068367371359854892}
   - component: {fileID: 1068367371359854893}
+  - component: {fileID: 986390805883391486}
   m_Layer: 0
   m_Name: target selector
   m_TagString: Untagged
@@ -10888,6 +10890,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dda567e229aa4b89843b03b082da8ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &986390805883391486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068367371359854895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1f2e2e8712f9fb4dac353b83c1910ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1068367371483001511
@@ -12106,25 +12120,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1623168002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149449636964882380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 446d7e7f41d9421aa696aa1f6d37b2ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onReceiveItem:
-    m_PersistentCalls:
-      m_Calls: []
-  dialogueText:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &813482942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12144,6 +12139,37 @@ MonoBehaviour:
   duration: 10
   lightSource: {fileID: 335944210}
   animSpeed: 7
+--- !u!114 &1623168002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149449636964882380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 446d7e7f41d9421aa696aa1f6d37b2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onReceiveItem:
+    m_PersistentCalls:
+      m_Calls: []
+  dialogueText:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &1861076723865980505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149449636964882380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1f2e2e8712f9fb4dac353b83c1910ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &673608152400924022 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9346a220d08c3804aa1e29e9e3ab6a42,
