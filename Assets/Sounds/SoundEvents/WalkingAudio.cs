@@ -13,7 +13,7 @@ namespace Ltg8.Audio
         // --- ADD AUDIO TO ScriptObj Sounds/AudioReferences
         // --- FIX THE FOLLOWING:
         // ------ 'NewItemCollectedAnimation' AnimationEvent 'PlayWalkingSound' on animation 
-        // ------ 'Animations_Walk' has no receiver! Are you missing a component?
+        //        'Animations_Walk' has no receiver! Are you missing a component?
         
         public void PlayWalkingSound(AudioReferences playClip)
         {
