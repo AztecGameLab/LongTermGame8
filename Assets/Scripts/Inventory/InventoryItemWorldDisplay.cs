@@ -1,30 +1,43 @@
 ﻿using Cysharp.Threading.Tasks;
-using Ltg8.Inventory;
 using UnityEngine;
 
 namespace Inventory
 {
     
-    /*
-     * Description
-     * This class is responsible for the items that are present around the map (Catapult Pieces, Camera Pieces, etc)
-     */
     
+     // NOTE: Doc Complete
+    
+    /// <summary>
+    ///   <b>Description</b>: Responsible for the game items that are present around the map
+    ///   (Catapult Pieces, Camera Pieces, etc)
+    /// <list type="table">
+    ///       <item>
+    ///           <description><b>Display()</b> - Displays a specified game item in the overworld </description>
+    ///       </item>
+    ///       <item>
+    ///           <description><b>Collect()</b> - Runs when a player picks up an item </description>
+    ///       </item>
+    ///   </list>
+    /// </summary>
     public class InventoryItemWorldDisplay : MonoBehaviour
     {
-        [SerializeField] private Transform uiParent; // The parent of the displayed item  
-        [SerializeField] private string defaultItemId; // The ID of the item in question
+        [SerializeField] private Transform uiParent; // The parent of the item display  
+        [SerializeField] private string defaultItemId; // The ID of the game item
 
-        private Transform _activeItem; // The transform of the active, physical item 
+        private Transform _activeItem; // The gameObject of the active, physical item 
         private ItemData _activeData; // The data of the active item
 
         private void Start()
         {
             if (defaultItemId != string.Empty) // If the defaultItemId is specified
-                Display(Ltg8.Ltg8.ItemRegistry.FindItem(defaultItemId)); // Displays this item in the world
+                // Finds the desired ItemData in the ItemRegistry and uses it to display the item in the overworld
+                Display(Ltg8.Ltg8.ItemRegistry.FindItem(defaultItemId)); 
         }
 
-        // This function displays the specified item in the overworld
+        /// <summary>
+        ///   <b>Description</b>: Displays the specified item in the overworld.
+        /// </summary>
+        /// <param name="data">The ItemData that determines what item will be displayed</param>
         public void Display(ItemData data)
         {
             if (_activeItem != null) // If there is already an active item
@@ -39,20 +52,28 @@ namespace Inventory
             if (data != null) // If the data given in the parameters is not null
             {
                 // NOTE: Instantiate(original,parent), clones "original" and makes it a child of "parent"
-                // Clones the uiView of the item and makes it a child of uiParent
+                // Sets activeItem to a clone of the item's uiView gameObject and makes it a child of uiParent
                 _activeItem = Instantiate(data.uiView, uiParent).transform;
-                _activeData = data; // Makes the data provided in the parameters the active data 
+                _activeData = data; // Sets activeData to the ItemData used to display the object
+                _activeItem.name = data.itemName;
             }
         }
 
-        // This is the function that will run when the player collects the item
+        
+        /// <summary>
+        ///   <b>Description</b>: Runs when the player collects the item
+        /// </summary>
+        /// <remarks>
+        ///  <b>Adds</b> the item into the player's inventory before <b>destroying</b> it
+        /// </remarks>
         public void Collect()
         {
-            if (_activeData == null) return; // If the active item/data is not null
-            InventoryUtil.AddItem(_activeData.guid).Forget(); // Adds the item into the player's inventory
-            Destroy(_activeItem.gameObject); // Destroy the item
-            _activeItem = null; // Set the active item to null
-            _activeData = null; // Set the activate data to null
+            if (_activeData == null) return; // Don't run if there isn't an active item
+            InventoryUtil.AddItem(_activeData.guid).Forget(); // Adds the item into the player's inventory. 
+            Destroy(_activeItem.gameObject); // Destroys the active gameObject
+            // Nullifies both the activeItem and its data
+            _activeItem = null; 
+            _activeData = null; 
         }
     }
 }

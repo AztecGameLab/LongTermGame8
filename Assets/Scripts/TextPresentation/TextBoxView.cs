@@ -12,22 +12,36 @@ namespace TextPresentation
 {
     public class TextBoxView : MonoBehaviour
     {
-        [SerializeField] private TMP_Text mainText; // [Text] for the dialogue
-        [SerializeField] private GameObject mainAnimationObject; // [Image] for the character speaking
-        [SerializeField] private ImageFlipbookView mainAnimationImage; // [Script] for the image's animation
-        [SerializeField] private GameObject continueHint; // [Image] for the icon that says you can continue
+        /// <summary> <b>Description</b>: [Text] for the dialogue </summary>
+        [SerializeField] private TMP_Text mainText; 
+        /// <summary> <b>Description</b>: GameObject [w/ Image] for the character speaking </summary>
+        [SerializeField] private GameObject mainAnimationObject; 
+        /// <summary> <b>Description</b>: [Script] for the FlipBook image display </summary>
+        [SerializeField] private ImageFlipbookView mainAnimationImage;
+        /// <summary> <b>Description</b>: GameObject [w/ Image] for the icon that says you can continue </summary>
+        [SerializeField] private GameObject continueHint; 
         [SerializeField] private EventReference confirmChirp; // Audio???
-        [SerializeField] private RevealStyle defaultRevealStyle; // [Scriptable Object] default for how text is revealed
-        [SerializeField] private float clearDuration; // [Float] The amount of time to wait after clearing text
-        [SerializeField] private GameObject nameObject; // [Empty GameObject] holds character's name and dialogue frame
-        [SerializeField] private TMP_Text nameBoxText; // [Text] Text for the character's name
-        [SerializeField] private SpriteFlipBookAnimation defaultAnimation; // [Class] Controller & Data for the sprite animation
+        /// <summary> <b>Description</b>: [Scriptable Object] default style for how text is revealed </summary>
+        [SerializeField] private RevealStyle defaultRevealStyle; 
+        /// <summary> <b>Description</b>: [Float] The amount of time to wait before clearing text </summary>
+        [SerializeField] private float clearDuration; 
+        /// <summary> <b>Description</b>: [Empty GameObject] holds character's name and dialogue frame </summary>
+        [SerializeField] private GameObject nameObject; 
+        /// <summary> <b>Description</b>: [Text] Text for the character's name </summary>
+        [SerializeField] private TMP_Text nameBoxText; 
+        /// <summary> <b>Description</b>: [Serializable Class] Controller for the sprite animation </summary>
+        [SerializeField] private SpriteFlipBookAnimation defaultAnimation; 
         
-        private bool _continueRequested; // [Boolean] Determines whether the player has chosen to "Continue"
-        private string _currentDisplayName; // [String] The name for the character currently talking
-        private IFlipBookAnimation _currentMainAnimation; // [Interface] Holds the animation currently playing
+        /// <summary> <b>Description</b>: [Boolean] Determines whether the player has chosen to "Continue" </summary>
+        private bool _continueRequested; 
+        /// <summary> <b>Description</b>: [String] The name for the character currently talking </summary>
+        private string _currentDisplayName; 
+        /// <summary> <b>Description</b>: [Implementation of Interface] Holds the current sprite animation controller </summary>
+        private IFlipBookAnimation _currentMainAnimation; 
 
-        // Resets all the details of the dialogue box to their default values
+        /// <summary>
+        ///   <b>Description</b>: Resets all the components of the dialogue box to their default values
+        /// </summary>
         public void ResetAllState()
         {
             CurrentText = string.Empty; // Sets the current dialogue text to nothing
@@ -46,31 +60,36 @@ namespace TextPresentation
             Ltg8.Ltg8.Controls.GameplayCommon.Confirm.performed -= HandleConfirm;
         }
 
-        // Determines if the console is open
+        /// <summary>
+        ///   <b>Description</b>: Determines if the game console is open
+        /// </summary>
         private static bool IsConsoleOpen()
         {
             var console = GameObject.Find("Runtime Console").GetComponent<RuntimeConsole>();
             return console.IsVisible();
         }
         
-        private void HandleConfirm(InputAction.CallbackContext context) // NOTE: Come back to this, more inspection is needed
+        private void HandleConfirm(InputAction.CallbackContext context) // NOTE: The "context" is what is returned by this method (despite it being Void)
         {
             if (IsConsoleOpen()) return;
-            _continueRequested = true;
+            _continueRequested = true; // The player has requested to continue
         }
         
+        // Updates the counter, and updates the Flipbook at the intervals that have been defined and that are managed by the counter
         private void Update()
         {
             defaultAnimation.Update(Time.deltaTime); // Updates the time elapsed for the defaultAnimation
-            /*
-               NOTE: | The ?. here is a null-conditional operator. The code will only execute if the |
-               NOTE: | CurrentMainAnimation value is not null                                        |
-            */ 
-            CurrentMainAnimation?.ApplyTo(mainAnimationImage); // NOTE: Come back to this, more inspection is needed
+            
+            // NOTE: The ?. here is a null-conditional operator. The code will only execute if the CurrentMainAnimation value is not null                                        |
+            
+            CurrentMainAnimation?.ApplyTo(mainAnimationImage); // If there is an animation controller, transition the Flipbook to the next frame
         }
 
         // NOTE: Async is used for the "Await" command, allowing delays or waiting for other executions
         // NOTE: It seems that UniTask is a plugin, and is not automatically included in Unity
+        /// <summary>
+        ///   <b>Description</b>: Holds the dialogue execution until the player chooses to continue.
+        /// </summary>
         public async UniTask WaitForContinue()
         {
             _continueRequested = false; // Player has not requested to continue
@@ -80,13 +99,16 @@ namespace TextPresentation
             while (!_continueRequested) // While the player has not requested to continue
                 await UniTask.Yield(); // Wait
 
-            RuntimeManager.PlayOneShot(confirmChirp); // NOTE: Come back to this, more inspection is needed
+            RuntimeManager.PlayOneShot(confirmChirp); // NOTE: Come back to this, more inspection is needed (Audio stuff presumably) 
             continueHint.gameObject.SetActive(false); // Hide the "Continue" icon
             _continueRequested = false; // Reset value
         }
 
-        /* This method adds the text specified in the parameter, and then reveals the characters
-         one by one to create the text-typing efect */
+        /// <summary>
+        ///   <b>Description</b>: This method writes the game dialogue, revealings the characters
+        ///     one by one to create the text-typing effect.
+        /// </summary>
+        /// <param name="text"> The dialogue text to display </param>
         public async UniTask WriteText(string text)
         {
             mainText.text += text; // Add text to the main dialogue text
@@ -106,7 +128,7 @@ namespace TextPresentation
                     break;
                 }
 
-                // Skip past all of the style tags - e.g. <color=red>
+                // Skip past all the style tags - e.g. <color=red>
                 if (text[processedCharacters] == '<')
                     processedCharacters = text.IndexOf('>', processedCharacters) + 1;
                 
@@ -120,14 +142,19 @@ namespace TextPresentation
             }
         } 
         
-        // Erases all the text from the dialogue box
+        /// <summary>
+        ///   <b>Description</b>: Erases all the text from the dialogue box
+        /// </summary>
         public async UniTask ClearText()
         {
             CurrentText = string.Empty; // Removes all text
             await UniTask.Delay(TimeSpan.FromSeconds(clearDuration)); // Waits the specified amount of time 
         }
-
-        // Stops the code's execution for the time (in seconds) specified in the parameters
+        
+        /// <summary>
+        ///   <b>Description</b>: Stops the dialogue's execution until the player has chosen to continue AND a specified amount of time has passed
+        /// </summary>
+        /// <param name="seconds"> Time to delay the dialogue's execution </param>
         public async UniTask Delay(float seconds)
         {
             float elapsed = 0; // Time elapsed starts at 0, no time has passed
@@ -141,40 +168,40 @@ namespace TextPresentation
             }
         }
 
-        // The current text presented in the dialogue box, Getters and Setters
-        // NOTE: Come back to this, more inspection is needed
+        /// <summary> <b>Description</b>: The current text presented in the dialogue box, Getters and Setters </summary>
         public string CurrentText
         {
             get => mainText.text; // Gets "main text" text
             set
             {
-                mainText.SetText(value); // Main text set to text of the current CurrentText value
+                mainText.SetText(value); // Dialogue text set to the value of CurrentText
                 mainText.maxVisibleCharacters = value.Length; /* Amount of mainText characters shown set
                 to the length of the CurrentText string */
             }
         }
 
-        public RevealStyle CurrentRevealStyle { get; set; } // The CurrentRevealStyle getters/setters
+        /// <summary> <b>Description</b>: The dialogue's reveal style, Getters and Setters </summary>
+        public RevealStyle CurrentRevealStyle { get; set; } 
 
-        public IFlipBookAnimation CurrentMainAnimation // The CurrentMainAnimation getters/setters
+        /// <summary> <b>Description</b>: The Flipbook animation controller, Getters and Setters </summary>
+        public IFlipBookAnimation CurrentMainAnimation 
         {
-            get => _currentMainAnimation; // Get the current main animation from this script
+            get => _currentMainAnimation; // Get the current flipbook animation controller
             set
             {
-                mainAnimationObject.SetActive(value != null); /* Set the mainAnimationObject to active 
-                if the CurrentMainAnimation is not null*/
-                value?.ApplyTo(mainAnimationImage); // If CurrentMainAnimation is not null, ____
+                mainAnimationObject.SetActive(value != null); /* Set the flipBook object to active (if the CurrentMainAnimation is not null)*/
+                value?.ApplyTo(mainAnimationImage); // If CurrentMainAnimation is not null, display next Flipbook frame in sequence
                 _currentMainAnimation = value; // This script's currentMainAnimation is set to CurrentMainAnimation
             }
         }
         
-        public string CurrentDisplayName // CurrentDisplayName getters/setters
+        /// <summary> <b>Description</b>: Current speaker name, getters / setters </summary>
+        public string CurrentDisplayName 
         {
-            get => _currentDisplayName; // Return this scripts currentDisplayName
+            get => _currentDisplayName; // Return the name of the current speaker 
             set
             {
-                nameObject.SetActive(value != string.Empty); /* Empty object for the name is set to visible
-                if the string is not empty*/
+                nameObject.SetActive(value != string.Empty); // Set name-text object to active if the current name is not null
                 nameBoxText.SetText(value); // Set the nameBox's text to the CurrentDisplayName value
                 _currentDisplayName = value; // Set this script's currentDisplayName to CurrentDisplayName
             }

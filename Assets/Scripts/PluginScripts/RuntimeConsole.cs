@@ -12,26 +12,25 @@ namespace PluginScripts
     public class RuntimeConsole : MonoBehaviour
     {
         [SerializeField]
-        [Tooltip("The number of commands that should be remembered after running.")]
+        [Tooltip("[Int] The number of commands that should be remembered after running.")]
         private int maxCommandHistory = 30;
 
         [SerializeField]
-        [Tooltip("Whether the console should begin opened or closed.")]
+        [Tooltip("[Bool] Whether the console should begin opened or closed.")]
         private bool startVisible;
         
-        
         [SerializeField]
-        [Tooltip("The commands that are registered with the console by default.")]
+        [Tooltip("[Array] The commands that are registered with the console by default.")]
         private Command[] autoRegisterCommands;
 
         [Header("Style")]
 
         [SerializeField]
-        [Tooltip("The prefix that is shown before logged messages.")]
+        [Tooltip("[LogPrefix] The prefix that is shown before logged messages.")]
         private LogPrefix logPrefix;
 
         [SerializeField]
-        [Tooltip("The prefix that is shown before used-entered messages.")]
+        [Tooltip("[UserPrefix] The prefix that is shown before used-entered messages.")]
         private UserPrefix userPrefix;
 
         [Header("References")]
@@ -48,16 +47,20 @@ namespace PluginScripts
         [Tooltip("The input field where the user enters console commands.")]
         private InputField inputFieldDisplay;
 
+        // The GameObject that holds the console view components
         [SerializeField]
         private GameObject consoleView;
-
+        
+        /// <summary> <b>Description</b>: List of all game command instances </summary>
         private List<ICommand> _commandInstances;
-        private List<string> _suggestions;
+        
+        // Note: Come back to this
+        private List<string> _suggestions; 
         private int _autoCompleteIndex;
         private string _oldValue;
 
-        public static event Action<CreateEvent> OnCreate;
-        public event Action<bool, bool> OnVisibilityChanged;
+        public static event Action<CreateEvent> OnCreate; // NOTE: Custom Event, Come back to
+        public event Action<bool, bool> OnVisibilityChanged; // NOTE: Another custom event, come back to
 
         public CommandRegistry CommandRegistry { get; private set; }
         private IInputHistory InputHistory { get; set; }
@@ -261,7 +264,8 @@ namespace PluginScripts
         }
 
         // === Structures ===
-        public struct CreateEvent
+        /// <summary> <b>Description</b>: Custom Structure, w/ a RuntimeConsole Object </summary>
+        public struct CreateEvent 
         {
             public RuntimeConsole Console;
         }

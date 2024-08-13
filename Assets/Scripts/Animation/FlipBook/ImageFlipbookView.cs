@@ -5,17 +5,22 @@ namespace Animation.FlipBook
 {
     // NOTE: This class provides implementations for the methods in FlipBookView.cs
     
-    /* ---------------------------------------------------------------------
-        Description
-        This class seems to control the display of FlipBook Sprites
-       ---------------------------------------------------------------------
-    */
-    
+    /// <summary>
+    ///   <b>Description</b>: Controls the display of Flipbook (Dialogue) sprites
+    /// <list type="table">
+    ///       <item>
+    ///           <description><b>DisplayImage()</b> - Displays an image, utilizing the sprite provided in the parameters </description>
+    ///       </item>
+    ///   </list>
+    /// </summary>
     public class ImageFlipbookView : FlipBookView
     {
         [SerializeField] private Image image; // The image modified by the class
 
-        // Displays "Image" with the sprite provided in the parameters
+        /// <summary>
+        ///   <b>Description</b>: Displays the "Image" with the sprite provided in the parameters
+        /// </summary>
+        /// <param name="sprite"> The displayed Sprite</param>
         public override void DisplayImage(Sprite sprite)
         {
             // NOTE: The ? operator is the conditional operator, basically a fancier if-else statement

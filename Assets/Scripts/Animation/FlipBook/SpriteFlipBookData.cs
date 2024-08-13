@@ -3,16 +3,22 @@ using UnityEngine;
 
 namespace Animation.FlipBook
 {
+    
+    /// <summary>
+    ///   <b>Description</b>: This class holds the data for the Sprite Flipbook (used in dialogue), specifically the sprites
+    /// it contains and the interval between sprite updates
+    /// <list type="table">
+    ///       <item>
+    ///           <description><b>sprites[]</b> - An empty array of sprites </description>
+    ///       </item>
+    ///       <item>
+    ///           <description><b>updateRateSeconds</b> - A float that determines the interval between updates for Update() </description>
+    ///       </item>
+    ///   </list>
+    /// </summary>
+
     // NOTE: Kinda a lot to explain here, but in the top menu (File, Edit, Assets, . . .), under Assets->Create, this will create a menu for this class.
     [CreateAssetMenu]
-    //NOTE: This class extends the ScriptableObject class
-    
-    /* ----------------------------------------------------------------------------------------------------
-        Description
-        This class holds the data for the Sprite Flipbook (used in dialogue), specifically the sprites it contains and the interval between sprite updates
-       ----------------------------------------------------------------------------------------------------
-    */
-    
     public class SpriteFlipBookData : ScriptableObject
     {
         // Creates an empty array of sprites
@@ -22,18 +28,24 @@ namespace Animation.FlipBook
         public float updateRateSeconds = 0.15f;
     }
     
-    /* ----------------------------------------------------------------------------------------------------
-        Description
-        This class controls the animation for the Sprite FlipBook, specifically the sequencing and spacing of
-        sprite alternations
-       ----------------------------------------------------------------------------------------------------
-    */
-    
+    /// <summary>
+    ///   <b>Description</b>: This (serializable) class controls the animation for the Sprite FlipBook, specifically the 
+    /// sequencing and spacing of sprite alternations
+    /// <list type="table">
+    ///       <item>
+    ///           <description><b>sprites[]</b> - An empty array of sprites </description>
+    ///       </item>
+    ///       <item>
+    ///           <description><b>updateRateSeconds</b> - A float that determines the interval between updates for Update() </description>
+    ///       </item>
+    ///   </list>
+    /// </summary>
     [Serializable]
-    // NOTE: This class implements IFlipBookAnimation
     public class SpriteFlipBookAnimation : IFlipBookAnimation
     {
-        // Declares an instance of the SpriteFlipBookData class
+        /// <summary>
+        ///   <b>Description</b>: An instance of the SpriteFlipBookData class
+        /// </summary>
         [SerializeField]
         private SpriteFlipBookData data;
 
@@ -43,14 +55,21 @@ namespace Animation.FlipBook
         // Sets _elapsed to a very large number (infinity)
         private float _elapsed = float.PositiveInfinity;
 
-        // Displays the next sprite in the sequence, based on the index
+        /// <summary>
+        ///   <b>Description</b>: Displays the next sprite in the sequence, based on the index
+        /// </summary>
+        /// <param name="view"> An object of FlipBookView or one of its subclasses </param>
         public void ApplyTo(FlipBookView view)
         {
-            // If the data is not null, display the sprite at _index of the array of sprites. Otherwise, pass null.
+            // If the data is not null, display the sprite at _index of the array of sprites.
+            // Otherwise, pass null.
             view.DisplayImage(data != null ? data.sprites[_index] : null);
         }
         
-        // Called in an Update event, basically update with a specified interval and a focus on time elapsed
+        /// <summary>
+        ///   <b>Description</b>: Basically update with a specified interval and a focus on time elapsed
+        /// </summary>
+        /// <param name="deltaTime"> A float that determines the interval between updates </param>
         public void Update(float deltaTime)
         {
             // Do not continue if data is null
