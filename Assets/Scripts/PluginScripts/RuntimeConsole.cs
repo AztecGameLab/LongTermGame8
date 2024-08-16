@@ -47,8 +47,8 @@ namespace PluginScripts
         [Tooltip("The input field where the user enters console commands.")]
         private InputField inputFieldDisplay;
 
-        // The GameObject that holds the console view components
         [SerializeField]
+        [Tooltip("The GameObject that holds the console view components")]
         private GameObject consoleView;
         
         /// <summary> <b>Description</b>: List of all game command instances </summary>
@@ -59,59 +59,80 @@ namespace PluginScripts
         private int _autoCompleteIndex;
         private string _oldValue;
 
-        public static event Action<CreateEvent> OnCreate; // NOTE: Custom Event, Come back to
-        public event Action<bool, bool> OnVisibilityChanged; // NOTE: Another custom event, come back to
+        /// <summary> <b>Description</b>: An event that is triggered upon the creation of the Runtime Console </summary>
+        public static event Action<CreateEvent> OnCreate; 
+        /// <summary> <b>Description</b>: An event that is triggered once the visibility of the Console is modified </summary>
+        public event Action<bool, bool> OnVisibilityChanged; 
 
+        /// <summary> <b>Description</b>: The Command "Manager" for this Console </summary>
         public CommandRegistry CommandRegistry { get; private set; }
+        
+        /// <summary> <b>Description</b>: The Command History for this console </summary>
         private IInputHistory InputHistory { get; set; }
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        private static void Init()
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)] // TODO: Learn this later
+        
+        private static void Init() // Initialization for OnCreate, I guess. Doesn't seem to have a purpose.
         {
             OnCreate = null;
         }
 
-        private void Awake()
+        // Functions to run upon the creation of the runtime console
+        private void Awake() 
         {
-            CommandRegistry = new CommandRegistry();
+            // Iniitalize the Command Registry, Input History, and commandInstances / suggestions lists 
+            CommandRegistry = new CommandRegistry(); 
             InputHistory = new InputHistory(maxCommandHistory);
             _commandInstances = new List<ICommand>();
             _suggestions = new List<string>();
 
-            // Initialize the view.
+            // Initialize the the console's visibility.
             SetVisible(startVisible);
 
             // Register default commands.
             foreach (Command command in autoRegisterCommands)
             {
-                Command instance = Instantiate(command);
-                instance.Initialize(this);
-                CommandRegistry.Register(instance);
-                _commandInstances.Add(instance);
+                Command instance = Instantiate(command); // Create an instance of the command
+                instance.Initialize(this); // Initialize it (if needed)
+                CommandRegistry.Register(instance); // Add it to the command registry
+                _commandInstances.Add(instance); // Add it to the list of all command instances
             }
 
-            OnCreate?.Invoke(new CreateEvent{Console = this});
+            /* Once the console has been created, the OnCreate event is triggered, w/ a new CreateEvent structure
+             with this console. */
+            OnCreate?.Invoke(new CreateEvent{Console = this}); 
         }
 
+        // Functions to run upon the destruction of the Runtime Console object
         private void OnDestroy()
         {
-            foreach (ICommand command in _commandInstances)
+            // Dispose of every command
+            foreach (ICommand command in _commandInstances) 
                 command.Dispose();
 
+            // Dispose of the command registry
             CommandRegistry.Dispose();
         }
 
+        // Functions to run once the Runtime Console GameObject is enabled 
         private void OnEnable()
         {
-            OnVisibilityChanged += HandleVisibilityChange;
+            // Subscribes HandleVisibilityChange to the OnVisibilityChange event
+            OnVisibilityChanged += HandleVisibilityChange; 
+            // Make it so the "HandleSubmit" function is called during an onSubmit event
             inputFieldDisplay.onSubmit.AddListener(HandleSubmit);
+            // Make it so the "HandleInputChange" function is called during an onValueChanged event 
             inputFieldDisplay.onValueChanged.AddListener(HandleInputChange);
         }
 
+        // Functions to run once the Runtime Console GameObject is disabled
         private void OnDisable()
         {
-            OnVisibilityChanged -= HandleVisibilityChange;
+            // Unubscribes HandleVisibilityChange from the OnVisibilityChange event
+            OnVisibilityChanged -= HandleVisibilityChange; 
+            // Removes "HandleSubmit"s listener for the onSubmit event
             inputFieldDisplay.onSubmit.RemoveListener(HandleSubmit);
+            // Removes "HandleInputChange"s listener for the onValueChanged event
             inputFieldDisplay.onValueChanged.RemoveListener(HandleInputChange);
         }
 
@@ -159,9 +180,9 @@ namespace PluginScripts
 
         public void SetVisible(bool isVisible)
         {
-            bool wasVisible = consoleView.activeSelf;
-            consoleView.SetActive(isVisible);
-            OnVisibilityChanged?.Invoke(wasVisible, isVisible);
+            bool wasVisible = consoleView.activeSelf; // Boolean, console's previous visibility
+            consoleView.SetActive(isVisible); // Determines' console's visibility 
+            OnVisibilityChanged?.Invoke(wasVisible, isVisible); // Invokes the OnVisiblityChanged event
         }
 
         public bool IsVisible()
