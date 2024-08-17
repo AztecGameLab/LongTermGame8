@@ -14,12 +14,12 @@ namespace poetools.Console
         /// <returns>The combined string of arguments.</returns>
         public static string Combine(IEnumerable<string> args)
         {
-            string result = "";
+            string result = ""; // Empty placeholder for the result
 
-            foreach (string arg in args)
-                result += arg + ' ';
+            foreach (string arg in args) // For every argument string
+                result += arg + ' '; // Add it to result, w/ a space between each one
 
-            result = result.TrimEnd(' ');
+            result = result.TrimEnd(' '); // Removes the last unnecessary space from the result
             return result;
         }
 
@@ -31,7 +31,8 @@ namespace poetools.Console
         /// <returns>The combined string of arguments.</returns>
         public static string Combine(IList<string> args, int start)
         {
-            return Combine(args, start, args.Count);
+            // Calls Combine, w/ the "end" index automatically being set to the end of the list
+            return Combine(args, start, args.Count); 
         }
 
         /// <summary>
@@ -43,12 +44,12 @@ namespace poetools.Console
         /// <returns>The combined string of arguments.</returns>
         public static string Combine(IList<string> args, int start, int end)
         {
-            string result = "";
+            string result = ""; // Empty placeholder for the result
 
-            for (int i = start; i < end; i++)
-                result += args[i] + ' ';
+            for (int i = start; i < end; i++) // For each index from "start" to "end"
+                result += args[i] + ' '; // Add the corresponding argument to the result, w/ a space in between each
 
-            result = result.TrimEnd(' ');
+            result = result.TrimEnd(' '); // Removes the last unnecessary space from the result
             return result;
         }
 
@@ -60,10 +61,11 @@ namespace poetools.Console
         /// <returns>The arguments the user passed to the command.</returns>
         public static string[] Parse(string[] input)
         {
-            string[] args = new string[input.Length - 1];
+            // Creates an string array, 1 slot smaller than the inputted array
+            string[] args = new string[input.Length - 1]; 
 
-            for (int i = 0; i < args.Length; i++)
-                args[i] = input[i + 1];
+            for (int i = 0; i < args.Length; i++) // For every index in args
+                args[i] = input[i + 1]; // Set its entry to the corresponding "one-up" entry in input
 
             return args;
         }

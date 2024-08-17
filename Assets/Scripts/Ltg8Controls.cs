@@ -18,8 +18,8 @@ using UnityEngine.InputSystem.Utilities;
 public partial class @Ltg8Controls: IInputActionCollection2, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @Ltg8Controls()
-    {
+    public @Ltg8Controls()  
+    { 
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""ltg8_controls"",
     ""maps"": [

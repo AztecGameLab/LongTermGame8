@@ -9,6 +9,20 @@ using UnityEngine.UI;
 
 namespace PluginScripts
 {
+    /// <summary>
+    ///   <b>Description</b>: Script responsible for the functionality of the "admin" console in-game, such as
+    /// <list type="number">
+    ///       <item>
+    ///           <description><b>Commands</b> - The initialization and execution of commands </description>
+    ///       </item>
+    ///       <item>
+    ///           <description><b>User Input</b> - Auto-completion, input history, etc</description>
+    ///       </item>
+    ///       <item>
+    ///           <description><b>Output</b> - Logs of user commands, console messages, and errors </description>
+    ///       </item>
+    ///   </list>
+    /// </summary>
     public class RuntimeConsole : MonoBehaviour
     {
         [SerializeField]
@@ -55,8 +69,11 @@ namespace PluginScripts
         private List<ICommand> _commandInstances;
         
         // Note: Come back to this
+        /// <summary> <b>Description</b>: The suggested commands for the console </summary>
         private List<string> _suggestions; 
-        private int _autoCompleteIndex;
+        /// <summary> <b>Description</b>: The index for the currently selected suggestion </summary>
+        private int _autoCompleteIndex; 
+        
         private string _oldValue;
 
         /// <summary> <b>Description</b>: An event that is triggered upon the creation of the Runtime Console </summary>
@@ -137,47 +154,70 @@ namespace PluginScripts
         }
 
         // === Public API ===
+        /// <summary>
+        ///   <b>Description</b>: 
+        /// </summary>
+        /// <param name="category"> The category of the message, used for the prefix </param>
+        /// <param name="message"> The message to log on the console </param>
         public void Log(string category, string message)
         {
-            string header = logPrefix.GenerateMessage(category);
-            LogRaw($"{header}{message}");
+            string header = logPrefix.GenerateMessage(category); // Creates a prefix for the Log message
+            LogRaw($"{header}{message}"); // Logs the message with the created prefix
         }
 
+        /// <summary>
+        ///   <b>Description</b>: Adds the given message to the Runtime Console on a new line.
+        /// </summary>
+        /// <param name="message"> The message to log in the console </param>
         public void LogRaw(string message)
         {
-            textDisplay.text += $"\n{message}";
+            textDisplay.text += $"\n{message}"; 
         }
 
+        /// <summary>
+        ///   <b>Description</b>: Clears the console
+        /// </summary>
         public void Clear()
         {
             textDisplay.text = string.Empty;
         }
 
+        /// <summary>
+        ///   <b>Description</b>: Executes the given command.
+        /// </summary>
+        /// <param name="console"> The command to run </param>
         public void Execute(string command)
         {
             HandleSubmit(command);
         }
 
+        /// <summary>
+        ///   <b>Description</b>: Toggles the Visibility of the Console
+        /// </summary>
         public void ToggleVisibility()
         {
-            SetVisible(!IsVisible());
-            var player = GameObject.Find("Player");
-            if (IsVisible())
+            SetVisible(!IsVisible()); // Toggles the console's visibility
+            var player = GameObject.Find("Player"); // Finds the "Player" object
+            if (IsVisible()) // If the console is now visible
             {
-                player.GetComponent<CharacterController>().enabled = false;
-                player.GetComponent<NoClipMovement>().SetConsole(true);
+                player.GetComponent<CharacterController>().enabled = false; // Disables the CharacterController
+                player.GetComponent<NoClipMovement>().SetConsole(true); // Stupid Justin Script, make better later - Justin
             }
-            else if(player.GetComponent<NoClipMovement>().GetNoclip())
+            else if(player.GetComponent<NoClipMovement>().GetNoclip()) // If The console is not open, but noclip is enabled
             {
-                player.GetComponent<CharacterController>().enabled = false;
-                player.GetComponent<NoClipMovement>().SetConsole(false);
+                player.GetComponent<CharacterController>().enabled = false; // Keep CharacterController disabled
+                player.GetComponent<NoClipMovement>().SetConsole(false); // Can we ban this guy? - Justin
             }
             else
             {
-                player.GetComponent<CharacterController>().enabled = true;
+                player.GetComponent<CharacterController>().enabled = true; // Re-eanble the CharacterController
             }
         }
 
+        /// <summary>
+        ///   <b>Description</b>: Sets the visibility of the console
+        /// </summary>
+        /// <param name="isVisible"> If true, the console is visible </param>
         public void SetVisible(bool isVisible)
         {
             bool wasVisible = consoleView.activeSelf; // Boolean, console's previous visibility
@@ -185,103 +225,153 @@ namespace PluginScripts
             OnVisibilityChanged?.Invoke(wasVisible, isVisible); // Invokes the OnVisiblityChanged event
         }
 
+        /// <summary>
+        ///   <b>Description</b>: Returns whether the console is visible
+        /// </summary>
         public bool IsVisible()
         {
             return consoleView.activeSelf;
         }
 
+        /// <summary>
+        ///   <b>Description</b>: Cycles the suggested auto-completions forward one
+        /// </summary>
         public void CycleAutoCompleteForward()
         {
-            _autoCompleteIndex++;
-            UpdateAutoCompleteText();
+            _autoCompleteIndex++; // Increments the index for the selected auto-completion
+            UpdateAutoCompleteText(); // Updates auto-complete texts
         }
 
+        /// <summary>
+        ///   <b>Description</b>: Cycles the suggest auto-completes backwards one
+        /// </summary>
         public void CycleAutoCompleteBackward()
         {
-            _autoCompleteIndex--;
-            UpdateAutoCompleteText();
+            _autoCompleteIndex--; // Decrements the index for the selected auto-completion
+            UpdateAutoCompleteText(); // Updates auto-complete texts
         }
 
+        /// <summary>
+        ///   <b>Description</b>: Cycles the input-history backwards one
+        /// </summary>
         public void MoveHistoryBackward()
         {
-            if (InputHistory.TryMoveBackwards(out string prevCommand))
+            // Try cycling the input history backwards one, outputting the previous command
+            if (InputHistory.TryMoveBackwards(out string prevCommand)) 
+                // Set the text in the inputField to the previous command
                 inputFieldDisplay.text = prevCommand;
         }
 
+        /// <summary>
+        ///   <b>Description</b>: Cycles the input-history forwards one
+        /// </summary>
         public void MoveHistoryForward()
         {
+            // Try cycling the input history forwards one, outputting the next command
             if (InputHistory.TryMoveForwards(out string nextCommand))
+                // Set the text in the inputField to the next command
                 inputFieldDisplay.text = nextCommand;
         }
 
         // === Event Handlers ===
+        
+        /// <summary>
+        ///   <b>Description</b>: The code to execute when a command is submitted in the console
+        /// </summary>
+        /// <param name="input"> The user-input from the console </param>
         private void HandleSubmit(string input)
         {
+            // Separates the given string into substrings, with spaces acting as the separator 
             string[] splitInput = input.Split(new []{' '}, StringSplitOptions.RemoveEmptyEntries);
 
+            // If the input is not empty and the splitInput array is not empty
             if (input.Length > 0 && splitInput.Length > 0)
             {
-                string[] args = ArgumentTools.Parse(splitInput);
-                ICommand command = CommandRegistry.FindCommand(splitInput[0]);
-                textDisplay.text += '\n' + userPrefix.GenerateMessage(input);
-
+                string[] args = ArgumentTools.Parse(splitInput); // Removes the command, leaving only an array of arguments
+                ICommand command = CommandRegistry.FindCommand(splitInput[0]); // Returns the command given in "input"
+                // Displays the user-inputted command in the console, with the userPrefix attached
+                textDisplay.text += '\n' + userPrefix.GenerateMessage(input); 
+                // Executes the command w/ its arguments
                 command.Execute(args, this);
+                // Adds the user's input to the Input History 
                 InputHistory.AddEntry(input);
             }
 
             ResetInputField();
         }
 
+        /// <summary>
+        ///   <b>Description</b>: The code to execute when the console becomes visible
+        /// </summary>
+        /// <param name="isVisible"> If true, the console is visible </param>
+        /// <param name="wasvisible"> If true, the console was visible before the change </param>
         private void HandleVisibilityChange(bool wasVisible, bool isVisible)
         {
-            if (isVisible)
-                ResetInputField();
+            if (isVisible) // If the console is visible
+                ResetInputField(); // Reset the state of the input field
         }
 
+        /// <summary>
+        ///   <b>Description</b>: The code to execute when the the input in the console is changed
+        /// </summary>
+        /// <param name="value"> The current console text </param>
         private void HandleInputChange(string value)
         {
+            // Separates the input into substrings, using spaces as a separator 
             string[] splitInput = value.Split(new []{' '}, StringSplitOptions.RemoveEmptyEntries);
 
+            // If the above array is empty (no input)
             if (splitInput.Length == 0)
             {
                 // case: we have no input.
-                autoCompleteDisplay.text = string.Empty;
+                autoCompleteDisplay.text = string.Empty; // Make the autoComplete empty
                 return;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space)) // If space is pressed
             {
-                int newSpaceCount = value.Count(c => c == ' ');
-                int oldSpaceCount = _oldValue.Count(c => c == ' ');
+                int newSpaceCount = value.Count(c => c == ' '); // Count the amount of spaces in "value"
+                int oldSpaceCount = _oldValue.Count(c => c == ' '); // Count the amount of spaces in "old value"
 
                 // If we entered a space, apply the auto-complete.
                 if (_suggestions.Any() && newSpaceCount > oldSpaceCount)
                 {
-                    _autoCompleteIndex = 0;
-                    string autoCompleteText = autoCompleteDisplay.text;
-                    inputFieldDisplay.text = autoCompleteText + " ";
-                    inputFieldDisplay.caretPosition = inputFieldDisplay.text.Length;
-                }
+                    _autoCompleteIndex = 0; // Set the auto-complete back to the first suggestion
+                    string autoCompleteText = autoCompleteDisplay.text; // Grab the auto-complete text
+                    inputFieldDisplay.text = autoCompleteText + " "; // Set the input Field to the auto-complete text with a space
+                    // Place the caret (the little ^ symbol that shows up when you type) to the end of the input field text
+                    inputFieldDisplay.caretPosition = inputFieldDisplay.text.Length; 
+                } 
             }
-
-            CommandRegistry.FindCommands(inputFieldDisplay.text, _suggestions);
-            UpdateAutoCompleteText();
-            _oldValue = value;
+            // Fill the suggestions list with all possible auto-completions 
+            CommandRegistry.FindCommands(inputFieldDisplay.text, _suggestions); 
+            UpdateAutoCompleteText(); // Update the auto-complete text
+            _oldValue = value; // Set the oldValue (for spaces) to the current value
         }
 
         // === Helpers ===
+        /// <summary>
+        ///   <b>Description</b>: Updates the auto-complete text shown when typing something into the console
+        /// </summary>
         private void UpdateAutoCompleteText()
         {
-            int index = (int) Mathf.Repeat(_autoCompleteIndex, _suggestions.Count);
+            // If the index surpasses the amount of suggestions, loop it back to the first suggestion (index 0)
+            int index = (int) Mathf.Repeat(_autoCompleteIndex, _suggestions.Count); 
+            // If there are existing suggestions, set the autoCompleteText to the suggestion at the index
+            // Otherwise, make it empty
             string autoCompleteText = _suggestions.Count > 0 ? _suggestions[index] : "";
+            // Set the auto-complete text to the string above 
             autoCompleteDisplay.text = autoCompleteText;
         }
 
+        /// <summary>
+        ///   <b>Description</b>: Resets the state of the Console's Input Field
+        /// </summary>
         private void ResetInputField()
         {
-            inputFieldDisplay.text = string.Empty;
-            inputFieldDisplay.ActivateInputField();
-            InputHistory.Clear();
+            inputFieldDisplay.text = string.Empty; // Clear the input field text
+            inputFieldDisplay.ActivateInputField(); // Activate / Enable the input field 
+            InputHistory.Clear(); // Clear the input history
         }
 
         // === Structures ===

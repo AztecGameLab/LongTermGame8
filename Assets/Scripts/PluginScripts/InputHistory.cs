@@ -3,11 +3,21 @@ using System.Collections.Generic;
 
 namespace poetools.Console
 {
+    /// <summary>
+    /// Interface for the <see cref="InputHistory">Input History</see> Class
+    /// </summary>
     public interface IInputHistory
     {
+        /// <summary> <b>Description</b>: Adds a new user-input entry into the Input History </summary>
+        /// <param name="input"> The user-input to be entered into the input history list </param>
         void AddEntry(string input);
+        /// <summary> <b>Description</b>: Clears the user's "traversal" of the command history </summary>
         void Clear();
+        /// <summary> <b>Description</b>: Attempts to move backwards in the command history list </summary>
+        /// <param name="previous"> The string held in the "current" node that results after this function executes </param>
         bool TryMoveBackwards(out string previous);
+        /// <summary> <b>Description</b>: Attempts to move forwards in the command history list </summary>
+        /// <param name="next"> The string held in the "current" node that results after this function executes </param>
         bool TryMoveForwards(out string next);
     }
     

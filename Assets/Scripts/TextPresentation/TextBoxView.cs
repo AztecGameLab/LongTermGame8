@@ -69,7 +69,7 @@ namespace TextPresentation
             return console.IsVisible();
         }
         
-        private void HandleConfirm(InputAction.CallbackContext context) // NOTE: The "context" is what is returned by this method (despite it being Void)
+        private void HandleConfirm(InputAction.CallbackContext context) // NOTE: Come back to this
         {
             if (IsConsoleOpen()) return;
             _continueRequested = true; // The player has requested to continue

@@ -9,11 +9,24 @@ using UnityEngine;
 using UnityEngine.Pool;
 
 namespace TextPresentation
-{
-    // NOTE: Abstract class, some or all of the implementation will be done in derived scripts
+{ 
+    /// <summary>
+    ///   <b>Description</b>: ___
+    /// <list type="table">
+    ///       <item>
+    ///           <description><b>Commands</b> - The initialization and execution of commands </description>
+    ///       </item>
+    ///       <item>
+    ///           <description><b>User Input</b> - Auto-completion, input history, etc</description>
+    ///       </item>
+    ///       <item>
+    ///           <description><b>Output</b> - Logs of user commands, console messages, and errors </description>
+    ///       </item>
+    ///   </list>
+    /// </summary>
     public abstract class OptionBoxView : MonoBehaviour
     {
-        [SerializeField] private TextBoxView textBox; //
+        [SerializeField] private TextBoxView textBox; // TextBoxView script
         
         public ImageFlipbookView optionAnimationImage;
         public EventReference optionHoverSfx;
