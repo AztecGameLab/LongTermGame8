@@ -2,14 +2,15 @@
 
 namespace Animation.FlipBook
 {
-    // NOTE: This class provides implementations for the methods in IFlipBookAnimation.cs
     
-    /* ----------------------------------------------------------------------------------------------------
-        Description
-        NOTE: Ask Daniel what the purpose of this class is cause IDK -\_o_o_/-
-       ----------------------------------------------------------------------------------------------------
-    */
-    
+    /// <summary>
+    ///   <b>Description</b>: This class simply creates a 1x1 transparent sprite for the Flipbook Object to display.
+    /// <list type="number">
+    ///       <item>
+    ///           <description><b><see cref="ApplyTo"/></b></description>
+    ///       </item>
+    ///   </list>
+    /// </summary>
     public class InvisibleFlipBookAnimation : IFlipBookAnimation
     {
         // NOTE: Readonly implies that the variable can only be instantiated in the constructor and never again
@@ -18,7 +19,7 @@ namespace Animation.FlipBook
         public static readonly InvisibleFlipBookAnimation Instance = new InvisibleFlipBookAnimation();
         private readonly Sprite _transparentTexture;
             
-        // Constructor for this class
+        // Constructor for this class, creates the transparent texture
         private InvisibleFlipBookAnimation()
         {
             // Creates a new 2D texture with a size of 1 x 1 (1 pixel)
@@ -31,6 +32,10 @@ namespace Animation.FlipBook
             _transparentTexture = Sprite.Create(texture, new Rect(0, 0, 1, 1), new Vector2(0, 0));
         }
 
+        /// <summary>
+        /// <b>Description</b>: Makes the Flipbook object display a transparent sprite.
+        /// </summary>
+        /// <param name="view"> The Flipbook object that displays the image </param>
         public void ApplyTo(FlipBookView view)
         {
             // Displays the image using the "_transparentTexture" Sprite created in this class

@@ -10,6 +10,10 @@ using UnityEngine.InputSystem;
 
 namespace TextPresentation
 {
+    /// <summary>
+    ///   <b>Description</b>: This class is responsible for the dialogue text box,
+    /// performing tasks such as clearing, writing, and revealing text dialogue. 
+    /// </summary>
     public class TextBoxView : MonoBehaviour
     {
         /// <summary> <b>Description</b>: [Text] for the dialogue </summary>

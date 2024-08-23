@@ -26,7 +26,7 @@ namespace TextPresentation
     /// </summary>
     public abstract class OptionBoxView : MonoBehaviour
     {
-        [SerializeField] private TextBoxView textBox; // TextBoxView script
+        [SerializeField] private TextBoxView textBox; 
         
         public ImageFlipbookView optionAnimationImage;
         public EventReference optionHoverSfx;

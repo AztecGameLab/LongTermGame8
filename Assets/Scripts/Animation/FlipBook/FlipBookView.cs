@@ -2,15 +2,12 @@
 
 namespace Animation.FlipBook
 {
-    // NOTE: Abstract (Base) Class, the implementation is defined in the derived classes
-     
-    // NOTE: I believe this is a Abstract Class as opposed to an Interface (unlike IFlipBookAnimation.cs) because it needs to extend MonoBehavior
     
     /// <summary>
-    ///   <b>Description</b>: Abstract Class for displaying Flipbook sprites
-    /// <list type="table">
+    ///   <b>Description</b>: Abstract Class for displaying FlipBook sprites
+    /// <list type="number">
     ///       <item>
-    ///           <description><b>DisplayImage()</b> - Displays an image, utilizing the sprite provided in the parameters </description>
+    ///           <description> <b><see cref="ImageFlipbookView"/></b> </description>
     ///       </item>
     ///   </list>
     /// </summary>

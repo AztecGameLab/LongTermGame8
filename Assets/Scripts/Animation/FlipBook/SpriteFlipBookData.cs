@@ -5,7 +5,7 @@ namespace Animation.FlipBook
 {
     
     /// <summary>
-    ///   <b>Description</b>: This class holds the data for the Sprite Flipbook (used in dialogue), specifically the sprites
+    ///   <b>Description</b>: This class holds the data for the Sprite Flipbook (character sprites used in dialogue), specifically the sprites
     /// it contains and the interval between sprite updates
     /// <list type="table">
     ///       <item>
@@ -16,7 +16,6 @@ namespace Animation.FlipBook
     ///       </item>
     ///   </list>
     /// </summary>
-
     // NOTE: Kinda a lot to explain here, but in the top menu (File, Edit, Assets, . . .), under Assets->Create, this will create a menu for this class.
     [CreateAssetMenu]
     public class SpriteFlipBookData : ScriptableObject
@@ -31,12 +30,12 @@ namespace Animation.FlipBook
     /// <summary>
     ///   <b>Description</b>: This (serializable) class controls the animation for the Sprite FlipBook, specifically the 
     /// sequencing and spacing of sprite alternations
-    /// <list type="table">
+    /// <list type="number">
     ///       <item>
-    ///           <description><b>sprites[]</b> - An empty array of sprites </description>
+    ///           <description><b><see cref="ApplyTo"/></b></description>
     ///       </item>
     ///       <item>
-    ///           <description><b>updateRateSeconds</b> - A float that determines the interval between updates for Update() </description>
+    ///           <description><b><see cref="Update"/></b></description>
     ///       </item>
     ///   </list>
     /// </summary>
@@ -56,9 +55,9 @@ namespace Animation.FlipBook
         private float _elapsed = float.PositiveInfinity;
 
         /// <summary>
-        ///   <b>Description</b>: Displays the next sprite in the sequence, based on the index
+        ///   <b>Description</b>: Makes the Flipbook object display the next sprite in the sequence, based on the index.
         /// </summary>
-        /// <param name="view"> An object of FlipBookView or one of its subclasses </param>
+        /// <param name="view"> The Flipbook object that displays the image </param>
         public void ApplyTo(FlipBookView view)
         {
             // If the data is not null, display the sprite at _index of the array of sprites.
@@ -67,7 +66,8 @@ namespace Animation.FlipBook
         }
         
         /// <summary>
-        ///   <b>Description</b>: Basically update with a specified interval and a focus on time elapsed
+        ///   <b>Description</b>: Update() w/ a custom interval. Responsible for incrementing (and looping) the sprite
+        /// index, changing the sprite that is displayed and allowing for the animation effect.
         /// </summary>
         /// <param name="deltaTime"> A float that determines the interval between updates </param>
         public void Update(float deltaTime)

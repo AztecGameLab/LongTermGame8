@@ -3,13 +3,12 @@ using UnityEngine.UI;
 
 namespace Animation.FlipBook
 {
-    // NOTE: This class provides implementations for the methods in FlipBookView.cs
-    
     /// <summary>
-    ///   <b>Description</b>: Controls the display of Flipbook (Dialogue) sprites
-    /// <list type="table">
+    ///   <b>Description</b>: This class contains the Flipbook (Character) sprite that appears during dialogue, and is responsible for the 
+    /// sprite image it displays.
+    /// <list type="bullet">
     ///       <item>
-    ///           <description><b>DisplayImage()</b> - Displays an image, utilizing the sprite provided in the parameters </description>
+    ///           <description> <b><see cref="DisplayImage"/></b> </description>
     ///       </item>
     ///   </list>
     /// </summary>
@@ -20,7 +19,7 @@ namespace Animation.FlipBook
         /// <summary>
         ///   <b>Description</b>: Displays the "Image" with the sprite provided in the parameters
         /// </summary>
-        /// <param name="sprite"> The displayed Sprite</param>
+        /// <param name="sprite"> The sprite to display </param>
         public override void DisplayImage(Sprite sprite)
         {
             // NOTE: The ? operator is the conditional operator, basically a fancier if-else statement
