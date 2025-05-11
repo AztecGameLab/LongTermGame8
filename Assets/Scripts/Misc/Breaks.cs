@@ -14,7 +14,7 @@ public class Breaks : MonoBehaviour
     {
         //Gets the impulse value on collision.
         Vector3 Imp = collision.impulse / Time.fixedDeltaTime;
-        Debug.Log("Impulse = " + Imp.magnitude);
+        //Debug.Log("Impulse = " + Imp.magnitude);
 
         //If the collided object has a tag breakale check if the amount of force on collision passes to break an object.
         if(collision.gameObject.tag == "breakable")
