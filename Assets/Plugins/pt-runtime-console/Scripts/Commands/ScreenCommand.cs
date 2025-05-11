@@ -40,7 +40,7 @@ namespace poetools.Console.Commands
                         if (args.Length >= 2 && int.TryParse(args[1], out int rate))
                         {
 #if UNITY_2022_3
-                            Screen.SetResolution(Screen.width, Screen.height, Screen.fullScreenMode, new RefreshRate{numerator = rate, denominator = 1});
+                            Screen.SetResolution(Screen.width, Screen.height, Screen.fullScreenMode, new RefreshRate{numerator = (uint)rate, denominator = 1});
 #else
                             Screen.SetResolution(Screen.width, Screen.height, Screen.fullScreenMode, rate);
 #endif
