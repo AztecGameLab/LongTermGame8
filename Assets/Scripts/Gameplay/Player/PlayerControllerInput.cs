@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Ltg8.Player
@@ -10,7 +11,8 @@ namespace Ltg8.Player
         private void Start()
         {
             Ltg8Controls.PlayerFreeMovementActions movement = Ltg8.Controls.PlayerFreeMovement;
-            
+            Ltg8Controls.GameplayCommonActions common = Ltg8.Controls.GameplayCommon;
+
             movement.LookX.performed += HandleLookX;
             movement.LookY.performed += HandleLookY;
             movement.LookX.canceled += HandleLookX;
@@ -21,13 +23,14 @@ namespace Ltg8.Player
             movement.MoveX.canceled += HandleMoveX;
             movement.MoveY.performed += HandleMoveY;
             movement.MoveY.canceled += HandleMoveY;
+            common.Pause.performed += Quit;
         }
-        
+
         private void HandleJump(InputAction.CallbackContext context)
         {
             if (context.performed)
                 controller.InputJumpHeld = true;
-            
+
             else if (context.canceled)
                 controller.InputJumpHeld = false;
         }
@@ -54,12 +57,22 @@ namespace Ltg8.Player
                 controller.InputYawDelta = context.ReadValue<float>();
             else controller.InputYawDelta = 0;
         }
-        
+
         private void HandleLookY(InputAction.CallbackContext context)
         {
             if (context.performed)
                 controller.InputPitchDelta -= context.ReadValue<float>();
             else controller.InputPitchDelta = 0;
         }
-    }
+
+        private void Quit(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                Application.Quit();
+#if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+#endif
+        }
+
+}
 }
