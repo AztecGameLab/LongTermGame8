@@ -12,12 +12,12 @@ namespace poetools.Console
     {
         /// <summary> <b>Description</b>: A dictionary, where a string (the name of the command) is the key
         /// and the Command you are looking for is the value </summary>
-        private readonly Dictionary<string, ICommand> _commandLookup; // = new Dictionary<string, ICommand>();
+        private readonly Dictionary<string, ICommand> _commandLookup = new Dictionary<string, ICommand>();
         
         /// <summary> <b>Description</b>: A DictionaryTree used for the auto-completer in the console. When
         /// you begin typing a command, the autoCompleter DictionaryTree finds words that begin with the
         /// user-given prefix. </summary>
-        private readonly DictionaryTree _autoCompleter; // = new DictionaryTree();
+        private readonly DictionaryTree _autoCompleter = new DictionaryTree();
 
         /// <summary> <b>Description</b>: The Default Command (runs when no existing command is called) is set
         /// to the Error Command </summary>

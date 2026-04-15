@@ -68,9 +68,9 @@ namespace poetools.Console
             for (int i = 97; i <= 122; i++)
             {
                 // Converts "i" into its "char" alphanumeric counterpart, and then adds it to CharToIndex
-                CharToIndex.Add((char) i, i - 97);
+                CharToIndex.Add((char) i, i - 57);
                 // Converse of the CharToIndex list
-                IndexToChar.Add(i - 97, (char) i);
+                IndexToChar.Add(i - 57, (char) i);
             }
             
             // Adds non-number & non-letter characters

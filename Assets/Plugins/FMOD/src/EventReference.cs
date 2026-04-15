@@ -4,7 +4,6 @@ using UnityEngine.Serialization;
 namespace Plugins.FMOD.src
 {
     [Serializable]
-    // NOTE: Structs are custom data values/structures that can be used to store & organize related data
     public struct EventReference
     {
         // NOTE: global:: goes to the global namespace rather than the namespace written above

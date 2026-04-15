@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: ltg8_settings
   m_EditorClassIdentifier: 
   persistentScenePath: Assets/Scenes/sc_persistent.unity
-  mainMenuScenePath: Assets/Scenes/MainMenu/sc_main_menu.unity
-  overworldItemPrefab: {fileID: 0}
-  editorPlayStrategy: 0
+  mainMenuScenePath: Assets/Scenes/rockyjumpyroad/rockyjumpyroad M.unity
+  overworldItemPrefab: {fileID: 8135380634879758155, guid: 93af32ab42d076d4abe3f9660ab586d3,
+    type: 3}
+  editorPlayStrategy: 1
   editorSaveStrategy: 0
   editorSaveId: dev_test

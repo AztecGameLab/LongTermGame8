@@ -17,15 +17,13 @@ namespace Animation.FlipBook
         [SerializeField] private Image image; // The image modified by the class
 
         /// <summary>
-        ///   <b>Description</b>: Displays the "Image" with the sprite provided in the parameters
-        /// </summary>
-        /// <param name="sprite"> The sprite to display </param>
+        ///   <b>Description</b>: Changes the game object's "image" to the sprite provided in the parameters
+        /// </summary> <param name="sprite"> The sprite image to display </param>
         public override void DisplayImage(Sprite sprite)
         {
-            // NOTE: The ? operator is the conditional operator, basically a fancier if-else statement
-            // If the sprite is null, set the color of "image" to clear, otherwise, set the color of "image" to white
+            // If null sprite, set "image" color to clear (invisible); else, set "image" color to white
             image.color = sprite == null ? Color.clear : Color.white;
-            // Set the sprite of "Image" to the sprite given in the parameters
+            // Set the sprite of "image" to the sprite given in the parameters
             image.sprite = sprite;
         }
     }

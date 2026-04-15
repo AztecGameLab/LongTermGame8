@@ -4,11 +4,9 @@ namespace Animation.FlipBook
 {
     
     /// <summary>
-    ///   <b>Description</b>: This class simply creates a 1x1 transparent sprite for the Flipbook Object to display.
+    /// <b>Description</b>: This class simply creates a 1x1 transparent sprite for the Flipbook Object to display.
     /// <list type="number">
-    ///       <item>
-    ///           <description><b><see cref="ApplyTo"/></b></description>
-    ///       </item>
+    ///       <item> <description><b><see cref="ApplyTo"/></b></description> </item>
     ///   </list>
     /// </summary>
     public class InvisibleFlipBookAnimation : IFlipBookAnimation
@@ -32,9 +30,7 @@ namespace Animation.FlipBook
             _transparentTexture = Sprite.Create(texture, new Rect(0, 0, 1, 1), new Vector2(0, 0));
         }
 
-        /// <summary>
-        /// <b>Description</b>: Makes the Flipbook object display a transparent sprite.
-        /// </summary>
+        /// <summary> <b>Description</b>: Makes the Flipbook object display a transparent sprite. </summary>
         /// <param name="view"> The Flipbook object that displays the image </param>
         public void ApplyTo(FlipBookView view)
         {
@@ -42,9 +38,6 @@ namespace Animation.FlipBook
             view.DisplayImage(_transparentTexture);
         }
         
-        public void Update(float deltaTime)
-        {
-            /* Do nothing. */
-        }
+        public void Update(float deltaTime) { /* Do nothing. */ }
     }
 }

@@ -1,12 +1,14 @@
 ﻿using System;
 using Inventory;
-using Ltg8.Inventory;
 using TriInspector;
 using UnityEngine;
 
 // Binds the dependencies of the global services to some implementations
 namespace Ltg8
 {
+    /// <summary>
+    /// Initializes the LTG8 Static Class upon loading, and a couple of other settings
+    /// </summary>
     [HideMonoScript]
     public class Ltg8Initializer : MonoBehaviour
     {
@@ -22,6 +24,7 @@ namespace Ltg8
         [Required] public TextBoxPresenter textBoxPresenter;
         [Required] public ItemRegistry itemRegistry;
      
+        // Set every LTG8 field to the values given above
         private void Awake()
         {
             Ltg8.Settings = settings;

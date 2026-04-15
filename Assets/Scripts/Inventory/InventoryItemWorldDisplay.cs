@@ -4,25 +4,17 @@ using UnityEngine;
 namespace Inventory
 {
     
-    
-     // NOTE: Doc Complete
-    
     /// <summary>
-    ///   <b>Description</b>: Responsible for the game items that are present around the map
-    ///   (Catapult Pieces, Camera Pieces, etc)
-    /// <list type="table">
-    ///       <item>
-    ///           <description><b>Display()</b> - Displays a specified game item in the overworld </description>
-    ///       </item>
-    ///       <item>
-    ///           <description><b>Collect()</b> - Runs when a player picks up an item </description>
-    ///       </item>
-    ///   </list>
+    /// <b>Description</b>: Responsible for the game items that are present around the map (Catapult Pieces, Camera Pieces, etc)
+    /// <list type="number">
+    ///       <item> <description><b><see cref="Display"/></b></description> </item>
+    ///       <item> <description><b><see cref="Collect"/></b></description> </item>
+    /// </list>
     /// </summary>
     public class InventoryItemWorldDisplay : MonoBehaviour
     {
-        [SerializeField] private Transform uiParent; // The parent of the item display  
-        [SerializeField] private string defaultItemId; // The ID of the game item
+        [SerializeField] private Transform uiParent; // The parent for the item display prefab  
+        [SerializeField] private string defaultItemId; // The ID of the default item
 
         private Transform _activeItem; // The gameObject of the active, physical item 
         private ItemData _activeData; // The data of the active item
@@ -34,9 +26,7 @@ namespace Inventory
                 Display(Ltg8.Ltg8.ItemRegistry.FindItem(defaultItemId)); 
         }
 
-        /// <summary>
-        ///   <b>Description</b>: Displays the specified item in the overworld.
-        /// </summary>
+        /// <summary> <b>Description</b>: Displays the specified item in the overworld. </summary>
         /// <param name="data">The ItemData that determines what item will be displayed</param>
         public void Display(ItemData data)
         {
@@ -51,8 +41,7 @@ namespace Inventory
             
             if (data != null) // If the data given in the parameters is not null
             {
-                // NOTE: Instantiate(original,parent), clones "original" and makes it a child of "parent"
-                // Sets activeItem to a clone of the item's uiView gameObject and makes it a child of uiParent
+                // Sets activeItem to the item's ui prefab and makes it a child of the uiParent object
                 _activeItem = Instantiate(data.uiView, uiParent).transform;
                 _activeData = data; // Sets activeData to the ItemData used to display the object
                 _activeItem.name = data.itemName;
@@ -60,12 +49,8 @@ namespace Inventory
         }
 
         
-        /// <summary>
-        ///   <b>Description</b>: Runs when the player collects the item
-        /// </summary>
-        /// <remarks>
-        ///  <b>Adds</b> the item into the player's inventory before <b>destroying</b> it
-        /// </remarks>
+        /// <summary> <b>Description</b>: Runs when the player collects the item </summary>
+        /// <remarks> <b>Adds</b> the item into the player's inventory before <b>destroying</b> it </remarks>
         public void Collect()
         {
             if (_activeData == null) return; // Don't run if there isn't an active item

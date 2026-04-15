@@ -5,15 +5,11 @@ namespace Animation.FlipBook
 {
     
     /// <summary>
-    ///   <b>Description</b>: This class holds the data for the Sprite Flipbook (character sprites used in dialogue), specifically the sprites
+    /// <b>Description</b>: This class holds the data for the Sprite Flipbook Animation (character sprites used in dialogue), specifically the sprites
     /// it contains and the interval between sprite updates
     /// <list type="table">
-    ///       <item>
-    ///           <description><b>sprites[]</b> - An empty array of sprites </description>
-    ///       </item>
-    ///       <item>
-    ///           <description><b>updateRateSeconds</b> - A float that determines the interval between updates for Update() </description>
-    ///       </item>
+    ///       <item> <description><b>sprites[]</b> - An empty array of sprites </description> </item>
+    ///       <item> <description><b>updateRateSeconds</b> - A float that determines the interval between updates for Update() </description> </item>
     ///   </list>
     /// </summary>
     // NOTE: Kinda a lot to explain here, but in the top menu (File, Edit, Assets, . . .), under Assets->Create, this will create a menu for this class.
@@ -28,53 +24,41 @@ namespace Animation.FlipBook
     }
     
     /// <summary>
-    ///   <b>Description</b>: This (serializable) class controls the animation for the Sprite FlipBook, specifically the 
+    ///   <b>Description</b>: This (serializable) class controls the animation for Sprite FlipBooks, specifically the 
     /// sequencing and spacing of sprite alternations
     /// <list type="number">
-    ///       <item>
-    ///           <description><b><see cref="ApplyTo"/></b></description>
-    ///       </item>
-    ///       <item>
-    ///           <description><b><see cref="Update"/></b></description>
-    ///       </item>
+    ///       <item> <description><b><see cref="ApplyTo"/></b></description> </item>
+    ///       <item> <description><b><see cref="Update"/></b></description> </item>
     ///   </list>
     /// </summary>
     [Serializable]
     public class SpriteFlipBookAnimation : IFlipBookAnimation
     {
-        /// <summary>
-        ///   <b>Description</b>: An instance of the SpriteFlipBookData class
-        /// </summary>
+        /// <summary> <b>Description</b>: The sprite animation data: <see cref="SpriteFlipBookData"/> </summary>
         [SerializeField]
         private SpriteFlipBookData data;
 
-        // The index of interest on the array of sprites 
+        // The current index on the array of sprites 
         private int _index;
         
         // Sets _elapsed to a very large number (infinity)
         private float _elapsed = float.PositiveInfinity;
 
-        /// <summary>
-        ///   <b>Description</b>: Makes the Flipbook object display the next sprite in the sequence, based on the index.
-        /// </summary>
+        /// <summary> <b>Description</b>: Makes the Flipbook object display the next sprite in the sequence, based on the index. </summary>
         /// <param name="view"> The Flipbook object that displays the image </param>
         public void ApplyTo(FlipBookView view)
         {
-            // If the data is not null, display the sprite at _index of the array of sprites.
-            // Otherwise, pass null.
+            // If not null data, display the sprite at _index of the sprite array. Otherwise, pass null.
             view.DisplayImage(data != null ? data.sprites[_index] : null);
         }
         
-        /// <summary>
-        ///   <b>Description</b>: Update() w/ a custom interval. Responsible for incrementing (and looping) the sprite
-        /// index, changing the sprite that is displayed and allowing for the animation effect.
-        /// </summary>
+        /// <summary> <b>Description</b>: Update() w/ a custom interval. Responsible for incrementing (and looping) the sprite
+        /// index, changing the sprite that is displayed. </summary>
         /// <param name="deltaTime"> A float that determines the interval between updates </param>
         public void Update(float deltaTime)
         {
             // Do not continue if data is null
-            if (data == null)
-                return;
+            if (data == null) return;
             
             // If _elapsed is greater than the specified interval
             if (_elapsed > data.updateRateSeconds)
